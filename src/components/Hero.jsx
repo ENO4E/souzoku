@@ -6,9 +6,7 @@ const tiers = [
   { label: '〜5,000万円', fee: '155,000円〜', tax: '（税込170,500円）' },
   { label: '〜6,000万円', fee: '220,000円〜', tax: '（税込242,000円）' },
   { label: '〜7,000万円', fee: '280,000円〜', tax: '（税込308,000円）' },
-  { label: '〜8,000万円', fee: '345,000円〜', tax: '（税込379,500円）' },
-  { label: '〜9,000万円', fee: '410,000円〜', tax: '（税込451,000円）' },
-  { label: '〜1億円', fee: '470,000円〜', tax: '（税込517,000円）' },
+  { label: '7,000万円超', fee: '要お見積り', tax: '（正式な金額は無料相談時にご提示します）' },
 ]
 
 export default function Hero() {
@@ -77,7 +75,7 @@ export default function Hero() {
           <input
             type="range"
             min="0"
-            max="6"
+            max="4"
             step="1"
             value={simIndex}
             onChange={(e) => setSimIndex(Number(e.target.value))}
