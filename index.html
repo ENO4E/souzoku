@@ -1230,7 +1230,10 @@
   //   1) YOUR_PUBLIC_KEY  … Account > General > Public Key
   //   2) YOUR_SERVICE_ID  … Email Services で作成したサービスのID
   //   3) YOUR_TEMPLATE_ID … Email Templates で作成したテンプレートのID
-  emailjs.init("YOUR_PUBLIC_KEY");
+  // CDNの読み込みに失敗した場合でもページ全体のスクリプトが止まらないようにガード
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init("YOUR_PUBLIC_KEY");
+  }
 
   function submitContactForm(){
     const name = document.getElementById('f-name').value.trim();
@@ -1244,6 +1247,12 @@
     if(!name || !tel){
       statusEl.style.color = '#9B4B3E';
       statusEl.textContent = 'お名前と電話番号は必須項目です。';
+      return;
+    }
+
+    if (typeof emailjs === 'undefined'){
+      statusEl.style.color = '#9B4B3E';
+      statusEl.textContent = '送信機能を読み込めませんでした。恐れ入りますがお電話でご連絡ください。';
       return;
     }
 
