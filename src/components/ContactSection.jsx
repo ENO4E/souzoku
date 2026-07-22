@@ -38,7 +38,8 @@ export default function ContactSection() {
       from_email: email.trim() || '未入力',
       amount: amount,
       message: message.trim(),
-      to_email: 'info@tax-plan.net',
+      // 送信先メールアドレスはEmailJSのテンプレート側で設定してください
+      // （配信バンドルにアドレスを含めないためのリポジトリ方針です）
     }).then(() => {
       setStatus({ color: '#2E7D4F', text: '送信しました。1営業日以内に担当者よりご連絡いたします。' })
       setName('')
@@ -65,7 +66,7 @@ export default function ContactSection() {
           </div>
           <div className="info-item">
             <div className="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
-            <div><h4>フォームでのご相談</h4><p>info@tax-plan.net<br />24時間受付。1営業日以内にご連絡します。</p></div>
+            <div><h4>フォームでのご相談</h4><p>24時間受付。1営業日以内にご連絡します。</p></div>
           </div>
           <div className="info-item">
             <div className="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
