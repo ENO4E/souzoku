@@ -23,7 +23,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="foot-bottom">© 2026 相続税申告相談センター　All Rights Reserved.<br /><span style={{ opacity: 0.65, fontSize: 11 }}>運営：<a href="https://tax-plan.net/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>タックス・プラン税理士法人</a>（税理士登録番号：5469）<br />関連リンク：<a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>国税庁</a>　<a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>近畿税理士会</a></span></div>
+        <div className="foot-bottom">© 2026 相続税申告相談センター　All Rights Reserved.<br /><span style={{ opacity: 0.65, fontSize: 11 }}>運営：タックス・プラン税理士法人（税理士登録番号：5469）<br />関連リンク：<a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>国税庁</a>　<a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>近畿税理士会</a></span></div>
       </div>
     </footer>
   )
