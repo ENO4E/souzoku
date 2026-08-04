@@ -36,7 +36,7 @@ export default function FaqSection() {
   }
 
   return (
-    <section style={{ paddingTop: 0 }}>
+    <section id="faq">
       <div className="wrap" style={{ maxWidth: 820 }}>
         <div className="section-head fade-in">
           <div className="eyebrow">よくあるご質問</div>
@@ -45,8 +45,8 @@ export default function FaqSection() {
         <div className="fade-in">
           {faqs.map((f, i) => (
             <div className={`faq-item${openSet.has(i) ? ' open' : ''}`} key={f.q}>
-              <div className="faq-q" onClick={() => toggle(i)}><span>{f.q}</span><span className="plus">+</span></div>
-              <div className="faq-a"><p>{f.a}</p></div>
+              <button type="button" className="faq-q" aria-expanded={openSet.has(i)} aria-controls={`faq-a-${i}`} onClick={() => toggle(i)}><span>{f.q}</span><span className="plus" aria-hidden="true">+</span></button>
+              <div className="faq-a" id={`faq-a-${i}`}><p>{f.a}</p></div>
             </div>
           ))}
         </div>
