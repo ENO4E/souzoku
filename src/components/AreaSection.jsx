@@ -35,6 +35,11 @@ export default function AreaSection() {
           <p>大阪市24区・堺市7区を含む大阪府内のすべての市区町村に対応。京都府内は京都市をはじめ全15市、兵庫県・奈良県・滋賀県・和歌山県・三重県まで、関西一円のご相談を承っています。オンライン相談・出張相談にも対応していますので、事務所から離れた地域の方もお気軽にご相談ください。</p>
         </div>
 
+        <p className="rosenka-note fade-in">
+          土地の相続税評価は「路線価」が基準になります。まずはお住まいの地域の路線価をチェック！
+          <a href="https://www.rosenka.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 路線価図・評価倍率表（最新年分）を見る ↗</a>
+        </p>
+
         {areas.map((a) => (
           <div className="area-block fade-in" key={a.pref}>
             <h3 className="area-pref">{a.pref}</h3>

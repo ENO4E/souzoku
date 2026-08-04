@@ -238,6 +238,15 @@ section{ padding:100px 0; }
 }
 
 /* area */
+.rosenka-note{
+  margin:-32px 0 28px; font-size:14px; color:var(--text-main);
+  display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px;
+}
+.rosenka-note a{
+  color:var(--navy-mid); font-weight:700; text-decoration:underline;
+  text-decoration-color:var(--gold); text-underline-offset:3px;
+}
+.rosenka-note a:hover{ color:var(--gold); }
 .area-block{ margin-bottom:22px; }
 .area-pref{
   font-size:14px; font-weight:700; color:var(--navy-mid); margin-bottom:10px;
