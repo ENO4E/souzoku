@@ -5,6 +5,7 @@ import Hero from './components/Hero.jsx'
 import PainSection from './components/PainSection.jsx'
 import TaxCalcSection from './components/TaxCalcSection.jsx'
 import StrengthsSection from './components/StrengthsSection.jsx'
+import TestimonialsSection from './components/TestimonialsSection.jsx'
 import AreaSection from './components/AreaSection.jsx'
 import FeeSection from './components/FeeSection.jsx'
 import FlowSection from './components/FlowSection.jsx'
@@ -31,6 +32,7 @@ export default function App() {
       <PainSection />
       <TaxCalcSection />
       <StrengthsSection />
+      <TestimonialsSection />
       <AreaSection />
       <FeeSection />
       <FlowSection />
