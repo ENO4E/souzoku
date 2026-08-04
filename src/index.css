@@ -244,10 +244,14 @@ section{ padding:100px 0; }
   display:flex; align-items:center; gap:8px;
 }
 .area-pref::before{ content:""; width:4px; height:14px; background:var(--gold); border-radius:2px; }
-.area-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.area-chips{
+  display:flex; flex-wrap:wrap; gap:12px 0;
+  background:#FBF6EC; border:1px solid var(--gold-soft); border-radius:6px;
+  padding:20px 16px;
+}
 .area-chips span{
-  display:inline-block; background:#F5F6F8; border:1px solid var(--line); border-radius:20px;
-  padding:6px 16px; font-size:13px; color:var(--text-main); font-weight:500;
+  display:inline-block; border-left:2px solid rgba(36,54,92,0.35);
+  padding:1px 16px; font-size:13.5px; color:var(--navy-mid); font-weight:500; line-height:1.5;
 }
 
 /* tax calculator */
