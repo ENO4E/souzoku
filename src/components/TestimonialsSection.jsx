@@ -34,7 +34,15 @@ const testimonials = [
     avatar: '相',
     color: '#5B6474',
     source: 'ご利用者アンケート',
-    text: 'すぐに答えられないときでも、期限を切ってきちんと連絡いただけますし、大変助かっています。ありがとうございます。',
+    text: '前の税理士事務所ではレスポンスが悪かったのですが、今はすぐに返信をくれるので安心できます。すぐに答えられないときでも、期限を切ってきちんと連絡いただけますし、大変助かっています。ありがとうございます。',
+  },
+  {
+    name: '英語でご相談のお客様',
+    avatar: 'E',
+    color: '#3A4E76',
+    source: 'ご利用者アンケート',
+    text: 'We were very satisfied with the excellent customer service and clear communication. Your kindness and professionalism made us feel confident and comfortable from start to finish.',
+    translation: '（日本語訳）素晴らしいカスタマーサービスと分かりやすいコミュニケーションに大変満足しています。親切でプロフェッショナルな対応のおかげで、最初から最後まで安心してお任せできました。',
   },
 ]
 
@@ -60,7 +68,10 @@ export default function TestimonialsSection() {
                   <span className="t-stars" aria-label="評価 星5つ"><span aria-hidden="true">★★★★★</span></span>
                 </div>
               </div>
-              <blockquote className="t-text">{t.text}</blockquote>
+              <blockquote className="t-text">
+                {t.text}
+                {t.translation && <span className="t-translation">{t.translation}</span>}
+              </blockquote>
               <figcaption className="t-meta"><span className="t-source">{t.source}</span></figcaption>
             </figure>
           ))}
