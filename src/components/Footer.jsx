@@ -15,6 +15,7 @@ export default function Footer() {
               <li><a href="#area">対応エリア</a></li>
               <li><a href="#fee">料金</a></li>
               <li><a href="#faq">よくあるご質問</a></li>
+              <li><a href="#office">事務所概要</a></li>
               <li><a href="#contact">お問い合わせ</a></li>
             </ul>
           </div>

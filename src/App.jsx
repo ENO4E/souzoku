@@ -11,6 +11,7 @@ import FeeSection from './components/FeeSection.jsx'
 import FlowSection from './components/FlowSection.jsx'
 import MidCtaSection from './components/MidCtaSection.jsx'
 import FaqSection from './components/FaqSection.jsx'
+import OfficeSection from './components/OfficeSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -38,6 +39,7 @@ export default function App() {
       <FlowSection />
       <MidCtaSection />
       <FaqSection />
+      <OfficeSection />
       <ContactSection />
       <Footer />
     </>
