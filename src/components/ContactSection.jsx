@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import emailjs from '@emailjs/browser'
 
 // ===== EmailJS お問い合わせフォーム送信 =====
 // 以下3つの値を、EmailJSのダッシュボードで取得したものに書き換えてください。
@@ -9,8 +8,6 @@ import emailjs from '@emailjs/browser'
 const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
 const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
 const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-
-emailjs.init(EMAILJS_PUBLIC_KEY)
 
 const amountOptions = ['選択してください', '〜5,000万円', '5,000万円〜1億円', '1億円〜2億円', '2億円〜3億円', '3億円以上', 'まだわからない']
 
@@ -23,7 +20,7 @@ export default function ContactSection() {
   const [sending, setSending] = useState(false)
   const [status, setStatus] = useState({ color: '', text: '' })
 
-  const submitContactForm = () => {
+  const submitContactForm = async () => {
     if (!name.trim() || !tel.trim()) {
       setStatus({ color: '#9B4B3E', text: 'お名前と電話番号は必須項目です。' })
       return
@@ -31,6 +28,8 @@ export default function ContactSection() {
 
     setSending(true)
     setStatus({ color: '', text: '' })
+
+    const { default: emailjs } = await import('@emailjs/browser')
 
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       from_name: name.trim(),
@@ -40,7 +39,7 @@ export default function ContactSection() {
       message: message.trim(),
       // 送信先メールアドレスはEmailJSのテンプレート側で設定してください
       // （配信バンドルにアドレスを含めないためのリポジトリ方針です）
-    }).then(() => {
+    }, { publicKey: EMAILJS_PUBLIC_KEY }).then(() => {
       setStatus({ color: '#2E7D4F', text: '送信しました。1営業日以内に担当者よりご連絡いたします。' })
       setName('')
       setTel('')

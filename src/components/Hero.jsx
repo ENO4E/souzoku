@@ -25,7 +25,7 @@ export default function Hero() {
             <a href="#fee" className="btn btn-outline btn-lg">料金表を見る</a>
           </div>
           <div className="hero-badge-row">
-            <svg className="laurel-badge" viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg">
+            <svg className="laurel-badge" viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="申告件数200件以上の実績">
               <g fill="var(--gold)">
                 <ellipse cx="25" cy="122" rx="7" ry="16" transform="rotate(-55 25 122)" />
                 <ellipse cx="17" cy="102" rx="7" ry="16" transform="rotate(-38 17 102)" />
@@ -77,6 +77,7 @@ export default function Hero() {
             min="0"
             max="4"
             step="1"
+            aria-label="相続財産の総額（目安）"
             value={simIndex}
             onChange={(e) => setSimIndex(Number(e.target.value))}
           />

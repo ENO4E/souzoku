@@ -11,7 +11,10 @@ export default function Footer() {
             <h5>メニュー</h5>
             <ul>
               <li><a href="#pain">お悩み</a></li>
+              <li><a href="#tax-calc">相続税シミュレーター</a></li>
+              <li><a href="#area">対応エリア</a></li>
               <li><a href="#fee">料金</a></li>
+              <li><a href="#faq">よくあるご質問</a></li>
               <li><a href="#contact">お問い合わせ</a></li>
             </ul>
           </div>

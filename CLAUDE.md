@@ -14,7 +14,7 @@
 
 ## プロジェクト構成
 
-- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。
+- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
 - デザイン・文言の元データは静的HTML時代のLPを忠実に移植したもの。変更時はデザインを崩さないこと。
 - OGP・構造化データ（JSON-LD）は `index.html` の `<head>` で管理。

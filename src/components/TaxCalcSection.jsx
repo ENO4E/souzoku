@@ -136,6 +136,7 @@ export default function TaxCalcSection() {
                 type="number"
                 min="0"
                 step="100"
+                aria-label="おおよその遺産総額（万円）"
                 value={totalManEn}
                 onChange={(e) => setTotalManEn(e.target.value)}
               />
@@ -160,7 +161,7 @@ export default function TaxCalcSection() {
               <div className="calc-label-text"><b>配偶者の遺産取得割合</b><span>実際に配偶者が取得する割合の目安です</span></div>
             </div>
             <div className="calc-input-wrap">
-              <select value={spouseShare} onChange={(e) => setSpouseShare(e.target.value)}>
+              <select aria-label="配偶者の遺産取得割合" value={spouseShare} onChange={(e) => setSpouseShare(e.target.value)}>
                 <option value="">お選びください</option>
                 {spouseShareOptions.map((v) => (
                   <option key={v} value={v}>{v}%</option>
@@ -190,6 +191,7 @@ export default function TaxCalcSection() {
             </div>
             <div className="calc-input-wrap">
               <select
+                aria-label="法定相続人の人数"
                 value={effectiveCount}
                 disabled={isFixedCount}
                 onChange={(e) => setHeirCount(Number(e.target.value))}

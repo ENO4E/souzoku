@@ -18,9 +18,15 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://taxplanyamano.github.io/souzoku-zeirishi/ogp-image.jpg">
+<meta name="theme-color" content="#14213D">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- JSが有効な環境でのみスクロール演出（fade-in）を有効化するためのフラグ -->
+<script>document.documentElement.classList.add('js')</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <!-- 構造化データ：よくある質問（検索結果にFAQが表示される場合があります） -->
@@ -79,7 +85,14 @@
   "@context": "https://schema.org",
   "@type": "AccountingService",
   "name": "相続税申告相談センター",
+  "description": "相続税申告を基本報酬99,000円〜で提供。大阪府内全33市・京都府内全15市・神戸市など関西一円対応、相談実績200件超。初回相談・お見積りは無料です。",
   "telephone": "06-6354-8220",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
   "address": {
     "@type": "PostalAddress",
     "postalCode": "530-0044",
