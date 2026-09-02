@@ -85,6 +85,8 @@ header{
 .hero-photo{
   position:absolute; top:0; bottom:0; left:calc(50% + 120px); right:0;
   background:url('/hero-photo.webp') center 40% / cover no-repeat;
+  background-image:-webkit-image-set(url('/hero-photo.webp') 1x, url('/hero-photo-2x.webp') 2x);
+  background-image:image-set(url('/hero-photo.webp') 1x, url('/hero-photo-2x.webp') 2x);
   -webkit-mask-image:linear-gradient(90deg, rgba(0,0,0,0) 0%, #000 48%);
   mask-image:linear-gradient(90deg, rgba(0,0,0,0) 0%, #000 48%);
   pointer-events:none; z-index:0;
