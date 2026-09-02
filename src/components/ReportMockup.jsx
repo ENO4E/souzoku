@@ -6,7 +6,7 @@ export default function ReportMockup({ size = 'large' }) {
       <img
         className="report-page report-page--back"
         src="/report-simulation.webp"
-        alt="相続税試算表のサンプル（一次相続・二次相続の試算結果）"
+        alt="相続税試算表のサンプル（財産・課税遺産総額・相続人ごとの税額）"
         width="1400"
         height="990"
         loading="lazy"
