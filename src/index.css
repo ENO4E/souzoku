@@ -88,6 +88,11 @@ header{
   background-size:auto, 100% 46px;
   pointer-events:none;
 }
+.hero-skyline{
+  position:absolute; left:0; right:0; bottom:0; width:100%; height:210px;
+  opacity:.13; pointer-events:none; z-index:0;
+}
+@media(max-width:880px){ .hero-skyline{ height:150px; opacity:.11; } }
 .hero-grid{
   position:relative; z-index:1;
   display:grid; grid-template-columns:1.35fr .65fr; gap:48px; align-items:start;

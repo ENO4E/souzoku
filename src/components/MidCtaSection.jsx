@@ -8,7 +8,7 @@ export default function MidCtaSection() {
           <a href="#contact" className="btn btn-primary btn-lg">無料相談を予約する</a>
           <a href="tel:0663548220" className="btn btn-outline btn-lg">電話で相談する　06-6354-8220</a>
         </div>
-        <p className="tel-note">受付（平日9:00〜18:00）／申告期限が迫っている方もまずはご相談ください</p>
+        <p className="tel-note">受付（平日9:00〜18:00）／土日面談は事前予約で対応可／申告期限が迫っている方もまずはご相談ください</p>
       </div>
     </section>
   )
