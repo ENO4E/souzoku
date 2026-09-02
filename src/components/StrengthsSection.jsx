@@ -49,7 +49,7 @@ export default function StrengthsSection() {
                 <path d="M7.5 12.5 9.5 14.5 14 10" stroke="var(--gold)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h4>書面添付制度を標準運用</h4>
+            <h4>書面添付制度で税務調査対策</h4>
             <p>税理士法33条の2に基づく書面添付を標準的に活用し、税務調査に入られにくい申告書の作成を徹底します。</p>
           </div>
         </div>

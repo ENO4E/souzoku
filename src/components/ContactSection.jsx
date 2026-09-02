@@ -61,7 +61,7 @@ export default function ContactSection() {
           <h2 style={{ fontSize: 26, fontWeight: 700, marginBottom: 24 }}>無料相談のご予約はこちらから</h2>
           <div className="info-item">
             <div className="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div><h4>お電話でのご相談</h4><p>06-6354-8220<br />受付（平日9:00〜18:00）</p></div>
+            <div><h4>お電話でのご相談</h4><p>06-6354-8220<br />受付（平日9:00〜18:00）<br />土日の面談は事前予約で対応可能です</p></div>
           </div>
           <div className="info-item">
             <div className="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
