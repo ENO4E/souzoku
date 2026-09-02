@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReportMockup from './ReportMockup.jsx'
 
 // 速算表（令和6年時点の税率区分）
 const taxBrackets = [
@@ -227,6 +228,23 @@ export default function TaxCalcSection() {
 
         <div className="fee-note fade-in" style={{ maxWidth: 720, margin: '20px auto 0' }}>
           ※これは簡易的な概算シミュレーションです。生命保険の非課税枠、小規模宅地等の特例、生前贈与加算などは考慮していません。正確な金額は無料相談にてご確認ください。
+        </div>
+
+        <div className="report-showcase fade-in">
+          <ReportMockup size="large" />
+          <div className="report-showcase-text">
+            <div className="eyebrow">無料相談でお渡しする報告書</div>
+            <h3 className="serif">概算の先は、あなた専用の<br />「相続税額計算結果報告書」で。</h3>
+            <p>無料相談でお伺いした財産の内容をもとに、税理士法人が正式な試算報告書を作成してお渡しします。土地の路線価評価から二次相続まで、数字の根拠が一目で分かる資料です。</p>
+            <ul className="report-points">
+              <li>土地・建物・預貯金・生命保険などの財産一覧表</li>
+              <li>一次相続の課税遺産総額と相続人ごとの税額</li>
+              <li>配偶者の税額軽減を踏まえた二次相続シミュレーション</li>
+              <li>一次・二次相続の合計税額と対策のコメント</li>
+            </ul>
+            <a href="#contact" className="btn btn-primary">無料相談で報告書を依頼する</a>
+            <p className="report-note">※画像はサンプルです。実際の報告書はご相談内容にもとづき個別に作成します。</p>
+          </div>
         </div>
       </div>
     </section>

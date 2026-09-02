@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import HeroSkyline from './HeroSkyline.jsx'
+import ReportMockup from './ReportMockup.jsx'
 
 // Fee simulator — actual base fee schedule
 const tiers = [
@@ -67,6 +68,7 @@ export default function Hero() {
           </div>
         </div>
 
+        <div className="hero-side">
         <div className="simulator">
           <h3>かんたん料金シミュレーター</h3>
           <p className="note">相続財産の概算額を選ぶと、報酬の目安レンジが表示されます</p>
@@ -89,6 +91,16 @@ export default function Hero() {
             <div className="sim-tax">{tier.tax}</div>
           </div>
           <div className="sim-disclaimer">※基本報酬の目安です。土地評価・非上場株式評価・相続人加算等は別途料金となります。正式な金額は無料相談時にお見積りいたします。</div>
+        </div>
+
+        <a href="#tax-calc" className="hero-report">
+          <ReportMockup size="compact" />
+          <div className="hero-report-text">
+            <span className="hero-report-label">無料相談でお渡し</span>
+            <b>相続税額計算結果報告書</b>
+            <span>財産一覧・一次相続の試算・二次相続シミュレーションまで、あなた専用の報告書を作成します。</span>
+          </div>
+        </a>
         </div>
       </div>
     </section>
