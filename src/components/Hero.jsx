@@ -27,7 +27,7 @@ export default function Hero() {
             <a href="#fee" className="btn btn-outline btn-lg">料金表を見る</a>
           </div>
           <div className="hero-badge-row">
-            <svg className="laurel-badge" viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="申告件数200件以上の実績">
+            <svg className="laurel-badge" viewBox="0 0 140 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="申告件数200件以上の実績">
               <g fill="var(--gold)">
                 <ellipse cx="25" cy="122" rx="7" ry="16" transform="rotate(-55 25 122)" />
                 <ellipse cx="17" cy="102" rx="7" ry="16" transform="rotate(-38 17 102)" />
@@ -44,8 +44,9 @@ export default function Hero() {
               </g>
               <text x="70" y="72" textAnchor="middle" fontFamily="'Shippori Mincho',serif" fontWeight="700" fontSize="15" fill="var(--gold-soft)">申告件数</text>
               <text x="70" y="108" textAnchor="middle" fontFamily="'Shippori Mincho',serif" fontWeight="800" fontSize="40" fill="#fff">200</text>
-              <text x="70" y="126" textAnchor="middle" fontFamily="'Noto Sans JP',sans-serif" fontWeight="700" fontSize="13" fill="var(--gold-soft)">件以上の実績</text>
-              <text x="70" y="142" textAnchor="middle" fontSize="14" fill="var(--gold)">★ ★ ★</text>
+              {/* 葉の下端（y≈138）より下に配置して文字と葉の重なりを避ける */}
+              <text x="70" y="157" textAnchor="middle" fontFamily="'Noto Sans JP',sans-serif" fontWeight="700" fontSize="13" fill="var(--gold-soft)">件以上の実績</text>
+              <text x="70" y="174" textAnchor="middle" fontSize="13" fill="var(--gold)">★ ★ ★</text>
             </svg>
             <div className="hero-badge-text">
               <span className="k">相続専門の税理士が</span>
