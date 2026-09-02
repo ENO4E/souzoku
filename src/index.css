@@ -74,32 +74,46 @@ header{
   outline:2px solid var(--gold); outline-offset:2px;
 }
 
-/* ---------- hero（明るい写真ベース：OGPキービジュアルと同じトーン） ---------- */
+/* ---------- hero（大阪・梅田のスカイライン実写を全幅背景に） ---------- */
 .hero{
   position:relative; overflow:hidden;
-  background:linear-gradient(180deg, #F7F6F2 0%, #F1F0EB 100%);
+  background:#F5F6F8;
   color:var(--text-main); padding:168px 0 110px;
   border-bottom:1px solid #E6E3DC;
 }
-/* 右側の実写（家の模型・電卓・申告書）。左端をマスクで背景に溶かし、下端を薄く落とす */
+/* 写真は幅100%で下端に固定し、写真より上の空はCSSグラデーションで延長（写真上端の色 #65a8ed に接続） */
 .hero-photo{
-  position:absolute; top:0; bottom:0; left:calc(50% + 120px); right:0;
-  background:url('/hero-photo.webp') center 40% / cover no-repeat;
-  background-image:-webkit-image-set(url('/hero-photo.webp') 1x, url('/hero-photo-2x.webp') 2x);
-  background-image:image-set(url('/hero-photo.webp') 1x, url('/hero-photo-2x.webp') 2x);
-  -webkit-mask-image:linear-gradient(90deg, rgba(0,0,0,0) 0%, #000 48%);
-  mask-image:linear-gradient(90deg, rgba(0,0,0,0) 0%, #000 48%);
-  pointer-events:none; z-index:0;
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-color:#65a8ed;
+  background-image:url('/hero-skyline.webp'), linear-gradient(180deg, #5b9ce6 0%, #65a8ed 18%, #65a8ed 100%);
+  background-image:-webkit-image-set(url('/hero-skyline.webp') 1x, url('/hero-skyline-2x.webp') 2x), linear-gradient(180deg, #5b9ce6 0%, #65a8ed 18%, #65a8ed 100%);
+  background-image:image-set(url('/hero-skyline.webp') 1x, url('/hero-skyline-2x.webp') 2x), linear-gradient(180deg, #5b9ce6 0%, #65a8ed 18%, #65a8ed 100%);
+  background-repeat:no-repeat, no-repeat;
+  /* ヒーロー全面に敷き、写真の下半分（街並み）が初期表示に入るようにする。左寄せで梅田の高層ビル群を見出しの背後に */
+  background-size:cover, 100% 100%;
+  background-position:25% bottom, center top;
 }
+/* 左側：見出し・本文の可読性のため薄いベールをかける（右側の街並みはそのまま見せる） */
+.hero-photo::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(245,246,248,0.74) 0%, rgba(245,246,248,0.42) 36%, rgba(245,246,248,0) 62%);
+}
+/* 下端：建物を次セクションの背景色へ溶かす */
 .hero-photo::after{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(241,240,235,0.35) 0%, rgba(241,240,235,0) 28%, rgba(241,240,235,0) 70%, rgba(241,240,235,0.7) 100%);
+  background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 62%, rgba(245,246,248,0.45) 82%, #F5F6F8 100%);
 }
 @media(max-width:880px){
+  /* モバイル：写真をヒーロー高さの60%に収めて街並みを初期画面内（本文〜ボタンの背後）に出し、その下は背景色へ溶かす */
   .hero-photo{
-    left:0; opacity:.26;
-    -webkit-mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 85%);
-    mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 85%);
+    background-size:auto 38%, 100% 100%;
+    background-position:30% top, center top;
+  }
+  .hero-photo::before{
+    background:linear-gradient(180deg, rgba(245,246,248,0.6) 0%, rgba(245,246,248,0.48) 25%, rgba(245,246,248,0.48) 100%);
+  }
+  .hero-photo::after{
+    background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 25%, rgba(245,246,248,0.55) 32%, #F5F6F8 38%, #F5F6F8 100%);
   }
 }
 .hero .eyebrow{ color:var(--gold); }
