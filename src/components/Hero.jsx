@@ -19,8 +19,8 @@ export default function Hero() {
       <div className="hero-photo" aria-hidden="true" />
       <div className="wrap hero-grid">
         <div>
-          <div className="eyebrow">大阪の相続税申告 専門｜基本料99,000円〜</div>
-          <h1 className="serif">大阪の相続税申告を、<br /><span className="accent">99,000円からの</span>格安・明快な料金で。<br />相続専門の税理士法人が対応します。</h1>
+          <div className="eyebrow">大阪・堺の相続税申告 専門｜基本料99,000円〜</div>
+          <h1 className="serif">大阪・堺の相続税申告を、<br /><span className="accent">99,000円からの</span>格安・明快な料金で。<br />相続専門の税理士法人が対応します。</h1>
           <p className="lead">「何から手をつければいいか分からない」「税理士費用が高そう」——そんな不安からでも大丈夫です。累計200件超の相続税申告実績を持つ相続専門の税理士が、初回無料相談から申告完了まで丁寧にサポートします。</p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary btn-lg">無料相談を予約する</a>
@@ -57,7 +57,7 @@ export default function Hero() {
           <div className="trust-row">
             <div className="trust-item"><b>200件超</b>累計相続税申告実績</div>
             <div className="trust-item"><b>総相談件数</b>2,000件以上</div>
-            <div className="trust-item"><b>関西一円</b>大阪・兵庫・京都・奈良・滋賀・和歌山・三重</div>
+            <div className="trust-item"><b>堺・高石・松原</b>を中心に大阪全域・関西一円に対応</div>
           </div>
 
           <div className="feature-icons">
