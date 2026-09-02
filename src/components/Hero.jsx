@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import HeroSkyline from './HeroSkyline.jsx'
 import ReportMockup from './ReportMockup.jsx'
 
 // Fee simulator — actual base fee schedule
@@ -17,10 +16,10 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      <HeroSkyline />
+      <div className="hero-photo" aria-hidden="true" />
       <div className="wrap hero-grid">
         <div>
-          <div className="eyebrow" style={{ color: 'var(--gold-soft)' }}>相続税申告 専門｜基本料99,000円〜</div>
+          <div className="eyebrow">相続税申告 専門｜基本料99,000円〜</div>
           <h1 className="serif">相続税申告を、<br /><span className="accent">99,000円からの</span>明快な料金で。<br />実績豊富な専門税理士法人が対応します。</h1>
           <p className="lead">「何から手をつければいいか分からない」「税理士費用が高そう」——そんな不安からでも大丈夫です。累計200件超の相続税申告実績を持つ相続専門の税理士が、初回無料相談から申告完了まで丁寧にサポートします。</p>
           <div className="hero-actions">
