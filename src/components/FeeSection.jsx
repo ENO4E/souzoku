@@ -24,7 +24,7 @@ export default function FeeSection() {
       <div className="wrap">
         <div className="section-head fade-in">
           <div className="eyebrow">料金体系</div>
-          <h2>大阪で最安水準の相続税申告 基本報酬<span style={{ display: 'block', fontSize: 14, fontWeight: 400, color: 'var(--text-sub)', marginTop: 8 }}>大阪の相続税申告で最安水準の明快な料金表です。税抜価格を太字で、税込価格は右側に小さく表示しています。</span></h2>
+          <h2>大阪で最安クラスの料金水準｜相続税申告 基本報酬<span style={{ display: 'block', fontSize: 14, fontWeight: 400, color: 'var(--text-sub)', marginTop: 8 }}>大阪の相続税申告で最安クラスの料金水準の、明快な料金表です。税抜価格を太字で、税込価格は右側に小さく表示しています。</span></h2>
         </div>
         <table className="fee-table fade-in">
           <thead>
