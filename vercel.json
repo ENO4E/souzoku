@@ -5,6 +5,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/api/contact.php", "destination": "/api/contact" }
+    { "source": "/web/contact", "destination": "/api/contact" },
+    { "source": "/web/contact/", "destination": "/api/contact" }
   ]
 }
