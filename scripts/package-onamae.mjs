@@ -16,6 +16,9 @@ if (!existsSync(resolve(dist, 'index.html'))) {
 rmSync(out, { recursive: true, force: true })
 mkdirSync(out, { recursive: true })
 cpSync(dist, out, { recursive: true })
+// CSS/JS は index.html に埋め込み済みのため、外部ファイルは公開物から外す（配置ミス防止）
+rmSync(resolve(out, 'assets/css'), { recursive: true, force: true })
+rmSync(resolve(out, 'assets/js'), { recursive: true, force: true })
 cpSync(resolve(root, 'server/onamae/.htaccess'), resolve(out, '.htaccess'))
 mkdirSync(resolve(out, 'web/contact'), { recursive: true })
 cpSync(resolve(root, 'server/onamae/web/contact/index.php'), resolve(out, 'web/contact/index.php'))
