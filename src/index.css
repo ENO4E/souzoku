@@ -471,6 +471,8 @@ section{ padding:100px 0; }
   outline:2px solid var(--gold-soft); outline-offset:1px; border-color:var(--gold);
 }
 .form-submit{ width:100%; }
+/* ハニーポット：視覚的にもスクリーンリーダーからも隠す（display:none だと一部ボットが除外するため画面外配置） */
+.form-hp{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
 .contact-side .info-item{ display:flex; gap:16px; margin-bottom:26px; }
 .contact-side .info-item .ico{
   width:40px; height:40px; border-radius:50%; background:var(--navy-dark); flex:none;
