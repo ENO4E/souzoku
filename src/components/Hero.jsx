@@ -73,7 +73,7 @@ export default function Hero() {
           <p className="mascot-bubble">相続のこと、<br />まかせなはれ。</p>
           <img
             className="mascot-img"
-            src="/mascot-toranosuke.webp"
+            src="/assets/mascot-toranosuke.webp"
             alt="マスコットキャラクター 寅之助"
             width="409"
             height="640"
