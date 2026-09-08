@@ -15,7 +15,24 @@ import OfficeSection from './components/OfficeSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import Footer from './components/Footer.jsx'
 
+// GA4 イベント送信（gtag 未ロード時は何もしない）
+function track(eventName, params) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params)
+  }
+}
+
 export default function App() {
+  // 電話番号リンクのタップを計測（広告のコンバージョン指標）
+  useEffect(() => {
+    const onClick = (e) => {
+      const a = e.target.closest && e.target.closest('a[href^="tel:"]')
+      if (a) track('phone_click', { link_url: a.getAttribute('href') })
+    }
+    document.addEventListener('click', onClick)
+    return () => document.removeEventListener('click', onClick)
+  }, [])
+
   // Scroll reveal
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

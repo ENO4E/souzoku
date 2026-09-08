@@ -40,6 +40,7 @@ export default function ContactSection() {
       // 送信先メールアドレスはEmailJSのテンプレート側で設定してください
       // （配信バンドルにアドレスを含めないためのリポジトリ方針です）
     }, { publicKey: EMAILJS_PUBLIC_KEY }).then(() => {
+      if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form: 'free_consultation' })
       setStatus({ color: '#2E7D4F', text: '送信しました。1営業日以内に担当者よりご連絡いたします。' })
       setName('')
       setTel('')
