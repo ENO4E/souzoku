@@ -5,8 +5,9 @@
 - **`info@tax-plan.net` をページに表示しない。**
 - **`tax-plan.net` を含むドメイン・URL（`*.tax-plan.net` 等）も同様に、ページに表示せず、リンク先にも使用しない。**
 - これらは表示テキストだけでなく、href属性や配信されるJSバンドルにも含めないこと。お問い合わせの送信先メールアドレスはサーバー側の設定でのみ持つ（コード・リポジトリには書かない）。
-  - **お名前.com レンタルサーバー（本番）**: `server/onamae/api/contact.php` が同じフォルダの `contact-config.php`（サーバー上でのみ作成・gitignore済み）から読む。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる。
-  - **Vercel（プレビュー）**: `api/contact.js` が環境変数 `CONTACT_TO` 等から読む（変数一覧は `.env.example`）。フロントの送信先 `/api/contact.php` は `vercel.json` の rewrite で `api/contact.js` に振り向ける。
+  - フォームの送信先URLは **`/web/contact/`**（変更する場合は `src/components/ContactSection.jsx` の `CONTACT_ENDPOINT`、`vercel.json` の rewrite、`scripts/package-onamae.mjs` の配置先を揃える）。
+  - **お名前.com レンタルサーバー（本番）**: `server/onamae/web/contact/index.php` が同じフォルダの `contact-config.php`（サーバー上でのみ作成・gitignore済み）から読む。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる。
+  - **Vercel（プレビュー）**: `api/contact.js` が環境変数 `CONTACT_TO` 等から読む（変数一覧は `.env.example`）。`/web/contact/` は `vercel.json` の rewrite で `api/contact.js` に振り向ける。
 - 会社名「タックス・プラン税理士法人」のテキスト表記は問題ない（リンクは張らない）。
 
 ## ブランチ・マージ規約（絶対遵守）

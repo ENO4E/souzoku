@@ -1,5 +1,6 @@
 <?php
 // お問い合わせフォームの送信API（お名前.com レンタルサーバー等の PHP 環境用）
+// 配置先: 公開ディレクトリ/web/contact/index.php → エンドポイント URL は /web/contact/
 //
 // 送信先などの設定は同じフォルダの contact-config.php から読む。
 // contact-config.php はサーバー上でだけ作成し（contact-config.example.php をコピーして記入）、
