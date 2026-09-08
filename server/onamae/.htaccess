@@ -1,0 +1,33 @@
+# お名前.com レンタルサーバー用（サイトのルートに配置）
+
+# ディレクトリ一覧の非表示
+Options -Indexes
+
+# 送信設定ファイルへの直接アクセスを禁止
+<Files "contact-config.php">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</Files>
+
+# 静的アセットのキャッシュ（ファイル名にハッシュが付くため長期キャッシュで問題ない）
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+
+# gzip 圧縮
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# WebP の MIME タイプ（未設定のサーバー向け）
+AddType image/webp .webp
