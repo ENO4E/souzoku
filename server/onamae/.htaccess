@@ -14,11 +14,11 @@ Options -Indexes
   </IfModule>
 </Files>
 
-# 静的アセットのキャッシュ（ファイル名にハッシュが付くため長期キャッシュで問題ない）
+# 静的アセットのキャッシュ（CSS/JS はファイル名固定のため短め。更新が数分で反映される）
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 10 minutes"
+  ExpiresByType application/javascript "access plus 10 minutes"
   ExpiresByType image/webp "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"

@@ -211,21 +211,31 @@ input[type=range]::-webkit-slider-thumb{
   width:150px; height:auto; flex:none;
   filter:drop-shadow(0 8px 14px rgba(20,33,61,0.28));
 }
+/* 吹き出し：和紙調の淡いグラデーション＋金の細枠＋明朝体。しっぽは枠線つきの菱形 */
 .mascot-bubble{
-  position:relative; margin:0 0 40px;
-  background:#fff; color:var(--navy-dark);
-  font-size:14px; font-weight:700; line-height:1.55;
-  padding:10px 16px; border-radius:12px;
-  box-shadow:0 6px 16px rgba(20,33,61,0.18);
+  position:relative; margin:0 0 46px; white-space:nowrap;
+  background:linear-gradient(180deg, #FFFFFF 0%, #F8F4EC 100%);
+  color:var(--navy-dark);
+  font-family:'Shippori Mincho', serif; font-size:16px; font-weight:700;
+  line-height:1.6; letter-spacing:.05em;
+  padding:13px 20px 13px 30px;
+  border:1px solid rgba(176,141,87,0.6);
+  border-radius:18px 18px 18px 6px;
+  box-shadow:0 12px 26px rgba(20,33,61,0.22), inset 0 1px 0 #fff;
+}
+.mascot-bubble::before{
+  content:"“"; position:absolute; left:11px; top:2px;
+  font-family:'Shippori Mincho', serif; font-size:30px; line-height:1; color:var(--gold);
 }
 .mascot-bubble::after{
-  content:""; position:absolute; right:-9px; bottom:14px;
-  border:7px solid transparent; border-left-color:#fff; border-right:0;
+  content:""; position:absolute; right:-7px; bottom:18px; width:12px; height:12px;
+  background:#F8F4EC; transform:rotate(45deg);
+  border-right:1px solid rgba(176,141,87,0.6); border-top:1px solid rgba(176,141,87,0.6);
 }
 @media(max-width:880px){
   .hero-mascot{ justify-content:flex-end; padding:0 10px; margin-bottom:-18px; }
   .mascot-img{ width:126px; }
-  .mascot-bubble{ font-size:13px; margin-bottom:34px; }
+  .mascot-bubble{ font-size:14.5px; margin-bottom:38px; padding:11px 16px 11px 26px; }
 }
 .hero-report{
   display:flex; align-items:center; gap:18px; padding:18px;
@@ -557,9 +567,11 @@ footer .fcol h5{ color:#fff; font-size:13px; margin-bottom:12px; font-weight:700
 .foot-grid li{ margin-bottom:8px; }
 .foot-bottom{ border-top:1px solid rgba(255,255,255,0.12); padding-top:20px; text-align:center; }
 
-/* スクロール演出はJS有効時のみ（プリレンダリングHTMLがJS無効環境でも見えるように） */
-.js .fade-in{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
-.js .fade-in.visible{ opacity:1; transform:translateY(0); }
+/* スクロール演出：初期状態は常に表示。JS が画面外の要素にだけ .pending を付けて隠し、
+   画面に入ったら .visible で表示する。JS が読み込めない環境でも内容が消えることはない */
+.fade-in{ transition:opacity .6s ease, transform .6s ease; }
+.fade-in.pending{ opacity:0; transform:translateY(16px); }
+.fade-in.visible{ opacity:1; transform:translateY(0); }
 
 /* ---------- hero PC：テキストは濃紺スクリムの上に白文字（基本の紺指定を上書きするため末尾に置く） ---------- */
 @media(min-width:881px){
