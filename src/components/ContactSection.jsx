@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
 // ===== お問い合わせフォーム送信 =====
-// 送信は Vercel のサーバーレス関数（api/contact.js）が行う。
-// 送信先メールアドレスはサーバー側の環境変数 CONTACT_TO で設定し、ページやJSには一切含めない。
-const CONTACT_ENDPOINT = '/api/contact'
+// 送信はサーバー側のプログラムが行い、送信先メールアドレスはページやJSには一切含めない。
+//   お名前.com 等の PHP サーバー … /api/contact.php（server/onamae/api/contact.php）＋ contact-config.php
+//   Vercel                      … /api/contact.php を api/contact.js に書き換え（vercel.json）＋ 環境変数
+const CONTACT_ENDPOINT = '/api/contact.php'
 
 const amountOptions = ['選択してください', '〜5,000万円', '5,000万円〜1億円', '1億円〜2億円', '2億円〜3億円', '3億円以上', 'まだわからない']
 
