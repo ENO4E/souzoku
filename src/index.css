@@ -97,14 +97,15 @@ header{
   background-size:cover;
   background-position:center bottom;
 }
-/* 本文の背後だけに柔らかい光を置いて可読性を確保（矩形のベールにしない） */
+/* PC：左側に濃紺のスクリムを重ね、白文字で読ませる（写真の彩度は右側にそのまま残す） */
 .hero-photo::before{
   content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 48% 44% at 24% 46%, rgba(245,246,248,0.58) 0%, rgba(245,246,248,0.32) 45%, rgba(245,246,248,0) 100%);
+  background:linear-gradient(100deg, rgba(10,22,48,0.78) 0%, rgba(10,22,48,0.62) 36%, rgba(10,22,48,0.22) 58%, rgba(10,22,48,0) 74%);
 }
+/* 下端：明るい街並みの上に載る実績欄のため、下に向けて少し落とす */
 .hero-photo::after{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 58%, rgba(245,246,248,0.55) 80%, #F5F6F8 100%);
+  background:linear-gradient(180deg, rgba(10,22,48,0) 0%, rgba(10,22,48,0) 62%, rgba(10,22,48,0.45) 100%);
 }
 @media(max-width:880px){
   /* モバイル：写真は上部の帯（340px）として見せ、テキストはその下から。帯の下端を背景色へ溶かす */
@@ -120,10 +121,11 @@ header{
     background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 55%, rgba(245,246,248,0.6) 80%, #F5F6F8 100%);
   }
 }
-/* 空の上での可読性：アイキャッチと本文をやや濃い色に */
+/* モバイル（テキストは写真の下・明るい背景）：紺文字 */
 .hero .eyebrow{ color:var(--navy-dark); }
 .hero .eyebrow::before{ background:var(--gold); }
 .hero p.lead{ color:#22304B; }
+/* PC用の白文字指定はファイル末尾（基本の紺指定より後）にまとめて記述 */
 .hero-grid{
   position:relative; z-index:1;
   display:grid; grid-template-columns:1.35fr .65fr; gap:48px; align-items:start;
@@ -557,3 +559,21 @@ footer .fcol h5{ color:#fff; font-size:13px; margin-bottom:12px; font-weight:700
 /* スクロール演出はJS有効時のみ（プリレンダリングHTMLがJS無効環境でも見えるように） */
 .js .fade-in{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
 .js .fade-in.visible{ opacity:1; transform:translateY(0); }
+
+/* ---------- hero PC：テキストは濃紺スクリムの上に白文字（基本の紺指定を上書きするため末尾に置く） ---------- */
+@media(min-width:881px){
+  .hero{ border-bottom:0; }
+  .hero .eyebrow{ color:var(--gold-soft); }
+  .hero .eyebrow::before{ background:var(--gold-soft); }
+  .hero h1{ color:#fff; text-shadow:0 2px 14px rgba(10,22,48,0.35); }
+  .hero h1 .accent{ color:var(--gold-soft); }
+  .hero p.lead{ color:rgba(255,255,255,0.9); }
+  .hero .btn-outline{ border-color:rgba(255,255,255,0.7); color:#fff; background:rgba(255,255,255,0.06); }
+  .hero .btn-outline:hover{ background:#fff; color:var(--navy-dark); border-color:#fff; }
+  .hero .trust-row{ border-top-color:rgba(255,255,255,0.22); }
+  .hero .trust-item{ color:rgba(255,255,255,0.78); }
+  .hero .trust-item b{ color:#fff; }
+  .hero .hero-badge-text{ color:#fff; }
+  .hero .laurel-badge text{ fill:var(--gold-soft); }
+  .hero .laurel-badge text:nth-of-type(2){ fill:#fff; }
+}
