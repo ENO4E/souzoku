@@ -90,9 +90,8 @@ header{
 .hero-photo{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background-color:#65a8ed;
-  background-image:url('/hero-skyline.webp');
-  background-image:-webkit-image-set(url('/hero-skyline.webp') 1x, url('/hero-skyline-2x.webp') 2x);
-  background-image:image-set(url('/hero-skyline.webp') 1x, url('/hero-skyline-2x.webp') 2x);
+  /* 背景写真はサーバーの assets/topfront.jpg（高解像度の元ファイルをそのまま配置）を全端末で使用 */
+  background-image:url('/assets/topfront.jpg');
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center bottom;
@@ -112,7 +111,7 @@ header{
   .hero{ padding-top:300px; }
   .hero-photo{
     bottom:auto; height:340px;
-    background-image:url('/hero-skyline.webp');   /* 帯（510×340）はDPR3でも2000px素材の縮小表示になる。通信量優先で1xを使う */
+    background-image:url('/assets/topfront.jpg');
     background-size:cover;
     background-position:35% top;
   }
