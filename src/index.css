@@ -95,23 +95,23 @@ header{
   background-image:image-set(url('/hero-skyline.webp') 1x, url('/hero-skyline-2x.webp') 2x);
   background-repeat:no-repeat;
   background-size:cover;
-  background-position:25% bottom;   /* 横が切れる場合は梅田の高層ビル群（左側）を優先して残す */
+  background-position:center bottom;
 }
 /* 本文の背後だけに柔らかい光を置いて可読性を確保（矩形のベールにしない） */
 .hero-photo::before{
   content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 46% 42% at 24% 48%, rgba(245,246,248,0.5) 0%, rgba(245,246,248,0.28) 45%, rgba(245,246,248,0) 100%);
+  background:radial-gradient(ellipse 48% 44% at 24% 46%, rgba(245,246,248,0.58) 0%, rgba(245,246,248,0.32) 45%, rgba(245,246,248,0) 100%);
 }
 .hero-photo::after{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 72%, rgba(245,246,248,0.5) 90%, #F5F6F8 100%);
+  background:linear-gradient(180deg, rgba(245,246,248,0) 0%, rgba(245,246,248,0) 58%, rgba(245,246,248,0.55) 80%, #F5F6F8 100%);
 }
 @media(max-width:880px){
   /* モバイル：写真は上部の帯（340px）として見せ、テキストはその下から。帯の下端を背景色へ溶かす */
   .hero{ padding-top:300px; }
   .hero-photo{
     bottom:auto; height:340px;
-    background-image:url('/hero-skyline-2x.webp');   /* DPR3端末でも縮小表示になる高解像度素材を使う */
+    background-image:url('/hero-skyline.webp');   /* 帯（510×340）はDPR3でも2000px素材の縮小表示になる。通信量優先で1xを使う */
     background-size:cover;
     background-position:35% top;
   }
@@ -121,9 +121,9 @@ header{
   }
 }
 /* 空の上での可読性：アイキャッチと本文をやや濃い色に */
-.hero .eyebrow{ color:#7a5f34; }
-.hero .eyebrow::before{ background:#7a5f34; }
-.hero p.lead{ color:#2F3A52; }
+.hero .eyebrow{ color:var(--navy-dark); }
+.hero .eyebrow::before{ background:var(--gold); }
+.hero p.lead{ color:#22304B; }
 .hero-grid{
   position:relative; z-index:1;
   display:grid; grid-template-columns:1.35fr .65fr; gap:48px; align-items:start;
@@ -199,6 +199,33 @@ input[type=range]::-webkit-slider-thumb{
 .report-mockup--large .report-page--back{ transform:rotate(1.5deg); }
 
 .hero-side{ display:flex; flex-direction:column; gap:16px; }
+
+/* マスコット（寅之助）：料金シミュレーターの上に立たせ、足元をカードに少し重ねる */
+.hero-mascot{
+  position:relative; z-index:2;
+  display:flex; align-items:flex-end; justify-content:flex-end; gap:14px;
+  padding:0 18px; margin-bottom:-22px;
+}
+.mascot-img{
+  width:150px; height:auto; flex:none;
+  filter:drop-shadow(0 8px 14px rgba(20,33,61,0.28));
+}
+.mascot-bubble{
+  position:relative; margin:0 0 40px;
+  background:#fff; color:var(--navy-dark);
+  font-size:14px; font-weight:700; line-height:1.55;
+  padding:10px 16px; border-radius:12px;
+  box-shadow:0 6px 16px rgba(20,33,61,0.18);
+}
+.mascot-bubble::after{
+  content:""; position:absolute; right:-9px; bottom:14px;
+  border:7px solid transparent; border-left-color:#fff; border-right:0;
+}
+@media(max-width:880px){
+  .hero-mascot{ justify-content:flex-end; padding:0 10px; margin-bottom:-18px; }
+  .mascot-img{ width:126px; }
+  .mascot-bubble{ font-size:13px; margin-bottom:34px; }
+}
 .hero-report{
   display:flex; align-items:center; gap:18px; padding:18px;
   background:rgba(255,255,255,0.92); border:1px solid #E6E3DC;

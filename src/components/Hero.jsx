@@ -69,6 +69,17 @@ export default function Hero() {
         </div>
 
         <div className="hero-side">
+        <div className="hero-mascot">
+          <p className="mascot-bubble">相続のこと、<br />まかせなはれ。</p>
+          <img
+            className="mascot-img"
+            src="/mascot-toranosuke.webp"
+            alt="マスコットキャラクター 寅之助"
+            width="409"
+            height="640"
+            decoding="async"
+          />
+        </div>
         <div className="simulator">
           <h3>かんたん料金シミュレーター</h3>
           <p className="note">相続財産の概算額を選ぶと、報酬の目安レンジが表示されます</p>
