@@ -1,13 +1,9 @@
 import { useState } from 'react'
 
-// ===== EmailJS お問い合わせフォーム送信 =====
-// 以下3つの値を、EmailJSのダッシュボードで取得したものに書き換えてください。
-//   1) YOUR_PUBLIC_KEY  … Account > General > Public Key
-//   2) YOUR_SERVICE_ID  … Email Services で作成したサービスのID
-//   3) YOUR_TEMPLATE_ID … Email Templates で作成したテンプレートのID
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+// ===== お問い合わせフォーム送信 =====
+// 送信は Vercel のサーバーレス関数（api/contact.js）が行う。
+// 送信先メールアドレスはサーバー側の環境変数 CONTACT_TO で設定し、ページやJSには一切含めない。
+const CONTACT_ENDPOINT = '/api/contact'
 
 const amountOptions = ['選択してください', '〜5,000万円', '5,000万円〜1億円', '1億円〜2億円', '2億円〜3億円', '3億円以上', 'まだわからない']
 
@@ -17,6 +13,7 @@ export default function ContactSection() {
   const [email, setEmail] = useState('')
   const [amount, setAmount] = useState(amountOptions[0])
   const [message, setMessage] = useState('')
+  const [website, setWebsite] = useState('') // ボット対策用の非表示項目（人間は入力しない）
   const [sending, setSending] = useState(false)
   const [status, setStatus] = useState({ color: '', text: '' })
 
@@ -29,29 +26,34 @@ export default function ContactSection() {
     setSending(true)
     setStatus({ color: '', text: '' })
 
-    const { default: emailjs } = await import('@emailjs/browser')
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          tel: tel.trim(),
+          email: email.trim(),
+          amount: amount === amountOptions[0] ? '' : amount,
+          message: message.trim(),
+          website,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`)
 
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: name.trim(),
-      from_tel: tel.trim(),
-      from_email: email.trim() || '未入力',
-      amount: amount,
-      message: message.trim(),
-      // 送信先メールアドレスはEmailJSのテンプレート側で設定してください
-      // （配信バンドルにアドレスを含めないためのリポジトリ方針です）
-    }, { publicKey: EMAILJS_PUBLIC_KEY }).then(() => {
       if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form: 'free_consultation' })
       setStatus({ color: '#2E7D4F', text: '送信しました。1営業日以内に担当者よりご連絡いたします。' })
       setName('')
       setTel('')
       setEmail('')
       setMessage('')
-      setSending(false)
-    }, (error) => {
+    } catch (error) {
       setStatus({ color: '#9B4B3E', text: '送信に失敗しました。恐れ入りますがお電話でもご連絡ください。' })
+      console.error('contact form error:', error)
+    } finally {
       setSending(false)
-      console.error('EmailJS error:', error)
-    })
+    }
   }
 
   return (
@@ -96,6 +98,11 @@ export default function ContactSection() {
           <div className="form-row">
             <label htmlFor="f-message">ご相談内容</label>
             <textarea id="f-message" placeholder="相続の状況や気になる点をご記入ください" value={message} onChange={(e) => setMessage(e.target.value)} />
+          </div>
+          {/* ボット対策（ハニーポット）：画面には表示されず、人間は入力しない */}
+          <div className="form-hp" aria-hidden="true">
+            <label htmlFor="f-website">Website</label>
+            <input type="text" id="f-website" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
           </div>
           <button type="button" className="btn btn-primary form-submit" disabled={sending} onClick={submitContactForm}>
             {sending ? '送信中…' : '無料相談を予約する'}
