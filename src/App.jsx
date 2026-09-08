@@ -33,10 +33,20 @@ export default function App() {
     return () => document.removeEventListener('click', onClick)
   }, [])
 
-  // Scroll reveal
+  // Scroll reveal：画面外の要素だけを一旦隠し、画面に入ったら表示する。
+  // 初期表示中の要素は一度も隠さない（ちらつき防止）。JSが動かない環境では何も隠れない
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible') })
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.remove('pending')
+          e.target.classList.add('visible')
+          observer.unobserve(e.target)
+        } else if (!e.target.classList.contains('visible')) {
+          e.target.classList.add('pending')
+        }
+      })
     }, { threshold: 0.12 })
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
