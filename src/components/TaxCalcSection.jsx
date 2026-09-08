@@ -1,121 +1,21 @@
 import { useState } from 'react'
 import ReportMockup from './ReportMockup.jsx'
+import { calcInheritanceTax } from '../lib/inheritanceTax.js'
 
-// 速算表（令和6年時点の税率区分）
-const taxBrackets = [
-  { max: 10000000, rate: 0.10, deduction: 0 },
-  { max: 30000000, rate: 0.15, deduction: 500000 },
-  { max: 50000000, rate: 0.20, deduction: 2000000 },
-  { max: 100000000, rate: 0.30, deduction: 7000000 },
-  { max: 200000000, rate: 0.40, deduction: 17000000 },
-  { max: 300000000, rate: 0.45, deduction: 27000000 },
-  { max: 600000000, rate: 0.50, deduction: 42000000 },
-  { max: Infinity, rate: 0.55, deduction: 72000000 },
-]
+const man = (yen) => Math.round(yen / 10_000).toLocaleString()
+const pct = (share) => `${Math.round(share * 1000) / 10}%`
 
-function taxForAmount(amount) {
-  if (amount <= 0) return 0
-  for (const b of taxBrackets) {
-    if (amount <= b.max) return amount * b.rate - b.deduction
-  }
-  return 0
-}
-
-const spouseShareOptions = ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100']
-
-function calcTax({ totalManEn, hasSpouse, spouseShare, heirType, heirCount }) {
-  const total = (Number(totalManEn) || 0) * 10000 // 万円 → 円
-
-  let otherCount = hasSpouse ? Math.max(0, heirCount - 1) : heirCount
-
-  // 基礎控除額
-  const basicDeduction = 30000000 + 6000000 * heirCount
-  const taxableTotal = Math.max(0, total - basicDeduction)
-
-  if (heirCount <= 0) return { total: '―', reduced: '―' }
-  if (taxableTotal <= 0) return { total: '0', reduced: '0' }
-
-  // 法定相続分
-  let spouseLegalShare = 0
-  let otherLegalShareTotal = 0
-  if (hasSpouse && otherCount > 0) {
-    if (heirType === 'child') { spouseLegalShare = 1 / 2; otherLegalShareTotal = 1 / 2 }
-    else if (heirType === 'parent') { spouseLegalShare = 2 / 3; otherLegalShareTotal = 1 / 3 }
-    else if (heirType === 'sibling') { spouseLegalShare = 3 / 4; otherLegalShareTotal = 1 / 4 }
-    else { spouseLegalShare = 1; otherLegalShareTotal = 0; otherCount = 0 }
-  } else if (hasSpouse && otherCount === 0) {
-    spouseLegalShare = 1
-    otherLegalShareTotal = 0
-  } else if (!hasSpouse && otherCount > 0) {
-    spouseLegalShare = 0
-    otherLegalShareTotal = 1
-  }
-
-  const perOtherHeirShare = otherCount > 0 ? otherLegalShareTotal / otherCount : 0
-
-  // 相続税の総額（法定相続分で按分した仮の取得金額に速算表を適用）
-  let totalTax = 0
-  if (hasSpouse && spouseLegalShare > 0) {
-    totalTax += taxForAmount(taxableTotal * spouseLegalShare)
-  }
-  for (let i = 0; i < otherCount; i++) {
-    totalTax += taxForAmount(taxableTotal * perOtherHeirShare)
-  }
-
-  const totalTaxMan = Math.round(totalTax / 10000)
-
-  // 配偶者の税額軽減 適用後
-  let reduced = totalTaxMan.toLocaleString()
-  if (hasSpouse && spouseShare !== '') {
-    const spouseSharePct = Number(spouseShare) || 0
-    const spouseActualAmount = total * (spouseSharePct / 100)
-    const spouseLegalAmountOnTotal = total * spouseLegalShare
-    const spouseExemptLimit = Math.max(160000000, spouseLegalAmountOnTotal)
-    const spouseTaxShare = totalTax * (spouseSharePct / 100)
-
-    let spouseTaxAfter = 0
-    if (spouseActualAmount > 0 && spouseActualAmount > spouseExemptLimit) {
-      const taxableRatio = (spouseActualAmount - spouseExemptLimit) / spouseActualAmount
-      spouseTaxAfter = spouseTaxShare * taxableRatio
-    }
-    const othersTaxShare = totalTax - spouseTaxShare
-    const reducedTotal = Math.max(0, othersTaxShare + spouseTaxAfter)
-    reduced = Math.round(reducedTotal / 10000).toLocaleString()
-  }
-
-  return { total: totalTaxMan.toLocaleString(), reduced }
-}
+const heirTypeLabels = { child: '子', parent: '父母', sibling: '兄弟姉妹' }
 
 export default function TaxCalcSection() {
   const [totalManEn, setTotalManEn] = useState('10000')
   const [hasSpouse, setHasSpouse] = useState(true)
-  const [spouseShare, setSpouseShare] = useState('50')
   const [heirType, setHeirType] = useState('child')
   const [heirCount, setHeirCount] = useState(2)
+  const [spouseShare, setSpouseShare] = useState('legal')
 
-  // 配偶者の有無・法定相続人の種類に応じて「人数」選択肢を整合させる
-  const isFixedCount = heirType === 'none'
-  const fixedCount = hasSpouse ? 1 : 0
-  const minCount = hasSpouse ? 2 : 1
-  const effectiveCount = isFixedCount
-    ? fixedCount
-    : (heirCount >= minCount && heirCount <= 8 ? heirCount : minCount)
-
-  const countNote = isFixedCount
-    ? (hasSpouse ? '配偶者のみのため自動的に1人になります' : '法定相続人がいないため計算できません')
-    : '子・父母・兄弟姉妹が複数いる場合はここで調整してください'
-
-  const countOptions = isFixedCount
-    ? [fixedCount]
-    : Array.from({ length: 8 - minCount + 1 }, (_, i) => minCount + i)
-
-  const result = calcTax({
-    totalManEn,
-    hasSpouse,
-    spouseShare,
-    heirType,
-    heirCount: effectiveCount,
-  })
+  const r = calcInheritanceTax({ totalManEn, hasSpouse, heirType, heirCount, spouseShare })
+  const noHeirs = !r.computable
 
   return (
     <section id="tax-calc" style={{ background: 'var(--bg-off)' }}>
@@ -127,10 +27,11 @@ export default function TaxCalcSection() {
         </div>
 
         <div className="calc-card fade-in">
+          {/* 1. 遺産総額 */}
           <div className="calc-row">
             <div className="calc-label">
               <div className="calc-num">1</div>
-              <div className="calc-label-text"><b>おおよその遺産総額はどのくらいですか？</b><span>（基礎控除前の課税価格合計）現預金の他、土地、有価証券、借地など被相続人の全ての遺産を含みます。</span></div>
+              <div className="calc-label-text"><b>おおよその遺産総額はどのくらいですか？</b><span>現預金のほか、土地・建物・有価証券・生命保険金など、被相続人の財産すべての合計（基礎控除前）です。</span></div>
             </div>
             <div className="calc-input-wrap">
               <input
@@ -145,10 +46,11 @@ export default function TaxCalcSection() {
             </div>
           </div>
 
+          {/* 2. 配偶者の有無 */}
           <div className="calc-row">
             <div className="calc-label">
               <div className="calc-num">2</div>
-              <div className="calc-label-text"><b>被相続人に配偶者はいますか？</b><span>（「被相続人」とは亡くなられた方です）</span></div>
+              <div className="calc-label-text"><b>配偶者はいらっしゃいますか？</b><span>亡くなられた方（被相続人）の配偶者です。</span></div>
             </div>
             <div className="calc-radio-group">
               <label><input type="radio" name="calc-spouse" value="yes" checked={hasSpouse} onChange={() => setHasSpouse(true)} />いる</label>
@@ -156,26 +58,11 @@ export default function TaxCalcSection() {
             </div>
           </div>
 
+          {/* 3. 配偶者以外の相続人 */}
           <div className="calc-row">
             <div className="calc-label">
               <div className="calc-num">3</div>
-              <div className="calc-label-text"><b>配偶者の遺産取得割合</b><span>実際に配偶者が取得する割合の目安です</span></div>
-            </div>
-            <div className="calc-input-wrap">
-              <select aria-label="配偶者の遺産取得割合" value={spouseShare} onChange={(e) => setSpouseShare(e.target.value)}>
-                <option value="">お選びください</option>
-                {spouseShareOptions.map((v) => (
-                  <option key={v} value={v}>{v}%</option>
-                ))}
-              </select>
-              <span style={{ fontSize: 13 }}>%</span>
-            </div>
-          </div>
-
-          <div className="calc-row">
-            <div className="calc-label">
-              <div className="calc-num">4</div>
-              <div className="calc-label-text"><b>配偶者以外に法定相続人はいらっしゃいますか？</b></div>
+              <div className="calc-label-text"><b>配偶者以外の法定相続人はどなたですか？</b><span>子がいれば「子」、子がいなければ「父母」、父母もいなければ「兄弟姉妹」が相続人になります。</span></div>
             </div>
             <div className="calc-radio-group">
               <label><input type="radio" name="calc-heir-type" value="child" checked={heirType === 'child'} onChange={() => setHeirType('child')} />子</label>
@@ -185,36 +72,64 @@ export default function TaxCalcSection() {
             </div>
           </div>
 
-          <div className="calc-row" id="calc-heir-count-row">
-            <div className="calc-label">
-              <div className="calc-num">5</div>
-              <div className="calc-label-text"><b>法定相続人の人数（配偶者を含む）</b><span>{countNote}</span></div>
+          {/* 4. 人数（配偶者以外） */}
+          {heirType !== 'none' && (
+            <div className="calc-row">
+              <div className="calc-label">
+                <div className="calc-num">4</div>
+                <div className="calc-label-text"><b>{heirTypeLabels[heirType]}の人数（配偶者を除く）</b><span>{heirType === 'parent' ? '父母がともに健在なら2人、どちらか一方なら1人です。' : `${heirTypeLabels[heirType]}が複数いる場合は人数を選んでください。`}</span></div>
+              </div>
+              <div className="calc-input-wrap">
+                <select aria-label={`${heirTypeLabels[heirType]}の人数`} value={heirCount} onChange={(e) => setHeirCount(Number(e.target.value))}>
+                  {Array.from({ length: heirType === 'parent' ? 2 : 8 }, (_, i) => i + 1).map((n) => (
+                    <option key={n} value={n}>{n}人</option>
+                  ))}
+                </select>
+                <span style={{ fontSize: 13 }}>人</span>
+              </div>
             </div>
-            <div className="calc-input-wrap">
-              <select
-                aria-label="法定相続人の人数"
-                value={effectiveCount}
-                disabled={isFixedCount}
-                onChange={(e) => setHeirCount(Number(e.target.value))}
-              >
-                {countOptions.map((n) => (
-                  <option key={n} value={n}>{n}人</option>
-                ))}
-              </select>
-              <span style={{ fontSize: 13 }}>人</span>
+          )}
+
+          {/* 5. 配偶者の取得割合（配偶者がいる場合のみ） */}
+          {hasSpouse && (
+            <div className="calc-row">
+              <div className="calc-label">
+                <div className="calc-num">{heirType === 'none' ? 4 : 5}</div>
+                <div className="calc-label-text"><b>配偶者が実際に取得する遺産の割合</b><span>未定の場合は「法定相続分どおり」のままで構いません。配偶者の取得分は1億6,000万円（または法定相続分）まで非課税になります。</span></div>
+              </div>
+              <div className="calc-input-wrap">
+                <select aria-label="配偶者の遺産取得割合" value={spouseShare} onChange={(e) => setSpouseShare(e.target.value === 'legal' ? 'legal' : Number(e.target.value))}>
+                  <option value="legal">法定相続分どおり（{pct(r.spouseLegalShare)}）</option>
+                  {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((v) => (
+                    <option key={v} value={v}>{v}%</option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
+          )}
+
+          <p className="calc-summary">
+            {noHeirs
+              ? '法定相続人がいない条件のため計算できません。配偶者または相続人を選んでください。'
+              : <>法定相続人 <b>{r.heirs}人</b>　／　基礎控除 <b>{man(r.basicDeduction)}万円</b>　／　課税遺産総額 <b>{man(r.taxableEstate)}万円</b></>}
+          </p>
 
           <div className="calc-arrow">▼</div>
 
+          {/* 配偶者がいない場合は軽減がないので、2割加算まで反映した最終額をここに表示する */}
           <div className="calc-result-row">
-            <div className="r-label">相続税額合計</div>
-            <div className="r-amount"><span>{result.total}</span><span className="unit">万円</span></div>
+            <div className="r-label">{hasSpouse ? '相続税の総額' : '相続税額の合計'}<span className="r-note">{hasSpouse ? '（配偶者の税額軽減を使う前）' : (heirType === 'sibling' ? '（兄弟姉妹の2割加算を含む）' : '')}</span></div>
+            <div className="r-amount"><span>{noHeirs ? '―' : man(hasSpouse ? r.totalTax : r.totalAfterRelief)}</span><span className="unit">万円</span></div>
           </div>
-          <div className="calc-result-row alt">
-            <div className="r-label">配偶者の税額軽減を使うと…</div>
-            <div className="r-amount"><span>{result.reduced}</span><span className="unit">万円</span></div>
-          </div>
+          {hasSpouse && (
+            <div className="calc-result-row alt">
+              <div className="r-label">配偶者の税額軽減を使うと…<span className="r-note">{noHeirs ? '' : `配偶者 ${man(r.spouseTaxAfter)}万円＋その他の相続人 ${man(r.othersTax)}万円`}</span></div>
+              <div className="r-amount"><span>{noHeirs ? '―' : man(r.totalAfterRelief)}</span><span className="unit">万円</span></div>
+            </div>
+          )}
+          {heirType === 'sibling' && !noHeirs && r.othersTax > 0 && (
+            <p className="calc-footnote">※兄弟姉妹が相続する分には税額の2割加算を反映しています。</p>
+          )}
 
           <div className="calc-warning">
             <div className="w-icon">⚠️</div>
@@ -227,7 +142,7 @@ export default function TaxCalcSection() {
         </div>
 
         <div className="fee-note fade-in" style={{ maxWidth: 720, margin: '20px auto 0' }}>
-          ※これは簡易的な概算シミュレーションです。生命保険の非課税枠、小規模宅地等の特例、生前贈与加算などは考慮していません。正確な金額は無料相談にてご確認ください。
+          ※法定相続分どおりに取得したものとして相続税の総額を求め、配偶者の税額軽減（1億6,000万円または法定相続分まで非課税）と兄弟姉妹の2割加算を反映した簡易試算です。生命保険金の非課税枠、小規模宅地等の特例、生前贈与加算、未成年者・障害者控除などは考慮していません。正確な金額は無料相談にてご確認ください。
         </div>
 
         <div className="report-showcase fade-in">
