@@ -6,6 +6,7 @@ import PainSection from './components/PainSection.jsx'
 import StrengthsSection from './components/StrengthsSection.jsx'
 import FeeSection from './components/FeeSection.jsx'
 import ReportSection from './components/ReportSection.jsx'
+import GreetingSection from './components/GreetingSection.jsx'
 import TestimonialsSection from './components/TestimonialsSection.jsx'
 import AreaSection from './components/AreaSection.jsx'
 import FlowSection from './components/FlowSection.jsx'
@@ -61,6 +62,7 @@ export default function App() {
       <StrengthsSection />
       <FeeSection />
       <ReportSection />
+      <GreetingSection />
       <TestimonialsSection />
       <AreaSection />
       <FlowSection />
