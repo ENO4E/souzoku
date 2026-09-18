@@ -81,17 +81,13 @@ header{
   color:var(--text-main); padding:168px 0 110px;
   border-bottom:1px solid #E6E3DC;
 }
-/*
- * 写真素材は「実写（3999×1400）の上に空を1400px延長した 3999×2800」。
- * ヒーローの縦横比（約1.45:1）に近いので cover でも引き伸ばしが起きず、
- * Retina（DPR2）でも 3999px の素材を縮小表示するだけ＝常に等倍以上の画素で描画される。
- * ベールはかけず写真そのものを見せ、下端だけ次セクションの背景色へ溶かす。
- */
 .hero-photo{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background-color:#65a8ed;
-  /* 背景写真はサーバーの assets/topfront.jpg（高解像度の元ファイルをそのまま配置）を全端末で使用 */
-  background-image:url('/assets/topfront.jpg');
+  /* 背景写真：元の4MBのJPEGを画面幅ごとに縮小したWebP（1920/1280/900px）に差し替え、読み込みを軽くする。
+     WebP非対応の古いブラウザには同サイズのJPEGを使う */
+  background-image:url('/assets/topfront-1920.jpg');
+  background-image:image-set(url('/assets/topfront-1920.webp') type('image/webp'), url('/assets/topfront-1920.jpg') type('image/jpeg'));
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center bottom;
@@ -106,12 +102,16 @@ header{
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(10,22,48,0) 0%, rgba(10,22,48,0) 62%, rgba(10,22,48,0.45) 100%);
 }
+@media(max-width:1280px){
+  .hero-photo{ background-image:url('/assets/topfront-1920.jpg'); background-image:image-set(url('/assets/topfront-1280.webp') type('image/webp'), url('/assets/topfront-1920.jpg') type('image/jpeg')); }
+}
 @media(max-width:880px){
   /* モバイル：写真は上部の帯（340px）として見せ、テキストはその下から。帯の下端を背景色へ溶かす */
   .hero{ padding-top:300px; }
   .hero-photo{
     bottom:auto; height:340px;
-    background-image:url('/assets/topfront.jpg');
+    background-image:url('/assets/topfront-1920.jpg');
+    background-image:image-set(url('/assets/topfront-900.webp') type('image/webp'), url('/assets/topfront-1920.jpg') type('image/jpeg'));
     background-size:cover;
     background-position:35% top;
   }
@@ -438,6 +438,31 @@ section{ padding:100px 0; }
 }
 .contact-side h4{ font-size:14px; margin-bottom:4px; font-weight:700; }
 .contact-side p{ font-size:13.5px; color:var(--text-sub); }
+
+/* greeting（代表挨拶） */
+.greeting-section{ background:#fff; border-top:1px solid #E6E3DC; border-bottom:1px solid #E6E3DC; }
+.greeting-grid{ display:grid; grid-template-columns:380px 1fr; gap:56px; align-items:center; }
+@media(max-width:880px){ .greeting-grid{ grid-template-columns:1fr; gap:32px; } }
+.greeting-photo{ margin:0; }
+.greeting-photo-frame{ position:relative; }
+.greeting-photo-frame::before{
+  content:""; position:absolute; inset:14px -14px -14px 14px; border:1px solid var(--gold); border-radius:6px; z-index:0;
+}
+.greeting-photo img{
+  position:relative; z-index:1; display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top;
+  border-radius:6px; box-shadow:0 18px 40px rgba(20,33,61,0.16); background:#E9ECF1;
+}
+.greeting-photo figcaption{
+  position:relative; z-index:1; margin-top:22px; font-size:12.5px; color:var(--text-sub); line-height:1.7;
+}
+.greeting-photo figcaption b{ display:block; font-family:'Shippori Mincho',serif; font-size:17px; color:var(--navy-dark); font-weight:700; }
+@media(max-width:880px){ .greeting-photo{ max-width:320px; margin:0 auto; } }
+.greeting-text .eyebrow{ margin-bottom:14px; }
+.greeting-text h2{ font-family:'Shippori Mincho',serif; font-size:clamp(22px,2.6vw,30px); line-height:1.6; font-weight:700; margin-bottom:22px; }
+.greeting-text p{ font-size:14.5px; color:var(--text-main); line-height:2; margin-bottom:16px; }
+.greeting-sign{ margin-top:24px; padding-top:18px; border-top:1px solid #E6E3DC; font-size:13px; color:var(--text-sub); line-height:1.8; }
+.greeting-sign b{ display:block; font-family:'Shippori Mincho',serif; font-size:16px; color:var(--navy-dark); }
+.foot-operator{ font-size:12px; color:rgba(255,255,255,0.7); margin:-8px 0 12px; letter-spacing:.04em; }
 
 /* testimonials */
 .g-rating{
