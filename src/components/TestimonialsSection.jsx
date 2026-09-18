@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 // お客様の声：Googleクチコミに実際に投稿された内容（2026年8月1日時点・評価★5.0）
 // 掲載名はプライバシーに配慮しイニシャル表記
 const testimonials = [
@@ -7,6 +9,13 @@ const testimonials = [
     color: '#24365C',
     source: 'Google クチコミ',
     text: '両親が亡くなった時に大変お世話になりました。相続の事で悩んでた先輩にも教えたら、とても喜んでもらえてこちらも鼻が高かったです。その後も色々と相談に乗っていただき助かっています。',
+  },
+  {
+    name: 'H.F 様',
+    avatar: 'H',
+    color: '#46658C',
+    source: 'Google クチコミ',
+    text: '事前の相談から手続きまで、終始丁寧に対応していただきました。説明も分かりやすく、こちらからの質問にも専門用語を使わずに噛み砕いて教えてくれたので、安心してお任せすることができました。また何かあれば相談させていただきたいと思います。ありがとうございました。',
   },
   {
     name: 'T.H 様',
@@ -28,13 +37,6 @@ const testimonials = [
     color: '#B08D57',
     source: 'Google クチコミ',
     text: '初めての依頼でしたが、とても丁寧に説明していただき、安心してお任せできました。今後もお願いしたいと思います。',
-  },
-  {
-    name: 'H.F 様',
-    avatar: 'H',
-    color: '#46658C',
-    source: 'Google クチコミ',
-    text: '事前の相談から手続きまで、終始丁寧に対応していただきました。説明も分かりやすく、こちらからの質問にも専門用語を使わずに噛み砕いて教えてくれたので、安心してお任せすることができました。また何かあれば相談させていただきたいと思います。ありがとうございました。',
   },
   {
     name: 'S.T 様',
@@ -60,7 +62,12 @@ const testimonials = [
   },
 ]
 
+const VISIBLE_COUNT = 2
+
 export default function TestimonialsSection() {
+  const [expanded, setExpanded] = useState(false)
+  const hiddenCount = testimonials.length - VISIBLE_COUNT
+
   return (
     <section id="voice">
       <div className="wrap">
@@ -72,9 +79,9 @@ export default function TestimonialsSection() {
             実際にご相談・ご依頼いただいたお客様からのクチコミです。プライバシーに配慮しイニシャルで掲載しています。（2026年8月1日時点）
           </p>
         </div>
-        <div className="testimonial-grid fade-in">
-          {testimonials.map((t) => (
-            <figure className="testimonial-card" key={t.name}>
+        <div className="testimonial-grid fade-in" id="voice-list">
+          {testimonials.map((t, i) => (
+            <figure className={`testimonial-card${!expanded && i >= VISIBLE_COUNT ? ' is-collapsed' : ''}`} key={t.name} hidden={!expanded && i >= VISIBLE_COUNT}>
               <div className="t-head">
                 <span className="t-avatar" style={{ background: t.color }} aria-hidden="true">{t.avatar}</span>
                 <div className="t-head-text">
@@ -90,6 +97,16 @@ export default function TestimonialsSection() {
             </figure>
           ))}
         </div>
+        <button
+          type="button"
+          className="t-more"
+          aria-expanded={expanded}
+          aria-controls="voice-list"
+          onClick={() => setExpanded((v) => !v)}
+        >
+          {expanded ? '閉じる' : `他のお客様の声を見る（あと${hiddenCount}件）`}
+          <span className="t-more-icon" aria-hidden="true">{expanded ? '−' : '+'}</span>
+        </button>
       </div>
     </section>
   )

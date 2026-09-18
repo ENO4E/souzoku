@@ -3,11 +3,11 @@ import CtaBottom from './components/CtaBottom.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import PainSection from './components/PainSection.jsx'
-import TaxCalcSection from './components/TaxCalcSection.jsx'
 import StrengthsSection from './components/StrengthsSection.jsx'
+import FeeSection from './components/FeeSection.jsx'
+import ReportSection from './components/ReportSection.jsx'
 import TestimonialsSection from './components/TestimonialsSection.jsx'
 import AreaSection from './components/AreaSection.jsx'
-import FeeSection from './components/FeeSection.jsx'
 import FlowSection from './components/FlowSection.jsx'
 import MidCtaSection from './components/MidCtaSection.jsx'
 import FaqSection from './components/FaqSection.jsx'
@@ -58,11 +58,11 @@ export default function App() {
       <Header />
       <Hero />
       <PainSection />
-      <TaxCalcSection />
       <StrengthsSection />
+      <FeeSection />
+      <ReportSection />
       <TestimonialsSection />
       <AreaSection />
-      <FeeSection />
       <FlowSection />
       <MidCtaSection />
       <FaqSection />
