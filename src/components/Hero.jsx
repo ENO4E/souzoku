@@ -19,8 +19,8 @@ export default function Hero() {
       <div className="hero-photo" aria-hidden="true" />
       <div className="wrap hero-grid">
         <div>
-          <div className="eyebrow">大阪・堺の相続税申告 専門｜基本料99,000円〜</div>
-          <h1 className="serif">大阪・堺の相続税申告を、<br /><span className="accent">99,000円からの</span>格安・明快な料金で。<br />相続専門の税理士法人が対応します。</h1>
+          <div className="eyebrow">大阪の相続税申告 専門｜基本料99,000円〜</div>
+          <h1 className="serif">大阪の相続税申告を、<br /><span className="accent">99,000円からの</span>格安・明快な料金で。<br />相続専門の税理士法人が対応します。</h1>
           <p className="lead">「何から手をつければいいか分からない」「税理士費用が高そう」——そんな不安からでも大丈夫です。累計200件超の相続税申告実績を持つ相続専門の税理士が、初回無料相談から申告完了まで丁寧にサポートします。</p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary btn-lg">無料相談を予約する</a>
@@ -57,29 +57,18 @@ export default function Hero() {
           <div className="trust-row">
             <div className="trust-item"><b>200件超</b>累計相続税申告実績</div>
             <div className="trust-item"><b>総相談件数</b>2,000件以上</div>
-            <div className="trust-item"><b>堺・高石・松原</b>を中心に大阪全域・関西一円に対応</div>
+            <div className="trust-item"><b>大阪・兵庫・京都</b>一円に対応（オンライン相談も可）</div>
           </div>
 
           <div className="feature-icons">
             <div className="feature-icon"><span className="fi-glyph">¥0</span><span className="fi-label">初回相談<br />無料</span></div>
             <div className="feature-icon"><span className="fi-glyph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="16" y2="17" /></svg></span><span className="fi-label">明朗会計<br />追加料金は事前説明</span></div>
             <div className="feature-icon"><span className="fi-glyph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></span><span className="fi-label">専門家が<br />直接対応</span></div>
-            <div className="feature-icon"><span className="fi-glyph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></span><span className="fi-label">関西一円<br />対応</span></div>
+            <div className="feature-icon"><span className="fi-glyph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-soft)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></span><span className="fi-label">大阪・兵庫・京都<br />一円対応</span></div>
           </div>
         </div>
 
         <div className="hero-side">
-        <div className="hero-mascot">
-          <p className="mascot-bubble">相続のこと、<br />まかせなはれ。</p>
-          <img
-            className="mascot-img"
-            src="/assets/mascot-toranosuke.webp"
-            alt="マスコットキャラクター 寅之助"
-            width="409"
-            height="640"
-            decoding="async"
-          />
-        </div>
         <div className="simulator">
           <h3>かんたん料金シミュレーター</h3>
           <p className="note">相続財産の概算額を選ぶと、報酬の目安レンジが表示されます</p>
@@ -104,7 +93,7 @@ export default function Hero() {
           <div className="sim-disclaimer">※基本報酬の目安です。土地評価・非上場株式評価・相続人加算等は別途料金となります。正式な金額は無料相談時にお見積りいたします。</div>
         </div>
 
-        <a href="#tax-calc" className="hero-report">
+        <a href="#report" className="hero-report">
           <ReportMockup size="compact" />
           <div className="hero-report-text">
             <span className="hero-report-label">無料相談でお渡し</span>

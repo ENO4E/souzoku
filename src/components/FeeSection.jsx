@@ -6,6 +6,14 @@ const baseFees = [
   { range: '7,000万円超', fee: '別途お見積り', tax: null },
 ]
 
+// 相場は「税理士報酬の目安は遺産総額の0.5〜1.0%」という一般的な基準で算出した参考値
+const comparison = [
+  { estate: '4,000万円', market: '20万〜40万円', ours: '99,000円' },
+  { estate: '5,000万円', market: '25万〜50万円', ours: '170,500円' },
+  { estate: '6,000万円', market: '30万〜60万円', ours: '242,000円' },
+  { estate: '7,000万円', market: '35万〜70万円', ours: '308,000円' },
+]
+
 const extraFees = [
   { item: '土地評価', fee: '80,000円 ', tax: '（88,000円）／1利用区分' },
   { item: '非上場株式評価', fee: '100,000円 ', tax: '（110,000円）／1社' },
@@ -36,6 +44,19 @@ export default function FeeSection() {
             ))}
           </tbody>
         </table>
+
+        <h3 className="serif" style={{ fontSize: 18, margin: '40px 0 16px' }}>一般的な相場との比較</h3>
+        <table className="fee-table compare-table fade-in">
+          <thead>
+            <tr><th>遺産総額</th><th>一般的な相場<span className="th-sub">遺産総額の0.5〜1.0%</span></th><th className="ours">当センター<span className="th-sub">基本報酬・税込</span></th></tr>
+          </thead>
+          <tbody>
+            {comparison.map((c) => (
+              <tr key={c.estate}><td>{c.estate}</td><td className="market">{c.market}</td><td className="amt ours">{c.ours}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="compare-note">※相場は、税理士報酬の目安として一般的に用いられる「遺産総額の0.5〜1.0%」で算出した参考値です。実際の報酬は事務所や案件内容により異なります。当センターの金額は基本報酬（税込）で、土地評価などの追加料金は別途です。</p>
 
         <h3 className="serif" style={{ fontSize: 18, margin: '40px 0 16px' }}>追加料金</h3>
         <table className="fee-table fade-in">

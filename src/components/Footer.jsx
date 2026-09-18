@@ -5,15 +5,16 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="fcol">
             <h5>相続税申告相談センター</h5>
-            <p>堺市・大阪市を拠点に、累計200件超の相続税申告実績。初回無料相談から申告完了まで、相続専門の税理士が丁寧にサポートします。</p>
+            <p>大阪市北区を拠点に、累計200件超の相続税申告実績。大阪府・兵庫県・京都府一円で、初回無料相談から申告完了まで相続専門の税理士が丁寧にサポートします。</p>
           </div>
           <div className="fcol">
             <h5>メニュー</h5>
             <ul>
               <li><a href="#pain">お悩み</a></li>
-              <li><a href="#tax-calc">相続税シミュレーター</a></li>
-              <li><a href="#area">対応エリア</a></li>
+              <li><a href="#reasons">選ばれる理由</a></li>
               <li><a href="#fee">料金</a></li>
+              <li><a href="#report">お渡しする報告書</a></li>
+              <li><a href="#area">対応エリア</a></li>
               <li><a href="#faq">よくあるご質問</a></li>
               <li><a href="#office">事務所概要</a></li>
               <li><a href="#contact">お問い合わせ</a></li>
