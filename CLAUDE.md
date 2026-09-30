@@ -24,7 +24,7 @@
 sitemap.xml
 robots.txt
 index.html
-error/           … サーバー側で管理（エラーページ）。触らない
+error/           … エラーページ（403.html・404.html・500.html）。このリポジトリの public/error/ で作成・管理する（.htaccess の ErrorDocument が参照）
 backend/         … サーバー側で管理（backend/v1.php）。触らない
 assets/
   css/           … CSS（assets/css/index.css）
@@ -32,6 +32,7 @@ assets/
   *.png|jpg|webp … 画像は assets 直下に置く（css・js と同じ階層）
 ```
 
+- HTML・CSS・JS はすべてこのリポジトリの責務（エラーページも含む）。サーバー側の `.htaccess`・`backend/` は TaxPlan-org/php の責務で、こちらからは触らない。
 - CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が `index.html` 内の URL に `?v=ビルド時刻` を付ける。
 - 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg`・`ceo1.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
 
