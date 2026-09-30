@@ -431,6 +431,29 @@ section{ padding:100px 0; }
 .form-submit{ width:100%; }
 /* ハニーポット：視覚的にもスクリーンリーダーからも隠す（display:none だと一部ボットが除外するため画面外配置） */
 .form-hp{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+/* 送信完了表示 */
+.form-done{ text-align:center; padding:44px 32px; border:1px solid #CFE3D6; }
+.form-done-icon{
+  width:72px; height:72px; border-radius:50%; margin:0 auto 20px;
+  background:#E8F4EC; color:#2E7D4F; border:2px solid #2E7D4F;
+  display:flex; align-items:center; justify-content:center;
+}
+.form-done h3{ font-family:'Shippori Mincho',serif; font-size:24px; font-weight:700; color:#2E7D4F; margin-bottom:14px; }
+.form-done p{ font-size:14.5px; line-height:1.9; color:var(--text-main); margin-bottom:14px; }
+.form-done p b{ color:var(--navy-dark); }
+.form-done-id{
+  display:inline-block; margin:2px 0 18px; padding:8px 18px;
+  background:#F5F6F8; border:1px solid #E1E4EA; border-radius:4px; font-size:13.5px; color:var(--text-sub);
+}
+.form-done-id b{ font-family:'Shippori Mincho',serif; font-size:17px; color:var(--navy-dark); margin-left:2px; }
+.form-done-note{ font-size:13px !important; color:var(--text-sub) !important; }
+.form-done-note a{ color:var(--navy-mid); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+.form-done-again{
+  margin-top:8px; background:none; border:none; cursor:pointer; font-family:inherit;
+  font-size:13px; color:var(--navy-mid); text-decoration:underline; text-underline-offset:3px;
+}
+.form-done-again:hover{ color:var(--gold); }
+@media(max-width:560px){ .form-done{ padding:34px 20px; } .form-done h3{ font-size:21px; } }
 .contact-side .info-item{ display:flex; gap:16px; margin-bottom:26px; }
 .contact-side .info-item .ico{
   width:40px; height:40px; border-radius:50%; background:var(--navy-dark); flex:none;
