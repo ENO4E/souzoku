@@ -17,6 +17,8 @@ export default function ContactSection() {
   const [website, setWebsite] = useState('') // ボット対策用の非表示項目（人間は入力しない）
   const [sending, setSending] = useState(false)
   const [status, setStatus] = useState({ color: '', text: '' })
+  // 送信完了情報（サーバーからのメッセージ・受付番号）。null の間はフォームを表示
+  const [done, setDone] = useState(null)
 
   const submitContactForm = async () => {
     if (!name.trim() || !tel.trim()) {
@@ -41,14 +43,26 @@ export default function ContactSection() {
         }),
       })
       const data = await res.json().catch(() => ({}))
-      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`)
+      // 成功判定：HTTP 2xx（200 / 201 など）で、サーバーが明示的に失敗を返していないこと
+      //   例）{"ok":true} / {"message":"送信が完了しました","id":829}
+      const failed = !res.ok || data.ok === false || (data.error && data.ok !== true)
+      if (failed) throw new Error(data.error || data.message || `HTTP ${res.status}`)
 
       if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form: 'free_consultation' })
-      setStatus({ color: '#2E7D4F', text: '送信しました。1営業日以内に担当者よりご連絡いたします。' })
+      setDone({
+        message: typeof data.message === 'string' && data.message.trim() ? data.message.trim() : '送信が完了しました',
+        id: data.id !== undefined && data.id !== null && data.id !== '' ? String(data.id) : '',
+      })
       setName('')
       setTel('')
       setEmail('')
+      setAmount(amountOptions[0])
       setMessage('')
+      // 完了メッセージが見えるようにスクロール
+      setTimeout(() => {
+        const el = document.getElementById('contact-done')
+        if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 50)
     } catch (error) {
       setStatus({ color: '#9B4B3E', text: '送信に失敗しました。恐れ入りますがお電話でもご連絡ください。' })
       console.error('contact form error:', error)
@@ -77,6 +91,18 @@ export default function ContactSection() {
           </div>
         </div>
 
+        {done ? (
+          <div className="form-card form-done fade-in" id="contact-done" role="status" aria-live="polite">
+            <div className="form-done-icon" aria-hidden="true">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+            </div>
+            <h3>{done.message}</h3>
+            <p>ご入力いただいた内容を受け付けました。<br />担当者より<b>1営業日以内</b>にご連絡いたしますので、しばらくお待ちください。</p>
+            {done.id && <div className="form-done-id">受付番号：<b>{done.id}</b></div>}
+            <p className="form-done-note">お急ぎの場合は、お電話（<a href="tel:0663548220">06-6354-8220</a>／平日9:00〜18:00）でもご連絡いただけます。</p>
+            <button type="button" className="form-done-again" onClick={() => { setDone(null); setStatus({ color: '', text: '' }) }}>続けて別のお問い合わせをする</button>
+          </div>
+        ) : (
         <div className="form-card fade-in">
           <div className="form-row">
             <label htmlFor="f-name">お名前<span className="req">必須</span></label>
@@ -108,8 +134,9 @@ export default function ContactSection() {
           <button type="button" className="btn btn-primary form-submit" disabled={sending} onClick={submitContactForm}>
             {sending ? '送信中…' : '無料相談を予約する'}
           </button>
-          <p style={{ fontSize: 13, marginTop: 12, textAlign: 'center', color: status.color || undefined }}>{status.text}</p>
+          <p role="alert" style={{ fontSize: 13, marginTop: 12, textAlign: 'center', color: status.color || undefined }}>{status.text}</p>
         </div>
+        )}
       </div>
     </section>
   )
