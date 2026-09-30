@@ -1,7 +1,17 @@
-// お名前.com レンタルサーバー用の公開ファイル一式を release/onamae/ に組み立てる
+// 本番サーバー（お名前.com）にアップロードする公開ファイル一式を release/onamae/ に組み立てる
 // 使い方: npm run package:onamae  （内部で npm run build を実行してから組み立てる）
-// できあがった release/onamae/ の中身（index.html・assets・robots.txt・sitemap.xml）を、サーバーの公開ディレクトリ直下にアップロードする
-import { cpSync, mkdirSync, rmSync, existsSync } from 'node:fs'
+//
+// 出力する内容（本番のディレクトリ構造に合わせる。CLAUDE.md「本番ディレクトリ構造」参照）
+//   index.html
+//   sitemap.xml
+//   robots.txt
+//   assets/css/index.css
+//   assets/js/index.js
+//   assets/*.png|jpg|webp（画像は assets 直下）
+//
+// 出力しないもの（サーバー側で管理。このリポジトリからは触らない）
+//   .htaccess / error/ / backend/
+import { cpSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
@@ -16,10 +26,13 @@ if (!existsSync(resolve(dist, 'index.html'))) {
 rmSync(out, { recursive: true, force: true })
 mkdirSync(out, { recursive: true })
 cpSync(dist, out, { recursive: true })
-// CSS/JS は index.html に埋め込み済みのため、外部ファイルは公開物から外す（配置ミス防止）
-rmSync(resolve(out, 'assets/css'), { recursive: true, force: true })
-rmSync(resolve(out, 'assets/js'), { recursive: true, force: true })
-// お問い合わせの送信先 /web/contact/ はサーバー側の既存バックエンド（.htaccess で backend/v1.php に振り分け）が処理する。
-// このリポジトリからは .htaccess やサーバー側コードを一切出力しない（サーバーの設定を上書きしないため）
+
+for (const name of ['.htaccess', 'error', 'backend']) {
+  rmSync(resolve(out, name), { recursive: true, force: true })
+}
+
+const list = (dir, prefix = '') => readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+  e.isDirectory() ? list(resolve(dir, e.name), `${prefix}${e.name}/`) : [`${prefix}${e.name}`])
 
 console.log(`package-onamae: ${out} に公開ファイル一式を出力しました`)
+for (const f of list(out).sort()) console.log(`  ${f}`)

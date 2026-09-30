@@ -15,9 +15,29 @@
 - 作業ブランチは **`claude-dev` のみ**。それ以外のブランチを不必要に作成しない。
 - 依頼された作業が完了したら、必ず **PRを作成し `main` へのマージまで完了**させる。
 
+## 本番ディレクトリ構造（基本指針・絶対遵守）
+
+本番（お名前.com レンタルサーバー）の公開ディレクトリは次の構造。`npm run package:onamae` の出力（`release/onamae/`）はこの構造に一致させる。
+
+```
+.htaccess        … サーバー側で管理（TaxPlan-org/php）。このリポジトリからは出力・上書きしない
+sitemap.xml
+robots.txt
+index.html
+error/           … サーバー側で管理（エラーページ）。触らない
+backend/         … サーバー側で管理（backend/v1.php）。触らない
+assets/
+  css/           … CSS（assets/css/index.css）
+  js/            … JavaScript（assets/js/index.js）
+  *.png|jpg|webp … 画像は assets 直下に置く（css・js と同じ階層）
+```
+
+- CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が `index.html` 内の URL に `?v=ビルド時刻` を付ける。
+- 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg`・`ceo1.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
+
 ## プロジェクト構成
 
-- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込み（SEO対策。クライアントは hydrate）、さらに CSS と JS も `index.html` に埋め込む（外部ファイルの配置ミスで表示が壊れないようにするため。公開時は `index.html`＋画像だけで完結）。
+- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - 本文の表示はJSに依存させないこと（スクロール演出は JS が動いた場合に画面外の要素だけを一時的に隠す方式）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
 - デザイン・文言の元データは静的HTML時代のLPを忠実に移植したもの。変更時はデザインを崩さないこと。

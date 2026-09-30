@@ -11,7 +11,8 @@ export default defineConfig(({ isSsrBuild }) => ({
     ? {}
     : {
         // ファイル名は固定（ハッシュなし）。手動アップロード時に index.html と CSS/JS の
-        // 組み合わせがずれて表示が壊れるのを防ぐ。キャッシュは .htaccess 側で短めに設定
+        // 組み合わせがずれて表示が壊れるのを防ぐ。キャッシュ対策は scripts/prerender.mjs が
+        // index.html 内の URL に ?v=ビルド時刻 を付けることで行う
         rollupOptions: {
           output: {
             entryFileNames: 'assets/js/index.js',
