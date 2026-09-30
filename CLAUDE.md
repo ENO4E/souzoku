@@ -4,9 +4,9 @@
 
 - **`info@tax-plan.net` をページに表示しない。**
 - **`tax-plan.net` を含むドメイン・URL（`*.tax-plan.net` 等）も同様に、ページに表示せず、リンク先にも使用しない。**
-- これらは表示テキストだけでなく、href属性や配信されるJSバンドルにも含めないこと。お問い合わせの送信先メールアドレスはサーバー側の設定でのみ持つ（コード・リポジトリには書かない）。
-  - フォームの送信先URLは **`/web/contact/`**（変更する場合は `src/components/ContactSection.jsx` の `CONTACT_ENDPOINT`、`vercel.json` の rewrite、`scripts/package-onamae.mjs` の配置先を揃える）。
-  - **お名前.com レンタルサーバー（本番）**: `server/onamae/web/contact/index.php` が同じフォルダの `contact-config.php`（サーバー上でのみ作成・gitignore済み）から読む。SMTP 認証情報（`smtp` キー）もこのファイルにのみ書き、チャットで共有された認証情報をリポジトリに書かない。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる。
+- これらは表示テキストだけでなく、href属性や配信されるJSバンドルにも含めないこと。お問い合わせの送信先メールアドレスや認証情報はコード・リポジトリに書かない。
+  - フォームの送信先URLは **`/web/contact/`**（変更する場合は `src/components/ContactSection.jsx` の `CONTACT_ENDPOINT` と `vercel.json` の rewrite を揃える）。
+  - **本番（お名前.com レンタルサーバー）**: `/web/*` はサーバー上の既存バックエンド（`.htaccess` で `backend/v1.php` に振り分け。このリポジトリの管理外）が処理する。成功時は `201 {"message":"送信が完了しました","id":829}` の形式で返る。**このリポジトリからサーバー側のコード（PHP・`.htaccess` など）を作成・出力しないこと**（サーバーの設定を上書きしてしまうため）。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる（`index.html`・`assets/`・`robots.txt`・`sitemap.xml` のみ）。
   - **Vercel（プレビュー）**: `api/contact.js` が環境変数 `CONTACT_TO` 等から読む（変数一覧は `.env.example`）。`/web/contact/` は `vercel.json` の rewrite で `api/contact.js` に振り向ける。
 - 会社名「タックス・プラン税理士法人」のテキスト表記は問題ない（リンクは張らない）。
 
@@ -17,7 +17,7 @@
 
 ## プロジェクト構成
 
-- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込み（SEO対策。クライアントは hydrate）、さらに CSS と JS も `index.html` に埋め込む（外部ファイルの配置ミスで表示が壊れないようにするため。公開時は `index.html`＋画像＋`web/contact/` だけで完結）。
+- Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込み（SEO対策。クライアントは hydrate）、さらに CSS と JS も `index.html` に埋め込む（外部ファイルの配置ミスで表示が壊れないようにするため。公開時は `index.html`＋画像だけで完結）。
 - 本文の表示はJSに依存させないこと（スクロール演出は JS が動いた場合に画面外の要素だけを一時的に隠す方式）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
 - デザイン・文言の元データは静的HTML時代のLPを忠実に移植したもの。変更時はデザインを崩さないこと。

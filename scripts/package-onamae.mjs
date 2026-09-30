@@ -1,6 +1,6 @@
 // お名前.com レンタルサーバー用の公開ファイル一式を release/onamae/ に組み立てる
 // 使い方: npm run package:onamae  （内部で npm run build を実行してから組み立てる）
-// できあがった release/onamae/ の中身を、サーバーの公開ディレクトリ直下にそのままアップロードする
+// できあがった release/onamae/ の中身（index.html・assets・robots.txt・sitemap.xml）を、サーバーの公開ディレクトリ直下にアップロードする
 import { cpSync, mkdirSync, rmSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
@@ -19,10 +19,7 @@ cpSync(dist, out, { recursive: true })
 // CSS/JS は index.html に埋め込み済みのため、外部ファイルは公開物から外す（配置ミス防止）
 rmSync(resolve(out, 'assets/css'), { recursive: true, force: true })
 rmSync(resolve(out, 'assets/js'), { recursive: true, force: true })
-cpSync(resolve(root, 'server/onamae/.htaccess'), resolve(out, '.htaccess'))
-mkdirSync(resolve(out, 'web/contact'), { recursive: true })
-cpSync(resolve(root, 'server/onamae/web/contact/index.php'), resolve(out, 'web/contact/index.php'))
-cpSync(resolve(root, 'server/onamae/web/contact/contact-config.example.php'), resolve(out, 'web/contact/contact-config.example.php'))
+// お問い合わせの送信先 /web/contact/ はサーバー側の既存バックエンド（.htaccess で backend/v1.php に振り分け）が処理する。
+// このリポジトリからは .htaccess やサーバー側コードを一切出力しない（サーバーの設定を上書きしないため）
 
 console.log(`package-onamae: ${out} に公開ファイル一式を出力しました`)
-console.log('  サーバー上で web/contact/contact-config.example.php を web/contact/contact-config.php にコピーし、送信先を記入してください')

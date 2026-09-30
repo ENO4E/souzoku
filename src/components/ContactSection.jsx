@@ -2,8 +2,9 @@ import { useState } from 'react'
 
 // ===== お問い合わせフォーム送信 =====
 // 送信はサーバー側のプログラムが行い、送信先メールアドレスはページやJSには一切含めない。
-//   お名前.com 等の PHP サーバー … /web/contact/（server/onamae/web/contact/index.php）＋ contact-config.php
-//   Vercel                      … /web/contact/ を api/contact.js に書き換え（vercel.json）＋ 環境変数
+//   本番（お名前.com） … /web/contact/ はサーバー上の既存バックエンド（backend/v1.php）が処理（このリポジトリの管理外）
+//                        成功時: 201 {"message":"送信が完了しました","id":829}
+//   Vercel（プレビュー）… /web/contact/ を api/contact.js に書き換え（vercel.json）＋ 環境変数
 const CONTACT_ENDPOINT = '/web/contact/'
 
 const amountOptions = ['選択してください', '〜5,000万円', '5,000万円〜1億円', '1億円〜2億円', '2億円〜3億円', '3億円以上', 'まだわからない']

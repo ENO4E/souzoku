@@ -5,5 +5,4 @@ dist/
 .env
 .env.local
 .vercel/
-server/onamae/web/contact/contact-config.php
 release/
