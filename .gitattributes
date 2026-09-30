@@ -1,0 +1,9 @@
+# dist/ はビルド成果物（公開ファイル一式）。GitHub の差分表示では折りたたむ
+dist/** linguist-generated=true
+dist/assets/js/index.js -diff
+dist/assets/css/index.css -diff
+# 改行コードを LF に統一（.htaccess・HTML をそのままサーバーに置けるように）
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary

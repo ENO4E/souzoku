@@ -1,0 +1,44 @@
+# main にソースが push されたらリモートでビルドし、公開ファイル一式（dist/）を main にコミットする。
+# これにより git pull した dist/ がそのまま本番サーバーにアップロードする内容（ZIPと同一）になる。
+# ビルドは決定的（?v= は内容ハッシュ）なので、PR で dist/ を最新にしてあればここでは差分が出ない。
+name: build-dist
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'dist/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-dist
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: dist/ に差分があればコミット
+        run: |
+          git add -A dist
+          if git diff --cached --quiet; then
+            echo "dist/ は最新です"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(build): dist/ を再ビルド [skip ci]"
+          git push

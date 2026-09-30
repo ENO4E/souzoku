@@ -17,7 +17,7 @@
 
 ## 本番ディレクトリ構造（基本指針・絶対遵守）
 
-本番（お名前.com レンタルサーバー）の公開ディレクトリは次の構造。`npm run package:onamae` の出力（`release/onamae/`）はこの構造に一致させる。
+本番（お名前.com レンタルサーバー）の公開ディレクトリは次の構造。ビルド出力 `dist/` はこの構造そのもので **git 管理する**（`git pull` した `dist/` の中身＝サーバーにアップロードする内容＝納品ZIPの中身）。
 
 ```
 .htaccess        … このリポジトリ（public/.htaccess）の責務。/web/* と /api/* を backend/v1.php に委任する Rewrite と ErrorDocument を含む。php リポジトリ側にも同一ファイルが置かれるが、正本はこちら。委任先ファイルは固定のため編集・修正の予定はない
@@ -39,6 +39,10 @@ assets/
 ## プロジェクト構成
 
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
+- **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。
+  - ソースを変更した PR では `npm run build` を実行し、`dist/` の変更も同じ PR に含める。
+  - 保険として GitHub Actions（`.github/workflows/build.yml`）が `main` への push 時にリモートでビルドし、`dist/` に差分があれば `main` に自動コミットする。手動実行（workflow_dispatch）も可。
+  - `npm run package:onamae` は `dist/` を `release/onamae/` にコピーするだけ（ZIP 作成用。`release/` は git 管理外）。
 - 本文の表示はJSに依存させないこと（スクロール演出は JS が動いた場合に画面外の要素だけを一時的に隠す方式）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
 - デザイン・文言の元データは静的HTML時代のLPを忠実に移植したもの。変更時はデザインを崩さないこと。
