@@ -9,9 +9,10 @@
 //   assets/js/index.js
 //   assets/*.png|jpg|webp（画像は assets 直下）
 //   error/403.html・404.html・500.html（.htaccess の ErrorDocument が参照するエラーページ。public/error/ が元）
+//   .htaccess（public/.htaccess が元。/web/* と /api/* を backend/v1.php に振り分ける設定を含む）
 //
 // 出力しないもの（サーバー側で管理。このリポジトリからは触らない）
-//   .htaccess / backend/
+//   backend/
 import { cpSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
@@ -28,7 +29,7 @@ rmSync(out, { recursive: true, force: true })
 mkdirSync(out, { recursive: true })
 cpSync(dist, out, { recursive: true })
 
-for (const name of ['.htaccess', 'backend']) {
+for (const name of ['backend']) {
   rmSync(resolve(out, name), { recursive: true, force: true })
 }
 
