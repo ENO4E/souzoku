@@ -6,7 +6,7 @@
 - **`tax-plan.net` を含むドメイン・URL（`*.tax-plan.net` 等）も同様に、ページに表示せず、リンク先にも使用しない。**
 - これらは表示テキストだけでなく、href属性や配信されるJSバンドルにも含めないこと。お問い合わせの送信先メールアドレスや認証情報はコード・リポジトリに書かない。
   - フォームの送信先URLは **`/web/contact/`**（変更する場合は `src/components/ContactSection.jsx` の `CONTACT_ENDPOINT` と `vercel.json` の rewrite を揃える）。
-  - **本番（お名前.com レンタルサーバー）**: `/web/*` はサーバー上の既存バックエンド（`.htaccess` で `backend/v1.php` に振り分け。このリポジトリの管理外）が処理する。成功時は `201 {"message":"送信が完了しました","id":829}` の形式で返る。**このリポジトリからサーバー側のコード（PHP・`.htaccess` など）を作成・出力しないこと**（サーバーの設定を上書きしてしまうため）。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる（`index.html`・`assets/`・`robots.txt`・`sitemap.xml` のみ）。
+  - **本番（お名前.com レンタルサーバー）**: `/web/*` は `.htaccess` の Rewrite で `backend/v1.php` に委任され、サーバー上のバックエンド（TaxPlan-org/php。`backend/` はこのリポジトリの管理外）が処理する。成功時は `201 {"message":"送信が完了しました","id":829}` の形式で返る。**このリポジトリから PHP などのサーバー側コードを作成しないこと**（`backend/` には触らない）。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる（構成は「本番ディレクトリ構造」参照）。
   - **Vercel（プレビュー）**: `api/contact.js` が環境変数 `CONTACT_TO` 等から読む（変数一覧は `.env.example`）。`/web/contact/` は `vercel.json` の rewrite で `api/contact.js` に振り向ける。
 - 会社名「タックス・プラン税理士法人」のテキスト表記は問題ない（リンクは張らない）。
 
@@ -20,7 +20,7 @@
 本番（お名前.com レンタルサーバー）の公開ディレクトリは次の構造。`npm run package:onamae` の出力（`release/onamae/`）はこの構造に一致させる。
 
 ```
-.htaccess        … このリポジトリの public/.htaccess で管理・出力する。/web/* と /api/* を backend/v1.php に振り分ける Rewrite と ErrorDocument を含む（内容は TaxPlan-org/php の public/.htaccess と同一に保つ）
+.htaccess        … このリポジトリ（public/.htaccess）の責務。/web/* と /api/* を backend/v1.php に委任する Rewrite と ErrorDocument を含む。php リポジトリ側にも同一ファイルが置かれるが、正本はこちら。委任先ファイルは固定のため編集・修正の予定はない
 sitemap.xml
 robots.txt
 index.html
