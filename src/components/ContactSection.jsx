@@ -15,7 +15,6 @@ export default function ContactSection() {
   const [email, setEmail] = useState('')
   const [amount, setAmount] = useState(amountOptions[0])
   const [message, setMessage] = useState('')
-  const [website, setWebsite] = useState('') // ボット対策用の非表示項目（人間は入力しない）
   const [sending, setSending] = useState(false)
   const [status, setStatus] = useState({ color: '', text: '' })
   // 送信完了情報（サーバーからのメッセージ・受付番号）。null の間はフォームを表示
@@ -40,7 +39,6 @@ export default function ContactSection() {
           email: email.trim(),
           amount: amount === amountOptions[0] ? '' : amount,
           message: message.trim(),
-          website,
         }),
       })
       const data = await res.json().catch(() => ({}))
@@ -126,11 +124,6 @@ export default function ContactSection() {
           <div className="form-row">
             <label htmlFor="f-message">ご相談内容</label>
             <textarea id="f-message" placeholder="相続の状況や気になる点をご記入ください" value={message} onChange={(e) => setMessage(e.target.value)} />
-          </div>
-          {/* ボット対策（ハニーポット）：画面には表示されず、人間は入力しない */}
-          <div className="form-hp" aria-hidden="true">
-            <label htmlFor="f-website">Website</label>
-            <input type="text" id="f-website" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
           </div>
           <button type="button" className="btn btn-primary form-submit" disabled={sending} onClick={submitContactForm}>
             {sending ? '送信中…' : '無料相談を予約する'}
