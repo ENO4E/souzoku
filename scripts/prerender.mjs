@@ -16,7 +16,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, ORIGIN, OG_IMAGE } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -53,7 +53,7 @@ function headTags(meta, jsonLds) {
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`,
     `<link rel="canonical" href="${url}">`,
     `<meta property="og:type" content="${meta.ogType || 'website'}">`,
-    `<meta property="og:site_name" content="相続税申告相談センター">`,
+    `<meta property="og:site_name" content="${esc(SITE_NAME)}">`,
     `<meta property="og:locale" content="ja_JP">`,
     `<meta property="og:url" content="${url}">`,
     `<meta property="og:title" content="${esc(meta.title)}">`,
