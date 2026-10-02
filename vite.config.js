@@ -16,7 +16,8 @@ export default defineConfig(({ isSsrBuild }) => ({
         rollupOptions: {
           output: {
             entryFileNames: 'assets/js/index.js',
-            chunkFileNames: 'assets/js/[name].js',
+            // 遅延読み込みのチャンク（three.js の粒子背景など）は内容ハッシュ付き。index.js だけ固定名
+            chunkFileNames: 'assets/js/[name]-[hash].js',
             assetFileNames: (info) => {
               const name = info.names?.[0] || info.name || ''
               return name.endsWith('.css') ? 'assets/css/index[extname]' : 'assets/[name][extname]'

@@ -1,32 +1,23 @@
-const officeRows = [
-  ['名称', '相続税申告相談センター'],
-  ['運営', 'タックス・プラン税理士法人（税理士登録番号：5469）'],
-  ['所在地', '〒530-0044　大阪府大阪市北区東天満2丁目9番4号 5階'],
-  ['電話番号', '06-6354-8220（受付：平日9:00〜18:00）'],
-  ['面談日', '平日9:00〜18:00／土日の面談は事前予約で対応可'],
-  ['最寄駅', 'Osaka Metro 谷町線・堺筋線「南森町」駅／JR東西線「大阪天満宮」駅'],
-  ['対応地域', '大阪府・兵庫県・京都府（オンライン相談も可）'],
-  ['相談方法', '来所相談・オンライン相談・出張相談'],
-]
+import SectionHead from './SectionHead.jsx'
+import { officeRows } from '../content/site.js'
 
 export default function OfficeSection() {
   return (
-    <section id="office" style={{ background: 'var(--bg-off)', paddingTop: 0 }}>
-      <div className="wrap">
-        <div className="section-head fade-in">
-          <div className="eyebrow">事務所概要</div>
-          <h2>大阪・南森町の相続専門税理士法人です</h2>
-          <p>ご来所のほか、オンライン相談・出張相談にも対応しています。土日の面談も事前予約で承りますので、お仕事帰りや遠方の方もお気軽にご相談ください。</p>
-        </div>
-        <div className="office-grid fade-in">
-          <table className="office-table">
-            <tbody>
-              {officeRows.map(([label, value]) => (
-                <tr key={label}><th>{label}</th><td>{value}</td></tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="office-map">
+    <section id="office" className="section office" data-scene="4">
+      <div className="container">
+        <SectionHead
+          no="09"
+          en="Office"
+          title={<>大阪・南森町の<br className="sp-only" />相続専門税理士法人です。</>}
+          lead="ご来所のほか、オンライン相談・出張相談にも対応しています。土日の面談も事前予約で承りますので、お仕事帰りや遠方の方もお気軽にご相談ください。"
+        />
+        <div className="office-grid">
+          <dl className="office-table" data-reveal>
+            {officeRows.map(([label, value]) => (
+              <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+            ))}
+          </dl>
+          <div className="office-map" data-reveal style={{ '--d': '90ms' }}>
             <iframe
               src="https://www.google.com/maps?q=大阪府大阪市北区東天満2丁目9-4&output=embed&z=16"
               title="相続税申告相談センターの地図（大阪府大阪市北区東天満2丁目9番4号）"

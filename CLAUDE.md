@@ -81,5 +81,8 @@ assets/
   - `npm run package:onamae` は `dist/` を `release/onamae/` にコピーするだけ（ZIP 作成用。`release/` は git 管理外）。
 - 本文の表示はJSに依存させないこと（スクロール演出は JS が動いた場合に画面外の要素だけを一時的に隠す方式）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
-- デザイン・文言の元データは静的HTML時代のLPを忠実に移植したもの。変更時はデザインを崩さないこと。
+- デザインは TaxPlan-org/HP-DX（DX化支援サイト）のデザインシステムを移植したもの（ダーク基調、金×紺のグラデーション、three.js の粒子背景、ローダー、カーソル演出、スクロール連動のリビール）。変更時はこの世界観を崩さないこと。
+  - 文言・料金・サービス内容は `src/content/site.js` に集約。デザイン変更で中身（金額・文言）を変えない。
+  - three.js（`src/three/`）は `SceneCanvas.jsx` が表示後に遅延読み込みする（`assets/js/ParticleField-<hash>.js`）。WebGL が使えない端末ではグラデーション背景にフォールバックする。
+  - 演出は JS が動くときだけ（`.js` クラス）。JS 無効でも本文は全て表示される。
 - OGP・構造化データ（JSON-LD）は `index.html` の `<head>` で管理。

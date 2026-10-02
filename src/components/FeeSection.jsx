@@ -1,83 +1,106 @@
-const baseFees = [
-  { range: '〜4,000万円', fee: '90,000円 ', tax: '（99,000円）' },
-  { range: '〜5,000万円', fee: '155,000円 ', tax: '（170,500円）' },
-  { range: '〜6,000万円', fee: '220,000円 ', tax: '（242,000円）' },
-  { range: '〜7,000万円', fee: '280,000円 ', tax: '（308,000円）' },
-  { range: '7,000万円超', fee: '別途お見積り', tax: null },
-]
-
-// 相場は「税理士報酬の目安は遺産総額の0.5〜1.0%」という一般的な基準で算出した参考値
-const comparison = [
-  { estate: '4,000万円', market: '20万〜40万円', ours: '99,000円' },
-  { estate: '5,000万円', market: '25万〜50万円', ours: '170,500円' },
-  { estate: '6,000万円', market: '30万〜60万円', ours: '242,000円' },
-  { estate: '7,000万円', market: '35万〜70万円', ours: '308,000円' },
-]
-
-const extraFees = [
-  { item: '土地評価', fee: '80,000円 ', tax: '（88,000円）／1利用区分' },
-  { item: '非上場株式評価', fee: '100,000円 ', tax: '（110,000円）／1社' },
-  { item: '相続人加算', fee: '基本報酬の10% ', tax: '（2人目以降1名につき）' },
-  { item: '書面添付（税理士法33条の2）', fee: '50,000円 ', tax: '（55,000円）' },
-]
-
-const included = [
-  '相続税申告書作成', '財産評価', '税額計算',
-  '税務署提出', '必要書類のご案内', '初回相談（無料）',
-]
+import SectionHead, { Arrow } from './SectionHead.jsx'
+import { baseFees, comparison, extraFees, included } from '../content/site.js'
 
 export default function FeeSection() {
   return (
-    <section id="fee">
-      <div className="wrap">
-        <div className="section-head fade-in">
-          <div className="eyebrow">料金体系</div>
-          <h2>大阪で最安クラスの料金水準｜相続税申告 基本報酬<span style={{ display: 'block', fontSize: 14, fontWeight: 400, color: 'var(--text-sub)', marginTop: 8 }}>大阪の相続税申告で最安クラスの料金水準の、明快な料金表です。税抜価格を太字で、税込価格は右側に小さく表示しています。</span></h2>
+    <section id="fee" className="section fee" data-scene="2">
+      <div className="container">
+        <SectionHead
+          no="03"
+          en="Fee"
+          title={<>大阪で最安クラスの、<br /><span className="gradient-text">明快な料金水準。</span></>}
+          lead="相続税申告の基本報酬は99,000円（税込）から。税抜価格を大きく、税込価格を横に小さく表示しています。追加が必要な場合も、必ず事前にご説明します。"
+        />
+
+        <div className="fee-grid">
+          <div className="fee-panel spotlight" data-reveal>
+            <div className="fee-panel__head">
+              <span className="fee-panel__no">A</span>
+              <h3>相続税申告 基本報酬</h3>
+              <span className="fee-panel__en">Base fee</span>
+            </div>
+            <table className="fee-table">
+              <thead>
+                <tr><th>遺産総額</th><th>申告料金</th></tr>
+              </thead>
+              <tbody>
+                {baseFees.map((f) => (
+                  <tr key={f.range}>
+                    <td>{f.range}</td>
+                    <td className="amt"><b>{f.fee}</b>{f.tax && <span className="tax-incl">{f.tax}</span>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="fee-panel fee-panel--compare spotlight" data-reveal style={{ '--d': '90ms' }}>
+            <div className="fee-panel__head">
+              <span className="fee-panel__no">B</span>
+              <h3>一般的な相場との比較</h3>
+              <span className="fee-panel__en">Comparison</span>
+            </div>
+            <table className="fee-table fee-table--compare">
+              <thead>
+                <tr>
+                  <th>遺産総額</th>
+                  <th>一般的な相場<span className="th-sub">遺産総額の0.5〜1.0%</span></th>
+                  <th className="ours">当センター<span className="th-sub">基本報酬・税込</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((c) => (
+                  <tr key={c.estate}>
+                    <td>{c.estate}</td>
+                    <td className="market">{c.market}</td>
+                    <td className="amt ours"><b>{c.ours}</b></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="fee-panel__note">※相場は、税理士報酬の目安として一般的に用いられる「遺産総額の0.5〜1.0%」で算出した参考値です。実際の報酬は事務所や案件内容により異なります。当センターの金額は基本報酬（税込）で、土地評価などの追加料金は別途です。</p>
+          </div>
+
+          <div className="fee-panel spotlight" data-reveal>
+            <div className="fee-panel__head">
+              <span className="fee-panel__no">C</span>
+              <h3>追加料金</h3>
+              <span className="fee-panel__en">Options</span>
+            </div>
+            <table className="fee-table">
+              <thead>
+                <tr><th>内容</th><th>料金</th></tr>
+              </thead>
+              <tbody>
+                {extraFees.map((f) => (
+                  <tr key={f.item}>
+                    <td>{f.item}</td>
+                    <td className="amt"><b>{f.fee}</b><span className="tax-incl">{f.tax}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="fee-panel fee-panel--included spotlight" data-reveal style={{ '--d': '90ms' }}>
+            <div className="fee-panel__head">
+              <span className="fee-panel__no">D</span>
+              <h3>基本料金に含まれるサービス</h3>
+              <span className="fee-panel__en">Included</span>
+            </div>
+            <ul className="included-list">
+              {included.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+            <a href="#contact" className="btn btn--primary fee-panel__cta">
+              無料相談でお見積りを依頼する
+              <Arrow />
+            </a>
+          </div>
         </div>
-        <table className="fee-table fade-in">
-          <thead>
-            <tr><th>遺産総額</th><th>申告料金</th></tr>
-          </thead>
-          <tbody>
-            {baseFees.map((f) => (
-              <tr key={f.range}><td>{f.range}</td><td className="amt">{f.fee}{f.tax && <span className="tax-incl">{f.tax}</span>}</td></tr>
-            ))}
-          </tbody>
-        </table>
 
-        <h3 className="serif" style={{ fontSize: 18, margin: '40px 0 16px' }}>一般的な相場との比較</h3>
-        <table className="fee-table compare-table fade-in">
-          <thead>
-            <tr><th>遺産総額</th><th>一般的な相場<span className="th-sub">遺産総額の0.5〜1.0%</span></th><th className="ours">当センター<span className="th-sub">基本報酬・税込</span></th></tr>
-          </thead>
-          <tbody>
-            {comparison.map((c) => (
-              <tr key={c.estate}><td>{c.estate}</td><td className="market">{c.market}</td><td className="amt ours">{c.ours}</td></tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="compare-note">※相場は、税理士報酬の目安として一般的に用いられる「遺産総額の0.5〜1.0%」で算出した参考値です。実際の報酬は事務所や案件内容により異なります。当センターの金額は基本報酬（税込）で、土地評価などの追加料金は別途です。</p>
-
-        <h3 className="serif" style={{ fontSize: 18, margin: '40px 0 16px' }}>追加料金</h3>
-        <table className="fee-table fade-in">
-          <thead>
-            <tr><th>内容</th><th>料金</th></tr>
-          </thead>
-          <tbody>
-            {extraFees.map((f) => (
-              <tr key={f.item}><td>{f.item}</td><td className="amt">{f.fee}<span className="tax-incl">{f.tax}</span></td></tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h3 className="serif" style={{ fontSize: 18, margin: '40px 0 16px' }}>基本料金に含まれるサービス</h3>
-        <ul className="included-list fade-in">
-          {included.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-
-        <div className="fee-note">
+        <p className="fee-note" data-reveal>
           ※上記は基本報酬の目安です。土地評価・非上場株式評価・相続人加算・書面添付など、内容に応じて追加料金が発生する場合がありますが、必ず事前にご説明し、ご了承いただいた上で進めます。正式な金額は無料相談時にお見積りいたします。
-        </div>
+        </p>
       </div>
     </section>
   )
