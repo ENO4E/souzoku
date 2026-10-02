@@ -12,6 +12,7 @@ import ServiceView from './views/ServiceView.jsx'
 import SimulationView from './views/SimulationView.jsx'
 import ContactView from './views/ContactView.jsx'
 import { ArticlesView, ArticleView } from './views/ArticleViews.jsx'
+import PrivacyView from './views/PrivacyView.jsx'
 import { MAIN_ROUTES, matchInternalLink, parseLegacyHash, parsePath, routePath } from './router.js'
 import { pages } from './content/seo.js'
 
@@ -152,6 +153,7 @@ export default function App({ initialRoute = 'home', pageData = null }) {
           <div className={`view view--${route}`}>
             {route === 'articles' && <ArticlesView list={pageData?.list || []} />}
             {route === 'article' && <ArticleView article={pageData?.article} related={pageData?.related || []} />}
+            {route === 'privacy' && <PrivacyView />}
           </div>
         )}
       </main>

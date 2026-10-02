@@ -56,8 +56,9 @@ export default function ContactSection() {
     setSending(false)
     try {
       if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form: 'free_consultation' })
-      // 自前のアクセス解析。このサイトではお問い合わせの内容と閲覧の記録を結び付けないので、受付番号（id）は送らない
-      event('form_submit', { form: 'contact' })
+      // 自前のアクセス解析。受付番号（client_data の id）を付けると、イントラでこのお問い合わせに至った閲覧の流れを見られる（プライバシーポリシーの「3.」「7.」に記載）
+      const id = Number(result.id)
+      event('form_submit', Number.isInteger(id) && id > 0 ? { form: 'contact', id } : { form: 'contact' })
     } catch { /* 計測の失敗は無視 */ }
     setDone({
       message: typeof result.message === 'string' && result.message.trim() ? result.message.trim() : '送信が完了しました',
@@ -153,7 +154,7 @@ export default function ContactSection() {
                 {sending ? '送信しています…' : '無料相談を予約する'}
                 <Arrow />
               </button>
-              <p className="form__privacy">ご入力いただいた情報は、ご相談への回答・ご連絡のためにのみ使用します。</p>
+              <p className="form__privacy">ご入力いただいた情報は、<a href="/privacy/">プライバシーポリシー</a>に従い、ご相談への回答・ご連絡のために使用します（あわせて、お問い合わせに至るまでの当サイトの閲覧状況を、ご提案とサイトの改善に役立てます）。</p>
             </form>
           )}
         </div>

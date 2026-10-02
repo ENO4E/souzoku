@@ -1,5 +1,5 @@
 // ビルド後に dist/ の HTML を仕上げる
-//   1) ページごと（/ ・ /service/ ・ /simulation/ ・ /contact/ ・ /articles/ ・ /articles/<slug>/）にアプリをプリレンダリングし、
+//   1) ページごと（/ ・ /service/ ・ /simulation/ ・ /contact/ ・ /articles/ ・ /articles/<slug>/ ・ /privacy/）にアプリをプリレンダリングし、
 //      そのページの title / description / canonical / OGP / 構造化データを <head> に書き込む
 //      （検索エンジンに各ページを別の URL として評価させる。クライアントは hydrate）
 //   2) CSS / JS は外部ファイルのまま。ファイル名は固定なので ?v=内容のハッシュ を付ける
@@ -16,7 +16,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -123,6 +123,15 @@ for (const a of articles) {
   const { html: _omit, ...articleMeta } = a
   writePage(a.path, 'article', html, headTags(articlePage(a), articleLd(a)), { article: articleMeta, related, latest })
   sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.6', lastmod: a.date })
+}
+
+// プライバシーポリシー
+{
+  const data = { latest }
+  const html = render('privacy', data)
+  writePage(privacyPage.path, 'privacy', html, headTags(privacyPage, privacyLd()), data)
+  written.push(`${privacyPage.path}（${Math.round(html.length / 1024)}KB）`)
+  sitemapEntries.push({ loc: privacyPage.path, changefreq: 'yearly', priority: '0.3' })
 }
 
 // 3) sitemap.xml（主要ページには lastmod を付けない：ビルドのたびに差分が出ないようにする）
