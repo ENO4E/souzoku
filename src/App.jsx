@@ -156,7 +156,7 @@ export default function App({ initialRoute = 'home', pageData = null }) {
         )}
       </main>
 
-      <Footer />
+      <Footer latest={pageData?.latest || []} />
       <CtaBottom />
     </>
   )

@@ -19,7 +19,6 @@ export const nav = [
   { href: '/service/', label: 'サービス・料金', en: 'Service', no: '01' },
   { href: '/simulation/', label: '相続税シミュレーション', en: 'Simulation', no: '02' },
   { href: '/contact/', label: 'お問い合わせ', en: 'Contact', no: '03' },
-  { href: '/articles/', label: 'コラム', en: 'Articles', no: '04' },
 ]
 
 // サービスページ内のセクション

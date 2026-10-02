@@ -1078,7 +1078,7 @@ html { color-scheme: dark; }
 .article-card h2 { margin-top: 14px; font-family: var(--font-serif); font-size: 19px; font-weight: 700; line-height: 1.6; transition: color 0.3s; }
 .article-card:hover h2 { color: var(--accent); }
 .article-card p { margin-top: 12px; font-family: var(--font-jp); font-size: 13.5px; line-height: 1.9; color: var(--text-sub); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.article-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.article-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .article-card__tags li { font-family: var(--font-jp); font-size: 11.5px; color: var(--text-sub); border: 1px solid var(--line-strong); border-radius: 999px; padding: 3px 10px; }
 .article-card__more { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px; font-family: var(--font-jp); font-size: 13px; font-weight: 700; color: var(--accent); }
 .article-card:hover .article-card__more .btn__arrow { transform: translateX(4px); }
@@ -1144,3 +1144,23 @@ html { color-scheme: dark; }
   .prose { font-size: 15.5px; }
   .article-cta__actions .btn { flex: 1 1 100%; }
 }
+
+/* フッターの最新コラム・一覧の絞り込み */
+.footer__articles { flex: 1 1 260px; max-width: 360px; font-family: var(--font-jp); }
+.footer__articles-label { font-size: 14px; font-weight: 700; }
+.footer__articles-label a { color: var(--text); }
+.footer__articles-label a:hover { color: var(--accent); }
+.footer__articles ul { margin-top: 12px; display: grid; gap: 8px; }
+.footer__articles li a { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: baseline; font-size: 13px; color: var(--text-sub); line-height: 1.6; transition: color 0.3s; }
+.footer__articles li a:hover { color: var(--accent); }
+.footer__articles time { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.04em; color: var(--text-mute); }
+.footer__articles-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.footer__articles-more .btn__arrow { transition: transform 0.4s var(--ease); }
+.footer__articles-more:hover .btn__arrow { transform: translateX(4px); }
+.article-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.article-filter button { font-family: var(--font-jp); font-size: 12.5px; color: var(--text-sub); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 12px; cursor: pointer; transition: color 0.3s, border-color 0.3s, background 0.3s; }
+.article-filter button span { font-family: var(--font-en); font-size: 11px; color: var(--text-mute); margin-left: 2px; }
+.article-filter button:hover { color: var(--text); border-color: rgba(var(--accent-rgb), 0.5); }
+.article-filter button.is-active { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.7); background: rgba(var(--accent-rgb), 0.1); }
+.article-filter button.is-active span { color: var(--accent); }
+@media (max-width: 680px) { .footer__articles { max-width: none; } }
