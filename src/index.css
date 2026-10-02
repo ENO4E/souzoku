@@ -792,24 +792,6 @@ main, .footer { position: relative; z-index: 1; }
 .js .hero .line[data-reveal] > span { transition-delay: calc(var(--d, 0ms) + 450ms); }
 
 /* =========================================================
-   Cursor
-   ========================================================= */
-.cursor { display: none; }
-.has-cursor .cursor { display: block; }
-.has-cursor, .has-cursor a, .has-cursor button, .has-cursor summary, .has-cursor label { cursor: none; }
-.cursor__dot, .cursor__ring { position: fixed; top: 0; left: 0; z-index: 300; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
-.cursor-visible .cursor__dot, .cursor-visible .cursor__ring { opacity: 1; }
-.cursor__dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
-.cursor__ring span {
-  position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid rgba(238, 243, 251, 0.45);
-  transition: transform 0.45s var(--ease), background-color 0.3s, border-color 0.3s, opacity 0.3s;
-}
-.cursor__ring[data-state="hover"] span { transform: scale(1.8); border-color: rgba(var(--accent-rgb), 0.8); background: rgba(var(--accent-rgb), 0.08); }
-.cursor__ring[data-state="text"] span { opacity: 0; }
-.cursor__ring.is-down span { transform: scale(0.8); }
-
-/* =========================================================
    Side navigation / HUD
    ========================================================= */
 .sidenav, .hud { display: none; }
