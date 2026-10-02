@@ -52,7 +52,12 @@ export default function Effects() {
     reveals.forEach((el) => io.observe(el))
 
     // ヒーローの要素は画面の高さに関わらず必ず表示する（ローダーの幕が上がった時点で順に出す）
-    const showHero = () => document.querySelectorAll('.hero [data-reveal]').forEach((el) => el.classList.add('is-visible'))
+    const showHero = () => document.querySelectorAll('.hero [data-reveal], .panel--first [data-reveal]').forEach((el) => el.classList.add('is-visible'))
+    // ページ切り替え直後は、画面上部の見出しとパネルを待たずに表示する
+    const onRoute = () => window.setTimeout(() => {
+      document.querySelectorAll('.view:not([hidden]) .page-head [data-reveal], .view:not([hidden]) .page-head__actions, .view:not([hidden]) .panel--first [data-reveal]').forEach((el) => el.classList.add('is-visible'))
+    }, 30)
+    window.addEventListener('route:change', onRoute)
     if (root.dataset.introStarted) showHero()
     window.addEventListener('intro:start', showHero, { once: true })
     const heroFailsafe = window.setTimeout(showHero, 8500)
@@ -100,6 +105,7 @@ export default function Effects() {
       io.disconnect()
       cancelAnimationFrame(raf)
       window.removeEventListener('intro:start', showHero)
+      window.removeEventListener('route:change', onRoute)
       clearTimeout(heroFailsafe)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)

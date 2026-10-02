@@ -15,7 +15,8 @@ function hasWebGL() {
  * セクション間ではしばらく形を保ってから次の形へ移る。
  */
 function computeMorph() {
-  const sections = Array.from(document.querySelectorAll('[data-scene]'))
+  // 表示中のビューにあるセクションだけを対象にする（hidden のビューは大きさ 0）
+  const sections = Array.from(document.querySelectorAll('[data-scene]')).filter((el) => el.getClientRects().length > 0)
   if (sections.length === 0) return 0
   const probe = window.scrollY + window.innerHeight * 0.5
   const anchors = sections.map((el) => {
@@ -103,6 +104,8 @@ export default function SceneCanvas() {
         const onPointerLeave = () => f.clearPointer()
         const onVisibility = () => (document.hidden ? f.stop() : f.start())
 
+        const onRoute = () => requestAnimationFrame(() => f.setMorph(computeMorph()))
+        window.addEventListener('route:change', onRoute)
         window.addEventListener('scroll', onScroll, { passive: true })
         window.addEventListener('resize', onResize)
         window.addEventListener('pointermove', onPointerMove, { passive: true })
@@ -118,6 +121,7 @@ export default function SceneCanvas() {
 
         cleanups.push(() => {
           cancelAnimationFrame(scrollRaf)
+          window.removeEventListener('route:change', onRoute)
           window.removeEventListener('scroll', onScroll)
           window.removeEventListener('resize', onResize)
           window.removeEventListener('pointermove', onPointerMove)

@@ -74,9 +74,8 @@ export default function ContactSection() {
       <div className="container contact__inner">
         <div className="contact__intro">
           <p className="eyebrow" data-reveal>
-            <span className="eyebrow__no">10</span>
             <span className="eyebrow__line" />
-            <span data-scramble>Contact</span>
+            <span data-scramble>Free consultation</span>
           </p>
           <h2 className="section-title" data-reveal>
             まずは無料相談で、
