@@ -6,7 +6,7 @@
 - **`tax-plan.net` を含むドメイン・URL（`*.tax-plan.net` 等）も同様に、ページに表示せず、リンク先にも使用しない。**
 - これらは表示テキストだけでなく、href属性や配信されるJSバンドルにも含めないこと。お問い合わせの送信先メールアドレスや認証情報はコード・リポジトリに書かない。
   - フォームの送信先URLは **`/web/contact/`**（変更する場合は `src/components/ContactSection.jsx` の `CONTACT_ENDPOINT` と `vercel.json` の rewrite を揃える）。
-  - **本番（お名前.com レンタルサーバー）**: `/web/*` は `.htaccess` の Rewrite で `backend/v1.php` に委任され、サーバー上のバックエンド（TaxPlan-org/php。`backend/` はこのリポジトリの管理外）が処理する。成功時は `201 {"message":"送信が完了しました","id":829}` の形式で返る。**このリポジトリから PHP などのサーバー側コードを作成しないこと**（`backend/` には触らない）。公開ファイル一式は `npm run package:onamae` で `release/onamae/` に組み立てる（構成は「本番ディレクトリ構造」参照）。
+  - **本番（お名前.com レンタルサーバー）**: `/web/*` は `.htaccess` の Rewrite で `backend/v1.php` に委任され、サーバー上のバックエンド（TaxPlan-org/php。`backend/` はこのリポジトリの管理外）が処理する。成功時は `201 {"message":"送信が完了しました","id":829}` の形式で返る。**このリポジトリから PHP などのサーバー側コードを作成しないこと**（`backend/` には触らない）。本番への反映は自動（「本番への反映」参照。ファイルのアップロードは不要）。
   - **Vercel（プレビュー）**: `api/contact.js` が環境変数 `CONTACT_TO` 等から読む（変数一覧は `.env.example`）。`/web/contact/` は `vercel.json` の rewrite で `api/contact.js` に振り向ける。
 - 会社名「タックス・プラン税理士法人」のテキスト表記は問題ない（リンクは張らない）。
 
@@ -47,6 +47,31 @@ dev-claude  作業用。ここで開発し、PR で main に入れる
 - PR の URL とマージ済みであること（マージできなかったなら理由）
 - `check_branches.sh` の結果（`main` と `dev-claude` だけであること）
 
+## 本番への反映（自動。ファイルのアップロードは不要）
+
+**`main` にマージすれば、ファイルを別途アップロードしなくても本番（kakuyasu-souzokuzei.com）のページが更新される。** WinSCP などで `dist/` を手でアップロードしない（`npm run package:onamae` の ZIP も通常は不要）。
+
+```
+dev-claude → main にマージ（dist/ を含む）
+  → GitHub Actions（build.yml）が main をビルドし、dist/ に差分があれば main に自動コミット
+  → main への push ごとに GitHub の Webhook がサーバーの /web/deploy/souzoku/ を呼ぶ
+  → サーバー（TaxPlan-org/php）が main を git で取り込み、dist/ の中身だけを公開フォルダに上書きで置く
+```
+
+- 置かれるのは `dist/` の中身だけ。`assets/` のサーバーにだけある画像は消されない。`.htaccess`・`backend/` は dist にあっても置かれず、php 側の共通ファイルが置かれる
+- 反映の確認：数分後に本番のページを開く（ブラウザのキャッシュに注意）。失敗したときは GitHub の Webhook の Recent Deliveries で応答を見る（仕組み・手順は TaxPlan-org/php の `docs/deploy.md`）
+- `dist/` を更新せずにマージしても Actions がビルドして反映されるが、PR では `npm run build` した `dist/` を含める（上の「プロジェクト構成」）
+
+## アクセス解析（beacon）
+
+- Google アナリティクス（`index.html` の gtag）に加え、自サイトの `/web/beacon/` へ閲覧・離脱・操作の記録を送る（受け口は TaxPlan-org/php。仕様は php リポジトリの `docs/beacon.md`。集計はイントラの `/api/beacon/stats/?host=k`）
+- `src/beacon.js`（送信処理。php の docs/beacon.md 6-2 と同じもの）。`src/main.jsx` で最初に `start()`・`pageview()`、SPA の切り替え（App.jsx の `route:change`）で `leave()`・`pageview()`
+- 自動で送るもの：参照元・utm・広告のクリックID の種類（値は送らない）、滞在時間・画面を見ていた時間・スクロールの深さ、表示速度、電話のリンク（`tel_click`）、外部リンク、ダウンロード、フォームの入力開始（`<form data-beacon-form="contact">`）
+- 操作の計測：要素に `data-beacon="cta_click" data-beacon-label="場所"` を付けるだけ。フォームの送信成功は `ContactSection.jsx` で `event('form_submit', { form: 'contact' })`
+- **このサイトではお問い合わせと閲覧の記録を結び付けない**（`form_submit` に受付番号 `id` を付けない）。プライバシーポリシーのページがなく、フォームに「ご相談への回答・ご連絡のためにのみ使用」と書いているため。結び付けるなら、先にプライバシーポリシー（利用目的）を用意する
+- 氏名・電話番号・メールアドレス・フォームの入力値は送らない。Cookie は使わない（訪問者ID は localStorage）。社員の端末は一度 `?tp_optout=1` を付けて開くと以後送らない
+- 計測する内容を変えたら、フッターの「アクセス解析について」（`Footer.jsx`）も合わせて直す
+
 ## 技術選定
 
 `dev-conventions` の規約では HP・LP は Next.js が既定だが、このプロジェクトは既存の **Vite + React（ビルド時プリレンダリングで SEO 対応）** で構築済みのため、規約の「既存プロジェクトの構成は変えない」に従いこの構成を維持する。Next.js への置き換えは、必要なら別の依頼として提案・実施する。バックエンドはサーバー上の既存 PHP（TaxPlan-org/php）で、このリポジトリでは扱わない。
@@ -56,7 +81,7 @@ dev-claude  作業用。ここで開発し、PR で main に入れる
 本番（お名前.com レンタルサーバー）の公開ディレクトリは次の構造。ビルド出力 `dist/` はこの構造そのもので **git 管理する**（`git pull` した `dist/` の中身＝サーバーにアップロードする内容＝納品ZIPの中身）。
 
 ```
-.htaccess        … このリポジトリ（public/.htaccess）の責務。/web/* と /api/* を backend/v1.php に委任する Rewrite と ErrorDocument を含む。php リポジトリ側にも同一ファイルが置かれるが、正本はこちら。委任先ファイルは固定のため編集・修正の予定はない
+.htaccess        … 全ドメイン共通で、正本は TaxPlan-org/php の backend/sites/.htaccess（配置のたびに php 側が上書きで置く。このリポジトリの public/.htaccess は本番では使われない）
 sitemap.xml
 robots.txt
 index.html
@@ -70,7 +95,7 @@ assets/
   *.png|jpg|webp … 画像は assets 直下に置く（css・js と同じ階層）
 ```
 
-- `backend/` 以外（HTML・CSS・JS・エラーページ・`.htaccess`・`robots.txt`・`sitemap.xml`）はすべてこのリポジトリの責務。`backend/` だけは TaxPlan-org/php の責務で、こちらからは触らない。
+- `backend/` と `.htaccess` 以外（HTML・CSS・JS・エラーページ・`robots.txt`・`sitemap.xml`）はすべてこのリポジトリの責務。`backend/` と `.htaccess` は TaxPlan-org/php の責務（`backend/sites/`）で、こちらからは触らない（`.htaccess` の変更が必要なら php リポジトリに依頼する）。
 - CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が各 HTML 内の URL に `?v=内容ハッシュ` を付ける。
 - 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg`・`ceo1.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
 

@@ -2,7 +2,16 @@ import React from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { parsePath } from './router.js'
+import { leave, pageview, start } from './beacon.js'
 import './index.css'
+
+// アクセス解析（src/beacon.js）。最初の表示と、SPA の切り替え（App.jsx の route:change）のたびに送る
+start()
+pageview()
+window.addEventListener('route:change', () => {
+  leave()
+  pageview()
+})
 
 const container = document.getElementById('root')
 // プリレンダリング済みの HTML と同じページを初期表示にする（/service/ なら service、/articles/xxx/ なら article）

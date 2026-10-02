@@ -15,7 +15,7 @@ export default function Footer({ latest = [] }) {
             <div><dt>電話</dt><dd><a href={site.telHref}>{site.tel}</a>（受付：{site.hours}）</dd></div>
             <div><dt>登録</dt><dd>{site.license}</dd></div>
           </dl>
-          <a href="/contact/" className="footer__cta">
+          <a href="/contact/" className="footer__cta" data-beacon="cta_click" data-beacon-label="フッター">
             無料相談を予約する
             <Arrow />
           </a>
@@ -49,6 +49,12 @@ export default function Footer({ latest = [] }) {
         </div>
       </div>
       <p className="footer__mark" aria-hidden="true">Inheritance Tax</p>
+      <div className="container footer__analytics">
+        <p>
+          <b>アクセス解析について</b>
+          当サイトでは、利用状況を把握してサイトを改善するために、Google アナリティクス（Google LLC。Cookie を用いて情報が同社に送信されます。<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">同社によるデータの使用 ↗</a>）と、当法人独自の計測を利用しています。独自の計測では、ブラウザのストレージに保存するランダムな識別子を用いて、閲覧したページ・参照元・滞在時間・スクロールの深さ・ページ内での操作（入力内容は記録しません）・表示速度・端末やブラウザの情報・IPアドレス（末尾を伏せた形）を記録し、当法人のサーバーでのみ管理します（外部には送信しません。保存期間は1年）。お問い合わせの内容と結び付けることはありません。ブラウザの「トラッキング拒否（Do Not Track）」または「グローバル・プライバシー・コントロール（GPC）」を有効にすると、独自の計測は行われません。
+        </p>
+      </div>
       <div className="container footer__bottom">
         <p>© 2026 {site.name}　All Rights Reserved.</p>
         <a href="/" className="footer__top">Home ↑</a>

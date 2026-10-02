@@ -21,7 +21,7 @@ export default function ReportSection() {
             <ul className="report-points">
               {reportPoints.map((p) => <li key={p}>{p}</li>)}
             </ul>
-            <a href="/contact/" className="btn btn--primary">
+            <a href="/contact/" className="btn btn--primary" data-beacon="cta_click" data-beacon-label="報告書">
               無料相談で報告書を依頼する
               <Arrow />
             </a>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Arrow } from './SectionHead.jsx'
 import { amountOptions, site } from '../content/site.js'
+import { event } from '../beacon.js'
 
 // ===== お問い合わせフォーム送信 =====
 // 送信はサーバー側のプログラムが行い、送信先メールアドレスはページやJSには一切含めない。
@@ -55,6 +56,8 @@ export default function ContactSection() {
     setSending(false)
     try {
       if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form: 'free_consultation' })
+      // 自前のアクセス解析。このサイトではお問い合わせの内容と閲覧の記録を結び付けないので、受付番号（id）は送らない
+      event('form_submit', { form: 'contact' })
     } catch { /* 計測の失敗は無視 */ }
     setDone({
       message: typeof result.message === 'string' && result.message.trim() ? result.message.trim() : '送信が完了しました',
@@ -115,7 +118,7 @@ export default function ContactSection() {
               <button type="button" className="form-done__again" onClick={() => { setDone(null); setError('') }}>続けて別のお問い合わせをする</button>
             </div>
           ) : (
-            <form className="form" onSubmit={submit} noValidate>
+            <form className="form" onSubmit={submit} noValidate data-beacon-form="contact">
               <div className="form__row">
                 <label className="field">
                   <span className="field__label">お名前<em>必須</em></span>

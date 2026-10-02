@@ -739,6 +739,10 @@ main, .footer { position: relative; z-index: 1; }
   border-top: 1px solid var(--line); font-family: var(--font-jp); font-size: 12px; letter-spacing: 0.04em; color: var(--text-mute);
 }
 .footer__top { font-family: var(--font-en); letter-spacing: 0.08em; }
+.footer__analytics { padding-bottom: 24px; font-family: var(--font-jp); font-size: 11px; line-height: 1.8; color: var(--text-mute); }
+.footer__analytics b { display: block; margin-bottom: 4px; font-weight: 700; color: var(--text-sub); }
+.footer__analytics a { text-decoration: underline; text-underline-offset: 2px; }
+.footer__analytics a:hover { color: var(--accent); }
 .footer__top:hover { color: var(--accent); }
 
 /* =========================================================

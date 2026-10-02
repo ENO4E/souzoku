@@ -117,7 +117,7 @@ export function ArticleView({ article, related = [] }) {
             <p className="article-cta__title">ご自身のケースではどうなるか、無料相談で確認できます。</p>
             <p className="article-cta__text">初回相談は無料。ご契約まで費用はかかりません。相続税額の目安はシミュレーションでもその場で確認できます。</p>
             <div className="article-cta__actions">
-              <a href="/contact/" className="btn btn--primary btn--lg">無料相談を予約する<Arrow /></a>
+              <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="コラム">無料相談を予約する<Arrow /></a>
               <a href="/simulation/" className="btn btn--ghost btn--lg">相続税シミュレーション</a>
             </div>
           </div>
