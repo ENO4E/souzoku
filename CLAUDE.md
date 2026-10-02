@@ -67,10 +67,15 @@ dev-claude → main にマージ（dist/ を含む）
 - Google アナリティクス（`index.html` の gtag）に加え、自サイトの `/web/beacon/` へ閲覧・離脱・操作の記録を送る（受け口は TaxPlan-org/php。仕様は php リポジトリの `docs/beacon.md`。集計はイントラの `/api/beacon/stats/?host=k`）
 - `src/beacon.js`（送信処理。php の docs/beacon.md 6-2 と同じもの）。`src/main.jsx` で最初に `start()`・`pageview()`、SPA の切り替え（App.jsx の `route:change`）で `leave()`・`pageview()`
 - 自動で送るもの：参照元・utm・広告のクリックID の種類（値は送らない）、滞在時間・画面を見ていた時間・スクロールの深さ、表示速度、電話のリンク（`tel_click`）、外部リンク、ダウンロード、フォームの入力開始（`<form data-beacon-form="contact">`）
-- 操作の計測：要素に `data-beacon="cta_click" data-beacon-label="場所"` を付けるだけ。フォームの送信成功は `ContactSection.jsx` で `event('form_submit', { form: 'contact' })`
-- **このサイトではお問い合わせと閲覧の記録を結び付けない**（`form_submit` に受付番号 `id` を付けない）。プライバシーポリシーのページがなく、フォームに「ご相談への回答・ご連絡のためにのみ使用」と書いているため。結び付けるなら、先にプライバシーポリシー（利用目的）を用意する
+- 操作の計測：要素に `data-beacon="cta_click" data-beacon-label="場所"` を付けるだけ。フォームの送信成功は `ContactSection.jsx` で `event('form_submit', { form: 'contact', id })`（受付番号 `id` を付け、イントラの `/api/beacon/journeys/?inquiry=<id>` でこのお問い合わせに至った閲覧の流れを見られる。プライバシーポリシーの「3. 利用目的」「7.」に記載しているから行える）
 - 氏名・電話番号・メールアドレス・フォームの入力値は送らない。Cookie は使わない（訪問者ID は localStorage）。社員の端末は一度 `?tp_optout=1` を付けて開くと以後送らない
-- 計測する内容を変えたら、フッターの「アクセス解析について」（`Footer.jsx`）も合わせて直す
+- 計測する内容を変えたら、プライバシーポリシー（`src/content/privacy.js` の「7.」。`REVISED` も更新）とフッターの「アクセス解析について」（`Footer.jsx`）も合わせて直す
+
+## プライバシーポリシー（/privacy/）
+
+- 文言は `src/content/privacy.js`、表示は `src/views/PrivacyView.jsx`。記事ページと同じく通常のページ（SPA の切り替えはしない）で、ビルド時に `dist/privacy/index.html` としてプリレンダリングし、sitemap にも載せる
+- 運営法人（タックス・プラン税理士法人）が公表している個人情報保護方針をこのサイト向けにしたもの。個人情報保護管理者・窓口の所在地・電話などの事実は法人の公表内容と同じにし、推測で書き換えない。メールアドレス・tax-plan.net のドメインは載せない（コンテンツ方針。窓口は電話とお問い合わせフォーム）
+- 内容を変えたら `REVISED`（最終改定日）を更新する。フッター・フォームの注記（`ContactSection.jsx` の `form__privacy`）からリンクしている
 
 ## 技術選定
 

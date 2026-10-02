@@ -34,6 +34,7 @@ export default function Footer({ latest = [] }) {
             <li><a href="/contact/#office">事務所概要</a></li>
             <li><a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 ↗</a></li>
             <li><a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer">近畿税理士会 ↗</a></li>
+            <li><a href="/privacy/">プライバシーポリシー</a></li>
           </ul>
         </nav>
         <div className="footer__articles">
@@ -52,7 +53,7 @@ export default function Footer({ latest = [] }) {
       <div className="container footer__analytics">
         <p>
           <b>アクセス解析について</b>
-          当サイトでは、利用状況を把握してサイトを改善するために、Google アナリティクス（Google LLC。Cookie を用いて情報が同社に送信されます。<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">同社によるデータの使用 ↗</a>）と、当法人独自の計測を利用しています。独自の計測では、ブラウザのストレージに保存するランダムな識別子を用いて、閲覧したページ・参照元・滞在時間・スクロールの深さ・ページ内での操作（入力内容は記録しません）・表示速度・端末やブラウザの情報・IPアドレス（末尾を伏せた形）を記録し、当法人のサーバーでのみ管理します（外部には送信しません。保存期間は1年）。お問い合わせの内容と結び付けることはありません。ブラウザの「トラッキング拒否（Do Not Track）」または「グローバル・プライバシー・コントロール（GPC）」を有効にすると、独自の計測は行われません。
+          当サイトでは、利用状況を把握してサイトを改善するために、Google アナリティクス（Google LLC）と当法人独自の計測を利用しています。独自の計測は外部に送信せず、入力内容は記録しません。お問い合わせいただいた場合は、どのページを経てお問い合わせいただいたかを把握するために、閲覧の記録をお問い合わせと結び付けることがあります。ブラウザの「トラッキング拒否（Do Not Track）」または「グローバル・プライバシー・コントロール（GPC）」を有効にすると、独自の計測は行われません。詳しくは<a href="/privacy/#analytics">プライバシーポリシー</a>をご覧ください。
         </p>
       </div>
       <div className="container footer__bottom">

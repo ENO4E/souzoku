@@ -1168,3 +1168,17 @@ html { color-scheme: dark; }
 .article-filter button.is-active { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.7); background: rgba(var(--accent-rgb), 0.1); }
 .article-filter button.is-active span { color: var(--accent); }
 @media (max-width: 680px) { .footer__articles { max-width: none; } }
+
+/* ===== プライバシーポリシー（/privacy/） ===== */
+.privacy section + section { margin-top: 0; }
+.privacy li + li { margin-top: 0.6em; }
+.privacy .privacy__links { list-style: none; padding-left: 0; font-size: 14px; }
+.privacy__window { display: grid; gap: 10px; margin-top: 1.4em; padding: 20px 24px; border: 1px solid var(--line); border-radius: 12px; font-size: 15px; line-height: 1.8; }
+.privacy__window div { display: grid; grid-template-columns: 10em 1fr; gap: 12px; }
+.privacy__window dt { color: var(--text-mute); }
+.privacy__window dd { margin: 0; }
+.privacy__dates { margin-top: 3em; font-size: 14px; color: var(--text-mute); text-align: right; }
+.form__privacy a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) {
+  .privacy__window div { grid-template-columns: 1fr; gap: 2px; }
+}

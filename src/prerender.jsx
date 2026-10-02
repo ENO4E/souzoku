@@ -2,7 +2,7 @@
 import { renderToString } from 'react-dom/server'
 import App from './App.jsx'
 
-export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, ORIGIN, OG_IMAGE } from './content/seo.js'
+export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, ORIGIN, OG_IMAGE } from './content/seo.js'
 import { site } from './content/site.js'
 export const SITE_NAME = site.siteName
 

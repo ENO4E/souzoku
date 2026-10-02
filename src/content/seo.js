@@ -164,6 +164,38 @@ export function webPageLd(route) {
   }
 }
 
+/* ---------- プライバシーポリシー ---------- */
+export const privacyPage = {
+  path: '/privacy/',
+  title: 'プライバシーポリシー｜相続税申告相談センター',
+  description: '相続税申告相談センター（運営：タックス・プラン税理士法人）の個人情報の取扱い。取得する情報と利用目的、第三者提供、マイナンバーの取扱い、Cookie・アクセス解析、安全管理措置、開示等のご請求と窓口について定めています。',
+}
+
+export function privacyLd() {
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: 'プライバシーポリシー', item: `${ORIGIN}/privacy/` },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${ORIGIN}/privacy/#webpage`,
+      url: `${ORIGIN}/privacy/`,
+      name: privacyPage.title,
+      description: privacyPage.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      about: { '@id': `${ORIGIN}/#organization` },
+    },
+  ]
+}
+
 /* ---------- 記事（コラム） ---------- */
 export const articlesPage = {
   path: '/articles/',
