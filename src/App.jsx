@@ -3,7 +3,6 @@ import Loader from './components/Loader.jsx'
 import SceneCanvas from './components/SceneCanvas.jsx'
 import Header from './components/Header.jsx'
 import SideNav from './components/SideNav.jsx'
-import Cursor from './components/Cursor.jsx'
 import Effects from './components/Effects.jsx'
 import Footer from './components/Footer.jsx'
 import CtaBottom from './components/CtaBottom.jsx'
@@ -91,7 +90,6 @@ export default function App() {
       <SceneCanvas />
       <Header route={route} />
       <SideNav route={route} />
-      <Cursor />
       <Effects />
       <PageTransition phase={phase} />
 

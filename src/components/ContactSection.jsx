@@ -40,10 +40,12 @@ export default function ContactSection() {
       // 成功判定：HTTP 2xx（200 / 201 など）で、サーバーが明示的に失敗を返していないこと
       //   例）{"ok":true} / {"message":"送信が完了しました","id":829}
       const failed = !res.ok || data.ok === false || (data.error && data.ok !== true)
-      if (failed) throw new Error(data.error || data.message || `HTTP ${res.status}`)
+      if (failed) throw new Error(`HTTP ${res.status}${data.error || data.message ? `: ${data.error || data.message}` : ''}`)
       result = data
     } catch (err) {
-      setError('送信に失敗しました。恐れ入りますがお電話でもご連絡ください。')
+      // 原因の切り分けができるよう、ステータスやエラー種別を小さく添える
+      const detail = err && err.message ? String(err.message).slice(0, 60) : ''
+      setError(`送信に失敗しました。恐れ入りますがお電話でもご連絡ください。${detail ? `（${detail}）` : ''}`)
       console.error('contact form error:', err)
       setSending(false)
       return
