@@ -1,7 +1,8 @@
 import { nav, serviceNav, site } from '../content/site.js'
 import { Arrow } from './SectionHead.jsx'
 
-export default function Footer() {
+/** latest … 最新のコラム（ビルド時に全ページへ埋め込む数件だけ。読み込みを重くしない） */
+export default function Footer({ latest = [] }) {
   return (
     <footer className="footer">
       <div className="container footer__inner">
@@ -35,6 +36,17 @@ export default function Footer() {
             <li><a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer">近畿税理士会 ↗</a></li>
           </ul>
         </nav>
+        <div className="footer__articles">
+          <p className="footer__articles-label"><a href="/articles/">相続税の基礎知識コラム</a></p>
+          {latest.length > 0 && (
+            <ul>
+              {latest.map((a) => (
+                <li key={a.path}><a href={a.path}><time dateTime={a.date}>{a.date.replace(/-/g, '.')}</time><span>{a.title}</span></a></li>
+              ))}
+            </ul>
+          )}
+          <a href="/articles/" className="footer__articles-more">コラム一覧へ <Arrow /></a>
+        </div>
       </div>
       <p className="footer__mark" aria-hidden="true">Inheritance Tax</p>
       <div className="container footer__bottom">

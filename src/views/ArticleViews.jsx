@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { site } from '../content/site.js'
 import { Arrow } from '../components/SectionHead.jsx'
 
@@ -5,6 +6,13 @@ const fmt = (d) => d.replace(/-/g, '.')
 
 /** 記事一覧（/articles/） */
 export function ArticlesView({ list = [] }) {
+  const [tag, setTag] = useState('')
+  const tags = useMemo(() => {
+    const count = new Map()
+    list.forEach((a) => a.tags.forEach((t) => count.set(t, (count.get(t) || 0) + 1)))
+    return [...count.entries()].sort((a, b) => b[1] - a[1]).map(([t, n]) => ({ t, n }))
+  }, [list])
+  const shown = tag ? list.filter((a) => a.tags.includes(tag)) : list
   return (
     <>
       <section className="page-head" data-scene="2">
@@ -26,19 +34,26 @@ export function ArticlesView({ list = [] }) {
       </section>
       <section className="section articles" data-scene="2">
         <div className="container">
-          {list.length === 0 ? (
+          {tags.length > 1 && (
+            <div className="article-filter" role="group" aria-label="テーマで絞り込む">
+              <button type="button" className={tag ? '' : 'is-active'} onClick={() => setTag('')}>すべて <span>{list.length}</span></button>
+              {tags.map(({ t, n }) => (
+                <button type="button" key={t} className={tag === t ? 'is-active' : ''} onClick={() => setTag(tag === t ? '' : t)}>{t} <span>{n}</span></button>
+              ))}
+            </div>
+          )}
+          {shown.length === 0 ? (
             <p className="articles__empty" data-reveal>記事は準備中です。</p>
           ) : (
             <ul className="article-grid">
-              {list.map((a, i) => (
-                <li key={a.slug} className="article-card spotlight" data-reveal style={{ '--d': `${(i % 3) * 80}ms` }}>
+              {shown.map((a) => (
+                <li key={a.slug} className="article-card spotlight">
                   <a href={a.path}>
                     <div className="article-card__meta">
                       <time dateTime={a.date}>{fmt(a.date)}</time>
                       <span>約{a.readingMin}分</span>
                     </div>
                     <h2>{a.title}</h2>
-                    <p>{a.description}</p>
                     {a.tags.length > 0 && (
                       <ul className="article-card__tags">
                         {a.tags.map((t) => <li key={t}>{t}</li>)}

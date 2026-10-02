@@ -83,31 +83,45 @@ function writePage(path, route, html, head, pageData) {
 const written = []
 const sitemapEntries = []
 
-// 1) 主要4ページ
+// 記事（フッターの「最新コラム」に使うので先に読む）
+const articles = loadArticles(resolve(root, 'content/articles'))
+const listMeta = articles.map(({ html, headings, ...rest }) => rest)
+const latest = listMeta.slice(0, 4).map(({ title, path, date }) => ({ title, path, date }))
+
+// 1) 主要4ページ（埋め込むデータは最新コラムの数件だけ）
 for (const route of Object.keys(pages)) {
   const p = pages[route]
-  const html = render(route)
-  writePage(p.path, route, html, headTags(p, [...jsonLdFor(route), webPageLd(route)]), null)
+  const data = { latest }
+  const html = render(route, data)
+  writePage(p.path, route, html, headTags(p, [...jsonLdFor(route), webPageLd(route)]), data)
   written.push(`${p.path}（${Math.round(html.length / 1024)}KB）`)
   sitemapEntries.push({ loc: p.path, changefreq: p.path === '/' ? 'weekly' : 'monthly', priority: p.path === '/' ? '1.0' : '0.8' })
 }
 
 // 2) 記事一覧と記事
-const articles = loadArticles(resolve(root, 'content/articles'))
-const listMeta = articles.map(({ html, headings, ...rest }) => rest)
 {
-  const data = { list: listMeta }
+  // 一覧は 100 件以上になるので、カードに必要な項目だけ埋め込んで軽くする
+  const list = listMeta.map(({ slug, path, title, date, tags, readingMin }) => ({ slug, path, title, date, tags, readingMin }))
+  const data = { list, latest }
   const html = render('articles', data)
   writePage(articlesPage.path, 'articles', html, headTags(articlesPage, articlesLd(listMeta)), data)
-  written.push(`${articlesPage.path}（${articles.length}記事）`)
+  written.push(`${articlesPage.path}（${articles.length}記事・${Math.round(html.length / 1024)}KB）`)
   sitemapEntries.push({ loc: articlesPage.path, changefreq: 'weekly', priority: '0.7', lastmod: articles[0]?.date })
 }
 for (const a of articles) {
-  const related = listMeta.filter((x) => x.slug !== a.slug).slice(0, 4)
-  const data = { article: a, related }
-  const meta = articlePage(a)
-  const html = render('article', data)
-  writePage(a.path, 'article', html, headTags(meta, articleLd(a)), data)
+  // 関連記事：同じタグを多く持つ順（同点なら新しい順）に4件
+  const score = (x) => x.tags.filter((t) => a.tags.includes(t)).length
+  const related = listMeta
+    .filter((x) => x.slug !== a.slug)
+    .map((x, i) => ({ x, s: score(x), i }))
+    .sort((p, q) => q.s - p.s || p.i - q.i)
+    .slice(0, 4)
+    .map(({ x }) => ({ slug: x.slug, path: x.path, title: x.title, date: x.date }))
+  const full = { article: a, related, latest }
+  const html = render('article', full)
+  // 本文 HTML はプリレンダリング済みなのでデータには入れない（クライアントは DOM から拾う）
+  const { html: _omit, ...articleMeta } = a
+  writePage(a.path, 'article', html, headTags(articlePage(a), articleLd(a)), { article: articleMeta, related, latest })
   sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.6', lastmod: a.date })
 }
 
