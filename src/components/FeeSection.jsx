@@ -8,7 +8,7 @@ export default function FeeSection() {
         <SectionHead
           no="03"
           en="Fee"
-          title={<>大阪で最安クラスの、<br /><span className="gradient-text">明快な料金水準。</span></>}
+          title={<>大阪で最安水準の、<br /><span className="gradient-text">明快な料金。</span></>}
           lead="相続税申告の基本報酬は99,000円（税込）から。税抜価格を大きく、税込価格を横に小さく表示しています。追加が必要な場合も、必ず事前にご説明します。"
         />
 
