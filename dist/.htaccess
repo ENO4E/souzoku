@@ -31,3 +31,8 @@ ErrorDocument 500 /error/500.html
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
 </IfModule>
+
+# 圧縮（HTML / CSS / JS / SVG / JSON）
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>

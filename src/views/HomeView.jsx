@@ -7,7 +7,7 @@ const panels = [
     no: '01',
     en: 'Service',
     scene: 0,
-    title: <>相続税申告、<br /><em className="gradient-text">基本報酬 99,000円</em>から。</>,
+    title: <>大阪・京都・兵庫の相続税申告を、<br /><em className="gradient-text">基本報酬 99,000円</em>から。</>,
     lead: '京阪神で最安水準の料金。相続専門の税理士法人が、初回無料相談から申告完了まで一気通貫で対応します。料金表・選ばれる理由・お客様の声はこちら。',
     cta: 'サービスと料金を見る',
     tags: ['料金表', '選ばれる理由', 'ご相談の流れ', 'お客様の声', '対応エリア'],
@@ -40,7 +40,7 @@ export default function HomeView() {
     <div className="home">
       {panels.map((p, i) => (
         <section key={p.route} id={`p-${p.route}`} className={`panel panel--${p.route}${i === 0 ? ' panel--first' : ''}`} data-scene={p.scene}>
-          <a href={`#/${p.route}`} className="panel__link" aria-label={`${p.en}：${p.cta}`}>
+          <a href={`/${p.route}/`} className="panel__link" aria-label={`${p.en}：${p.cta}`}>
             <span className="panel__index" aria-hidden="true">{p.no}</span>
             <div className="container panel__inner">
               <p className="eyebrow" data-reveal>
@@ -49,7 +49,9 @@ export default function HomeView() {
                 <span data-scramble>{p.en}</span>
               </p>
               <span className="panel__en" aria-hidden="true" data-reveal>{p.en}</span>
-              <h2 className="panel__title" data-reveal style={{ '--d': '90ms' }}>{p.title}</h2>
+              {i === 0
+                ? <h1 className="panel__title" data-reveal style={{ '--d': '90ms' }}>{p.title}</h1>
+                : <h2 className="panel__title" data-reveal style={{ '--d': '90ms' }}>{p.title}</h2>}
               <p className="panel__lead" data-reveal style={{ '--d': '180ms' }}>{p.lead}</p>
               <ul className="panel__tags" data-reveal style={{ '--d': '240ms' }}>
                 {p.tags.map((t) => <li key={t}>{t}</li>)}

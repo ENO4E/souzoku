@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { site } from '../content/site.js'
 
-const MIN_DURATION = 1100
+const MIN_DURATION = 800
 const MAX_WAIT = 6000
 
 /**

@@ -11,7 +11,8 @@ import HomeView from './views/HomeView.jsx'
 import ServiceView from './views/ServiceView.jsx'
 import SimulationView from './views/SimulationView.jsx'
 import ContactView from './views/ContactView.jsx'
-import { parseHash } from './router.js'
+import { matchInternalLink, parseLegacyHash, parsePath, routePath } from './router.js'
+import { pages } from './content/seo.js'
 
 const WIPE_IN = 520
 const WIPE_OUT = 620
@@ -27,40 +28,38 @@ function scrollToAnchor(anchor, behavior = 'instant') {
   else window.scrollTo({ top: 0, behavior })
 }
 
-export default function App() {
-  // プリレンダリングと一致させるため、初期表示は常にホーム。マウント後にハッシュから切り替える
-  const [route, setRoute] = useState('home')
+export default function App({ initialRoute = 'home' }) {
+  // 初期表示はプリレンダリングされたページと同じ。他のページはマウント後に（非表示で）用意する
+  const [route, setRoute] = useState(initialRoute)
+  const [mountAll, setMountAll] = useState(false)
   const [phase, setPhase] = useState('')
-  const routeRef = useRef('home')
+  const routeRef = useRef(initialRoute)
   const timers = useRef([])
 
   useEffect(() => {
+    setMountAll(true)
     const root = document.documentElement
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual'
+
     const apply = (r) => {
       routeRef.current = r
       setRoute(r)
       root.dataset.route = r
+      document.title = pages[r].title
       window.dispatchEvent(new CustomEvent('route:change', { detail: { route: r } }))
     }
+    root.dataset.route = initialRoute
 
-    // 初回：ハッシュに従って幕なしで切り替える
-    const first = parseHash(window.location.hash)
-    if (first.route !== 'home') {
-      apply(first.route)
-      requestAnimationFrame(() => scrollToAnchor(first.anchor))
-    } else {
-      root.dataset.route = 'home'
-    }
-
-    const onHash = () => {
-      const { route: next, anchor } = parseHash(window.location.hash)
+    const go = (next, anchor = '', { push = true, animate = true } = {}) => {
+      const path = routePath(next, anchor)
+      if (push) window.history.pushState({ route: next }, '', path)
       if (next === routeRef.current) {
         if (anchor) scrollToAnchor(anchor, 'smooth')
         return
       }
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       timers.current.forEach(clearTimeout)
-      if (reduced) {
+      if (reduced || !animate) {
         apply(next)
         scrollToAnchor(anchor)
         return
@@ -75,12 +74,46 @@ export default function App() {
         window.setTimeout(() => setPhase(''), WIPE_IN + WIPE_OUT),
       ]
     }
-    window.addEventListener('hashchange', onHash)
+
+    // 旧URL（#/service/fee）で開かれたら新URLに置き換える
+    const legacy = parseLegacyHash(window.location.hash)
+    if (legacy) {
+      window.history.replaceState({ route: legacy.route }, '', routePath(legacy.route, legacy.anchor))
+      if (legacy.route !== routeRef.current) go(legacy.route, legacy.anchor, { push: false, animate: false })
+      else if (legacy.anchor) scrollToAnchor(legacy.anchor)
+    } else if (window.location.hash) {
+      // /service/#fee のように位置指定付きで開かれた場合
+      requestAnimationFrame(() => scrollToAnchor(window.location.hash.slice(1)))
+    }
+
+    // サイト内リンクのクリックを横取りして、幕のアニメーション付きで切り替える
+    const onClick = (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      const a = e.target && e.target.closest ? e.target.closest('a[href]') : null
+      const hit = matchInternalLink(a)
+      if (!hit) return
+      e.preventDefault()
+      go(hit.route, hit.anchor)
+    }
+    document.addEventListener('click', onClick)
+
+    // 戻る・進む
+    const onPop = () => {
+      const next = parsePath(window.location.pathname)
+      const anchor = window.location.hash.replace(/^#/, '')
+      go(next, anchor, { push: false })
+    }
+    window.addEventListener('popstate', onPop)
+
     return () => {
-      window.removeEventListener('hashchange', onHash)
+      document.removeEventListener('click', onClick)
+      window.removeEventListener('popstate', onPop)
       timers.current.forEach(clearTimeout)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const show = (r) => mountAll || route === r
 
   return (
     <>
@@ -94,10 +127,10 @@ export default function App() {
       <PageTransition phase={phase} />
 
       <main id="main" data-route={route}>
-        <div className="view view--home" hidden={route !== 'home'}><HomeView /></div>
-        <div className="view view--service" hidden={route !== 'service'}><ServiceView /></div>
-        <div className="view view--simulation" hidden={route !== 'simulation'}><SimulationView /></div>
-        <div className="view view--contact" hidden={route !== 'contact'}><ContactView /></div>
+        <div className="view view--home" hidden={route !== 'home'}>{show('home') && <HomeView />}</div>
+        <div className="view view--service" hidden={route !== 'service'}>{show('service') && <ServiceView />}</div>
+        <div className="view view--simulation" hidden={route !== 'simulation'}>{show('simulation') && <SimulationView />}</div>
+        <div className="view view--contact" hidden={route !== 'contact'}>{show('contact') && <ContactView />}</div>
       </main>
 
       <Footer />

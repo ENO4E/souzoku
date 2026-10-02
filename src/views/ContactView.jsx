@@ -17,8 +17,8 @@ export default function ContactView() {
       <OfficeSection />
       <NextNav
         items={[
-          { href: '#/service', no: '01', en: 'Service', title: 'サービスと料金を見る' },
-          { href: '#/simulation', no: '02', en: 'Simulation', title: '相続税額をその場で試算する' },
+          { href: '/service/', no: '01', en: 'Service', title: 'サービスと料金を見る' },
+          { href: '/simulation/', no: '02', en: 'Simulation', title: '相続税額をその場で試算する' },
         ]}
       />
     </>

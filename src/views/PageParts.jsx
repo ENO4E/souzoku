@@ -7,7 +7,7 @@ export function PageHead({ no, en, title, lead, scene = 0 }) {
       <div className="container">
         <nav className="breadcrumb" aria-label="パンくず">
           <ol>
-            <li><a href="#/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li aria-current="page">{en}</li>
           </ol>
         </nav>
