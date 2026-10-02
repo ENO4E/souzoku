@@ -91,7 +91,7 @@ export default function FeeSection() {
             <ul className="included-list">
               {included.map((item) => <li key={item}>{item}</li>)}
             </ul>
-            <a href="#/contact" className="btn btn--primary fee-panel__cta">
+            <a href="/contact/" className="btn btn--primary fee-panel__cta">
               無料相談でお見積りを依頼する
               <Arrow />
             </a>

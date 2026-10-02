@@ -60,6 +60,7 @@ dev-claude  作業用。ここで開発し、PR で main に入れる
 sitemap.xml
 robots.txt
 index.html
+service/ simulation/ contact/ … 各ページの index.html（ビルドで生成。実体は同じアプリで、ページごとに SEO タグとプリレンダリング内容が異なる）
 error/           … エラーページ（403.html・404.html・500.html）。このリポジトリの public/error/ で作成・管理する（.htaccess の ErrorDocument が参照）
 backend/         … サーバー側で管理（backend/v1.php、TaxPlan-org/php）。唯一このリポジトリが触らないディレクトリ
 assets/
@@ -69,13 +70,14 @@ assets/
 ```
 
 - `backend/` 以外（HTML・CSS・JS・エラーページ・`.htaccess`・`robots.txt`・`sitemap.xml`）はすべてこのリポジトリの責務。`backend/` だけは TaxPlan-org/php の責務で、こちらからは触らない。
-- CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が `index.html` 内の URL に `?v=ビルド時刻` を付ける。
+- CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が各 HTML 内の URL に `?v=内容ハッシュ` を付ける。
 - 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg`・`ceo1.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
 
 ## プロジェクト構成
 
 - 画面構成（waaark.com を参考にした3パネル構成）：ホーム（`#/`）は Service / Simulation / Contact の3つの全画面パネル。クリックすると幕のアニメーション（`PageTransition.jsx`）で各ページに遷移する。
-  - ルーティングはハッシュ式（`src/router.js`）。`#/service`・`#/simulation`・`#/contact`、ページ内の位置は `#/service/fee` のように続ける。4つのビュー（`src/views/`）は全て `index.html` にプリレンダリングされ、表示中以外は `hidden`。
+  - ルーティングはパス式（`src/router.js`）。`/service/`・`/simulation/`・`/contact/` は本物の URL で、ビルド時に `dist/service/index.html` などとして**ページごとにプリレンダリング**される（そのページだけを含む HTML＋ページ固有の title / description / canonical / OGP / 構造化データ。内容は `src/content/seo.js`）。ページ内の位置は `/service/#fee` のように続ける。クライアント側はリンクのクリックを横取りして幕のアニメーション付きで切り替え（History API）、他のページはマウント後に非表示で用意する。旧URL（`#/service`）は新URLに置き換える。
+  - SEO の要点：ページごとの URL・title・description・canonical、BreadcrumbList / FAQPage / Service / AccountingService（Offer 付き）/ WebSite / WebPage の構造化データ、`sitemap.xml` の自動生成、ホームの h1、Google Fonts の非ブロック読み込み、`.htaccess` の圧縮とキャッシュ。文言は `src/content/seo.js` で管理する。
   - 01 Service＝従来のLP本文（お悩み・選ばれる理由・料金・流れ・代表挨拶・お客様の声・対応エリア・FAQ）、02 Simulation＝相続税シミュレーション（`src/lib/inheritanceTax.js`）＋報告書紹介、03 Contact＝フォーム＋事務所概要。
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。

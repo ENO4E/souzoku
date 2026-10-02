@@ -12,23 +12,23 @@ export const site = {
   license: '税理士登録番号：5469',
 }
 
-// 3つのページ（ホームの3パネルに対応）。ルートは #/ 始まり、ページ内の位置は #/service/fee のように続ける
+// 3つのページ（ホームの3パネルに対応）。URL は /service/ などのパス、ページ内の位置は /service/#fee のように続ける
 export const nav = [
-  { href: '#/service', label: 'サービス・料金', en: 'Service', no: '01' },
-  { href: '#/simulation', label: '相続税シミュレーション', en: 'Simulation', no: '02' },
-  { href: '#/contact', label: 'お問い合わせ', en: 'Contact', no: '03' },
+  { href: '/service/', label: 'サービス・料金', en: 'Service', no: '01' },
+  { href: '/simulation/', label: '相続税シミュレーション', en: 'Simulation', no: '02' },
+  { href: '/contact/', label: 'お問い合わせ', en: 'Contact', no: '03' },
 ]
 
 // サービスページ内のセクション
 export const serviceNav = [
-  { href: '#/service/pain', id: 'pain', label: 'お悩み', en: 'Problems' },
-  { href: '#/service/reasons', id: 'reasons', label: '選ばれる理由', en: 'Why Us' },
-  { href: '#/service/fee', id: 'fee', label: '料金', en: 'Fee' },
-  { href: '#/service/flow', id: 'flow', label: 'ご相談の流れ', en: 'Process' },
-  { href: '#/service/greeting', id: 'greeting', label: '代表挨拶', en: 'Message' },
-  { href: '#/service/voice', id: 'voice', label: 'お客様の声', en: 'Voice' },
-  { href: '#/service/area', id: 'area', label: '対応エリア', en: 'Area' },
-  { href: '#/service/faq', id: 'faq', label: 'よくある質問', en: 'FAQ' },
+  { href: '/service/#pain', id: 'pain', label: 'お悩み', en: 'Problems' },
+  { href: '/service/#reasons', id: 'reasons', label: '選ばれる理由', en: 'Why Us' },
+  { href: '/service/#fee', id: 'fee', label: '料金', en: 'Fee' },
+  { href: '/service/#flow', id: 'flow', label: 'ご相談の流れ', en: 'Process' },
+  { href: '/service/#greeting', id: 'greeting', label: '代表挨拶', en: 'Message' },
+  { href: '/service/#voice', id: 'voice', label: 'お客様の声', en: 'Voice' },
+  { href: '/service/#area', id: 'area', label: '対応エリア', en: 'Area' },
+  { href: '/service/#faq', id: 'faq', label: 'よくある質問', en: 'FAQ' },
 ]
 
 export const keywords = [

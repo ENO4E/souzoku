@@ -58,14 +58,14 @@ export default function Header({ route = 'home' }) {
   return (
     <header className="header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined} data-open={open || undefined}>
       <div className="header__inner">
-        <a href="#/" className="header__logo" aria-label={`${site.name} トップへ`} onClick={() => setOpen(false)}>
+        <a href="/" className="header__logo" aria-label={`${site.name} トップへ`} onClick={() => setOpen(false)}>
           <Logo />
         </a>
         <nav className="header__nav" aria-label="メインメニュー">
           <ul>
             {nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} aria-current={item.href === `#/${route}` ? 'page' : undefined}>
+                <a href={item.href} aria-current={item.href === `/${route}/` ? 'page' : undefined}>
                   <span className="header__nav-no">{item.no}</span>
                   {item.label}
                 </a>
@@ -77,7 +77,7 @@ export default function Header({ route = 'home' }) {
           <span className="header__tel-label">受付（{site.hours}）</span>
           <b>{site.tel}</b>
         </a>
-        <a href="#/contact" className="btn btn--primary btn--sm header__cta">無料相談</a>
+        <a href="/contact/" className="btn btn--primary btn--sm header__cta">無料相談</a>
         <button
           type="button"
           className="header__toggle"
@@ -112,7 +112,7 @@ export default function Header({ route = 'home' }) {
         </div>
         <div className="mobile-menu__actions">
           <a href={site.telHref} className="btn btn--ghost btn--lg" onClick={() => setOpen(false)}>電話で相談する　{site.tel}</a>
-          <a href="#/contact" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>無料相談を予約する</a>
+          <a href="/contact/" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>無料相談を予約する</a>
         </div>
       </div>
     </header>

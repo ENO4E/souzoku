@@ -170,7 +170,7 @@ export default function SimulationView() {
                   <span className="calc__fee-value">{fee.label}</span>
                   <span className="calc__fee-sub">土地評価などの追加料金は別途。正式な金額は無料相談時にお見積りします。</span>
                 </div>
-                <a href="#/contact" className="btn btn--primary btn--lg calc__cta">
+                <a href="/contact/" className="btn btn--primary btn--lg calc__cta">
                   この条件で無料相談を予約する
                   <Arrow />
                 </a>
@@ -185,8 +185,8 @@ export default function SimulationView() {
 
       <NextNav
         items={[
-          { href: '#/contact', no: '03', en: 'Contact', title: '無料相談を予約する' },
-          { href: '#/service', no: '01', en: 'Service', title: 'サービスと料金を見る' },
+          { href: '/contact/', no: '03', en: 'Contact', title: '無料相談を予約する' },
+          { href: '/service/', no: '01', en: 'Service', title: 'サービスと料金を見る' },
         ]}
       />
     </>

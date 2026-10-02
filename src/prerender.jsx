@@ -2,6 +2,9 @@
 import { renderToString } from 'react-dom/server'
 import App from './App.jsx'
 
-export function render() {
-  return renderToString(<App />)
+export { pages, jsonLdFor, webPageLd, ORIGIN, OG_IMAGE } from './content/seo.js'
+
+/** 指定ページを表示した状態の HTML を返す（他のページは出力しない） */
+export function render(route = 'home') {
+  return renderToString(<App initialRoute={route} />)
 }

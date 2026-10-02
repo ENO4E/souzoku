@@ -40,7 +40,7 @@ export default function SideNav({ route }) {
   // ルートが変わった直後は active が前のページの番号のままなので、範囲内に丸める
   const index = Math.min(Math.max(active, 0), sections.length - 1)
   const current = sections[index]
-  const pageNo = route === 'home' ? '' : nav.find((n) => n.href === `#/${route}`)?.no
+  const pageNo = route === 'home' ? '' : nav.find((n) => n.href === `/${route}/`)?.no
 
   return (
     <>
@@ -48,7 +48,7 @@ export default function SideNav({ route }) {
         <ol>
           {sections.map((s, i) => (
             <li key={s.id} data-active={i === index || undefined}>
-              <a href={route === 'home' ? `#${s.id}` : `#/${route}/${s.id}`} aria-current={i === index ? "true" : undefined}>
+              <a href={`#${s.id}`} aria-current={i === index ? "true" : undefined}>
                 <span className="sidenav__label">{s.label}</span>
                 <span className="sidenav__tick" />
               </a>
