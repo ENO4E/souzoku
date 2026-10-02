@@ -77,7 +77,7 @@ export default function Header({ route = 'home' }) {
           <span className="header__tel-label">受付（{site.hours}）</span>
           <b>{site.tel}</b>
         </a>
-        <a href="/contact/" className="btn btn--primary btn--sm header__cta">無料相談</a>
+        <a href="/contact/" className="btn btn--primary btn--sm header__cta" data-beacon="cta_click" data-beacon-label="ヘッダー">無料相談</a>
         <button
           type="button"
           className="header__toggle"
@@ -112,7 +112,7 @@ export default function Header({ route = 'home' }) {
         </div>
         <div className="mobile-menu__actions">
           <a href={site.telHref} className="btn btn--ghost btn--lg" onClick={() => setOpen(false)}>電話で相談する　{site.tel}</a>
-          <a href="/contact/" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>無料相談を予約する</a>
+          <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="メニュー" onClick={() => setOpen(false)}>無料相談を予約する</a>
         </div>
       </div>
     </header>

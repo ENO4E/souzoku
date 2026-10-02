@@ -35,7 +35,7 @@ export default function ServiceView() {
         lead="「何から手をつければいいか分からない」「税理士費用が高そう」。そんな不安からでも大丈夫です。累計200件超の相続税申告実績を持つ相続専門の税理士法人が、初回無料相談から申告完了まで丁寧にサポートします。"
       />
       <div className="page-head__actions container" data-reveal>
-        <a href="/contact/" className="btn btn--primary btn--lg">無料相談を予約する</a>
+        <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="サービス">無料相談を予約する</a>
         <a href="/service/#fee" className="btn btn--ghost btn--lg">料金表を見る</a>
         <a href="/simulation/" className="btn btn--ghost btn--lg">税額シミュレーション</a>
       </div>
