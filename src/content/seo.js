@@ -12,7 +12,7 @@ export const ROUTE_PATHS = { home: '/', service: '/service/', simulation: '/simu
 export const pages = {
   home: {
     path: '/',
-    title: '大阪・京都・兵庫の相続税申告なら最安水準 基本報酬99,000円〜｜相続専門の税理士法人',
+    title: `大阪・京都・兵庫の相続税申告なら最安水準 基本報酬99,000円〜｜${site.siteName}`,
     description: '大阪・京都・兵庫（京阪神）の相続税申告なら、基本報酬99,000円〜の最安水準。相続専門の税理士法人が初回無料相談から申告完了まで一気通貫で対応します。累計200件超の実績、追加料金は事前説明の明朗会計、書面添付制度で税務調査対策。相続税額のシミュレーションも無料でご利用いただけます。',
     ogDescription: '大阪・京都・兵庫（京阪神）の相続税申告なら、基本報酬99,000円〜の最安水準。相続専門の税理士法人が初回無料相談から申告完了まで一気通貫で対応。累計200件超の実績、追加料金は事前説明の明朗会計です。',
     breadcrumb: [],
@@ -96,8 +96,10 @@ export const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': `${ORIGIN}/#website`,
-  url: ORIGIN,
-  name: site.name,
+  url: `${ORIGIN}/`,
+  // Google の「サイト名」：name を第一候補、alternateName を代替候補として評価する
+  name: site.siteName,
+  alternateName: [site.name, site.company],
   inLanguage: 'ja',
   publisher: { '@id': `${ORIGIN}/#organization` },
 }

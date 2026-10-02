@@ -5,6 +5,8 @@
 export const site = {
   name: '相続税申告相談センター',
   company: 'タックス・プラン税理士法人',
+  // Google 検索結果でドメインの上に出る「サイト名」（WebSite 構造化データ・og:site_name・ホームの title に揃えて使う）
+  siteName: '相続税申告相談センター（タックス・プラン税理士法人 運営）',
   tel: '06-6354-8220',
   telHref: 'tel:0663548220',
   hours: '平日9:00〜18:00',
