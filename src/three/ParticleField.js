@@ -3,6 +3,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js'
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { createAllShapes, createRandoms, SHAPE_COUNT } from './shapes.js'
 import { dustFragment, dustVertex, finalPass, particleFragment, particleVertex, ringFragment, ringVertex } from './shaders.js'
 
@@ -89,11 +90,16 @@ export class ParticleField {
     this.scene.add(this.dust)
 
     this.createRings()
+    this.createWires()
+    this.createStreaks(options.lowPower ? 0 : 6)
 
     if (!options.lowPower && !options.reducedMotion) {
       const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 4 })
       this.composer = new EffectComposer(this.renderer, target)
       this.composer.addPass(new RenderPass(this.scene, this.camera))
+      // 明るい粒子だけがにじむ控えめなブルーム（しきい値を高くして全体がもやがからないようにする）
+      this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.55, 0.65, 0.78)
+      this.composer.addPass(this.bloom)
       this.composer.addPass(new OutputPass())
       this.final = new ShaderPass(finalPass)
       this.composer.addPass(this.final)
@@ -199,6 +205,61 @@ export class ParticleField {
       line.rotation.set(s.tilt[0], s.tilt[1], 0)
       this.rings.push(line)
       this.group.add(line)
+    }
+  }
+
+  /** 形の骨組み：球体（シーン0）は測地線ドーム、ネットワーク（シーン4）はトーラスノットの線画を粒子に重ねる */
+  createWires() {
+    const make = (geometry, color, opacity) => {
+      const edges = new THREE.EdgesGeometry(geometry, 1)
+      const material = new THREE.LineBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity, depthWrite: false, blending: THREE.AdditiveBlending })
+      const lines = new THREE.LineSegments(edges, material)
+      lines.userData.baseOpacity = opacity
+      geometry.dispose()
+      this.group.add(lines)
+      return lines
+    }
+    this.wireCore = make(new THREE.IcosahedronGeometry(2.42, 1), '#e6c47a', 0.28)
+    this.wireCoreInner = make(new THREE.IcosahedronGeometry(1.55, 0), '#8fb3ff', 0.22)
+    this.wireNetwork = make(new THREE.TorusKnotGeometry(1.75, 0.3, 72, 8, 2, 3), '#8fb3ff', 0.16)
+  }
+
+  /** 流れ星：画面の奥を斜めに横切る光の筋 */
+  createStreaks(count) {
+    this.streaks = []
+    for (let i = 0; i < count; i++) {
+      const geometry = new THREE.BufferGeometry()
+      geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3))
+      const material = new THREE.LineBasicMaterial({ color: new THREE.Color(i % 2 ? '#8fb3ff' : '#f0d9a3'), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })
+      const line = new THREE.Line(geometry, material)
+      line.frustumCulled = false
+      this.scene.add(line)
+      this.streaks.push({ line, life: Math.random(), pos: new THREE.Vector3(), dir: new THREE.Vector3(), speed: 1, len: 1 })
+      this.resetStreak(this.streaks[i], true)
+    }
+  }
+
+  resetStreak(s, initial = false) {
+    s.pos.set((Math.random() - 0.5) * 22, 4 + Math.random() * 6, -6 - Math.random() * 8)
+    s.dir.set(-0.7 - Math.random() * 0.4, -0.5 - Math.random() * 0.3, 0).normalize()
+    s.speed = 7 + Math.random() * 6
+    s.len = 1.4 + Math.random() * 1.8
+    s.life = initial ? Math.random() * 1.5 : -Math.random() * 6 // 負の値のあいだは待機
+  }
+
+  updateStreaks(dt) {
+    if (!this.streaks) return
+    const motion = this.options.reducedMotion ? 0 : 1
+    for (const s of this.streaks) {
+      s.life += dt * 0.7 * motion
+      if (s.life < 0) { s.line.material.opacity = 0; continue }
+      if (s.life > 1) { this.resetStreak(s); continue }
+      s.pos.addScaledVector(s.dir, s.speed * dt * motion)
+      const a = s.line.geometry.attributes.position.array
+      a[0] = s.pos.x; a[1] = s.pos.y; a[2] = s.pos.z
+      a[3] = s.pos.x - s.dir.x * s.len; a[4] = s.pos.y - s.dir.y * s.len; a[5] = s.pos.z - s.dir.z * s.len
+      s.line.geometry.attributes.position.needsUpdate = true
+      s.line.material.opacity = Math.sin(s.life * Math.PI) * 0.7 * this.intro
     }
   }
 
@@ -335,7 +396,7 @@ export class ParticleField {
     u.uMouse.value.copy(world)
     u.uMouseStrength.value = this.pointerActive * (this.isMobileLayout ? 0 : 1)
     u.uBrightness.value = this.isMobileLayout ? 0.65 : 1
-    u.uSize.value = this.isMobileLayout ? 2.7 : 4.8
+    u.uSize.value = this.isMobileLayout ? 2.7 : 5.2
     u.uCore.value = this.isMobileLayout ? 0.44 : 0.22
     u.uHalo.value = this.isMobileLayout ? 0 : 0.28
 
@@ -345,6 +406,26 @@ export class ParticleField {
       ring.material.uniforms.uOpacity.value = ringVisibility * this.intro
       ring.visible = ringVisibility > 0.01
     }
+
+    // 骨組みの線画：対応するシーンでだけ浮かび上がり、粒子とは別の速さで回る
+    const coreVis = 1 - Math.min(Math.abs(this.morph - 0), 1)
+    const netVis = 1 - Math.min(Math.abs(this.morph - 4), 1)
+    const introEase = this.intro * this.intro
+    for (const [wire, vis, spinY, spinX] of [
+      [this.wireCore, coreVis, -0.09, 0.03],
+      [this.wireCoreInner, coreVis, 0.16, -0.07],
+      [this.wireNetwork, netVis, 0.05, 0.02],
+    ]) {
+      wire.material.opacity = wire.userData.baseOpacity * vis * introEase * (this.isMobileLayout ? 0.7 : 1)
+      wire.visible = vis > 0.01
+      wire.rotation.y = this.time * spinY * motion
+      wire.rotation.x = this.time * spinX * motion
+      // 起動時は少し大きい状態から収まる
+      const sc = 1 + (1 - this.intro) * 0.6
+      wire.scale.setScalar(sc)
+    }
+
+    this.updateStreaks(dt)
   }
 
   draw() {
@@ -368,6 +449,14 @@ export class ParticleField {
     for (const r of this.rings) {
       r.geometry.dispose()
       r.material.dispose()
+    }
+    for (const w of [this.wireCore, this.wireCoreInner, this.wireNetwork]) {
+      w.geometry.dispose()
+      w.material.dispose()
+    }
+    for (const s of this.streaks || []) {
+      s.line.geometry.dispose()
+      s.line.material.dispose()
     }
     this.composer?.dispose()
     this.renderer.dispose()
