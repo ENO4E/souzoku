@@ -14,7 +14,10 @@ export default function OfficeSection() {
         <div className="office-grid">
           <dl className="office-table" data-reveal>
             {officeRows.map(([label, value]) => (
-              <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{label === '電話番号' ? <><a href="tel:0663548220" className="tel-link">06-6354-8220</a>（受付：平日9:00〜18:00）</> : value}</dd>
+              </div>
             ))}
           </dl>
           <div className="office-map" data-reveal style={{ '--d': '90ms' }}>

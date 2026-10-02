@@ -65,7 +65,7 @@ export default function Header({ route = 'home' }) {
           <ul>
             {nav.map((item) => (
               <li key={item.href}>
-                <a href={item.href} aria-current={item.href === `/${route}/` ? 'page' : undefined}>
+                <a href={item.href} aria-current={item.href === `/${route === 'article' ? 'articles' : route}/` ? 'page' : undefined}>
                   <span className="header__nav-no">{item.no}</span>
                   {item.label}
                 </a>

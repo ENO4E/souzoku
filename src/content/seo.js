@@ -161,3 +161,77 @@ export function webPageLd(route) {
     about: { '@id': `${ORIGIN}/#organization` },
   }
 }
+
+/* ---------- 記事（コラム） ---------- */
+export const articlesPage = {
+  path: '/articles/',
+  title: '相続税の基礎知識コラム｜相続専門の税理士法人が解説（大阪・京都・兵庫）',
+  description: '相続税申告でよくあるご質問や判断に迷いやすいポイントを、相続専門の税理士法人が分かりやすく解説するコラム。基礎控除・申告期限・財産評価・特例など、相続税の基礎知識をまとめています。',
+  ogDescription: '相続税の基礎控除・申告期限・財産評価など、相続専門の税理士法人が分かりやすく解説するコラム。',
+}
+
+export function articlePage(a) {
+  return {
+    path: a.path,
+    title: `${a.title}｜相続税申告相談センター`,
+    description: a.description,
+    ogDescription: a.description,
+    ogType: 'article',
+  }
+}
+
+export function articlesLd(list) {
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: 'コラム', item: `${ORIGIN}/articles/` },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${ORIGIN}/articles/#webpage`,
+      url: `${ORIGIN}/articles/`,
+      name: articlesPage.title,
+      description: articlesPage.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      hasPart: list.map((a) => ({ '@type': 'BlogPosting', headline: a.title, url: `${ORIGIN}${a.path}`, datePublished: a.date })),
+    },
+  ]
+}
+
+export function articleLd(a) {
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: 'コラム', item: `${ORIGIN}/articles/` },
+        { '@type': 'ListItem', position: 3, name: a.title, item: `${ORIGIN}${a.path}` },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      '@id': `${ORIGIN}${a.path}#article`,
+      mainEntityOfPage: `${ORIGIN}${a.path}`,
+      headline: a.title,
+      description: a.description,
+      datePublished: a.date,
+      dateModified: a.date,
+      inLanguage: 'ja',
+      keywords: a.tags.join(', '),
+      image: OG_IMAGE,
+      author: { '@type': 'Organization', name: site.company },
+      publisher: { '@id': `${ORIGIN}/#organization` },
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+    },
+  ]
+}

@@ -5,15 +5,17 @@ import { parsePath } from './router.js'
 import './index.css'
 
 const container = document.getElementById('root')
-// プリレンダリング済みの HTML と同じページを初期表示にする（/service/ なら service）
+// プリレンダリング済みの HTML と同じページを初期表示にする（/service/ なら service、/articles/xxx/ なら article）
 const initialRoute = parsePath(window.location.pathname)
+// 記事ページのデータ（ビルド時に HTML へ埋め込まれる）
+const pageData = window.__PAGE_DATA__ || null
 
 if (container.hasChildNodes()) {
-  hydrateRoot(container, <App initialRoute={initialRoute} />)
+  hydrateRoot(container, <App initialRoute={initialRoute} pageData={pageData} />)
 } else {
   createRoot(container).render(
     <React.StrictMode>
-      <App initialRoute={initialRoute} />
+      <App initialRoute={initialRoute} pageData={pageData} />
     </React.StrictMode>,
   )
 }

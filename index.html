@@ -15,7 +15,7 @@
 </script>
 <!-- JS が動く環境でだけ表示アニメーション用の初期状態にする（JS 無効時は常に表示）。
      ローダーが外せなかった場合に備え、一定時間で強制的に解除する -->
-<script>var d=document.documentElement;d.classList.add('js','is-loading');setTimeout(function(){d.classList.remove('is-loading')},8000)</script>
+<script>var d=document.documentElement;d.classList.add('js');if(location.pathname==='/'||location.pathname==='/index.html'){d.classList.add('is-loading');setTimeout(function(){d.classList.remove('is-loading')},8000)}</script>
 <!--SEO_HEAD_START-->
 <!-- title / description / canonical / OGP / 構造化データは、ビルド時に scripts/prerender.mjs がページごとに書き込む（内容は src/content/seo.js） -->
 <title>相続税申告相談センター</title>
