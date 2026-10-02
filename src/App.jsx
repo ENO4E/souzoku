@@ -11,7 +11,8 @@ import HomeView from './views/HomeView.jsx'
 import ServiceView from './views/ServiceView.jsx'
 import SimulationView from './views/SimulationView.jsx'
 import ContactView from './views/ContactView.jsx'
-import { matchInternalLink, parseLegacyHash, parsePath, routePath } from './router.js'
+import { ArticlesView, ArticleView } from './views/ArticleViews.jsx'
+import { MAIN_ROUTES, matchInternalLink, parseLegacyHash, parsePath, routePath } from './router.js'
 import { pages } from './content/seo.js'
 
 const WIPE_IN = 520
@@ -28,18 +29,28 @@ function scrollToAnchor(anchor, behavior = 'instant') {
   else window.scrollTo({ top: 0, behavior })
 }
 
-export default function App({ initialRoute = 'home' }) {
-  // 初期表示はプリレンダリングされたページと同じ。他のページはマウント後に（非表示で）用意する
+/**
+ * initialRoute … プリレンダリングされたページ（home / service / simulation / contact / articles / article）
+ * pageData     … 記事ページ用のデータ（{ article, related } または { list }）。ビルド時に HTML に埋め込まれる
+ */
+export default function App({ initialRoute = 'home', pageData = null }) {
   const [route, setRoute] = useState(initialRoute)
   const [mountAll, setMountAll] = useState(false)
   const [phase, setPhase] = useState('')
   const routeRef = useRef(initialRoute)
   const timers = useRef([])
+  const isMain = MAIN_ROUTES.includes(initialRoute)
 
   useEffect(() => {
-    setMountAll(true)
     const root = document.documentElement
+    root.dataset.route = initialRoute
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual'
+    // 記事ページでは通常のリンク遷移のみ（SPA の切り替えはしない）
+    if (!isMain) {
+      if (window.location.hash) requestAnimationFrame(() => scrollToAnchor(window.location.hash.slice(1), 'smooth'))
+      return undefined
+    }
+    setMountAll(true)
 
     const apply = (r) => {
       routeRef.current = r
@@ -48,7 +59,6 @@ export default function App({ initialRoute = 'home' }) {
       document.title = pages[r].title
       window.dispatchEvent(new CustomEvent('route:change', { detail: { route: r } }))
     }
-    root.dataset.route = initialRoute
 
     const go = (next, anchor = '', { push = true, animate = true } = {}) => {
       const path = routePath(next, anchor)
@@ -100,6 +110,10 @@ export default function App({ initialRoute = 'home' }) {
     // 戻る・進む
     const onPop = () => {
       const next = parsePath(window.location.pathname)
+      if (!MAIN_ROUTES.includes(next)) {
+        window.location.reload()
+        return
+      }
       const anchor = window.location.hash.replace(/^#/, '')
       go(next, anchor, { push: false })
     }
@@ -113,24 +127,33 @@ export default function App({ initialRoute = 'home' }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const show = (r) => mountAll || route === r
+  const show = (r) => isMain && (mountAll || route === r)
 
   return (
     <>
       <a href="#main" className="skip-link">本文へスキップ</a>
       <div className="progress-bar" aria-hidden="true" />
-      <Loader />
+      <Loader enabled={initialRoute === 'home'} />
       <SceneCanvas />
       <Header route={route} />
-      <SideNav route={route} />
+      {isMain && <SideNav route={route} />}
       <Effects />
       <PageTransition phase={phase} />
 
       <main id="main" data-route={route}>
-        <div className="view view--home" hidden={route !== 'home'}>{show('home') && <HomeView />}</div>
-        <div className="view view--service" hidden={route !== 'service'}>{show('service') && <ServiceView />}</div>
-        <div className="view view--simulation" hidden={route !== 'simulation'}>{show('simulation') && <SimulationView />}</div>
-        <div className="view view--contact" hidden={route !== 'contact'}>{show('contact') && <ContactView />}</div>
+        {isMain ? (
+          <>
+            <div className="view view--home" hidden={route !== 'home'}>{show('home') && <HomeView />}</div>
+            <div className="view view--service" hidden={route !== 'service'}>{show('service') && <ServiceView />}</div>
+            <div className="view view--simulation" hidden={route !== 'simulation'}>{show('simulation') && <SimulationView />}</div>
+            <div className="view view--contact" hidden={route !== 'contact'}>{show('contact') && <ContactView />}</div>
+          </>
+        ) : (
+          <div className={`view view--${route}`}>
+            {route === 'articles' && <ArticlesView list={pageData?.list || []} />}
+            {route === 'article' && <ArticleView article={pageData?.article} related={pageData?.related || []} />}
+          </div>
+        )}
       </main>
 
       <Footer />

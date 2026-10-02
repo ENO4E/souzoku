@@ -61,6 +61,7 @@ sitemap.xml
 robots.txt
 index.html
 service/ simulation/ contact/ … 各ページの index.html（ビルドで生成。実体は同じアプリで、ページごとに SEO タグとプリレンダリング内容が異なる）
+articles/        … コラム一覧（articles/index.html）と記事（articles/<slug>/index.html）。ビルドで生成
 error/           … エラーページ（403.html・404.html・500.html）。このリポジトリの public/error/ で作成・管理する（.htaccess の ErrorDocument が参照）
 backend/         … サーバー側で管理（backend/v1.php、TaxPlan-org/php）。唯一このリポジトリが触らないディレクトリ
 assets/
@@ -79,6 +80,10 @@ assets/
   - ルーティングはパス式（`src/router.js`）。`/service/`・`/simulation/`・`/contact/` は本物の URL で、ビルド時に `dist/service/index.html` などとして**ページごとにプリレンダリング**される（そのページだけを含む HTML＋ページ固有の title / description / canonical / OGP / 構造化データ。内容は `src/content/seo.js`）。ページ内の位置は `/service/#fee` のように続ける。クライアント側はリンクのクリックを横取りして幕のアニメーション付きで切り替え（History API）、他のページはマウント後に非表示で用意する。旧URL（`#/service`）は新URLに置き換える。
   - SEO の要点：ページごとの URL・title・description・canonical、BreadcrumbList / FAQPage / Service / AccountingService（Offer 付き）/ WebSite / WebPage の構造化データ、`sitemap.xml` の自動生成、ホームの h1、Google Fonts の非ブロック読み込み、`.htaccess` の圧縮とキャッシュ。文言は `src/content/seo.js` で管理する。
   - 01 Service＝従来のLP本文（お悩み・選ばれる理由・料金・流れ・代表挨拶・お客様の声・対応エリア・FAQ）、02 Simulation＝相続税シミュレーション（`src/lib/inheritanceTax.js`）＋報告書紹介、03 Contact＝フォーム＋事務所概要。
+- **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
+  - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
+  - 記事ページは SPA の幕アニメーションを使わない通常のページ。構造化データ（BlogPosting・BreadcrumbList）と sitemap（lastmod＝date）は自動生成
+  - `main` に Markdown を追加して push すれば GitHub Actions がビルドして `dist/` を更新する
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。
   - ソースを変更した PR では `npm run build` を実行し、`dist/` の変更も同じ PR に含める。

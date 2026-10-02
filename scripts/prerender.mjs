@@ -1,5 +1,5 @@
 // ビルド後に dist/ の HTML を仕上げる
-//   1) ページごと（/ ・ /service/ ・ /simulation/ ・ /contact/）にアプリをプリレンダリングし、
+//   1) ページごと（/ ・ /service/ ・ /simulation/ ・ /contact/ ・ /articles/ ・ /articles/<slug>/）にアプリをプリレンダリングし、
 //      そのページの title / description / canonical / OGP / 構造化データを <head> に書き込む
 //      （検索エンジンに各ページを別の URL として評価させる。クライアントは hydrate）
 //   2) CSS / JS は外部ファイルのまま。ファイル名は固定なので ?v=内容のハッシュ を付ける
@@ -10,11 +10,13 @@ import { readFileSync, writeFileSync, rmSync, existsSync, mkdirSync } from 'node
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
+import { loadArticles } from './articles.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
-const { render, pages, jsonLdFor, webPageLd, ORIGIN, OG_IMAGE } = await import(resolve(root, 'dist-ssr/prerender.js'))
+const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, ORIGIN, OG_IMAGE } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -39,57 +41,88 @@ let base = template.replace(/(href="|src=")\/(assets\/(?:css|js)\/[^"?]+\.(?:css
 base = base.replace(/<link rel="modulepreload"[^>]*>\n?/g, '')
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-// JSON-LD 内の "</script" を無害化
-const ld = (obj) => `<script type="application/ld+json">\n${JSON.stringify(obj, null, 1).replace(/<\//g, '<\\/')}\n</script>`
+// JSON-LD / 埋め込みデータ内の "</script" を無害化
+const safeJson = (obj, pretty) => JSON.stringify(obj, null, pretty ? 1 : 0).replace(/<\//g, '<\\/').replace(/<!--/g, '<\\!--')
+const ld = (obj) => `<script type="application/ld+json">\n${safeJson(obj, true)}\n</script>`
 
-function headFor(route) {
-  const p = pages[route]
-  const url = `${ORIGIN}${p.path}`
-  const tags = [
-    `<title>${esc(p.title)}</title>`,
-    `<meta name="description" content="${esc(p.description)}">`,
+function headTags(meta, jsonLds) {
+  const url = `${ORIGIN}${meta.path}`
+  return [
+    `<title>${esc(meta.title)}</title>`,
+    `<meta name="description" content="${esc(meta.description)}">`,
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`,
     `<link rel="canonical" href="${url}">`,
-    `<meta property="og:type" content="website">`,
+    `<meta property="og:type" content="${meta.ogType || 'website'}">`,
     `<meta property="og:site_name" content="相続税申告相談センター">`,
     `<meta property="og:locale" content="ja_JP">`,
     `<meta property="og:url" content="${url}">`,
-    `<meta property="og:title" content="${esc(p.title)}">`,
-    `<meta property="og:description" content="${esc(p.ogDescription)}">`,
+    `<meta property="og:title" content="${esc(meta.title)}">`,
+    `<meta property="og:description" content="${esc(meta.ogDescription || meta.description)}">`,
     `<meta property="og:image" content="${OG_IMAGE}">`,
     `<meta property="og:image:width" content="1200">`,
     `<meta property="og:image:height" content="800">`,
     `<meta property="og:image:type" content="image/jpeg">`,
     `<meta name="twitter:card" content="summary_large_image">`,
-    `<meta name="twitter:title" content="${esc(p.title)}">`,
-    `<meta name="twitter:description" content="${esc(p.ogDescription)}">`,
+    `<meta name="twitter:title" content="${esc(meta.title)}">`,
+    `<meta name="twitter:description" content="${esc(meta.ogDescription || meta.description)}">`,
     `<meta name="twitter:image" content="${OG_IMAGE}">`,
-    ...jsonLdFor(route).map(ld),
-    ld(webPageLd(route)),
-  ]
-  return tags.join('\n')
+    ...jsonLds.map(ld),
+  ].join('\n')
+}
+
+function writePage(path, route, html, head, pageData) {
+  let out = base.replace(marker, `<div id="root">${html}</div>`)
+  out = out.replace(/<!--SEO_HEAD_START-->[\s\S]*?<!--SEO_HEAD_END-->/, head)
+  out = out.replace('<html lang="ja">', `<html lang="ja" data-route="${route}">`)
+  if (pageData) out = out.replace('<script type="module"', `<script>window.__PAGE_DATA__=${safeJson(pageData)}</script>\n<script type="module"`)
+  const dir = resolve(distDir, path.replace(/^\//, ''))
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(resolve(dir, 'index.html'), out)
 }
 
 const written = []
+const sitemapEntries = []
+
+// 1) 主要4ページ
 for (const route of Object.keys(pages)) {
   const p = pages[route]
-  const appHtml = render(route)
-  let html = base.replace(marker, `<div id="root">${appHtml}</div>`)
-  html = html.replace(/<!--SEO_HEAD_START-->[\s\S]*?<!--SEO_HEAD_END-->/, headFor(route))
-  // ホーム以外はパスを <html data-route> の初期値にする（スクロールスナップ等の CSS 用）
-  html = html.replace('<html lang="ja">', `<html lang="ja" data-route="${route}">`)
-  const dir = resolve(distDir, p.path.replace(/^\//, ''))
-  mkdirSync(dir, { recursive: true })
-  const file = resolve(dir, 'index.html')
-  writeFileSync(file, html)
-  written.push(`${p.path}index.html（${Math.round(appHtml.length / 1024)}KB）`)
+  const html = render(route)
+  writePage(p.path, route, html, headTags(p, [...jsonLdFor(route), webPageLd(route)]), null)
+  written.push(`${p.path}（${Math.round(html.length / 1024)}KB）`)
+  sitemapEntries.push({ loc: p.path, changefreq: p.path === '/' ? 'weekly' : 'monthly', priority: p.path === '/' ? '1.0' : '0.8' })
 }
 
-// sitemap.xml（lastmod は付けない：ビルドのたびに差分が出ないようにする）
+// 2) 記事一覧と記事
+const articles = loadArticles(resolve(root, 'content/articles'))
+const listMeta = articles.map(({ html, headings, ...rest }) => rest)
+{
+  const data = { list: listMeta }
+  const html = render('articles', data)
+  writePage(articlesPage.path, 'articles', html, headTags(articlesPage, articlesLd(listMeta)), data)
+  written.push(`${articlesPage.path}（${articles.length}記事）`)
+  sitemapEntries.push({ loc: articlesPage.path, changefreq: 'weekly', priority: '0.7', lastmod: articles[0]?.date })
+}
+for (const a of articles) {
+  const related = listMeta.filter((x) => x.slug !== a.slug).slice(0, 4)
+  const data = { article: a, related }
+  const meta = articlePage(a)
+  const html = render('article', data)
+  writePage(a.path, 'article', html, headTags(meta, articleLd(a)), data)
+  sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.6', lastmod: a.date })
+}
+
+// 3) sitemap.xml（主要ページには lastmod を付けない：ビルドのたびに差分が出ないようにする）
 const sitemap = [
   '<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ...Object.values(pages).map((p) => `  <url>\n    <loc>${ORIGIN}${p.path}</loc>\n    <changefreq>${p.path === '/' ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${p.path === '/' ? '1.0' : '0.8'}</priority>\n  </url>`),
+  ...sitemapEntries.map((e) => [
+    '  <url>',
+    `    <loc>${ORIGIN}${e.loc}</loc>`,
+    e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
+    `    <changefreq>${e.changefreq}</changefreq>`,
+    `    <priority>${e.priority}</priority>`,
+    '  </url>',
+  ].filter(Boolean).join('\n')),
   '</urlset>',
   '',
 ].join('\n')
@@ -97,4 +130,4 @@ writeFileSync(resolve(distDir, 'sitemap.xml'), sitemap)
 
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true })
 
-console.log(`prerender: ${written.join(' / ')} を出力し、sitemap.xml を生成しました（${versions.join(', ')}）`)
+console.log(`prerender: ${written.join(' / ')} ＋ 記事${articles.length}件 を出力し、sitemap.xml を生成しました（${versions.join(', ')}）`)

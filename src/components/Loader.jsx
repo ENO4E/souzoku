@@ -9,13 +9,20 @@ const MAX_WAIT = 6000
  * フォントと WebGL シーンの準備ができたら 100% にして幕を上げ、粒子の集合演出を始める。
  * JS が動かない環境では CSS 側で非表示（.js .loader でのみ表示）
  */
-export default function Loader() {
-  const [phase, setPhase] = useState('loading')
+export default function Loader({ enabled = true }) {
+  const [phase, setPhase] = useState(enabled ? 'loading' : 'done')
   const countRef = useRef(null)
   const barRef = useRef(null)
 
   useEffect(() => {
     const root = document.documentElement
+    if (!enabled) {
+      // ローダー無しのページ：幕が無いので、粒子の集合演出とヒーローの表示をすぐ始める
+      root.classList.remove('is-loading')
+      root.dataset.introStarted = '1'
+      window.dispatchEvent(new Event('intro:start'))
+      return undefined
+    }
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const start = performance.now()
     let target = 0.15
@@ -81,7 +88,7 @@ export default function Loader() {
       clearTimeout(failsafe)
       window.removeEventListener('scene:ready', onReady)
     }
-  }, [])
+  }, [enabled])
 
   if (phase === 'done') return null
 
