@@ -6,7 +6,7 @@ export default function OfficeSection() {
     <section id="office" className="section office" data-scene="4">
       <div className="container">
         <SectionHead
-          no="09"
+          no=""
           en="Office"
           title={<>大阪・南森町の<br className="sp-only" />相続専門税理士法人です。</>}
           lead="ご来所のほか、オンライン相談・出張相談にも対応しています。土日の面談も事前予約で承りますので、お仕事帰りや遠方の方もお気軽にご相談ください。"

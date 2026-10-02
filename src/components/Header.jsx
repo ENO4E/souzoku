@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { nav, site } from '../content/site.js'
+import { nav, serviceNav, site } from '../content/site.js'
 
 function Logo() {
   return (
@@ -25,7 +25,7 @@ function Logo() {
   )
 }
 
-export default function Header() {
+export default function Header({ route = 'home' }) {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
@@ -52,16 +52,24 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  // ページが変わったらメニューを閉じる
+  useEffect(() => { setOpen(false) }, [route])
+
   return (
     <header className="header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined} data-open={open || undefined}>
       <div className="header__inner">
-        <a href="#top" className="header__logo" aria-label={`${site.name} トップへ`} onClick={() => setOpen(false)}>
+        <a href="#/" className="header__logo" aria-label={`${site.name} トップへ`} onClick={() => setOpen(false)}>
           <Logo />
         </a>
         <nav className="header__nav" aria-label="メインメニュー">
           <ul>
             {nav.map((item) => (
-              <li key={item.href}><a href={item.href}>{item.label}</a></li>
+              <li key={item.href}>
+                <a href={item.href} aria-current={item.href === `#/${route}` ? 'page' : undefined}>
+                  <span className="header__nav-no">{item.no}</span>
+                  {item.label}
+                </a>
+              </li>
             ))}
           </ul>
         </nav>
@@ -69,7 +77,7 @@ export default function Header() {
           <span className="header__tel-label">受付（{site.hours}）</span>
           <b>{site.tel}</b>
         </a>
-        <a href="#contact" className="btn btn--primary btn--sm header__cta">無料相談</a>
+        <a href="#/contact" className="btn btn--primary btn--sm header__cta">無料相談</a>
         <button
           type="button"
           className="header__toggle"
@@ -83,19 +91,28 @@ export default function Header() {
         </button>
       </div>
       <div id="mobile-menu" className="mobile-menu" hidden={!open}>
-        <ul>
-          {nav.map((item, i) => (
-            <li key={item.href} style={{ '--i': i }}>
-              <a href={item.href} onClick={() => setOpen(false)}>
-                <span className="mobile-menu__no">{String(i + 1).padStart(2, '0')}</span>
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {nav.map((item, i) => (
+              <li key={item.href} style={{ '--i': i }}>
+                <a href={item.href} onClick={() => setOpen(false)}>
+                  <span className="mobile-menu__no">{item.no}</span>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul className="mobile-menu__sub">
+            {serviceNav.map((item, i) => (
+              <li key={item.href} style={{ '--i': i + 3 }}>
+                <a href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="mobile-menu__actions">
           <a href={site.telHref} className="btn btn--ghost btn--lg" onClick={() => setOpen(false)}>電話で相談する　{site.tel}</a>
-          <a href="#contact" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>無料相談を予約する</a>
+          <a href="#/contact" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>無料相談を予約する</a>
         </div>
       </div>
     </header>

@@ -74,6 +74,9 @@ assets/
 
 ## プロジェクト構成
 
+- 画面構成（waaark.com を参考にした3パネル構成）：ホーム（`#/`）は Service / Simulation / Contact の3つの全画面パネル。クリックすると幕のアニメーション（`PageTransition.jsx`）で各ページに遷移する。
+  - ルーティングはハッシュ式（`src/router.js`）。`#/service`・`#/simulation`・`#/contact`、ページ内の位置は `#/service/fee` のように続ける。4つのビュー（`src/views/`）は全て `index.html` にプリレンダリングされ、表示中以外は `hidden`。
+  - 01 Service＝従来のLP本文（お悩み・選ばれる理由・料金・流れ・代表挨拶・お客様の声・対応エリア・FAQ）、02 Simulation＝相続税シミュレーション（`src/lib/inheritanceTax.js`）＋報告書紹介、03 Contact＝フォーム＋事務所概要。
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。
   - ソースを変更した PR では `npm run build` を実行し、`dist/` の変更も同じ PR に含める。

@@ -1,65 +1,105 @@
+import { useEffect, useRef, useState } from 'react'
 import Loader from './components/Loader.jsx'
 import SceneCanvas from './components/SceneCanvas.jsx'
 import Header from './components/Header.jsx'
 import SideNav from './components/SideNav.jsx'
 import Cursor from './components/Cursor.jsx'
 import Effects from './components/Effects.jsx'
-import Hero from './components/Hero.jsx'
-import PainSection from './components/PainSection.jsx'
-import StrengthsSection from './components/StrengthsSection.jsx'
-import FeeSection from './components/FeeSection.jsx'
-import FlowSection from './components/FlowSection.jsx'
-import ReportSection from './components/ReportSection.jsx'
-import GreetingSection from './components/GreetingSection.jsx'
-import TestimonialsSection from './components/TestimonialsSection.jsx'
-import AreaSection from './components/AreaSection.jsx'
-import FaqSection from './components/FaqSection.jsx'
-import OfficeSection from './components/OfficeSection.jsx'
-import ContactSection from './components/ContactSection.jsx'
 import Footer from './components/Footer.jsx'
 import CtaBottom from './components/CtaBottom.jsx'
-import { keywords } from './content/site.js'
+import PageTransition from './components/PageTransition.jsx'
+import HomeView from './views/HomeView.jsx'
+import ServiceView from './views/ServiceView.jsx'
+import SimulationView from './views/SimulationView.jsx'
+import ContactView from './views/ContactView.jsx'
+import { parseHash } from './router.js'
 
-function Marquee() {
-  return (
-    <div className="marquee" aria-label="対応内容">
-      <div className="marquee__track">
-        {[0, 1].map((k) => (
-          <ul key={k} aria-hidden={k === 1 || undefined}>
-            {keywords.map((w) => <li key={w}>{w}</li>)}
-          </ul>
-        ))}
-      </div>
-    </div>
-  )
+const WIPE_IN = 520
+const WIPE_OUT = 620
+
+// ページ切り替え時は幕の裏で一瞬で移動（instant）、同じページ内の移動はなめらかに（smooth）
+function scrollToAnchor(anchor, behavior = 'instant') {
+  if (!anchor) {
+    window.scrollTo({ top: 0, behavior })
+    return
+  }
+  const el = document.getElementById(anchor)
+  if (el) el.scrollIntoView({ behavior, block: 'start' })
+  else window.scrollTo({ top: 0, behavior })
 }
 
 export default function App() {
+  // プリレンダリングと一致させるため、初期表示は常にホーム。マウント後にハッシュから切り替える
+  const [route, setRoute] = useState('home')
+  const [phase, setPhase] = useState('')
+  const routeRef = useRef('home')
+  const timers = useRef([])
+
+  useEffect(() => {
+    const root = document.documentElement
+    const apply = (r) => {
+      routeRef.current = r
+      setRoute(r)
+      root.dataset.route = r
+      window.dispatchEvent(new CustomEvent('route:change', { detail: { route: r } }))
+    }
+
+    // 初回：ハッシュに従って幕なしで切り替える
+    const first = parseHash(window.location.hash)
+    if (first.route !== 'home') {
+      apply(first.route)
+      requestAnimationFrame(() => scrollToAnchor(first.anchor))
+    } else {
+      root.dataset.route = 'home'
+    }
+
+    const onHash = () => {
+      const { route: next, anchor } = parseHash(window.location.hash)
+      if (next === routeRef.current) {
+        if (anchor) scrollToAnchor(anchor, 'smooth')
+        return
+      }
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      timers.current.forEach(clearTimeout)
+      if (reduced) {
+        apply(next)
+        scrollToAnchor(anchor)
+        return
+      }
+      setPhase('in')
+      timers.current = [
+        window.setTimeout(() => {
+          apply(next)
+          scrollToAnchor(anchor)
+          setPhase('out')
+        }, WIPE_IN),
+        window.setTimeout(() => setPhase(''), WIPE_IN + WIPE_OUT),
+      ]
+    }
+    window.addEventListener('hashchange', onHash)
+    return () => {
+      window.removeEventListener('hashchange', onHash)
+      timers.current.forEach(clearTimeout)
+    }
+  }, [])
+
   return (
     <>
       <a href="#main" className="skip-link">本文へスキップ</a>
       <div className="progress-bar" aria-hidden="true" />
       <Loader />
       <SceneCanvas />
-      <Header />
-      <SideNav />
+      <Header route={route} />
+      <SideNav route={route} />
       <Cursor />
       <Effects />
+      <PageTransition phase={phase} />
 
-      <main id="main">
-        <Hero />
-        <Marquee />
-        <PainSection />
-        <StrengthsSection />
-        <FeeSection />
-        <FlowSection />
-        <ReportSection />
-        <GreetingSection />
-        <TestimonialsSection />
-        <AreaSection />
-        <FaqSection />
-        <OfficeSection />
-        <ContactSection />
+      <main id="main" data-route={route}>
+        <div className="view view--home" hidden={route !== 'home'}><HomeView /></div>
+        <div className="view view--service" hidden={route !== 'service'}><ServiceView /></div>
+        <div className="view view--simulation" hidden={route !== 'simulation'}><SimulationView /></div>
+        <div className="view view--contact" hidden={route !== 'contact'}><ContactView /></div>
       </main>
 
       <Footer />

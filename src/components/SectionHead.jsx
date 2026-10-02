@@ -4,7 +4,7 @@ export default function SectionHead({ no, en, title, lead }) {
     <div className="section-head">
       <div className="section-head__main">
         <p className="eyebrow" data-reveal>
-          <span className="eyebrow__no">{no}</span>
+          {no && <span className="eyebrow__no">{no}</span>}
           <span className="eyebrow__line" />
           <span data-scramble>{en}</span>
         </p>
