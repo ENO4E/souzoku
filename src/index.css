@@ -133,6 +133,9 @@ main, .footer { position: relative; z-index: 1; }
   transition: opacity 1s var(--ease) var(--d, 0ms), transform 1.1s var(--ease) var(--d, 0ms);
 }
 .js [data-reveal].is-visible { opacity: 1; transform: none; }
+/* 保険：何らかの理由で表示処理が走らなくても、一定時間後には必ず見えるようにする */
+.js [data-reveal]:not(.is-visible) { animation: reveal-failsafe 0.8s var(--ease) 6s forwards; }
+@keyframes reveal-failsafe { to { opacity: 1; transform: none; } }
 /* 罫線グリッドのセルは枠を最初から出し、中身だけをフェードインする */
 .js .problem-grid > [data-reveal] { opacity: 1; transform: none; }
 .js .problem-grid > [data-reveal] > * {

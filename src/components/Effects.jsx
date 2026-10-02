@@ -52,7 +52,8 @@ export default function Effects() {
     reveals.forEach((el) => io.observe(el))
 
     // ヒーローの要素は画面の高さに関わらず必ず表示する（ローダーの幕が上がった時点で順に出す）
-    const showHero = () => document.querySelectorAll('.hero [data-reveal], .panel--first [data-reveal]').forEach((el) => el.classList.add('is-visible'))
+    // ホームの3パネルは IntersectionObserver に頼らず、幕が上がった時点で全て表示扱いにする
+    const showHero = () => document.querySelectorAll('.hero [data-reveal], .panel [data-reveal]').forEach((el) => el.classList.add('is-visible'))
     // ページ切り替え直後は、画面上部の見出しとパネルを待たずに表示する
     const onRoute = () => window.setTimeout(() => {
       document.querySelectorAll('.view:not([hidden]) .page-head [data-reveal], .view:not([hidden]) .page-head__actions, .view:not([hidden]) .panel--first [data-reveal]').forEach((el) => el.classList.add('is-visible'))
@@ -65,7 +66,15 @@ export default function Effects() {
     const progressEls = Array.from(document.querySelectorAll('[data-progress]'))
     const bar = document.querySelector('.progress-bar')
     let raf = 0
+    const revealInView = () => {
+      const vh = window.innerHeight
+      document.querySelectorAll('.view:not([hidden]) [data-reveal]:not(.is-visible)').forEach((el) => {
+        const r = el.getBoundingClientRect()
+        if (r.height > 0 && r.top < vh * 0.95 && r.bottom > 0) el.classList.add('is-visible')
+      })
+    }
     const update = () => {
+      revealInView()
       const vh = window.innerHeight
       for (const el of progressEls) {
         const r = el.getBoundingClientRect()
