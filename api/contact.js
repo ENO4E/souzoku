@@ -23,9 +23,6 @@ export default async function handler(req, res) {
 
   const body = typeof req.body === 'string' ? safeJson(req.body) : (req.body || {})
 
-  // ボット対策：人間には見えない入力欄（website）に値があれば静かに成功を返す
-  if (clean(body.website, 200)) return res.status(200).json({ ok: true })
-
   const name = clean(body.name, MAX.name)
   const tel = clean(body.tel, MAX.tel)
   const email = clean(body.email, MAX.email)
