@@ -1,53 +1,21 @@
-import { useState } from 'react'
-
-const faqs = [
-  {
-    q: '99,000円で本当に申告できますか？',
-    a: '遺産総額4,000万円までの標準的な申告であれば、税込99,000円で対応可能です。土地評価や非上場株式評価など内容によって追加料金が発生する場合は、必ず事前にご説明します。',
-  },
-  {
-    q: '格安価格ですが、品質は大丈夫ですか？',
-    a: 'ご安心ください。業務の標準化と相続税申告への特化により、無駄なコストを抑えて格安価格を実現していますが、申告書の作成・税理士による対応内容は変わりません。税理士法33条の2に基づく書面添付も標準的に活用し、税務調査に入られにくい申告書の作成を徹底しています。',
-  },
-  {
-    q: '相談だけでも料金はかかりますか？',
-    a: '初回のご相談は無料です。ご契約いただくまで費用は発生しません。',
-  },
-  {
-    q: '申告期限が近いのですが対応できますか？',
-    a: 'まずは現在の状況をお聞かせください。期限までの期間が短い案件についても、対応可否を含めてご案内します。',
-  },
-  {
-    q: '大阪市以外でも依頼できますか？',
-    a: '大阪府・兵庫県・京都府の全域に対応しています。松原市・吹田市・茨木市・高槻市・摂津市・東大阪市、西宮市・芦屋市・神戸市は重点対応エリアとして、出張相談も承っています。オンライン相談も可能です。〈対応可否は案件により異なるため無料相談時にご確認ください〉',
-  },
-]
+import SectionHead from './SectionHead.jsx'
+import { faqs } from '../content/site.js'
 
 export default function FaqSection() {
-  const [openSet, setOpenSet] = useState(() => new Set())
-
-  const toggle = (i) => {
-    setOpenSet((prev) => {
-      const next = new Set(prev)
-      if (next.has(i)) next.delete(i)
-      else next.add(i)
-      return next
-    })
-  }
-
   return (
-    <section id="faq">
-      <div className="wrap" style={{ maxWidth: 820 }}>
-        <div className="section-head fade-in">
-          <div className="eyebrow">よくあるご質問</div>
-          <h2>ご相談前によく聞かれること</h2>
-        </div>
-        <div className="fade-in">
-          {faqs.map((f, i) => (
-            <div className={`faq-item${openSet.has(i) ? ' open' : ''}`} key={f.q}>
-              <button type="button" className="faq-q" aria-expanded={openSet.has(i)} aria-controls={`faq-a-${i}`} onClick={() => toggle(i)}><span>{f.q}</span><span className="plus" aria-hidden="true">+</span></button>
-              <div className="faq-a" id={`faq-a-${i}`}><p>{f.a}</p></div>
-            </div>
+    <section id="faq" className="section faq" data-scene="4">
+      <div className="container container--narrow">
+        <SectionHead no="08" en="FAQ" title="よくあるご質問" />
+        <div className="faq-list">
+          {faqs.map((f) => (
+            <details key={f.q} className="faq-item" data-reveal>
+              <summary>
+                <span className="faq-item__q" aria-hidden="true">Q</span>
+                <span className="faq-item__text">{f.q}</span>
+                <span className="faq-item__icon" aria-hidden="true" />
+              </summary>
+              <div className="faq-item__a"><p>{f.a}</p></div>
+            </details>
           ))}
         </div>
       </div>

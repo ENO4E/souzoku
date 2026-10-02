@@ -1,76 +1,69 @@
-import { useEffect } from 'react'
-import CtaBottom from './components/CtaBottom.jsx'
+import Loader from './components/Loader.jsx'
+import SceneCanvas from './components/SceneCanvas.jsx'
 import Header from './components/Header.jsx'
+import SideNav from './components/SideNav.jsx'
+import Cursor from './components/Cursor.jsx'
+import Effects from './components/Effects.jsx'
 import Hero from './components/Hero.jsx'
 import PainSection from './components/PainSection.jsx'
 import StrengthsSection from './components/StrengthsSection.jsx'
 import FeeSection from './components/FeeSection.jsx'
+import FlowSection from './components/FlowSection.jsx'
 import ReportSection from './components/ReportSection.jsx'
 import GreetingSection from './components/GreetingSection.jsx'
 import TestimonialsSection from './components/TestimonialsSection.jsx'
 import AreaSection from './components/AreaSection.jsx'
-import FlowSection from './components/FlowSection.jsx'
-import MidCtaSection from './components/MidCtaSection.jsx'
 import FaqSection from './components/FaqSection.jsx'
 import OfficeSection from './components/OfficeSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import Footer from './components/Footer.jsx'
+import CtaBottom from './components/CtaBottom.jsx'
+import { keywords } from './content/site.js'
 
-// GA4 イベント送信（gtag 未ロード時は何もしない）
-function track(eventName, params) {
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params)
-  }
+function Marquee() {
+  return (
+    <div className="marquee" aria-label="対応内容">
+      <div className="marquee__track">
+        {[0, 1].map((k) => (
+          <ul key={k} aria-hidden={k === 1 || undefined}>
+            {keywords.map((w) => <li key={w}>{w}</li>)}
+          </ul>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function App() {
-  // 電話番号リンクのタップを計測（広告のコンバージョン指標）
-  useEffect(() => {
-    const onClick = (e) => {
-      const a = e.target.closest && e.target.closest('a[href^="tel:"]')
-      if (a) track('phone_click', { link_url: a.getAttribute('href') })
-    }
-    document.addEventListener('click', onClick)
-    return () => document.removeEventListener('click', onClick)
-  }, [])
-
-  // Scroll reveal：画面外の要素だけを一旦隠し、画面に入ったら表示する。
-  // 初期表示中の要素は一度も隠さない（ちらつき防止）。JSが動かない環境では何も隠れない
-  useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') return
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.remove('pending')
-          e.target.classList.add('visible')
-          observer.unobserve(e.target)
-        } else if (!e.target.classList.contains('visible')) {
-          e.target.classList.add('pending')
-        }
-      })
-    }, { threshold: 0.12 })
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <>
-      <CtaBottom />
+      <a href="#main" className="skip-link">本文へスキップ</a>
+      <div className="progress-bar" aria-hidden="true" />
+      <Loader />
+      <SceneCanvas />
       <Header />
-      <Hero />
-      <PainSection />
-      <StrengthsSection />
-      <FeeSection />
-      <ReportSection />
-      <GreetingSection />
-      <TestimonialsSection />
-      <AreaSection />
-      <FlowSection />
-      <MidCtaSection />
-      <FaqSection />
-      <OfficeSection />
-      <ContactSection />
+      <SideNav />
+      <Cursor />
+      <Effects />
+
+      <main id="main">
+        <Hero />
+        <Marquee />
+        <PainSection />
+        <StrengthsSection />
+        <FeeSection />
+        <FlowSection />
+        <ReportSection />
+        <GreetingSection />
+        <TestimonialsSection />
+        <AreaSection />
+        <FaqSection />
+        <OfficeSection />
+        <ContactSection />
+      </main>
+
       <Footer />
+      <CtaBottom />
     </>
   )
 }

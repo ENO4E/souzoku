@@ -1,35 +1,41 @@
+import { nav, site } from '../content/site.js'
+import { Arrow } from './SectionHead.jsx'
+
 export default function Footer() {
   return (
-    <footer>
-      <div className="wrap">
-        <div className="foot-grid">
-          <div className="fcol">
-            <h5>相続税申告相談センター</h5>
-            <div className="foot-operator">運営：タックス・プラン税理士法人</div>
-            <p>大阪市北区を拠点に、累計200件超の相続税申告実績。大阪府・兵庫県・京都府一円で、初回無料相談から申告完了まで相続専門の税理士が丁寧にサポートします。</p>
-          </div>
-          <div className="fcol">
-            <h5>メニュー</h5>
-            <ul>
-              <li><a href="#pain">お悩み</a></li>
-              <li><a href="#reasons">選ばれる理由</a></li>
-              <li><a href="#fee">料金</a></li>
-              <li><a href="#report">お渡しする報告書</a></li>
-              <li><a href="#area">対応エリア</a></li>
-              <li><a href="#faq">よくあるご質問</a></li>
-              <li><a href="#office">事務所概要</a></li>
-              <li><a href="#contact">お問い合わせ</a></li>
-            </ul>
-          </div>
-          <div className="fcol">
-            <h5>お問い合わせ</h5>
-            <ul>
-              <li>06-6354-8220</li>
-              <li>受付（平日9:00〜18:00）</li>
-            </ul>
-          </div>
+    <footer className="footer">
+      <div className="container footer__inner">
+        <div className="footer__brand">
+          <p className="footer__name">{site.name}</p>
+          <p className="footer__operator">運営：{site.company}</p>
+          <p>相続のご不安に、専門家として誠実に向き合います。</p>
+          <dl className="footer__org">
+            <div><dt>所在地</dt><dd>{site.address}</dd></div>
+            <div><dt>電話</dt><dd><a href={site.telHref}>{site.tel}</a>（受付：{site.hours}）</dd></div>
+            <div><dt>登録</dt><dd>{site.license}</dd></div>
+          </dl>
+          <a href="#contact" className="footer__cta">
+            無料相談を予約する
+            <Arrow />
+          </a>
         </div>
-        <div className="foot-bottom">© 2026 相続税申告相談センター　All Rights Reserved.<br /><span style={{ opacity: 0.65, fontSize: 11 }}>運営：タックス・プラン税理士法人（税理士登録番号：5469）<br />関連リンク：<a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>国税庁</a>　<a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>近畿税理士会</a></span></div>
+        <nav className="footer__nav" aria-label="フッターメニュー">
+          <ul>
+            {nav.map((item) => (
+              <li key={item.href}><a href={item.href}>{item.label}</a></li>
+            ))}
+            <li><a href="#report">お渡しする報告書</a></li>
+            <li><a href="#office">事務所概要</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 ↗</a></li>
+            <li><a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer">近畿税理士会 ↗</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p className="footer__mark" aria-hidden="true">Inheritance Tax</p>
+      <div className="container footer__bottom">
+        <p>© 2026 {site.name}　All Rights Reserved.</p>
+        <a href="#top" className="footer__top">Page Top ↑</a>
       </div>
     </footer>
   )
