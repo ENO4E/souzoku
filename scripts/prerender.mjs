@@ -11,12 +11,13 @@ import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { loadArticles } from './articles.mjs'
+import { loadAreas } from './areas.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -134,6 +135,23 @@ for (const a of articles) {
   written.push(`${privacyPage.path}（${Math.round(html.length / 1024)}KB）`)
   sitemapEntries.push({ loc: privacyPage.path, changefreq: 'yearly', priority: '0.3' })
 }
+
+// 市ごとの相続税申告ページ（/area/<slug>/）と、以前のコラムの URL からの転送
+const areas = loadAreas(resolve(root, 'content/areas'))
+const areaList = areas.map(({ city, path }) => ({ city, path }))
+for (const a of areas) {
+  const html = render('area', { area: a, areas: areaList, latest })
+  const { html: _h, accessHtml: _a, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
+  writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, areas: areaList, latest })
+  sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.8' })
+  // 以前のコラム（/articles/area-<slug>-souzokuzei/）は、新しいページへ即時転送する（.htaccess を使わずに済む方法。canonical も新しいページ）
+  const to = `${ORIGIN}${a.path}`
+  const stub = `<!doctype html>\n<html lang="ja"><head><meta charset="utf-8"><title>${esc(a.city)}の相続税申告｜${esc(SITE_NAME)}</title><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${a.path}"></head><body><p><a href="${a.path}">${esc(a.city)}の相続税申告のページへ移動しました</a></p></body></html>\n`
+  const dir = resolve(distDir, a.oldPath.replace(/^\//, ''))
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(resolve(dir, 'index.html'), stub)
+}
+written.push(`/area/（${areas.length}市）`)
 
 // 3) sitemap.xml（主要ページには lastmod を付けない：ビルドのたびに差分が出ないようにする）
 const sitemap = [
