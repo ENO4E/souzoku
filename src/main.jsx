@@ -22,6 +22,16 @@ const pageData = window.__PAGE_DATA__ || null
 if (pageData?.article && pageData.article.html == null) {
   pageData.article.html = document.querySelector('.prose')?.innerHTML || ''
 }
+// 記事一覧も同様に、描画済みの一覧行（data-s / data-g）とタグのボタンから復元する
+if (initialRoute === 'articles' && pageData && !pageData.list) {
+  const tagNames = [...document.querySelectorAll('.article-filter [data-tag]')].map((b) => b.dataset.tag)
+  pageData.list = [...document.querySelectorAll('.article-index > li[data-s]')].map((li) => ({
+    slug: li.dataset.s,
+    title: li.querySelector('span')?.textContent || '',
+    date: li.querySelector('time')?.getAttribute('datetime') || '',
+    tags: li.dataset.g ? li.dataset.g.split(',').map((i) => tagNames[Number(i)]).filter(Boolean) : [],
+  }))
+}
 
 if (container.hasChildNodes()) {
   hydrateRoot(container, <App initialRoute={initialRoute} pageData={pageData} />)

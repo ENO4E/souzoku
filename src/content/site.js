@@ -156,10 +156,30 @@ export const testimonials = [
 ]
 
 export const prefectures = [
-  { name: '大阪府', en: 'Osaka', note: '府内全域に対応', focus: ['松原市', '吹田市', '茨木市', '高槻市', '摂津市', '東大阪市', '大阪市'] },
-  { name: '兵庫県', en: 'Hyogo', note: '県内全域に対応', focus: ['西宮市', '芦屋市', '神戸市'] },
+  { name: '大阪府', en: 'Osaka', note: '府内全域に対応', focus: ['大阪市', '吹田市', '茨木市', '高槻市', '箕面市', '摂津市', '守口市', '門真市', '四條畷市', '枚方市', '寝屋川市', '東大阪市', '松原市'] },
+  { name: '兵庫県', en: 'Hyogo', note: '県内全域に対応', focus: ['尼崎市', '西宮市', '宝塚市', '芦屋市', '神戸市'] },
   { name: '京都府', en: 'Kyoto', note: '府内全域に対応', focus: [] },
 ]
+
+// 市ごとの相続税コラム（/articles/<slug>/）。対応エリアの市名からリンクする
+export const areaArticles = {
+  '尼崎市': 'area-amagasaki-souzokuzei',
+  '芦屋市': 'area-ashiya-souzokuzei',
+  '東大阪市': 'area-higashiosaka-souzokuzei',
+  '枚方市': 'area-hirakata-souzokuzei',
+  '茨木市': 'area-ibaraki-souzokuzei',
+  '門真市': 'area-kadoma-souzokuzei',
+  '神戸市': 'area-kobe-souzokuzei',
+  '箕面市': 'area-minoh-souzokuzei',
+  '守口市': 'area-moriguchi-souzokuzei',
+  '寝屋川市': 'area-neyagawa-souzokuzei',
+  '西宮市': 'area-nishinomiya-souzokuzei',
+  '摂津市': 'area-settsu-souzokuzei',
+  '四條畷市': 'area-shijonawate-souzokuzei',
+  '吹田市': 'area-suita-souzokuzei',
+  '宝塚市': 'area-takarazuka-souzokuzei',
+  '高槻市': 'area-takatsuki-souzokuzei',
+}
 
 export const faqs = [
   {

@@ -46,6 +46,8 @@ marked.use({
   },
 })
 
+const NOTE = '※この記事は一般的な情報提供を目的としたもので、個別の事案に対する税務判断ではありません。実際の取り扱いは財産の内容や分割の仕方によって変わります。'
+
 export function loadArticles(dir) {
   const files = readdirSync(dir).filter((f) => extname(f) === '.md' && !f.startsWith('_'))
   const articles = files.map((file) => {
@@ -54,7 +56,8 @@ export function loadArticles(dir) {
     const { meta, body } = parseFrontmatter(readFileSync(resolve(dir, file), 'utf-8'))
     if (!meta.title || !meta.date) throw new Error(`記事 ${file} に title / date がありません`)
     headingNo = 0
-    const html = marked.parse(body)
+    // 末尾の免責はここで自動付与する（記事ファイルには書かない）
+    const html = marked.parse(body) + `<p class="prose__note">${NOTE}</p>\n`
     const text = body.replace(/[#>*`\-|[\]()]/g, '')
     const headings = [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((h) => ({ id: h[1], text: h[2].replace(/<[^>]+>/g, '') }))
     return {
