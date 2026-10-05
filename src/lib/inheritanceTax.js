@@ -1,104 +1,173 @@
-// 相続税の簡易シミュレーション（法定相続分どおりに按分した仮の取得金額に速算表を適用する方式）
+// 相続税の簡易シミュレーション
+//
+// 計算の手順（相続税法・相続税法基本通達の計算方法どおり）
+//   1. 各人の課税価格（遺産総額×実際の取得割合。千円未満切り捨て）と、その合計＝課税価格の合計額
+//   2. 課税遺産総額 ＝ 課税価格の合計額 − 基礎控除（3,000万円＋600万円×法定相続人の数）
+//   3. 課税遺産総額を法定相続分どおりに分けたと仮定した各人の取得金額（千円未満切り捨て）に速算表を適用
+//   4. 3を合計して「相続税の総額」（百円未満切り捨て）
+//   5. 相続税の総額 × 各人の課税価格 ÷ 課税価格の合計額 ＝ 各人の算出税額（円未満切り捨て）
+//   6. 兄弟姉妹（代襲相続人の甥・姪を含む）は算出税額に2割加算
+//   7. 配偶者の税額軽減：相続税の総額 × min(配偶者の課税価格, max(課税価格の合計×配偶者の法定相続分, 1億6,000万円)) ÷ 課税価格の合計
+//      （配偶者の算出税額が上限）。配偶者の取得が法定相続分以下、または1億6,000万円以下のときは軽減額＝算出税額（納付0円）。
+//      この判定は千円単位に丸める前の取得割合で行う（各人の課税価格の千円未満切り捨てで生じる差のために、
+//      法定相続分どおり取得した配偶者に数百円の納付が残らないようにするため）。条文を切り捨て後の金額に文字どおり
+//      当てた計算と比べ、配偶者に有利な側に数百円〜数千円ずれることがある（簡易試算として、法定相続分以下なら0円という結論を優先）
+//   8. 各人の納付税額は百円未満切り捨て
+//
+// 相続人の順位（民法887条・889条・890条）
+//   配偶者は常に相続人。ほかは 第1順位：子（亡くなった子の代わりの孫を含む）→ 第2順位：父母 → 第3順位：兄弟姉妹（甥・姪を含む）
+//   先の順位の人が1人でもいれば、後の順位の人は相続人にならない。この関数は入力の人数からこの順位で自動的に判定する
+//
+// 簡易計算のため、次は考慮しない（画面の注記に記載）
+//   小規模宅地等の特例・生命保険金等の非課税枠・債務控除・生前贈与加算・未成年者控除・障害者控除・相次相続控除、
+//   代襲相続や半血兄弟姉妹で相続分が異なる場合（同順位の相続人は等しく取得する前提）、養子の数の制限、祖父母が相続人になる場合
 //
 // 入力
-//   totalManEn : 遺産総額（万円・基礎控除前の課税価格合計）
-//   hasSpouse  : 配偶者の有無
-//   heirType   : 配偶者以外の法定相続人の種類 'child' | 'parent' | 'sibling' | 'none'
-//   heirCount  : 配偶者以外の法定相続人の人数（heirType が 'none' のときは 0 扱い）
-//   spouseShare: 配偶者の実際の取得割合 'legal'（法定相続分どおり）| 0〜100 の数値（%）
+//   totalManEn  : 遺産総額（万円・基礎控除前の課税価格の合計）。数値でない・負は0、上限1,000万万円（1,000億円）
+//   hasSpouse   : 配偶者の有無
+//   children    : 子の人数（亡くなった子の代わりの孫を含む。上限20）
+//   parents     : 父母の人数（0〜2）。children が 1 以上なら無視
+//   siblings    : 兄弟姉妹の人数（甥・姪を含む。上限20）。children か parents が 1 以上なら無視
+//   spouseShare : 配偶者の実際の取得割合。'legal'（法定相続分どおり）または 0〜100（%）。数値でなければ 'legal' 扱い。
+//                 配偶者がいない／配偶者だけが相続人の場合は無視（それぞれ 0%／100%）
 //
-// 出力（すべて円。表示側で万円に丸める）
-//   heirs, basicDeduction, taxableEstate, spouseLegalShare,
-//   totalTax（相続税の総額・軽減前）, spouseTaxBefore, spouseTaxAfter, othersTax, totalAfterRelief,
-//   computable（法定相続人がいない等で計算できない場合 false）
+// 出力（金額はすべて円）
+//   computable, rank（'child' | 'parent' | 'sibling' | 'spouseOnly' | 'none'）, otherCount, heirs,
+//   total（課税価格の合計）, basicDeduction, taxableEstate, spouseLegalShare, spouseActualShare,
+//   totalTax（相続税の総額）, spouse { amount, calc, relief, pay }, other { amountEach, calcEach, surchargeEach, payEach, count },
+//   totalPay（納付税額の合計）, surcharge（2割加算の有無）
 
+// 相続税の速算表（税率は%の整数で持ち、整数で計算する）
 export const TAX_BRACKETS = [
-  { max: 10_000_000, rate: 0.10, deduction: 0 },
-  { max: 30_000_000, rate: 0.15, deduction: 500_000 },
-  { max: 50_000_000, rate: 0.20, deduction: 2_000_000 },
-  { max: 100_000_000, rate: 0.30, deduction: 7_000_000 },
-  { max: 200_000_000, rate: 0.40, deduction: 17_000_000 },
-  { max: 300_000_000, rate: 0.45, deduction: 27_000_000 },
-  { max: 600_000_000, rate: 0.50, deduction: 42_000_000 },
-  { max: Infinity, rate: 0.55, deduction: 72_000_000 },
+  { max: 10_000_000, pct: 10, deduction: 0 },
+  { max: 30_000_000, pct: 15, deduction: 500_000 },
+  { max: 50_000_000, pct: 20, deduction: 2_000_000 },
+  { max: 100_000_000, pct: 30, deduction: 7_000_000 },
+  { max: 200_000_000, pct: 40, deduction: 17_000_000 },
+  { max: 300_000_000, pct: 45, deduction: 27_000_000 },
+  { max: 600_000_000, pct: 50, deduction: 42_000_000 },
+  { max: Infinity, pct: 55, deduction: 72_000_000 },
 ]
 
-const SPOUSE_RELIEF_FLOOR = 160_000_000 // 配偶者の税額軽減：1億6,000万円まで非課税
+export const SPOUSE_RELIEF_FLOOR = 160_000_000 // 配偶者の税額軽減：1億6,000万円
 
-// 速算表による税額（取得金額は千円未満切り捨て、税額は百円未満切り捨て）
-export function taxForAmount(amount) {
-  const base = Math.floor(amount / 1000) * 1000
+const floorTo = (yen, unit) => Math.floor(yen / unit) * unit
+const toCount = (v, max) => { const n = Math.floor(Number(v)); return Number.isFinite(n) ? Math.min(max, Math.max(0, n)) : 0 }
+// 割合は分数 { n, d } で持ち、金額 × n ÷ d を整数で計算する（2/3 などを小数で掛けると千円単位の切り捨てで誤差が出るため）
+const mulFrac = (yen, f) => (f.d === 0 ? 0 : Number((BigInt(Math.floor(yen)) * BigInt(f.n)) / BigInt(f.d)))
+const mulFracCeil = (yen, f) => { const a = BigInt(Math.floor(yen)) * BigInt(f.n); const d = BigInt(f.d); return Number((a + d - 1n) / d) }
+const ZERO = { n: 0, d: 1 }
+const ONE = { n: 1, d: 1 }
+
+/** 法定相続分に応ずる取得金額（千円未満切り捨て後）に速算表を当てた税額（端数処理前） */
+export function taxOnShare(amount) {
+  const base = floorTo(amount, 1000)
   if (base <= 0) return 0
   const b = TAX_BRACKETS.find((x) => base <= x.max)
-  return Math.floor((base * b.rate - b.deduction) / 100) * 100
+  return (base / 100) * b.pct - b.deduction // base は千円単位なので base/100 は整数
 }
 
-// 配偶者の法定相続分
-export function spouseLegalShareOf(heirType, otherCount) {
-  if (otherCount <= 0) return 1
-  if (heirType === 'child') return 1 / 2
-  if (heirType === 'parent') return 2 / 3
-  if (heirType === 'sibling') return 3 / 4
-  return 1
+/** 相続人の順位と配偶者以外の人数を決める */
+export function resolveHeirs({ hasSpouse, children, parents, siblings }) {
+  const c = toCount(children, 20)
+  const p = toCount(parents, 2)
+  const s = toCount(siblings, 20)
+  if (c > 0) return { rank: 'child', otherCount: c }
+  if (p > 0) return { rank: 'parent', otherCount: p }
+  if (s > 0) return { rank: 'sibling', otherCount: s }
+  return { rank: hasSpouse ? 'spouseOnly' : 'none', otherCount: 0 }
 }
 
-export function calcInheritanceTax({ totalManEn, hasSpouse, heirType, heirCount, spouseShare }) {
-  const total = Math.max(0, Math.floor(Number(totalManEn) || 0)) * 10_000
-  const otherCount = heirType === 'none' ? 0 : Math.max(0, Math.floor(Number(heirCount) || 0))
-  const heirs = (hasSpouse ? 1 : 0) + otherCount
+/** 配偶者の法定相続分（分数） */
+export function spouseLegalFracOf(rank) {
+  if (rank === 'child') return { n: 1, d: 2 }
+  if (rank === 'parent') return { n: 2, d: 3 }
+  if (rank === 'sibling') return { n: 3, d: 4 }
+  if (rank === 'spouseOnly') return ONE
+  return ZERO
+}
 
+export const MAX_MAN_EN = 10_000_000 // 入力の上限：1,000億円（これを超える値はこの額として扱う）
+
+export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, siblings, spouseShare }) {
+  const spouse = Boolean(hasSpouse)
+  const { rank, otherCount } = resolveHeirs({ hasSpouse: spouse, children, parents, siblings })
+  const heirs = (spouse ? 1 : 0) + otherCount
+  const manEn = Number(totalManEn)
+  const estate = manEn > 0 ? Math.round(Math.min(manEn, MAX_MAN_EN) * 10_000) : 0 // 遺産総額（円）。NaN・負は0、Infinity を含め上限を超える値は上限
+  const legalFrac = spouse ? spouseLegalFracOf(rank) : ZERO
+
+  // 配偶者の実際の取得割合：配偶者がいなければ0、配偶者だけが相続人なら必ず100%
+  let actualFrac = ZERO
+  if (spouse && otherCount === 0) actualFrac = ONE
+  else if (spouse) {
+    const pctNum = spouseShare === 'legal' || spouseShare === '' || spouseShare === null || spouseShare === undefined ? NaN : Number(spouseShare)
+    actualFrac = Number.isFinite(pctNum) ? { n: Math.min(100, Math.max(0, Math.round(pctNum))), d: 100 } : legalFrac
+  }
+
+  // 1. 各人の課税価格（千円未満切り捨て）と課税価格の合計額
+  const spouseAmount = spouse ? floorTo(mulFrac(estate, actualFrac), 1000) : 0
+  const amountEach = otherCount > 0 ? floorTo(mulFrac(estate, { n: actualFrac.d - actualFrac.n, d: actualFrac.d * otherCount }), 1000) : 0
+  const total = spouseAmount + amountEach * otherCount
+
+  const basicDeduction = heirs > 0 ? 30_000_000 + 6_000_000 * heirs : 0
   const result = {
     computable: heirs > 0,
-    heirs,
+    rank,
     otherCount,
-    basicDeduction: 30_000_000 + 6_000_000 * heirs,
+    heirs,
+    total,
+    basicDeduction,
     taxableEstate: 0,
-    spouseLegalShare: hasSpouse ? spouseLegalShareOf(heirType, otherCount) : 0,
-    spouseActualShare: 0,
+    spouseLegalShare: legalFrac.n / legalFrac.d,
+    spouseActualShare: actualFrac.n / actualFrac.d,
     totalTax: 0,
-    spouseTaxBefore: 0,
-    spouseTaxAfter: 0,
-    othersTax: 0,
-    totalAfterRelief: 0,
+    spouse: { amount: spouseAmount, calc: 0, relief: 0, pay: 0 },
+    other: { count: otherCount, amountEach, calcEach: 0, surchargeEach: 0, payEach: 0 },
+    surcharge: rank === 'sibling',
+    totalPay: 0,
   }
   if (!result.computable) return result
 
-  result.taxableEstate = Math.max(0, total - result.basicDeduction)
+  // 2. 課税遺産総額
+  result.taxableEstate = Math.max(0, total - basicDeduction)
   if (result.taxableEstate === 0) return result
 
-  // 相続税の総額：法定相続分で按分した仮の取得金額それぞれに速算表を適用して合算
-  let totalTax = 0
-  if (hasSpouse) totalTax += taxForAmount(result.taxableEstate * result.spouseLegalShare)
+  // 3〜4. 相続税の総額（法定相続分で分けたと仮定して計算）
+  let sum = 0
+  if (spouse) sum += taxOnShare(mulFrac(result.taxableEstate, legalFrac))
   if (otherCount > 0) {
-    const perOther = (result.taxableEstate * (1 - result.spouseLegalShare)) / otherCount
-    totalTax += taxForAmount(perOther) * otherCount
+    const perOther = mulFrac(result.taxableEstate, { n: legalFrac.d - legalFrac.n, d: legalFrac.d * otherCount })
+    sum += taxOnShare(perOther) * otherCount
   }
+  const totalTax = floorTo(sum, 100)
   result.totalTax = totalTax
 
-  // 実際の取得割合で各人に按分
-  const spouseActualShare = !hasSpouse ? 0
-    : spouseShare === 'legal' ? result.spouseLegalShare
-    : Math.min(1, Math.max(0, (Number(spouseShare) || 0) / 100))
-  result.spouseActualShare = spouseActualShare
+  // 5. 各人の算出税額 ＝ 相続税の総額 × 各人の課税価格 ÷ 課税価格の合計額
+  const share = (amount) => mulFrac(totalTax, { n: amount, d: total })
 
-  let spouseTax = Math.floor(totalTax * spouseActualShare)
-  let othersTax = totalTax - spouseTax
-
-  // 兄弟姉妹は2割加算
-  if (heirType === 'sibling' && otherCount > 0) othersTax = Math.floor(othersTax * 1.2)
-
-  result.spouseTaxBefore = spouseTax
-  result.othersTax = othersTax
-
-  // 配偶者の税額軽減：実際の取得額のうち「1億6,000万円」と「法定相続分相当額」の大きい方までは非課税
-  if (hasSpouse && spouseTax > 0) {
-    const spouseActualAmount = total * spouseActualShare
-    const reliefLimit = Math.max(SPOUSE_RELIEF_FLOOR, total * result.spouseLegalShare)
-    const reliefBase = Math.min(spouseActualAmount, reliefLimit)
-    const relief = Math.floor((totalTax * reliefBase) / total)
-    spouseTax = Math.max(0, spouseTax - relief)
+  // 6〜8. 配偶者（税額軽減）
+  if (spouse) {
+    const calc = share(spouseAmount)
+    const withinLegal = actualFrac.n * legalFrac.d <= legalFrac.n * actualFrac.d // 実際の取得割合 ≦ 法定相続分
+    const withinFloor = mulFracCeil(estate, actualFrac) <= SPOUSE_RELIEF_FLOOR // 取得額 ≦ 1億6,000万円
+    let relief = calc
+    if (!withinLegal && !withinFloor) {
+      // 法定相続分相当額（課税価格の合計×法定相続分）と1億6,000万円の多い方までが軽減の対象
+      const byLegal = share(mulFrac(total, legalFrac)) // 法定相続分相当額（課税価格の合計×法定相続分。円未満切り捨て）
+      const byFloor = share(SPOUSE_RELIEF_FLOOR)
+      relief = Math.min(calc, Math.max(byLegal, byFloor))
+    }
+    result.spouse = { amount: spouseAmount, calc, relief, pay: floorTo(calc - relief, 100) }
   }
-  result.spouseTaxAfter = spouseTax
-  result.totalAfterRelief = spouseTax + othersTax
+
+  // 6〜8. 配偶者以外（同順位の相続人は等しく取得する前提。兄弟姉妹は2割加算）
+  if (otherCount > 0) {
+    const calcEach = share(amountEach)
+    const surchargeEach = result.surcharge ? Math.floor(calcEach / 5) : 0 // 2割加算（整数で計算）
+    result.other = { count: otherCount, amountEach, calcEach, surchargeEach, payEach: floorTo(calcEach + surchargeEach, 100) }
+  }
+
+  result.totalPay = result.spouse.pay + result.other.payEach * otherCount
   return result
 }
