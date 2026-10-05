@@ -526,7 +526,7 @@ main, .footer { position: relative; z-index: 1; }
 .timeline__output span { font-family: var(--font-en); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
 
 /* =========================================================
-   Report（無料相談でお渡しする報告書）
+   Report（ご希望の方にお渡しする詳細シミュレーション報告書）
    ========================================================= */
 .report { padding-top: 0; }
 .report-card {

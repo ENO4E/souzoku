@@ -30,7 +30,7 @@ export default function Footer({ latest = [] }) {
             {serviceNav.map((item) => (
               <li key={item.href}><a href={item.href}>{item.label}</a></li>
             ))}
-            <li><a href="/simulation/#report">お渡しする報告書</a></li>
+            <li><a href="/simulation/#report">詳細シミュレーション報告書</a></li>
             <li><a href="/contact/#office">事務所概要</a></li>
             <li><a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 ↗</a></li>
             <li><a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer">近畿税理士会 ↗</a></li>
