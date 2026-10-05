@@ -131,8 +131,9 @@ export const reportPoints = [
 
 // 代表挨拶：氏名・肩書きが決まったら name を入れる（空の間は肩書きだけを表示）
 export const representative = {
-  name: '',
-  title: '代表社員 税理士',
+  name: '榎嶋 隆司',
+  title: '代表税理士',
+  // 写真は public/assets/ceo1.jpg（ビルドで assets/ceo1.jpg に出力。サーバーの assets/ 直下に同名で置いても可）
   photo: '/assets/ceo1.jpg',
 }
 

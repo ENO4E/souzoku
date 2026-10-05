@@ -2,7 +2,7 @@
  * ページごとの SEO 情報（title / description / canonical / OGP / 構造化データ）。
  * scripts/prerender.mjs がビルド時に各ページの <head> に書き込む。文言は site.js の内容と揃える
  */
-import { baseFees, faqs, prefectures, site } from './site.js'
+import { baseFees, faqs, prefectures, representative, site } from './site.js'
 
 export const ORIGIN = 'https://kakuyasu-souzokuzei.com'
 export const OG_IMAGE = `${ORIGIN}/assets/ogp-image.jpg`
@@ -264,6 +264,7 @@ export function articleLd(a) {
       keywords: a.tags.join(', '),
       image: OG_IMAGE,
       author: { '@type': 'Organization', name: site.company },
+      reviewedBy: { '@type': 'Person', name: representative.name, jobTitle: representative.title, worksFor: { '@id': `${ORIGIN}/#organization` } },
       publisher: { '@id': `${ORIGIN}/#organization` },
       isPartOf: { '@id': `${ORIGIN}/#website` },
     },
