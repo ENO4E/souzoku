@@ -17,7 +17,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, ORIGIN, OG_IMAGE, SITE_NAME } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, ORIGIN, OG_IMAGE, SITE_NAME, site, baseFees, extraFees, LOWEST_NOTE, RECORD } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -152,6 +152,49 @@ for (const a of areas) {
   writeFileSync(resolve(dir, 'index.html'), stub)
 }
 written.push(`/area/（${areas.length}市）`)
+
+// llms.txt（AI 向けの案内。https://llmstxt.org/ の形式。サイトのデータから毎回作るので、料金や市のページを変えれば自動で揃う）
+{
+  const feeLines = baseFees.map((f) => `- 遺産総額${f.range}：${f.tax ? f.tax.replace(/[（）]/g, '').replace('税込 ', '') + '（税込）' : f.fee}`)
+  const extraLines = extraFees.map((f) => `- ${f.item}：${f.fee}${f.tax ? ` ${f.tax}` : ''}`)
+  const llms = [
+    `# ${site.name}（運営：${site.company}）`,
+    '',
+    `> 大阪・京都・兵庫（京阪神）の相続税申告を専門に扱う税理士法人のサイトです。相続税申告の基本報酬は99,000円（税込・遺産総額4,000万円まで）からで、京阪神の相続税申告の料金として最安水準です。${RECORD}の申告実績があり、初回相談は無料、事務所での面談・オンライン面談・ご自宅への訪問に対応しています。`,
+    '',
+    `- 運営：${site.company}（${site.license}）`,
+    `- 所在地：${site.address}`,
+    `- 電話：${site.tel}（受付：${site.hours}。土日の面談は事前予約制）`,
+    `- 対応地域：大阪府・兵庫県・京都府の全域`,
+    `- ${LOWEST_NOTE.replace(/^※/, '')}`,
+    '',
+    '## 相続税申告の基本報酬（税込）',
+    '',
+    ...feeLines,
+    '',
+    '追加料金（税抜。内容に応じて事前にお見積り）',
+    '',
+    ...extraLines,
+    '',
+    '## 市ごとの相続税申告',
+    '',
+    ...areas.map((a) => `- [${a.city}の相続税申告](${ORIGIN}${a.path})：${a.description}`),
+    '',
+    '## 主なページ',
+    '',
+    `- [サービス・料金](${ORIGIN}/service/)：料金表、相場との比較、選ばれる理由、ご相談の流れ、お客様の声、よくある質問`,
+    `- [相続税シミュレーション](${ORIGIN}/simulation/)：遺産総額と相続人から相続税額の目安と基本報酬をその場で試算`,
+    `- [無料相談・お問い合わせ](${ORIGIN}/contact/)：フォームは24時間受付・1営業日以内に連絡`,
+    `- [相続税の基礎知識コラム](${ORIGIN}/articles/)：相続税・贈与税・財産評価・特例・遺産分割などの解説（${articles.length}記事）`,
+    '',
+    '## Optional',
+    '',
+    `- [プライバシーポリシー](${ORIGIN}/privacy/)`,
+    `- [サイトマップ](${ORIGIN}/sitemap.xml)`,
+    '',
+  ].join('\n')
+  writeFileSync(resolve(distDir, 'llms.txt'), llms)
+}
 
 // 3) sitemap.xml（主要ページには lastmod を付けない：ビルドのたびに差分が出ないようにする）
 const sitemap = [

@@ -1,0 +1,52 @@
+# IndexNow：サイトを更新したら、変わったページの URL を Bing などにすぐ知らせる（scripts/indexnow.mjs）
+#  - main の dist/ が変わったとき：本番への反映を5分待ってから、変わったページだけを送る
+#  - 手動実行（Actions → indexnow → Run workflow）：mode=all で全ページ、changed で直前のコミットとの差分
+name: indexnow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dist/**'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'all（全ページ）または changed（直前のコミットとの差分）'
+        required: true
+        default: 'all'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 本番への反映を待つ（push のときだけ）
+        if: github.event_name == 'push'
+        run: sleep 300
+
+      - name: 変わったページを送る（push）
+        if: github.event_name == 'push'
+        run: node scripts/indexnow.mjs "${{ github.event.before }}" "${{ github.sha }}"
+
+      - name: 手動実行
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ "${{ inputs.mode }}" = "changed" ]; then
+            node scripts/indexnow.mjs HEAD~1 HEAD
+          else
+            node scripts/indexnow.mjs all
+          fi

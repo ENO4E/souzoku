@@ -275,7 +275,7 @@ export function articleLd(a) {
 export function areaPage(area) {
   return {
     path: area.path,
-    title: `${area.city}の相続税申告｜基本報酬99,000円〜（税込）｜${site.name}`,
+    title: `${area.city}の相続税申告なら最安水準｜基本報酬99,000円〜（税込）｜${site.name}`,
     description: area.description,
     ogDescription: area.description,
   }

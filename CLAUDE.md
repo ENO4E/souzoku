@@ -91,6 +91,8 @@ sitemap.xml
 robots.txt
 index.html
 googlea38af64e34f66dea.html … Google Search Console の所有権確認ファイル（public/ に置く。消すと確認が外れる）
+b6672666551395080782031e8d4bc054.txt … IndexNow の鍵ファイル（public/ に置く。中身は鍵。scripts/indexnow.mjs が使う）
+llms.txt         … AI 向けの案内（ビルドで site.js・areas から自動生成。手で編集しない）
 service/ simulation/ contact/ … 各ページの index.html（ビルドで生成。実体は同じアプリで、ページごとに SEO タグとプリレンダリング内容が異なる）
 articles/        … コラム一覧（articles/index.html）と記事（articles/<slug>/index.html）。ビルドで生成
 area/            … 市ごとの相続税申告のページ（area/<slug>/index.html）。ビルドで生成
@@ -121,6 +123,10 @@ assets/
   - 構造化データは Service（areaServed＝その市、offers＝基本報酬）・FAQPage・BreadcrumbList・WebPage。料金は `baseFees`、実績は「累計200件超」（`areaCommon.js` の `RECORD`）。数字を作らない（市ごとの件数は事実が分かったときだけ書く）
   - 市名だけ差し替えた薄いページにしない（ドアウェイ扱いになる）。各市の本文はその市固有の内容にする
   - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」とフッターの市名から各ページへリンクする（`site.js` の `areaPages`）
+- **AI 検索・Bing 向け**
+  - `llms.txt`：事務所の概要・料金・追加料金・市ごとのページ・主要ページを `scripts/prerender.mjs` がビルドのたびに生成する
+  - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に5分待ってから変わったページを送る（`scripts/indexnow.mjs`）。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
+  - 「最安水準」は、運営者が他事務所の公表料金を調べた結果にもとづく表現（根拠の注記は `areaCommon.js` の `LOWEST_NOTE`）。根拠資料は運営者が保管する
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
   - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
   - 記事ページは SPA の幕アニメーションを使わない通常のページ。構造化データ（BlogPosting・BreadcrumbList）と sitemap（lastmod＝date）は自動生成

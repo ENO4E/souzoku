@@ -1,5 +1,5 @@
 import { site } from '../content/site.js'
-import { RECORD, areaFaqs, areaLead, feeRows } from '../content/areaCommon.js'
+import { LOWEST_NOTE, RECORD, areaFaqs, areaLead, feeRows } from '../content/areaCommon.js'
 import { Arrow } from '../components/SectionHead.jsx'
 
 /** 市ごとの相続税申告のページ（/area/<slug>/）。記事ページと同じく通常のページ（SPA の切り替えはしない）
@@ -9,7 +9,7 @@ export default function AreaView({ area, areas = [] }) {
   const faqs = areaFaqs(area)
   const facts = [
     ['対応地域', `${area.city}全域（${area.pref}）`],
-    ['基本報酬', '99,000円（税込）〜 ※遺産総額4,000万円まで'],
+    ['基本報酬', '99,000円（税込）〜 最安水準 ※遺産総額4,000万円まで'],
     ['申告実績', `${RECORD}（相続税申告に特化）`],
     ['ご相談方法', '事務所での面談・オンライン面談・ご自宅への訪問'],
     ['初回相談', '無料（ご契約まで費用はかかりません）'],
@@ -33,7 +33,7 @@ export default function AreaView({ area, areas = [] }) {
           </p>
           <h1 className="page-head__title page-head__title--area" data-reveal style={{ '--d': '90ms' }}>
             {area.city}の相続税申告<br />
-            <span className="gradient-text">基本報酬99,000円〜</span>
+            <span className="gradient-text">最安水準・基本報酬99,000円〜</span>
           </h1>
           <p className="page-head__lead area-lead" data-reveal style={{ '--d': '180ms' }}>{areaLead(area)}</p>
           <div className="area-actions" data-reveal style={{ '--d': '240ms' }}>
@@ -60,6 +60,7 @@ export default function AreaView({ area, areas = [] }) {
             <p className="area-note">
               土地評価・非上場株式の評価などは追加料金がかかる場合があります。必ず事前にお見積りし、ご了承いただいてから進めます。<a href="/service/#fee">料金の詳細はこちら</a>。相続税額の目安は<a href="/simulation/">相続税シミュレーション</a>でその場で確認できます。
             </p>
+            <p className="area-note area-note--small">{LOWEST_NOTE}</p>
 
             {area.topic && <p className="area-topic"><span>{area.city}の相続の特徴</span>{area.topic}</p>}
             <article className="prose area-prose" dangerouslySetInnerHTML={{ __html: area.html }} />
