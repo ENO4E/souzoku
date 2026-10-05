@@ -93,6 +93,7 @@ index.html
 googlea38af64e34f66dea.html … Google Search Console の所有権確認ファイル（public/ に置く。消すと確認が外れる）
 service/ simulation/ contact/ … 各ページの index.html（ビルドで生成。実体は同じアプリで、ページごとに SEO タグとプリレンダリング内容が異なる）
 articles/        … コラム一覧（articles/index.html）と記事（articles/<slug>/index.html）。ビルドで生成
+area/            … 市ごとの相続税申告のページ（area/<slug>/index.html）。ビルドで生成
 error/           … エラーページ（403.html・404.html・500.html）。このリポジトリの public/error/ で作成・管理する（.htaccess の ErrorDocument が参照）
 backend/         … サーバー側で管理（backend/v1.php、TaxPlan-org/php）。唯一このリポジトリが触らないディレクトリ
 assets/
@@ -115,6 +116,11 @@ assets/
   - 相続人は民法の順位どおりに聞く（配偶者 → 子 →（子がいなければ）父母 →（父母もいなければ）兄弟姉妹）。人数は別々の state で持ち、後順位の入力は計算で無視する。配偶者の取得割合は「配偶者あり かつ 他の相続人あり」のときだけ聞く
   - 計算は相続税法の手順どおり（各人の課税価格は千円未満切り捨て、総額は百円未満切り捨て、按分は各人の課税価格÷合計、兄弟姉妹は2割加算、配偶者の税額軽減）。割合は分数・金額は整数（BigInt）で計算し、浮動小数点の誤差を出さない
   - 変更したら、条文どおりに独立して書いた別実装（Python など）と全パターン（相続人の組み合わせ288通り×遺産総額）で突き合わせてから出す
+- **市ごとの相続税申告のページ**（`/area/<slug>/`。データは `content/areas/<slug>.md`、読み込みは `scripts/areas.mjs`、表示は `src/views/AreaView.jsx`、共通の文言は `src/content/areaCommon.js`）
+  - 検索エンジンと AI 検索（ChatGPT・Gemini・Perplexity など）に「どの地域で・何を・いくらで・どれだけの実績で」受ける事務所かを1ページで伝えるためのページ。見出しと title に市名と「基本報酬99,000円〜」、冒頭に引用されやすい要約文（`areaLead`）、概要・料金表・その市の財産の特徴・よくある質問（費用と訪問の2問は全市共通＋市ごと3問）・CTA を置く
+  - 構造化データは Service（areaServed＝その市、offers＝基本報酬）・FAQPage・BreadcrumbList・WebPage。料金は `baseFees`、実績は「累計200件超」（`areaCommon.js` の `RECORD`）。数字を作らない（市ごとの件数は事実が分かったときだけ書く）
+  - 市名だけ差し替えた薄いページにしない（ドアウェイ扱いになる）。各市の本文はその市固有の内容にする
+  - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」とフッターの市名から各ページへリンクする（`site.js` の `areaPages`）
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
   - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
   - 記事ページは SPA の幕アニメーションを使わない通常のページ。構造化データ（BlogPosting・BreadcrumbList）と sitemap（lastmod＝date）は自動生成

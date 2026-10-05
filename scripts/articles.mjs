@@ -13,7 +13,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { basename, extname, resolve } from 'node:path'
 import { marked } from 'marked'
 
-function parseFrontmatter(src) {
+export function parseFrontmatter(src) {
   const m = src.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!m) return { meta: {}, body: src }
   const meta = {}
@@ -45,6 +45,12 @@ marked.use({
     },
   },
 })
+
+/** Markdown を HTML にする（見出しに h-1, h-2 … の id を付ける。ページごとに番号を振り直す） */
+export function renderMarkdown(body) {
+  headingNo = 0
+  return marked.parse(body)
+}
 
 const NOTE = '※この記事は一般的な情報提供を目的としたもので、個別の事案に対する税務判断ではありません。実際の取り扱いは財産の内容や分割の仕方によって変わります。'
 

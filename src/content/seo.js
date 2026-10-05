@@ -3,6 +3,7 @@
  * scripts/prerender.mjs がビルド時に各ページの <head> に書き込む。文言は site.js の内容と揃える
  */
 import { baseFees, faqs, prefectures, site } from './site.js'
+import { areaFaqs, areaLead } from './areaCommon.js'
 
 export const ORIGIN = 'https://kakuyasu-souzokuzei.com'
 export const OG_IMAGE = `${ORIGIN}/assets/ogp-image.jpg`
@@ -266,6 +267,61 @@ export function articleLd(a) {
       author: { '@type': 'Organization', name: site.company },
       publisher: { '@id': `${ORIGIN}/#organization` },
       isPartOf: { '@id': `${ORIGIN}/#website` },
+    },
+  ]
+}
+
+/* ---------- 市ごとの相続税申告ページ（/area/<slug>/） ---------- */
+export function areaPage(area) {
+  return {
+    path: area.path,
+    title: `${area.city}の相続税申告｜基本報酬99,000円〜（税込）｜${site.name}`,
+    description: area.description,
+    ogDescription: area.description,
+  }
+}
+
+export function areaLd(area) {
+  const url = `${ORIGIN}${area.path}`
+  const meta = areaPage(area)
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: '対応エリア', item: `${ORIGIN}/service/#area` },
+        { '@type': 'ListItem', position: 3, name: `${area.city}の相続税申告`, item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: `${area.city}の相続税申告`,
+      serviceType: '相続税申告',
+      description: areaLead(area),
+      url,
+      provider: { '@id': `${ORIGIN}/#organization` },
+      areaServed: { '@type': 'City', name: area.city, containedInPlace: { '@type': 'State', name: area.pref } },
+      offers: organizationLd.hasOfferCatalog.itemListElement,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: areaFaqs(area).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: meta.title,
+      description: meta.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      about: { '@id': `${url}#service` },
     },
   ]
 }

@@ -164,24 +164,24 @@ export const prefectures = [
   { name: '京都府', en: 'Kyoto', note: '府内全域に対応', focus: [] },
 ]
 
-// 市ごとの相続税コラム（/articles/<slug>/）。対応エリアの市名からリンクする
-export const areaArticles = {
-  '尼崎市': 'area-amagasaki-souzokuzei',
-  '芦屋市': 'area-ashiya-souzokuzei',
-  '東大阪市': 'area-higashiosaka-souzokuzei',
-  '枚方市': 'area-hirakata-souzokuzei',
-  '茨木市': 'area-ibaraki-souzokuzei',
-  '門真市': 'area-kadoma-souzokuzei',
-  '神戸市': 'area-kobe-souzokuzei',
-  '箕面市': 'area-minoh-souzokuzei',
-  '守口市': 'area-moriguchi-souzokuzei',
-  '寝屋川市': 'area-neyagawa-souzokuzei',
-  '西宮市': 'area-nishinomiya-souzokuzei',
-  '摂津市': 'area-settsu-souzokuzei',
-  '四條畷市': 'area-shijonawate-souzokuzei',
-  '吹田市': 'area-suita-souzokuzei',
-  '宝塚市': 'area-takarazuka-souzokuzei',
-  '高槻市': 'area-takatsuki-souzokuzei',
+// 市ごとの相続税申告のページ（/area/<slug>/。content/areas/<slug>.md）。対応エリア・フッターの市名からリンクする
+export const areaPages = {
+  '尼崎市': 'amagasaki',
+  '芦屋市': 'ashiya',
+  '東大阪市': 'higashiosaka',
+  '枚方市': 'hirakata',
+  '茨木市': 'ibaraki',
+  '門真市': 'kadoma',
+  '神戸市': 'kobe',
+  '箕面市': 'minoh',
+  '守口市': 'moriguchi',
+  '寝屋川市': 'neyagawa',
+  '西宮市': 'nishinomiya',
+  '摂津市': 'settsu',
+  '四條畷市': 'shijonawate',
+  '吹田市': 'suita',
+  '宝塚市': 'takarazuka',
+  '高槻市': 'takatsuki',
 }
 
 export const faqs = [

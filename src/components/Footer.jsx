@@ -1,4 +1,4 @@
-import { nav, serviceNav, site } from '../content/site.js'
+import { areaPages, nav, prefectures, serviceNav, site } from '../content/site.js'
 import { Arrow } from './SectionHead.jsx'
 
 /** latest … 最新のコラム（ビルド時に全ページへ埋め込む数件だけ。読み込みを重くしない） */
@@ -49,6 +49,14 @@ export default function Footer({ latest = [] }) {
           <a href="/articles/" className="footer__articles-more">コラム一覧へ <Arrow /></a>
         </div>
       </div>
+      <nav className="container footer__areas" aria-label="市ごとの相続税申告">
+        <p className="footer__areas-label">市ごとの相続税申告</p>
+        <ul>
+          {prefectures.flatMap((p) => p.focus).filter((c) => areaPages[c]).map((c) => (
+            <li key={c}><a href={`/area/${areaPages[c]}/`}>{c}</a></li>
+          ))}
+        </ul>
+      </nav>
       <p className="footer__mark" aria-hidden="true">Inheritance Tax</p>
       <div className="container footer__analytics">
         <p>
