@@ -125,7 +125,7 @@ assets/
   - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」とフッターの市名から各ページへリンクする（`site.js` の `areaPages`）
 - **AI 検索・Bing 向け**
   - `llms.txt`：事務所の概要・料金・追加料金・市ごとのページ・主要ページを `scripts/prerender.mjs` がビルドのたびに生成する
-  - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に5分待ってから変わったページを送る（`scripts/indexnow.mjs`）。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
+  - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に、本番に実際に反映されたのを確かめてから（鍵ファイルと変わったページを5分ごとに確認・最大約5時間半。手動アップロードにも対応）変わったページを送る（`scripts/indexnow.mjs`）。送信の仕組みを変えたコミットでは全ページを送る。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
   - 「最安水準」は、運営者が他事務所の公表料金を調べた結果にもとづく表現（根拠の注記は `areaCommon.js` の `LOWEST_NOTE`）。根拠資料は運営者が保管する
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
   - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
