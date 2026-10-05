@@ -90,6 +90,7 @@ dev-claude → main にマージ（dist/ を含む）
 sitemap.xml
 robots.txt
 index.html
+googlea38af64e34f66dea.html … Google Search Console の所有権確認ファイル（public/ に置く。消すと確認が外れる）
 service/ simulation/ contact/ … 各ページの index.html（ビルドで生成。実体は同じアプリで、ページごとに SEO タグとプリレンダリング内容が異なる）
 articles/        … コラム一覧（articles/index.html）と記事（articles/<slug>/index.html）。ビルドで生成
 error/           … エラーページ（403.html・404.html・500.html）。このリポジトリの public/error/ で作成・管理する（.htaccess の ErrorDocument が参照）
