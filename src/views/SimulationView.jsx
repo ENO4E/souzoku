@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PageHead, NextNav } from './PageParts.jsx'
 import ReportSection from '../components/ReportSection.jsx'
 import { Arrow } from '../components/SectionHead.jsx'
-import { calcInheritanceTax } from '../lib/inheritanceTax.js'
+import { calcInheritanceTax, MAX_MAN_EN } from '../lib/inheritanceTax.js'
 
 // 金額の表示（万円・小数1桁まで）。num は数字だけ、man は「万円」まで付けた文字列（0より大きく1,000円未満は「0.1万円未満」）
 const num = (yen) => (Math.floor(yen / 1000) / 10).toLocaleString('ja-JP', { maximumFractionDigits: 1 })
@@ -90,6 +90,7 @@ export default function SimulationView() {
                   <input type="number" min="0" max="10000000" step="100" inputMode="numeric" aria-label="おおよその遺産総額（万円）" value={totalManEn} onChange={(e) => setTotalManEn(e.target.value)} />
                   <span>万円</span>
                 </div>
+                {Number(totalManEn) > MAX_MAN_EN && <p className="calc__limit">1,000億円を上限として計算しています。</p>}
                 <div className="chips chips--small">
                   {presets.map((v) => (
                     <label key={v} className="chip">
@@ -163,7 +164,7 @@ export default function SimulationView() {
                   <span className="calc__num">{next()}</span>
                   <div>
                     <b>配偶者が実際に取得する遺産の割合</b>
-                    <span>未定の場合は「法定相続分どおり」のままで構いません。配偶者は「配偶者の税額軽減」により、取得額が1億6,000万円または法定相続分のどちらか多い額までなら相続税がかかりません。ただし、相続税の申告と、申告期限までの遺産分割（または分割見込書の提出）が必要です。</span>
+                    <span>未定の場合は「法定相続分どおり」のままで構いません。配偶者は「配偶者の税額軽減」により、取得額が1億6,000万円または法定相続分のどちらか多い額までなら相続税がかかりません。ただし、相続税の申告が必要です。申告期限までに遺産分割ができないときは、いったん軽減なしで納付し、期限から3年以内に分割すれば還付を受けられます（申告時に分割見込書の提出が必要）。</span>
                   </div>
                 </div>
                 <div className="calc__control">
@@ -188,6 +189,9 @@ export default function SimulationView() {
                   <div><dt>課税遺産総額</dt><dd>{man(r.taxableEstate)}</dd></div>
                 </dl>
                 <p className="calc__heirs">相続人：{heirsText}</p>
+                {r.taxableEstate > 0 && r.total !== Math.round(Math.min(Number(totalManEn), MAX_MAN_EN) * 10_000) && (
+                  <p className="calc__heirs-note">※課税遺産総額は、各人の取得額を千円未満で切り捨てて合計した額から基礎控除を引いて計算するため、遺産総額から基礎控除を引いた額と数千円ずれることがあります。</p>
+                )}
                 <div className="calc__big">
                   <span className="calc__big-label">相続税額の目安（相続人全員の合計）</span>
                   <span className="calc__big-value"><b>{r.totalPay > 0 && r.totalPay < 1000 ? '0.1未満' : num(r.totalPay)}</b>万円</span>
@@ -203,7 +207,7 @@ export default function SimulationView() {
                           <li>
                             <span>配偶者（取得割合 {pct(r.spouseActualShare)}）</span>
                             <b>{man(r.spouse.pay)}</b>
-                            {r.spouse.relief > 0 && <small>税額軽減 −{man(r.spouse.relief)}（相続税の申告と、申告期限までの遺産分割が必要です）</small>}
+                            {r.spouse.relief > 0 && <small>税額軽減 −{man(r.spouse.relief)}（相続税の申告が必要。申告期限までに分割できないときは、いったん軽減なしで納付し、3年以内の分割で還付）</small>}
                           </li>
                         )}
                         {r.otherCount > 0 && (
@@ -228,7 +232,7 @@ export default function SimulationView() {
                 </a>
               </>
             )}
-            <p className="calc__note">※簡易シミュレーションです。小規模宅地等の特例・生命保険金の非課税枠・債務や葬式費用・生前贈与の加算・未成年者控除や障害者控除などは考慮していません。同じ順位の相続人は等しく取得する前提で、代襲相続や半血の兄弟姉妹で相続分が異なる場合、養子の人数の制限、孫を養子にしている場合の2割加算、祖父母が相続人になる場合も反映していません。配偶者の税額軽減は、相続税の申告と申告期限までの遺産分割が必要です。実際の税額は財産の評価や分け方によって変わります。</p>
+            <p className="calc__note">※簡易シミュレーションです。小規模宅地等の特例・生命保険金の非課税枠・債務や葬式費用・生前贈与の加算・未成年者控除や障害者控除などは考慮していません。同じ順位の相続人は等しく取得する前提で、代襲相続や半血の兄弟姉妹で相続分が異なる場合、養子の人数の制限、孫を養子にしている場合の2割加算、祖父母が相続人になる場合も反映していません。配偶者の税額軽減を受けるには相続税の申告が必要で、申告期限までに遺産分割ができないときは、いったん軽減なしで納付し、3年以内に分割すれば還付を受けられます。実際の税額は財産の評価や分け方によって変わります。</p>
           </aside>
         </div>
       </section>

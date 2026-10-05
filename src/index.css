@@ -1068,6 +1068,7 @@ html { color-scheme: dark; }
 .calc__big-value b { font-family: var(--font-en); font-size: clamp(40px, 4vw, 56px); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-right: 6px; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .calc__big-sub { display: block; margin-top: 8px; font-family: var(--font-jp); font-size: 12px; line-height: 1.7; color: var(--text-mute); }
 .calc__heirs { margin-top: 10px; font-family: var(--font-jp); font-size: 12.5px; color: var(--text-sub); }
+.calc__heirs-note, .calc__limit { margin-top: 6px; font-family: var(--font-jp); font-size: 11px; line-height: 1.7; color: var(--text-mute); }
 .calc__breakdown { display: grid; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
 .calc__breakdown li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: baseline; font-family: var(--font-jp); font-size: 13px; color: var(--text-sub); }
 .calc__breakdown b { font-family: var(--font-en), var(--font-jp); font-size: 16px; font-weight: 500; color: var(--text); text-align: right; }

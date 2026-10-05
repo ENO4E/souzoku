@@ -10,7 +10,8 @@
 //   7. 配偶者の税額軽減：相続税の総額 × min(配偶者の課税価格, max(課税価格の合計×配偶者の法定相続分, 1億6,000万円)) ÷ 課税価格の合計
 //      （配偶者の算出税額が上限）。配偶者の取得が法定相続分以下、または1億6,000万円以下のときは軽減額＝算出税額（納付0円）。
 //      この判定は千円単位に丸める前の取得割合で行う（各人の課税価格の千円未満切り捨てで生じる差のために、
-//      法定相続分どおり取得した配偶者に数百円の納付が残らないようにするため）
+//      法定相続分どおり取得した配偶者に数百円の納付が残らないようにするため）。条文を切り捨て後の金額に文字どおり
+//      当てた計算と比べ、配偶者に有利な側に数百円〜数千円ずれることがある（簡易試算として、法定相続分以下なら0円という結論を優先）
 //   8. 各人の納付税額は百円未満切り捨て
 //
 // 相続人の順位（民法887条・889条・890条）
@@ -93,7 +94,7 @@ export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, s
   const { rank, otherCount } = resolveHeirs({ hasSpouse: spouse, children, parents, siblings })
   const heirs = (spouse ? 1 : 0) + otherCount
   const manEn = Number(totalManEn)
-  const estate = Number.isFinite(manEn) && manEn > 0 ? Math.round(Math.min(manEn, MAX_MAN_EN) * 10_000) : 0 // 遺産総額（円）
+  const estate = manEn > 0 ? Math.round(Math.min(manEn, MAX_MAN_EN) * 10_000) : 0 // 遺産総額（円）。NaN・負は0、Infinity を含め上限を超える値は上限
   const legalFrac = spouse ? spouseLegalFracOf(rank) : ZERO
 
   // 配偶者の実際の取得割合：配偶者がいなければ0、配偶者だけが相続人なら必ず100%
@@ -153,7 +154,7 @@ export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, s
     let relief = calc
     if (!withinLegal && !withinFloor) {
       // 法定相続分相当額（課税価格の合計×法定相続分）と1億6,000万円の多い方までが軽減の対象
-      const byLegal = mulFrac(totalTax, legalFrac) // 相続税の総額 × (合計×法定相続分) ÷ 合計
+      const byLegal = share(mulFrac(total, legalFrac)) // 法定相続分相当額（課税価格の合計×法定相続分。円未満切り捨て）
       const byFloor = share(SPOUSE_RELIEF_FLOOR)
       relief = Math.min(calc, Math.max(byLegal, byFloor))
     }
