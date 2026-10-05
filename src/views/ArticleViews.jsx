@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { representative, site } from '../content/site.js'
 import { Arrow } from '../components/SectionHead.jsx'
 
 const fmt = (d) => d.replace(/-/g, '.')
@@ -129,13 +128,6 @@ export function ArticleView({ article, related = [] }) {
             </nav>
           )}
           <article className="prose" dangerouslySetInnerHTML={{ __html: article.html }} />
-
-          <aside className="article-author glass">
-            <p className="article-author__label">この記事について</p>
-            <p className="article-author__name">{site.name}（運営：{site.company}）</p>
-            <p className="article-author__by">執筆・監修：{representative.title}　{representative.name}</p>
-            <p>相続税申告に専門特化した税理士法人です。記事の内容は執筆時点の法令にもとづく一般的な情報提供であり、個別の税務判断ではありません。実際の申告の要否や税額は、財産の内容や分割の仕方によって変わります。</p>
-          </aside>
 
           <div className="article-cta">
             <p className="article-cta__title">ご自身のケースではどうなるか、無料相談で確認できます。</p>
