@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Arrow } from './SectionHead.jsx'
 import { amountOptions, site } from '../content/site.js'
 import { event } from '../beacon.js'
@@ -10,12 +10,45 @@ import { event } from '../beacon.js'
 //   Vercel（プレビュー）… /web/contact/ を api/contact.js に書き換え（vercel.json）＋ 環境変数
 const CONTACT_ENDPOINT = '/web/contact/'
 
+// 面談のご希望日時（任意・3つまで）。受付時間は平日9:00〜18:00、土日は事前予約で対応
+const TIME_SLOTS = ['9:00〜12:00', '12:00〜15:00', '15:00〜18:00', '時間はいつでも可']
+const EMPTY_SLOTS = [{ date: '', time: '' }, { date: '', time: '' }, { date: '', time: '' }]
+const WEEK = ['日', '月', '火', '水', '木', '金', '土']
+
+/** '2026-10-10' → '2026年10月10日（土）' */
+function formatDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number)
+  if (!y || !m || !d) return iso
+  const w = WEEK[new Date(y, m - 1, d).getDay()]
+  return `${y}年${m}月${d}日（${w}）`
+}
+
+/** 入力された希望日時を、ご相談内容の末尾に付ける文章にする（サーバー側の項目を増やさずにメールへ載せるため） */
+function slotsText(slots) {
+  const lines = slots
+    .map((x, i) => (x.date || x.time ? `第${i + 1}希望：${x.date ? formatDate(x.date) : '日付指定なし'}${x.time ? `　${x.time}` : ''}` : ''))
+    .filter(Boolean)
+  return lines.length ? `【面談のご希望日時】\n${lines.join('\n')}` : ''
+}
+
+/** 明日の日付（YYYY-MM-DD）。日付欄で今日以前を選べないようにする */
+function tomorrowIso() {
+  const t = new Date()
+  t.setDate(t.getDate() + 1)
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`
+}
+
 export default function ContactSection() {
   const [name, setName] = useState('')
   const [tel, setTel] = useState('')
   const [email, setEmail] = useState('')
   const [amount, setAmount] = useState('')
   const [message, setMessage] = useState('')
+  const [slots, setSlots] = useState(EMPTY_SLOTS)
+  // 日付の下限はブラウザで決める（ビルド時の日付を HTML に焼き込まない）
+  const [minDate, setMinDate] = useState(undefined)
+  useEffect(() => { setMinDate(tomorrowIso()) }, [])
+  const setSlot = (i, key, value) => setSlots((prev) => prev.map((x, j) => (j === i ? { ...x, [key]: value } : x)))
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   // 送信完了情報（サーバーからのメッセージ・受付番号）。null の間はフォームを表示
@@ -35,7 +68,14 @@ export default function ContactSection() {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ name: name.trim(), tel: tel.trim(), email: email.trim(), amount, message: message.trim() }),
+        body: JSON.stringify({
+          name: name.trim(),
+          tel: tel.trim(),
+          email: email.trim(),
+          amount,
+          // 面談の希望日時はご相談内容の末尾に付けて送る（受け取り側の項目は変えない）
+          message: [message.trim(), slotsText(slots)].filter(Boolean).join('\n\n'),
+        }),
       })
       const data = await res.json().catch(() => ({}))
       // 成功判定：HTTP 2xx（200 / 201 など）で、サーバーが明示的に失敗を返していないこと
@@ -69,6 +109,7 @@ export default function ContactSection() {
     setEmail('')
     setAmount('')
     setMessage('')
+    setSlots(EMPTY_SLOTS)
     setTimeout(() => {
       const el = document.getElementById('contact-done')
       if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -144,6 +185,32 @@ export default function ContactSection() {
                     </label>
                   ))}
                 </div>
+              </fieldset>
+              <fieldset className="field slots">
+                <legend className="field__label">面談のご希望日時<span className="field__opt">任意・3つまで</span></legend>
+                <p className="slots__note">平日9:00〜18:00。土日のご面談も事前予約で承ります。来所・オンライン・ご自宅への訪問のご希望はご相談内容にお書きください。</p>
+                {slots.map((x, i) => (
+                  <div className="slots__row" key={i}>
+                    <span className="slots__no">第{i + 1}希望</span>
+                    <input
+                      type="date"
+                      name={`date${i + 1}`}
+                      aria-label={`第${i + 1}希望の日付`}
+                      min={minDate}
+                      value={x.date}
+                      onChange={(e) => setSlot(i, 'date', e.target.value)}
+                    />
+                    <select
+                      name={`time${i + 1}`}
+                      aria-label={`第${i + 1}希望の時間帯`}
+                      value={x.time}
+                      onChange={(e) => setSlot(i, 'time', e.target.value)}
+                    >
+                      <option value="">時間帯</option>
+                      {TIME_SLOTS.map((t) => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  </div>
+                ))}
               </fieldset>
               <label className="field">
                 <span className="field__label">ご相談内容</span>
