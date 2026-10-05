@@ -102,7 +102,7 @@ assets/
 
 - `backend/` と `.htaccess` 以外（HTML・CSS・JS・エラーページ・`robots.txt`・`sitemap.xml`）はすべてこのリポジトリの責務。`backend/` と `.htaccess` は TaxPlan-org/php の責務（`backend/sites/`）で、こちらからは触らない（`.htaccess` の変更が必要なら php リポジトリに依頼する）。
 - CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が各 HTML 内の URL に `?v=内容ハッシュ` を付ける。
-- 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg`・`ceo1.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
+- 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
 
 ## プロジェクト構成
 
