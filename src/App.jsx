@@ -155,7 +155,7 @@ export default function App({ initialRoute = 'home', pageData = null }) {
             {route === 'articles' && <ArticlesView list={pageData?.list || []} />}
             {route === 'article' && <ArticleView article={pageData?.article} related={pageData?.related || []} />}
             {route === 'privacy' && <PrivacyView />}
-            {route === 'area' && <AreaView area={pageData?.area} areas={pageData?.areas || []} />}
+            {route === 'area' && <AreaView area={pageData?.area} areas={pageData?.areas || []} columns={pageData?.columns || []} />}
           </div>
         )}
       </main>

@@ -6,6 +6,7 @@
 //   pref: 大阪府
 //   topic: 町工場の自社株・工場用地・役員借入金と事業承継の対策   … 見出しの下に出す、その市の相続の特徴
 //   description: 東大阪市の相続税申告を基本報酬99,000円（税込）からお受けします。…（100〜125字）
+//   columns: [hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, …]   … その市の財産の特徴に関係するコラムの slug（5件ほど。手で選ぶ）
 //   ---
 //   導入の段落
 //   ## 〇〇市の相続でよくある財産と評価のポイント … 本文（h2 は2〜4個）
@@ -46,6 +47,7 @@ export function loadAreas(dir) {
       html: renderMarkdown(main.trim()),
       accessHtml: access ? renderMarkdown(access) : '',
       faqs,
+      columns: Array.isArray(meta.columns) ? meta.columns : [],
     }
   })
   // 並び順：大阪府 → 兵庫県、それぞれファイル名順
