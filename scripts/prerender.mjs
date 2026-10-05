@@ -140,9 +140,15 @@ for (const a of articles) {
 const areas = loadAreas(resolve(root, 'content/areas'))
 const areaList = areas.map(({ city, path }) => ({ city, path }))
 for (const a of areas) {
-  const html = render('area', { area: a, areas: areaList, latest })
-  const { html: _h, accessHtml: _a, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
-  writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, areas: areaList, latest })
+  // その市の財産の特徴に関係するコラム（content/areas/<slug>.md の columns）
+  const columns = a.columns.map((slug) => {
+    const x = listMeta.find((m) => m.slug === slug)
+    if (!x) throw new Error(`content/areas/${a.slug}.md の columns に存在しない記事があります: ${slug}`)
+    return { path: x.path, title: x.title }
+  })
+  const html = render('area', { area: a, areas: areaList, columns, latest })
+  const { html: _h, accessHtml: _a, columns: _c, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
+  writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, areas: areaList, columns, latest })
   sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.8' })
   // 以前のコラム（/articles/area-<slug>-souzokuzei/）は、新しいページへ即時転送する（.htaccess を使わずに済む方法。canonical も新しいページ）
   const to = `${ORIGIN}${a.path}`

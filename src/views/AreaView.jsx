@@ -4,7 +4,7 @@ import { Arrow } from '../components/SectionHead.jsx'
 
 /** 市ごとの相続税申告のページ（/area/<slug>/）。記事ページと同じく通常のページ（SPA の切り替えはしない）
  *  1ページに「地域・サービス・価格・実績・その市の財産の特徴・よくある質問」をまとめる */
-export default function AreaView({ area, areas = [] }) {
+export default function AreaView({ area, areas = [], columns = [] }) {
   if (!area) return null
   const faqs = areaFaqs(area)
   const facts = [
@@ -74,6 +74,16 @@ export default function AreaView({ area, areas = [] }) {
                 </details>
               ))}
             </div>
+
+            {columns.length > 0 && (
+              <div className="article-related area-columns">
+                <p className="article-related__label">Column</p>
+                <h2 className="area-h2">{area.city}の相続に関係するコラム</h2>
+                <ul>
+                  {columns.map((c) => <li key={c.path}><a href={c.path}>{c.title}</a></li>)}
+                </ul>
+              </div>
+            )}
 
             {area.accessHtml && (
               <>
