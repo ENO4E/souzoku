@@ -1185,6 +1185,9 @@ html { color-scheme: dark; }
   .privacy__window div { grid-template-columns: 1fr; gap: 2px; }
 }
 
+.area-card__chips li a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(var(--accent-rgb), 0.5); }
+.area-card__chips li a:hover { color: var(--accent); }
+
 /* コラム一覧：新着カード＋全記事の索引 */
 .articles--latest { padding-bottom: 8px; }
 .articles__sub { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; font-family: var(--font-serif); font-size: 22px; font-weight: 700; }

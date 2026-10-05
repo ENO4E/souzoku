@@ -1,5 +1,5 @@
 import SectionHead from './SectionHead.jsx'
-import { prefectures } from '../content/site.js'
+import { areaArticles, prefectures } from '../content/site.js'
 
 export default function AreaSection() {
   return (
@@ -23,7 +23,7 @@ export default function AreaSection() {
                 <>
                   <p className="area-card__label">重点対応エリア</p>
                   <ul className="area-card__chips">
-                    {p.focus.map((c) => <li key={c}>{c}</li>)}
+                    {p.focus.map((c) => <li key={c}>{areaArticles[c] ? <a href={`/articles/${areaArticles[c]}/`}>{c}</a> : c}</li>)}
                   </ul>
                 </>
               ) : (
