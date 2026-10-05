@@ -113,6 +113,8 @@ assets/
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
   - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
   - 記事ページは SPA の幕アニメーションを使わない通常のページ。構造化データ（BlogPosting・BreadcrumbList）と sitemap（lastmod＝date）は自動生成
+  - 転送量を増やさないため、一覧ページ（新着12件のカード＋全記事の索引＋タグ絞り込み）と記事本文は JSON を埋め込まず、描画済みの HTML から `main.jsx` が復元して hydrate する。全ページに埋め込むのはフッターの最新4件だけ
+  - 記事のテーマ（tags）は10種に固定（`scripts/articles.mjs` 参照の仕様は `content/articles/` の既存記事に合わせる）。執筆は `title / description（100〜120字）/ date / tags` を付け、本文は 700〜1,100 文字・h2 を2〜4個、末尾の免責はビルドで自動付与（記事内には書かない）
   - `main` に Markdown を追加して push すれば GitHub Actions がビルドして `dist/` を更新する
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。

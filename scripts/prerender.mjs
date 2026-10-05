@@ -101,10 +101,11 @@ for (const route of Object.keys(pages)) {
 // 2) 記事一覧と記事
 {
   // 一覧は 100 件以上になるので、カードに必要な項目だけ埋め込んで軽くする
-  const list = listMeta.map(({ slug, path, title, date, tags, readingMin }) => ({ slug, path, title, date, tags, readingMin }))
+  // 一覧は埋め込まない（ブラウザは描画済みの行から復元する。main.jsx）。描画にだけ全件を渡す
+  const list = listMeta.map(({ slug, title, date, tags }) => ({ slug, title, date, tags }))
   const data = { list, latest }
   const html = render('articles', data)
-  writePage(articlesPage.path, 'articles', html, headTags(articlesPage, articlesLd(listMeta)), data)
+  writePage(articlesPage.path, 'articles', html, headTags(articlesPage, articlesLd(listMeta)), { latest })
   written.push(`${articlesPage.path}（${articles.length}記事・${Math.round(html.length / 1024)}KB）`)
   sitemapEntries.push({ loc: articlesPage.path, changefreq: 'weekly', priority: '0.7', lastmod: articles[0]?.date })
 }
