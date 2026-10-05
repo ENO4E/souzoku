@@ -1,14 +1,16 @@
 // 相続税の簡易シミュレーション
 //
 // 計算の手順（相続税法・相続税法基本通達の計算方法どおり）
-//   1. 課税価格の合計額（千円未満切り捨て）
+//   1. 各人の課税価格（遺産総額×実際の取得割合。千円未満切り捨て）と、その合計＝課税価格の合計額
 //   2. 課税遺産総額 ＝ 課税価格の合計額 − 基礎控除（3,000万円＋600万円×法定相続人の数）
 //   3. 課税遺産総額を法定相続分どおりに分けたと仮定した各人の取得金額（千円未満切り捨て）に速算表を適用
 //   4. 3を合計して「相続税の総額」（百円未満切り捨て）
-//   5. 相続税の総額を、実際の取得割合で各人に按分（算出税額。円未満切り捨て）
+//   5. 相続税の総額 × 各人の課税価格 ÷ 課税価格の合計額 ＝ 各人の算出税額（円未満切り捨て）
 //   6. 兄弟姉妹（代襲相続人の甥・姪を含む）は算出税額に2割加算
 //   7. 配偶者の税額軽減：相続税の総額 × min(配偶者の課税価格, max(課税価格の合計×配偶者の法定相続分, 1億6,000万円)) ÷ 課税価格の合計
-//      （配偶者の算出税額が上限）
+//      （配偶者の算出税額が上限）。配偶者の取得が法定相続分以下、または1億6,000万円以下のときは軽減額＝算出税額（納付0円）。
+//      この判定は千円単位に丸める前の取得割合で行う（各人の課税価格の千円未満切り捨てで生じる差のために、
+//      法定相続分どおり取得した配偶者に数百円の納付が残らないようにするため）
 //   8. 各人の納付税額は百円未満切り捨て
 //
 // 相続人の順位（民法887条・889条・890条）
@@ -20,18 +22,18 @@
 //   代襲相続や半血兄弟姉妹で相続分が異なる場合（同順位の相続人は等しく取得する前提）、養子の数の制限、祖父母が相続人になる場合
 //
 // 入力
-//   totalManEn  : 遺産総額（万円・基礎控除前の課税価格の合計）
+//   totalManEn  : 遺産総額（万円・基礎控除前の課税価格の合計）。数値でない・負は0、上限1,000万万円（1,000億円）
 //   hasSpouse   : 配偶者の有無
-//   children    : 子の人数（亡くなった子の代わりの孫を含む）
+//   children    : 子の人数（亡くなった子の代わりの孫を含む。上限20）
 //   parents     : 父母の人数（0〜2）。children が 1 以上なら無視
-//   siblings    : 兄弟姉妹の人数（甥・姪を含む）。children か parents が 1 以上なら無視
-//   spouseShare : 配偶者の実際の取得割合。'legal'（法定相続分どおり）または 0〜100（%）。
+//   siblings    : 兄弟姉妹の人数（甥・姪を含む。上限20）。children か parents が 1 以上なら無視
+//   spouseShare : 配偶者の実際の取得割合。'legal'（法定相続分どおり）または 0〜100（%）。数値でなければ 'legal' 扱い。
 //                 配偶者がいない／配偶者だけが相続人の場合は無視（それぞれ 0%／100%）
 //
 // 出力（金額はすべて円）
 //   computable, rank（'child' | 'parent' | 'sibling' | 'spouseOnly' | 'none'）, otherCount, heirs,
 //   total（課税価格の合計）, basicDeduction, taxableEstate, spouseLegalShare, spouseActualShare,
-//   totalTax（相続税の総額）, spouse { calc, relief, pay }, other { calcEach, surchargeEach, payEach, count },
+//   totalTax（相続税の総額）, spouse { amount, calc, relief, pay }, other { amountEach, calcEach, surchargeEach, payEach, count },
 //   totalPay（納付税額の合計）, surcharge（2割加算の有無）
 
 // 相続税の速算表（税率は%の整数で持ち、整数で計算する）
@@ -49,9 +51,10 @@ export const TAX_BRACKETS = [
 export const SPOUSE_RELIEF_FLOOR = 160_000_000 // 配偶者の税額軽減：1億6,000万円
 
 const floorTo = (yen, unit) => Math.floor(yen / unit) * unit
-const toCount = (v, max) => Math.min(max, Math.max(0, Math.floor(Number(v) || 0)))
+const toCount = (v, max) => { const n = Math.floor(Number(v)); return Number.isFinite(n) ? Math.min(max, Math.max(0, n)) : 0 }
 // 割合は分数 { n, d } で持ち、金額 × n ÷ d を整数で計算する（2/3 などを小数で掛けると千円単位の切り捨てで誤差が出るため）
-const mulFrac = (yen, f) => Number((BigInt(Math.floor(yen)) * BigInt(f.n)) / BigInt(f.d))
+const mulFrac = (yen, f) => (f.d === 0 ? 0 : Number((BigInt(Math.floor(yen)) * BigInt(f.n)) / BigInt(f.d)))
+const mulFracCeil = (yen, f) => { const a = BigInt(Math.floor(yen)) * BigInt(f.n); const d = BigInt(f.d); return Number((a + d - 1n) / d) }
 const ZERO = { n: 0, d: 1 }
 const ONE = { n: 1, d: 1 }
 
@@ -65,9 +68,9 @@ export function taxOnShare(amount) {
 
 /** 相続人の順位と配偶者以外の人数を決める */
 export function resolveHeirs({ hasSpouse, children, parents, siblings }) {
-  const c = toCount(children, 50)
+  const c = toCount(children, 20)
   const p = toCount(parents, 2)
-  const s = toCount(siblings, 50)
+  const s = toCount(siblings, 20)
   if (c > 0) return { rank: 'child', otherCount: c }
   if (p > 0) return { rank: 'parent', otherCount: p }
   if (s > 0) return { rank: 'sibling', otherCount: s }
@@ -83,22 +86,28 @@ export function spouseLegalFracOf(rank) {
   return ZERO
 }
 
+export const MAX_MAN_EN = 10_000_000 // 入力の上限：1,000億円（これを超える値はこの額として扱う）
+
 export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, siblings, spouseShare }) {
   const spouse = Boolean(hasSpouse)
   const { rank, otherCount } = resolveHeirs({ hasSpouse: spouse, children, parents, siblings })
   const heirs = (spouse ? 1 : 0) + otherCount
-  const total = floorTo(Math.max(0, Math.floor(Number(totalManEn) || 0)) * 10_000, 1000)
+  const manEn = Number(totalManEn)
+  const estate = Number.isFinite(manEn) && manEn > 0 ? Math.round(Math.min(manEn, MAX_MAN_EN) * 10_000) : 0 // 遺産総額（円）
   const legalFrac = spouse ? spouseLegalFracOf(rank) : ZERO
 
   // 配偶者の実際の取得割合：配偶者がいなければ0、配偶者だけが相続人なら必ず100%
   let actualFrac = ZERO
   if (spouse && otherCount === 0) actualFrac = ONE
   else if (spouse) {
-    const useLegal = spouseShare === 'legal' || spouseShare === undefined || spouseShare === null || spouseShare === ''
-    actualFrac = useLegal ? legalFrac : { n: Math.min(100, Math.max(0, Math.round(Number(spouseShare) || 0))), d: 100 }
+    const pctNum = spouseShare === 'legal' || spouseShare === '' || spouseShare === null || spouseShare === undefined ? NaN : Number(spouseShare)
+    actualFrac = Number.isFinite(pctNum) ? { n: Math.min(100, Math.max(0, Math.round(pctNum))), d: 100 } : legalFrac
   }
-  const spouseLegalShare = legalFrac.n / legalFrac.d
-  const spouseActualShare = actualFrac.n / actualFrac.d
+
+  // 1. 各人の課税価格（千円未満切り捨て）と課税価格の合計額
+  const spouseAmount = spouse ? floorTo(mulFrac(estate, actualFrac), 1000) : 0
+  const amountEach = otherCount > 0 ? floorTo(mulFrac(estate, { n: actualFrac.d - actualFrac.n, d: actualFrac.d * otherCount }), 1000) : 0
+  const total = spouseAmount + amountEach * otherCount
 
   const basicDeduction = heirs > 0 ? 30_000_000 + 6_000_000 * heirs : 0
   const result = {
@@ -109,20 +118,21 @@ export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, s
     total,
     basicDeduction,
     taxableEstate: 0,
-    spouseLegalShare,
-    spouseActualShare,
+    spouseLegalShare: legalFrac.n / legalFrac.d,
+    spouseActualShare: actualFrac.n / actualFrac.d,
     totalTax: 0,
-    spouse: { calc: 0, relief: 0, pay: 0 },
-    other: { count: otherCount, calcEach: 0, surchargeEach: 0, payEach: 0 },
+    spouse: { amount: spouseAmount, calc: 0, relief: 0, pay: 0 },
+    other: { count: otherCount, amountEach, calcEach: 0, surchargeEach: 0, payEach: 0 },
     surcharge: rank === 'sibling',
     totalPay: 0,
   }
   if (!result.computable) return result
 
+  // 2. 課税遺産総額
   result.taxableEstate = Math.max(0, total - basicDeduction)
   if (result.taxableEstate === 0) return result
 
-  // 3〜4. 相続税の総額
+  // 3〜4. 相続税の総額（法定相続分で分けたと仮定して計算）
   let sum = 0
   if (spouse) sum += taxOnShare(mulFrac(result.taxableEstate, legalFrac))
   if (otherCount > 0) {
@@ -132,21 +142,29 @@ export function calcInheritanceTax({ totalManEn, hasSpouse, children, parents, s
   const totalTax = floorTo(sum, 100)
   result.totalTax = totalTax
 
-  // 5〜8. 配偶者
+  // 5. 各人の算出税額 ＝ 相続税の総額 × 各人の課税価格 ÷ 課税価格の合計額
+  const share = (amount) => mulFrac(totalTax, { n: amount, d: total })
+
+  // 6〜8. 配偶者（税額軽減）
   if (spouse) {
-    const calc = mulFrac(totalTax, actualFrac)
-    const spouseAmount = floorTo(mulFrac(total, actualFrac), 1000) // 配偶者の課税価格（千円未満切り捨て）
-    const reliefBase = Math.min(spouseAmount, Math.max(mulFrac(total, legalFrac), SPOUSE_RELIEF_FLOOR))
-    // 相続税の総額 × 軽減の基礎 ÷ 課税価格の合計（積が大きくなるため BigInt で正確に計算）
-    const relief = Math.min(calc, Number((BigInt(totalTax) * BigInt(reliefBase)) / BigInt(total)))
-    result.spouse = { calc, relief, pay: floorTo(calc - relief, 100) }
+    const calc = share(spouseAmount)
+    const withinLegal = actualFrac.n * legalFrac.d <= legalFrac.n * actualFrac.d // 実際の取得割合 ≦ 法定相続分
+    const withinFloor = mulFracCeil(estate, actualFrac) <= SPOUSE_RELIEF_FLOOR // 取得額 ≦ 1億6,000万円
+    let relief = calc
+    if (!withinLegal && !withinFloor) {
+      // 法定相続分相当額（課税価格の合計×法定相続分）と1億6,000万円の多い方までが軽減の対象
+      const byLegal = mulFrac(totalTax, legalFrac) // 相続税の総額 × (合計×法定相続分) ÷ 合計
+      const byFloor = share(SPOUSE_RELIEF_FLOOR)
+      relief = Math.min(calc, Math.max(byLegal, byFloor))
+    }
+    result.spouse = { amount: spouseAmount, calc, relief, pay: floorTo(calc - relief, 100) }
   }
 
-  // 5〜8. 配偶者以外（同順位の相続人は等しく取得する前提）
+  // 6〜8. 配偶者以外（同順位の相続人は等しく取得する前提。兄弟姉妹は2割加算）
   if (otherCount > 0) {
-    const calcEach = mulFrac(totalTax, { n: actualFrac.d - actualFrac.n, d: actualFrac.d * otherCount })
+    const calcEach = share(amountEach)
     const surchargeEach = result.surcharge ? Math.floor(calcEach / 5) : 0 // 2割加算（整数で計算）
-    result.other = { count: otherCount, calcEach, surchargeEach, payEach: floorTo(calcEach + surchargeEach, 100) }
+    result.other = { count: otherCount, amountEach, calcEach, surchargeEach, payEach: floorTo(calcEach + surchargeEach, 100) }
   }
 
   result.totalPay = result.spouse.pay + result.other.payEach * otherCount

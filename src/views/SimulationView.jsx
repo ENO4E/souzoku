@@ -4,12 +4,9 @@ import ReportSection from '../components/ReportSection.jsx'
 import { Arrow } from '../components/SectionHead.jsx'
 import { calcInheritanceTax } from '../lib/inheritanceTax.js'
 
-// 金額の表示（万円・小数1桁まで。0より大きく1,000円未満は「0.1万円未満」）
-const man = (yen) => {
-  if (!yen) return '0'
-  if (yen < 1000) return '0.1未満'
-  return (Math.floor(yen / 1000) / 10).toLocaleString('ja-JP', { maximumFractionDigits: 1 })
-}
+// 金額の表示（万円・小数1桁まで）。num は数字だけ、man は「万円」まで付けた文字列（0より大きく1,000円未満は「0.1万円未満」）
+const num = (yen) => (Math.floor(yen / 1000) / 10).toLocaleString('ja-JP', { maximumFractionDigits: 1 })
+const man = (yen) => (!yen ? '0万円' : yen < 1000 ? '0.1万円未満' : `${num(yen)}万円`)
 const pct = (share) => `${Math.round(share * 1000) / 10}%`
 const RANK_LABEL = { child: '子', parent: '父母', sibling: '兄弟姉妹' }
 
@@ -58,6 +55,9 @@ export default function SimulationView() {
   const askShare = hasSpouse && r.otherCount > 0
   let no = 0
   const next = () => ++no
+
+  // 結果の説明に出す調整項目（実際に金額が動いたものだけ）
+  const adjustText = [r.spouse.relief > 0 ? '配偶者の税額軽減' : '', r.other.surchargeEach > 0 ? '兄弟姉妹の2割加算' : ''].filter(Boolean).join('と')
 
   const heirsText = [
     hasSpouse ? '配偶者' : '',
@@ -123,7 +123,7 @@ export default function SimulationView() {
                 </div>
               </div>
               <div className="calc__control">
-                <Chips name="children" value={children} onChange={setChildren} options={countOptions(6)} />
+                <Chips name="children" value={children} onChange={setChildren} options={countOptions(10)} />
               </div>
             </div>
 
@@ -133,7 +133,7 @@ export default function SimulationView() {
                   <span className="calc__num">{next()}</span>
                   <div>
                     <b>父母の人数</b>
-                    <span>子がいない場合は、亡くなられた方の父母が相続人になります。健在な方の人数を選んでください。</span>
+                    <span>子がいない場合は、亡くなられた方の父母が相続人になります。健在な方の人数を選んでください。父母とも亡くなっていて祖父母が健在な場合は祖父母が相続人になりますが、この試算の対象外です（個別にご相談ください）。</span>
                   </div>
                 </div>
                 <div className="calc__control">
@@ -148,11 +148,11 @@ export default function SimulationView() {
                   <span className="calc__num">{next()}</span>
                   <div>
                     <b>兄弟姉妹の人数</b>
-                    <span>子も父母もいない場合は、兄弟姉妹が相続人になります。亡くなった兄弟姉妹に子（甥・姪）がいる場合は、その人数を数えてください。</span>
+                    <span>子も父母（祖父母）もいない場合は、兄弟姉妹が相続人になります。亡くなった兄弟姉妹に子（甥・姪）がいる場合は、その人数を数えてください。</span>
                   </div>
                 </div>
                 <div className="calc__control">
-                  <Chips name="siblings" value={siblings} onChange={setSiblings} options={countOptions(6)} />
+                  <Chips name="siblings" value={siblings} onChange={setSiblings} options={countOptions(10)} />
                 </div>
               </div>
             )}
@@ -163,7 +163,7 @@ export default function SimulationView() {
                   <span className="calc__num">{next()}</span>
                   <div>
                     <b>配偶者が実際に取得する遺産の割合</b>
-                    <span>未定の場合は「法定相続分どおり」のままで構いません。配偶者の取得分は1億6,000万円または法定相続分のどちらか多い額まで非課税になります。</span>
+                    <span>未定の場合は「法定相続分どおり」のままで構いません。配偶者は「配偶者の税額軽減」により、取得額が1億6,000万円または法定相続分のどちらか多い額までなら相続税がかかりません。ただし、相続税の申告と、申告期限までの遺産分割（または分割見込書の提出）が必要です。</span>
                   </div>
                 </div>
                 <div className="calc__control">
@@ -179,36 +179,38 @@ export default function SimulationView() {
           <aside className="calc__result" data-reveal style={{ '--d': '120ms' }} aria-live="polite">
             <p className="calc__result-label">Result</p>
             {!r.computable ? (
-              <p className="calc__empty">配偶者・子・父母・兄弟姉妹のいずれもいない場合は、相続人がいない（相続人不存在）ため、この試算はできません。家庭裁判所での相続財産清算人の手続きになります。<a href="/articles/tetsuzuki-souzoku-zaisan-hojin-shinkoku/">手続きの流れはこちら</a></p>
+              <p className="calc__empty">相続人を選んでください。なお、父母が亡くなっていても祖父母が健在なら祖父母が相続人になります（この試算の対象外のため、個別にご相談ください）。配偶者・子・父母・祖父母・兄弟姉妹（甥・姪を含む）のいずれもいない場合は、相続人がいない（相続人不存在）ため、家庭裁判所での相続財産清算人の手続きになります。<a href="/articles/tetsuzuki-souzoku-zaisan-hojin-shinkoku/">手続きの流れはこちら</a></p>
             ) : (
               <>
                 <dl className="calc__summary">
                   <div><dt>法定相続人</dt><dd>{r.heirs}人</dd></div>
-                  <div><dt>基礎控除</dt><dd>{man(r.basicDeduction)}万円</dd></div>
-                  <div><dt>課税遺産総額</dt><dd>{man(r.taxableEstate)}万円</dd></div>
+                  <div><dt>基礎控除</dt><dd>{man(r.basicDeduction)}</dd></div>
+                  <div><dt>課税遺産総額</dt><dd>{man(r.taxableEstate)}</dd></div>
                 </dl>
                 <p className="calc__heirs">相続人：{heirsText}</p>
                 <div className="calc__big">
                   <span className="calc__big-label">相続税額の目安（相続人全員の合計）</span>
-                  <span className="calc__big-value"><b>{man(r.totalPay)}</b>万円</span>
+                  <span className="calc__big-value"><b>{r.totalPay > 0 && r.totalPay < 1000 ? '0.1未満' : num(r.totalPay)}</b>万円</span>
                   {r.taxableEstate === 0 ? (
-                    <span className="calc__big-sub">遺産総額が基礎控除（{man(r.basicDeduction)}万円）以下のため、相続税はかからない見込みです。</span>
+                    <span className="calc__big-sub">遺産総額が基礎控除（{man(r.basicDeduction)}）以下のため、相続税はかからない見込みです。</span>
                   ) : (
                     <>
-                      <span className="calc__big-sub">相続税の総額 {man(r.totalTax)}万円{hasSpouse ? '。配偶者の税額軽減' : ''}{hasSpouse && r.surcharge ? 'と' : ''}{r.surcharge ? '兄弟姉妹の2割加算' : ''}{hasSpouse || r.surcharge ? 'を反映しています。' : ''}</span>
+                      <span className="calc__big-sub">
+                        相続税の総額（法定相続分で分けたと仮定して計算した額）は{man(r.totalTax)}です。上の目安は、これを実際の取得割合で各人に分け{adjustText ? `、${adjustText}を反映した` : 'た'}納付額の合計です。
+                      </span>
                       <ul className="calc__breakdown">
                         {hasSpouse && (
                           <li>
                             <span>配偶者（取得割合 {pct(r.spouseActualShare)}）</span>
-                            <b>{man(r.spouse.pay)}万円</b>
-                            {r.spouse.relief > 0 && <small>税額軽減 −{man(r.spouse.relief)}万円</small>}
+                            <b>{man(r.spouse.pay)}</b>
+                            {r.spouse.relief > 0 && <small>税額軽減 −{man(r.spouse.relief)}（相続税の申告と、申告期限までの遺産分割が必要です）</small>}
                           </li>
                         )}
                         {r.otherCount > 0 && (
                           <li>
                             <span>{RANK_LABEL[r.rank]} 1人あたり（{r.otherCount}人）</span>
-                            <b>{man(r.other.payEach)}万円</b>
-                            {r.other.surchargeEach > 0 && <small>2割加算 +{man(r.other.surchargeEach)}万円を含む</small>}
+                            <b>{man(r.other.payEach)}</b>
+                            {r.other.surchargeEach > 0 && <small>2割加算 +{man(r.other.surchargeEach)}を含む</small>}
                           </li>
                         )}
                       </ul>
@@ -226,7 +228,7 @@ export default function SimulationView() {
                 </a>
               </>
             )}
-            <p className="calc__note">※簡易シミュレーションです。小規模宅地等の特例・生命保険金の非課税枠・債務や葬式費用・生前贈与の加算・未成年者控除や障害者控除などは考慮していません。同じ順位の相続人は等しく取得する前提で、代襲相続や半血の兄弟姉妹で相続分が異なる場合、養子の人数の制限、祖父母が相続人になる場合も反映していません。実際の税額は財産の評価や分け方によって変わります。</p>
+            <p className="calc__note">※簡易シミュレーションです。小規模宅地等の特例・生命保険金の非課税枠・債務や葬式費用・生前贈与の加算・未成年者控除や障害者控除などは考慮していません。同じ順位の相続人は等しく取得する前提で、代襲相続や半血の兄弟姉妹で相続分が異なる場合、養子の人数の制限、孫を養子にしている場合の2割加算、祖父母が相続人になる場合も反映していません。配偶者の税額軽減は、相続税の申告と申告期限までの遺産分割が必要です。実際の税額は財産の評価や分け方によって変わります。</p>
           </aside>
         </div>
       </section>
