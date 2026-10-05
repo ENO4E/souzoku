@@ -878,6 +878,9 @@ h1, h2, h3 { word-break: auto-phrase; text-wrap: balance; }
   .insight__label { grid-row: auto; padding-top: 0; }
   .fee-panel { padding: 24px 18px 22px; }
   .fee-table th, .fee-table td { padding: 12px 6px; }
+  .fee-table td:first-child, .fee-table td.amt { white-space: normal; }
+  .fee-table td.amt b { white-space: nowrap; }
+  .fee-table .tax-incl { font-size: 11px; line-height: 1.5; }
   .fee-table td.amt b { font-size: 17px; }
   .fee-table--compare td.ours b { font-size: 18px; }
   .fee-table--compare th.ours, .fee-table--compare td.ours { padding-left: 10px; }
