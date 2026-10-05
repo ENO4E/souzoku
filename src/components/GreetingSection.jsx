@@ -1,6 +1,6 @@
 import { representative, site } from '../content/site.js'
 
-// 代表挨拶：写真はサーバーの assets/ceo1.jpg を使用
+// 代表挨拶：写真は public/assets/ceo1.jpg（ビルドで assets/ceo1.jpg に出力）
 export default function GreetingSection() {
   const { name, title, photo } = representative
   const alt = name ? `${site.company} ${title} ${name}` : `${site.company} ${title}`
