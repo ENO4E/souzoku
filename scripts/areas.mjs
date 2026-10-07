@@ -4,6 +4,7 @@
 //   ---
 //   city: 東大阪市
 //   pref: 大阪府
+//   region: 北摂                                                … 地域（site.js の areaRegions の name と一致させる）
 //   topic: 町工場の自社株・工場用地・役員借入金と事業承継の対策   … 見出しの下に出す、その市の相続の特徴
 //   description: 東大阪市の相続税申告を基本報酬99,000円（税込）からお受けします。…（100〜125字）
 //   columns: [hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, …]   … その市の財産の特徴に関係するコラムの slug（5件ほど。手で選ぶ）
@@ -24,7 +25,7 @@ export function loadAreas(dir) {
     const slug = basename(file, '.md')
     if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`ファイル名は英小文字・数字・ハイフンのみ: ${file}`)
     const { meta, body } = parseFrontmatter(readFileSync(resolve(dir, file), 'utf-8'))
-    if (!meta.city || !meta.description) throw new Error(`${file} に city / description がありません`)
+    if (!meta.city || !meta.description || !meta.region) throw new Error(`${file} に city / region / description がありません`)
     // 「よくある質問」以降を切り出す：Q&A は faqs に、その後の段落はアクセスの案内に
     const [main, rest = ''] = body.split(/^## よくある質問\s*$/m)
     const faqs = []
@@ -42,6 +43,7 @@ export function loadAreas(dir) {
       oldPath: `/articles/area-${slug}-souzokuzei/`, // 以前のコラムの URL（新しいページへ転送する）
       city: meta.city,
       pref: meta.pref || '大阪府',
+      region: meta.region,
       topic: meta.topic || '',
       description: meta.description,
       html: renderMarkdown(main.trim()),

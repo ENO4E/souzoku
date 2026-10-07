@@ -1,5 +1,5 @@
 import SectionHead from './SectionHead.jsx'
-import { areaPages, prefectures } from '../content/site.js'
+import { areaRegions, prefectures } from '../content/site.js'
 
 export default function AreaSection() {
   return (
@@ -19,19 +19,24 @@ export default function AreaSection() {
                 <h3>{p.name}</h3>
                 <span className="area-card__tag">{p.note}</span>
               </div>
-              {p.focus.length > 0 ? (
-                <>
-                  <p className="area-card__label">重点対応エリア</p>
-                  <ul className="area-card__chips">
-                    {p.focus.map((c) => <li key={c}>{areaPages[c] ? <a href={`/area/${areaPages[c]}/`}>{c}</a> : c}</li>)}
-                  </ul>
-                </>
+              {areaRegions.some((r) => r.pref === p.name) ? (
+                areaRegions.filter((r) => r.pref === p.name).map((r) => (
+                  <div key={r.slug} className="area-card__region">
+                    <p className="area-card__label"><a href={`/area/#${r.slug}`}>{r.name}</a></p>
+                    <ul className="area-card__chips">
+                      {r.cities.map(([c, slug]) => <li key={slug}><a href={`/area/${slug}/`}>{c.replace(/^大阪市/, '')}</a></li>)}
+                    </ul>
+                  </div>
+                ))
               ) : (
                 <p className="area-card__label area-card__label--plain">京都市をはじめ府内全域でご相談を承ります。</p>
               )}
             </li>
           ))}
         </ul>
+        <p className="area-note" data-reveal>
+          <a href="/area/">地域から探す（市区町村ごとの相続税申告のページ一覧）→</a>
+        </p>
         <p className="area-note" data-reveal>
           土地の相続税評価は「路線価」が基準になります。
           <a href="https://www.rosenka.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 路線価図・評価倍率表（最新年分）を見る ↗</a>

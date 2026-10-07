@@ -1,6 +1,7 @@
 ---
 city: 枚方市
 pref: 大阪府
+region: 北河内
 topic: 樟葉・香里園のニュータウンと北部の農地・生産緑地の相続
 description: 枚方市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。枚方市は樟葉・香里園などのニュータウンや団地、京阪沿線の住宅地と、北部に残る農地・生産緑地が混在する地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hyoka-seisan-ryokuchi-hyoka, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, ienakiko-tokurei, akiya-tokurei-3000man]

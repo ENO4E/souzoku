@@ -17,7 +17,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, ORIGIN, OG_IMAGE, SITE_NAME, site, baseFees, extraFees, LOWEST_NOTE, RECORD } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, areaRegions, ORIGIN, OG_IMAGE, SITE_NAME, site, baseFees, extraFees, LOWEST_NOTE, RECORD } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -136,28 +136,55 @@ for (const a of articles) {
   sitemapEntries.push({ loc: privacyPage.path, changefreq: 'yearly', priority: '0.3' })
 }
 
-// 市ごとの相続税申告ページ（/area/<slug>/）と、以前のコラムの URL からの転送
-const areas = loadAreas(resolve(root, 'content/areas'))
-const areaList = areas.map(({ city, path }) => ({ city, path }))
+// 市区町村ごとの相続税申告ページ（/area/<slug>/）と、以前のコラムの URL からの転送
+// 地域の並びは site.js の areaRegions。md（content/areas）と突き合わせ、片方にしかないものや市名・地域名のずれはエラーにする
+const LEGACY_AREA_ARTICLES = new Set(['amagasaki', 'ashiya', 'higashiosaka', 'hirakata', 'ibaraki', 'kadoma', 'kobe', 'minoh', 'moriguchi', 'neyagawa', 'nishinomiya', 'settsu', 'shijonawate', 'suita', 'takarazuka', 'takatsuki'])
+const areaFiles = loadAreas(resolve(root, 'content/areas'))
+const regions = areaRegions.map((r) => ({
+  name: r.name,
+  slug: r.slug,
+  pref: r.pref,
+  cities: r.cities.map(([city, slug]) => {
+    const a = areaFiles.find((x) => x.slug === slug)
+    if (!a) throw new Error(`site.js の areaRegions にある ${city}（${slug}）の content/areas/${slug}.md がありません`)
+    if (a.city !== city || a.region !== r.name) throw new Error(`content/areas/${slug}.md の city / region（${a.city} / ${a.region}）が site.js の areaRegions（${city} / ${r.name}）と違います`)
+    return { city, path: a.path, topic: a.topic }
+  }),
+}))
+for (const a of areaFiles) {
+  if (!regions.some((r) => r.cities.some((c) => c.path === a.path))) throw new Error(`content/areas/${a.slug}.md が site.js の areaRegions にありません`)
+}
+const areas = regions.flatMap((r) => r.cities.map((c) => ({ ...areaFiles.find((x) => x.path === c.path), regionSlug: r.slug })))
+{
+  const data = { regions, latest }
+  const html = render('areahub', data)
+  writePage(areaHubPage.path, 'areahub', html, headTags(areaHubPage, areaHubLd(regions)), data)
+  written.push(`${areaHubPage.path}（${Math.round(html.length / 1024)}KB）`)
+  sitemapEntries.push({ loc: areaHubPage.path, changefreq: 'weekly', priority: '0.8' })
+}
 for (const a of areas) {
+  const region = regions.find((r) => r.slug === a.regionSlug)
+  const areaList = region.cities.map(({ city, path }) => ({ city, path }))
   // その市の財産の特徴に関係するコラム（content/areas/<slug>.md の columns）
   const columns = a.columns.map((slug) => {
     const x = listMeta.find((m) => m.slug === slug)
     if (!x) throw new Error(`content/areas/${a.slug}.md の columns に存在しない記事があります: ${slug}`)
     return { path: x.path, title: x.title }
   })
-  const html = render('area', { area: a, areas: areaList, columns, latest })
-  const { html: _h, accessHtml: _a, columns: _c, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
-  writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, areas: areaList, columns, latest })
+  const regionMeta = { name: region.name, slug: region.slug }
+  const html = render('area', { area: a, region: regionMeta, areas: areaList, columns, latest })
+  const { html: _h, accessHtml: _a, columns: _c, regionSlug: _r, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
+  writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, region: regionMeta, areas: areaList, columns, latest })
   sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.8' })
-  // 以前のコラム（/articles/area-<slug>-souzokuzei/）は、新しいページへ即時転送する（.htaccess を使わずに済む方法。canonical も新しいページ）
+  // 以前のコラム（/articles/area-<slug>-souzokuzei/）があった最初の16市だけ、新しいページへ即時転送するページを出す（.htaccess を使わずに済む方法。canonical も新しいページ）
+  if (!LEGACY_AREA_ARTICLES.has(a.slug)) continue
   const to = `${ORIGIN}${a.path}`
   const stub = `<!doctype html>\n<html lang="ja"><head><meta charset="utf-8"><title>${esc(a.city)}の相続税申告｜${esc(SITE_NAME)}</title><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${a.path}"></head><body><p><a href="${a.path}">${esc(a.city)}の相続税申告のページへ移動しました</a></p></body></html>\n`
   const dir = resolve(distDir, a.oldPath.replace(/^\//, ''))
   mkdirSync(dir, { recursive: true })
   writeFileSync(resolve(dir, 'index.html'), stub)
 }
-written.push(`/area/（${areas.length}市）`)
+written.push(`/area/<slug>/（${areas.length}市区町村）`)
 
 // llms.txt（AI 向けの案内。https://llmstxt.org/ の形式。サイトのデータから毎回作るので、料金や市のページを変えれば自動で揃う）
 {
@@ -182,9 +209,13 @@ written.push(`/area/（${areas.length}市）`)
     '',
     ...extraLines,
     '',
-    '## 市ごとの相続税申告',
+    '## 市区町村ごとの相続税申告',
     '',
-    ...areas.map((a) => `- [${a.city}の相続税申告](${ORIGIN}${a.path})：${a.description}`),
+    `一覧：[地域から探す](${ORIGIN}${areaHubPage.path})`,
+    ...regions.flatMap((r) => ['', `### ${r.name}（${r.pref}）`, '', ...r.cities.map((c) => {
+      const a = areas.find((x) => x.path === c.path)
+      return `- [${c.city}の相続税申告](${ORIGIN}${c.path})：${a.description}`
+    })]),
     '',
     '## 主なページ',
     '',

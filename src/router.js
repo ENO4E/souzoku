@@ -7,19 +7,20 @@
  *   /articles/        … 記事一覧（通常のページ遷移。SPA の幕アニメーションは使わない）
  *   /articles/<slug>/ … 記事
  *   /privacy/         … プライバシーポリシー（通常のページ遷移）
- *   /area/<slug>/     … 市ごとの相続税申告のページ（通常のページ遷移）
+ *   /area/            … 地域から探す（市区町村ごとのページの一覧。通常のページ遷移）
+ *   /area/<slug>/     … 市区町村ごとの相続税申告のページ（通常のページ遷移）
  * 旧URL（#/service など）は読み込み時に新URLへ置き換える
  */
 export const MAIN_ROUTES = ['home', 'service', 'simulation', 'contact']
-export const ROUTES = [...MAIN_ROUTES, 'articles', 'article', 'privacy', 'area']
-export const PATHS = { home: '/', service: '/service/', simulation: '/simulation/', contact: '/contact/', articles: '/articles/', privacy: '/privacy/' }
+export const ROUTES = [...MAIN_ROUTES, 'articles', 'article', 'privacy', 'areahub', 'area']
+export const PATHS = { home: '/', service: '/service/', simulation: '/simulation/', contact: '/contact/', articles: '/articles/', privacy: '/privacy/', areahub: '/area/' }
 
 export function parsePath(pathname) {
   const segs = (pathname || '/').replace(/index\.html$/, '').split('/').filter(Boolean)
   const seg = segs[0] || ''
   if (seg === 'articles') return segs[1] ? 'article' : 'articles'
   if (seg === 'privacy') return 'privacy'
-  if (seg === 'area' && segs[1]) return 'area'
+  if (seg === 'area') return segs[1] ? 'area' : 'areahub'
   return seg && MAIN_ROUTES.includes(seg) ? seg : 'home'
 }
 

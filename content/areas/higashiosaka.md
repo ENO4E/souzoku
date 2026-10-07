@@ -1,6 +1,7 @@
 ---
 city: 東大阪市
 pref: 大阪府
+region: 中河内
 topic: 町工場の自社株・工場用地・役員借入金と事業承継の対策
 description: 東大阪市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。東大阪市は町工場が多く、自社株・工場用地・役員借入金が相続財産になる事業承継型の相続が特徴です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, kashitsukekin-yakuin-kariirekin, jigyo-yakuin-kariirekin-saimu-menjo-des-hikaku, tokurei-shokibo-tokutei-jigyoyo-yoken]

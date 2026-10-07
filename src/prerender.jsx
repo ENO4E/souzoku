@@ -2,9 +2,9 @@
 import { renderToString } from 'react-dom/server'
 import App from './App.jsx'
 
-export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, ORIGIN, OG_IMAGE } from './content/seo.js'
-import { site, baseFees, extraFees } from './content/site.js'
-export { site, baseFees, extraFees }
+export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, ORIGIN, OG_IMAGE } from './content/seo.js'
+import { site, baseFees, extraFees, areaRegions } from './content/site.js'
+export { site, baseFees, extraFees, areaRegions }
 export { LOWEST_NOTE, RECORD } from './content/areaCommon.js'
 export const SITE_NAME = site.siteName
 

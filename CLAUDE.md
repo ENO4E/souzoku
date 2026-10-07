@@ -118,11 +118,14 @@ assets/
   - 相続人は民法の順位どおりに聞く（配偶者 → 子 →（子がいなければ）父母 →（父母もいなければ）兄弟姉妹）。人数は別々の state で持ち、後順位の入力は計算で無視する。配偶者の取得割合は「配偶者あり かつ 他の相続人あり」のときだけ聞く
   - 計算は相続税法の手順どおり（各人の課税価格は千円未満切り捨て、総額は百円未満切り捨て、按分は各人の課税価格÷合計、兄弟姉妹は2割加算、配偶者の税額軽減）。割合は分数・金額は整数（BigInt）で計算し、浮動小数点の誤差を出さない
   - 変更したら、条文どおりに独立して書いた別実装（Python など）と全パターン（相続人の組み合わせ288通り×遺産総額）で突き合わせてから出す
-- **市ごとの相続税申告のページ**（`/area/<slug>/`。データは `content/areas/<slug>.md`、読み込みは `scripts/areas.mjs`、表示は `src/views/AreaView.jsx`、共通の文言は `src/content/areaCommon.js`）
-  - 検索エンジンと AI 検索（ChatGPT・Gemini・Perplexity など）に「どの地域で・何を・いくらで・どれだけの実績で」受ける事務所かを1ページで伝えるためのページ。見出しと title に市名と「基本報酬99,000円〜」、冒頭に引用されやすい要約文（`areaLead`）、概要・料金表・その市の財産の特徴・よくある質問（費用と訪問の2問は全市共通＋市ごと3問）・その市に関係するコラム（md の `columns` に slug を手で5件ほど。存在しない slug はビルドでエラー）・CTA を置く
+- **市区町村ごとの相続税申告のページ**（`/area/<slug>/`。データは `content/areas/<slug>.md`（`city / pref / region / topic / description / columns`）、読み込みは `scripts/areas.mjs`、表示は `src/views/AreaView.jsx`、共通の文言は `src/content/areaCommon.js`）
+  - 地域と市区町村の一覧は `site.js` の `areaRegions`（大阪市・北摂・豊能・北河内・中河内・阪神・神戸）。md の `city`・`region` と突き合わせ、ずれ・片方にしかないものはビルドでエラー。市区町村を増やすときは md と `areaRegions` の両方に足す
+  - 「地域から探す」（`/area/`、`src/views/AreaHubView.jsx`）が一覧ページ。フッター・サービスページの対応エリア・パンくず・記事下の案内からリンクする。市のページの脇には同じ地域の市区町村を並べる
+  - 市のページには「費用の比べ方」の節（料金体系の4つの型・当センターの料金での総額の例・見積もりで確かめること。`areaCommon.js` の `feeTypes / feeExamples / quoteChecks`）を置く。他の事務所の名前は出さない
+  - 検索エンジンと AI 検索（ChatGPT・Gemini・Perplexity など）に「どの地域で・何を・いくらで・どれだけの実績で」受ける事務所かを1ページで伝えるためのページ。見出しと title に市名と「基本報酬99,000円〜」、冒頭に引用されやすい要約文（`areaLead`）、概要・料金表・費用の比べ方・その市の財産の特徴・よくある質問（費用と訪問の2問は全市共通＋市ごと3問）・その市に関係するコラム（md の `columns` に slug を手で5件ほど。存在しない slug はビルドでエラー）・CTA を置く
   - 構造化データは Service（areaServed＝その市、offers＝基本報酬）・FAQPage・BreadcrumbList・WebPage。料金は `baseFees`、実績は「累計200件超」（`areaCommon.js` の `RECORD`）。数字を作らない（市ごとの件数は事実が分かったときだけ書く）
   - 市名だけ差し替えた薄いページにしない（ドアウェイ扱いになる）。各市の本文はその市固有の内容にする
-  - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」とフッターの市名から各ページへリンクする（`site.js` の `areaPages`）
+  - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」は地域ごとに市区町村を並べ、フッターは地域名（`/area/#<地域slug>`）へリンクする（`site.js` の `areaRegions`。`areaPages` はそこから作る）
 - **AI 検索・Bing 向け**
   - `llms.txt`：事務所の概要・料金・追加料金・市ごとのページ・主要ページを `scripts/prerender.mjs` がビルドのたびに生成する
   - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に、本番に実際に反映されたのを確かめてから（鍵ファイルと変わったページを5分ごとに確認・最大約5時間半。手動アップロードにも対応）変わったページを送る（`scripts/indexnow.mjs`）。送信の仕組みを変えたコミットでは全ページを送る。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
