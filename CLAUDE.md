@@ -141,6 +141,7 @@ assets/
   - ソースを変更した PR では `npm run build` を実行し、`dist/` の変更も同じ PR に含める。
   - 保険として GitHub Actions（`.github/workflows/build.yml`）が `main` への push 時にリモートでビルドし、`dist/` に差分があれば `main` に自動コミットする。手動実行（workflow_dispatch）も可。
   - `npm run package:onamae` は `dist/` を `release/onamae/` にコピーするだけ（ZIP 作成用。`release/` は git 管理外）。
+- **操作の反応（INP）を守るための決まり**：ホームで他のページを最初から全部マウントしない（`App.jsx` の `mounted`。表示したページと、ブラウザが暇なときに1ページずつ裏で用意したページだけ）。粒子背景はスマホ・低性能端末で 30fps・解像度1.5倍まで（`ParticleField.js` の `lowPower`）。画面外のセクションと記事一覧の行は `content-visibility: auto` でレイアウトを後回しにする。記事一覧のタグ絞り込みは行を描き直さず `ol[data-tag]`＋`li[data-g]` の CSS で隠す。英字のスクランブル演出はスマホでは出さない。変更したら Playwright（CPU 4倍スロットル・スマホ幅）で `event` と `longtask` の PerformanceObserver を使って切り替え・絞り込み・入力の反応を測ってから出す
 - 本文の表示はJSに依存させないこと（スクロール演出は JS が動いた場合に画面外の要素だけを一時的に隠す方式）。
 - Vercelにデプロイ。ビルド設定は `vercel.json` で明示（framework: vite）。
 - デザインは TaxPlan-org/HP-DX（DX化支援サイト）のデザインシステムを移植したもの（ダーク基調、金×紺のグラデーション、three.js の粒子背景、ローダー、カーソル演出、スクロール連動のリビール）。変更時はこの世界観を崩さないこと。

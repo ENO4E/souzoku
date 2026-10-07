@@ -34,7 +34,7 @@ if (initialRoute === 'articles' && pageData && !pageData.list) {
     slug: li.dataset.s,
     title: li.querySelector('span')?.textContent || '',
     date: li.querySelector('time')?.getAttribute('datetime') || '',
-    tags: li.dataset.g ? li.dataset.g.split(',').map((i) => tagNames[Number(i)]).filter(Boolean) : [],
+    tags: li.dataset.g ? li.dataset.g.split(/[ ,]/).map((i) => tagNames[Number(i)]).filter(Boolean) : [],
   }))
 }
 

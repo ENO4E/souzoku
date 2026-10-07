@@ -38,7 +38,8 @@ function scrollToAnchor(anchor, behavior = 'instant') {
  */
 export default function App({ initialRoute = 'home', pageData = null }) {
   const [route, setRoute] = useState(initialRoute)
-  const [mountAll, setMountAll] = useState(false)
+  // 表示したことのあるページだけマウントする（最初に全ページをマウントすると、読み込み直後の操作が遅れる＝INP が悪化する）
+  const [mounted, setMounted] = useState(() => new Set([initialRoute]))
   const [phase, setPhase] = useState('')
   const routeRef = useRef(initialRoute)
   const timers = useRef([])
@@ -53,15 +54,29 @@ export default function App({ initialRoute = 'home', pageData = null }) {
       if (window.location.hash) requestAnimationFrame(() => scrollToAnchor(window.location.hash.slice(1), 'smooth'))
       return undefined
     }
-    setMountAll(true)
+    // 残りのページは、ブラウザが暇なときに1ページずつ裏で用意する（切り替えを速くするため。操作の邪魔はしない）
+    const idle = window.requestIdleCallback || ((fn) => window.setTimeout(fn, 1200))
+    const cancelIdle = window.cancelIdleCallback || window.clearTimeout
+    const queue = MAIN_ROUTES.filter((r) => r !== initialRoute)
+    let idleId = 0
+    const prefetchNext = () => {
+      const r = queue.shift()
+      if (!r) return
+      setMounted((m) => (m.has(r) ? m : new Set([...m, r])))
+      idleId = idle(prefetchNext, { timeout: 4000 })
+    }
+    idleId = idle(prefetchNext, { timeout: 4000 })
 
     const apply = (r) => {
       routeRef.current = r
+      setMounted((m) => (m.has(r) ? m : new Set([...m, r])))
       setRoute(r)
       root.dataset.route = r
       document.title = pages[r].title
       window.dispatchEvent(new CustomEvent('route:change', { detail: { route: r } }))
     }
+    // 切り替え先のページを描画してから位置を合わせる（まだマウントしていないページでも id を見つけられるように）
+    const afterRender = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn))
 
     const go = (next, anchor = '', { push = true, animate = true } = {}) => {
       const path = routePath(next, anchor)
@@ -74,14 +89,14 @@ export default function App({ initialRoute = 'home', pageData = null }) {
       timers.current.forEach(clearTimeout)
       if (reduced || !animate) {
         apply(next)
-        scrollToAnchor(anchor)
+        afterRender(() => scrollToAnchor(anchor))
         return
       }
       setPhase('in')
       timers.current = [
         window.setTimeout(() => {
           apply(next)
-          scrollToAnchor(anchor)
+          afterRender(() => scrollToAnchor(anchor))
           setPhase('out')
         }, WIPE_IN),
         window.setTimeout(() => setPhase(''), WIPE_IN + WIPE_OUT),
@@ -126,11 +141,12 @@ export default function App({ initialRoute = 'home', pageData = null }) {
       document.removeEventListener('click', onClick)
       window.removeEventListener('popstate', onPop)
       timers.current.forEach(clearTimeout)
+      cancelIdle(idleId)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const show = (r) => isMain && (mountAll || route === r)
+  const show = (r) => isMain && (route === r || mounted.has(r))
 
   return (
     <>

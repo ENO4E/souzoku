@@ -16,8 +16,17 @@ export function ArticlesView({ list = [] }) {
     return [...count.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).map(([t, n]) => ({ t, n }))
   }, [list])
   const tagIndex = useMemo(() => new Map(tags.map(({ t }, i) => [t, i])), [tags])
-  const shown = tag ? list.filter((a) => a.tags.includes(tag)) : list
+  const shownCount = tag ? list.filter((a) => a.tags.includes(tag)).length : list.length
   const latest = list.slice(0, LATEST_CARDS)
+  // 一覧の行は一度だけ描画し、絞り込みは <ol data-tag> と CSS で隠す（500行を描き直すと操作の反応が遅れる）
+  const rows = useMemo(() => list.map((a) => (
+    <li key={a.slug} data-s={a.slug} data-g={a.tags.map((t) => tagIndex.get(t)).join(' ')}>
+      <a href={`/articles/${a.slug}/`}>
+        <time dateTime={a.date}>{fmt(a.date)}</time>
+        <span>{a.title}</span>
+      </a>
+    </li>
+  )), [list, tagIndex])
   return (
     <>
       <section className="page-head" data-scene="2">
@@ -73,18 +82,11 @@ export function ArticlesView({ list = [] }) {
               ))}
             </div>
           )}
-          {shown.length === 0 ? (
+          {list.length === 0 ? (
             <p className="articles__empty">記事は準備中です。</p>
           ) : (
-            <ol className="article-index" data-count={shown.length}>
-              {shown.map((a) => (
-                <li key={a.slug} data-s={a.slug} data-g={a.tags.map((t) => tagIndex.get(t)).join(',')}>
-                  <a href={`/articles/${a.slug}/`}>
-                    <time dateTime={a.date}>{fmt(a.date)}</time>
-                    <span>{a.title}</span>
-                  </a>
-                </li>
-              ))}
+            <ol className="article-index" data-count={shownCount} data-tag={tag ? tagIndex.get(tag) : undefined}>
+              {rows}
             </ol>
           )}
         </div>

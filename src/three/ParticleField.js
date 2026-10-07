@@ -297,7 +297,8 @@ export class ParticleField {
     this.width = w
     this.height = h
     this.isMobileLayout = w < 900
-    const dpr = Math.min(window.devicePixelRatio || 1, this.options.lowPower ? 3 : 2)
+    // スマホ・低性能の端末は解像度を抑える（GPU の負担を減らして、画面の反応を落とさない）
+    const dpr = Math.min(window.devicePixelRatio || 1, this.options.lowPower ? 1.5 : 2)
     this.renderer.setPixelRatio(dpr)
     this.renderer.setSize(w, h, false)
     this.camera.aspect = w / h
@@ -321,9 +322,12 @@ export class ParticleField {
     }
     this.running = true
     this.lastFrame = performance.now()
+    // スマホ・低性能の端末は 30fps に抑える（毎フレームの処理で画面の反応（INP）が遅れないように）
+    const minInterval = this.options.lowPower ? 1000 / 30 - 2 : 0
     const loop = (now) => {
       if (!this.running) return
       this.raf = requestAnimationFrame(loop)
+      if (minInterval && now - this.lastFrame < minInterval) return
       this.tick(now)
     }
     this.raf = requestAnimationFrame(loop)
