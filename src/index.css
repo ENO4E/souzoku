@@ -1220,6 +1220,21 @@ html { color-scheme: dark; }
 .article-index { border-top: 1px solid var(--line); counter-reset: none; }
 .article-index li a { display: grid; grid-template-columns: 86px 1fr; gap: 16px; align-items: baseline; padding: 13px 4px; border-bottom: 1px solid var(--line); font-family: var(--font-jp); font-size: 14.5px; line-height: 1.7; color: var(--text-sub); transition: color 0.3s, background 0.3s; }
 .article-index li a:hover { color: var(--accent); background: rgba(255, 255, 255, 0.02); }
+/* 画面外のセクションはレイアウトを後回しにする（ページを切り替えたとき、大きなページ全体のレイアウトで操作が止まらないように） */
+.view .section { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+/* 一覧の行は画面外のレイアウトを省く（539行の表示・非表示の切り替えを軽くする） */
+.article-index > li { content-visibility: auto; contain-intrinsic-size: auto 52px; }
+/* タグの絞り込み（JS で行を描き直さず、ol の data-tag と各行の data-g（タグ番号）で隠す。タグは10種固定） */
+.article-index[data-tag="0"] > li:not([data-g~="0"]) { display: none; }
+.article-index[data-tag="1"] > li:not([data-g~="1"]) { display: none; }
+.article-index[data-tag="2"] > li:not([data-g~="2"]) { display: none; }
+.article-index[data-tag="3"] > li:not([data-g~="3"]) { display: none; }
+.article-index[data-tag="4"] > li:not([data-g~="4"]) { display: none; }
+.article-index[data-tag="5"] > li:not([data-g~="5"]) { display: none; }
+.article-index[data-tag="6"] > li:not([data-g~="6"]) { display: none; }
+.article-index[data-tag="7"] > li:not([data-g~="7"]) { display: none; }
+.article-index[data-tag="8"] > li:not([data-g~="8"]) { display: none; }
+.article-index[data-tag="9"] > li:not([data-g~="9"]) { display: none; }
 .article-index time { font-family: var(--font-en); font-size: 12px; letter-spacing: 0.04em; color: var(--text-mute); }
 @media (max-width: 680px) {
   .article-index li a { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; font-size: 14px; }

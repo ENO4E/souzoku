@@ -35,6 +35,8 @@ export default function Effects() {
     const root = document.documentElement
     root.classList.add('js')
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // 英字のスクランブル演出は、毎フレーム文字を書き換えるためスマホでは省く（画面の反応を優先）
+    const scrambleOn = !reducedMotion && !window.matchMedia('(pointer: coarse)').matches
 
     const reveals = document.querySelectorAll('[data-reveal]')
     const io = new IntersectionObserver(
@@ -42,7 +44,7 @@ export default function Effects() {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible')
-            if (!reducedMotion) entry.target.querySelectorAll('[data-scramble]').forEach(scramble)
+            if (scrambleOn) entry.target.querySelectorAll('[data-scramble]').forEach(scramble)
             io.unobserve(entry.target)
           }
         }
@@ -57,6 +59,9 @@ export default function Effects() {
     // ページ切り替え直後は、画面上部の見出しとパネルを待たずに表示する
     const onRoute = () => window.setTimeout(() => {
       document.querySelectorAll('.view:not([hidden]) .page-head [data-reveal], .view:not([hidden]) .page-head__actions, .view:not([hidden]) .panel--first [data-reveal]').forEach((el) => el.classList.add('is-visible'))
+      // 切り替え先のページの要素を観察対象に加える（裏で用意したページは最初の観察に含まれていない）
+      document.querySelectorAll('.view:not([hidden]) [data-reveal]:not(.is-visible)').forEach((el) => io.observe(el))
+      collectPending()
     }, 30)
     window.addEventListener('route:change', onRoute)
     if (root.dataset.introStarted) showHero()
@@ -66,11 +71,22 @@ export default function Effects() {
     const progressEls = Array.from(document.querySelectorAll('[data-progress]'))
     const bar = document.querySelector('.progress-bar')
     let raf = 0
+    // IntersectionObserver の補助：まだ表示していない要素だけを覚えておき、スクロールのたびに DOM 全体を探さない
+    let pending = []
+    const collectPending = () => {
+      pending = Array.from(document.querySelectorAll('.view:not([hidden]) [data-reveal]:not(.is-visible)'))
+    }
     const revealInView = () => {
+      if (pending.length === 0) return
       const vh = window.innerHeight
-      document.querySelectorAll('.view:not([hidden]) [data-reveal]:not(.is-visible)').forEach((el) => {
+      pending = pending.filter((el) => {
+        if (el.classList.contains('is-visible')) return false
         const r = el.getBoundingClientRect()
-        if (r.height > 0 && r.top < vh * 0.95 && r.bottom > 0) el.classList.add('is-visible')
+        if (r.height > 0 && r.top < vh * 0.95 && r.bottom > 0) {
+          el.classList.add('is-visible')
+          return false
+        }
+        return true
       })
     }
     const update = () => {
@@ -90,6 +106,7 @@ export default function Effects() {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(update)
     }
+    collectPending()
     update()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
