@@ -271,7 +271,47 @@ export function articleLd(a) {
   ]
 }
 
-/* ---------- 市ごとの相続税申告ページ（/area/<slug>/） ---------- */
+/* ---------- 地域から探す（/area/） ---------- */
+export const areaHubPage = {
+  path: '/area/',
+  title: `地域から探す相続税申告｜大阪市・北摂・豊能・北河内・阪神・神戸の市区町村別｜基本報酬99,000円〜｜${site.name}`,
+  description: '大阪市の各区、北摂・豊能・北河内・中河内・阪神・神戸の市区町村ごとに、相続税申告の料金・その地域の財産の特徴・よくある質問をまとめたページの一覧です。基本報酬は99,000円（税込・遺産総額4,000万円まで）から。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。',
+}
+
+/** regions … [{ name, slug, pref, cities: [{ city, path, topic }] }] */
+export function areaHubLd(regions) {
+  const url = `${ORIGIN}${areaHubPage.path}`
+  const items = regions.flatMap((r) => r.cities)
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: '地域から探す', item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: areaHubPage.title,
+      description: areaHubPage.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      about: { '@id': `${ORIGIN}/#organization` },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: items.length,
+        itemListElement: items.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: `${c.city}の相続税申告`, url: `${ORIGIN}${c.path}` })),
+      },
+    },
+  ]
+}
+
+/* ---------- 市区町村ごとの相続税申告ページ（/area/<slug>/） ---------- */
 export function areaPage(area) {
   return {
     path: area.path,
@@ -291,7 +331,7 @@ export function areaLd(area) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
-        { '@type': 'ListItem', position: 2, name: '対応エリア', item: `${ORIGIN}/service/#area` },
+        { '@type': 'ListItem', position: 2, name: '地域から探す', item: `${ORIGIN}/area/` },
         { '@type': 'ListItem', position: 3, name: `${area.city}の相続税申告`, item: url },
       ],
     },

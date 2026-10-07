@@ -164,25 +164,32 @@ export const prefectures = [
   { name: '京都府', en: 'Kyoto', note: '府内全域に対応', focus: [] },
 ]
 
-// 市ごとの相続税申告のページ（/area/<slug>/。content/areas/<slug>.md）。対応エリア・フッターの市名からリンクする
-export const areaPages = {
-  '尼崎市': 'amagasaki',
-  '芦屋市': 'ashiya',
-  '東大阪市': 'higashiosaka',
-  '枚方市': 'hirakata',
-  '茨木市': 'ibaraki',
-  '門真市': 'kadoma',
-  '神戸市': 'kobe',
-  '箕面市': 'minoh',
-  '守口市': 'moriguchi',
-  '寝屋川市': 'neyagawa',
-  '西宮市': 'nishinomiya',
-  '摂津市': 'settsu',
-  '四條畷市': 'shijonawate',
-  '吹田市': 'suita',
-  '宝塚市': 'takarazuka',
-  '高槻市': 'takatsuki',
-}
+// 市区町村ごとの相続税申告のページ（/area/<slug>/。content/areas/<slug>.md）を地域ごとにまとめたもの。
+// 「地域から探す」（/area/）・対応エリア・フッター・パンくずで使う。md の city / region と一致させる（ビルドで突き合わせ、ずれていればエラー）
+export const areaRegions = [
+  { name: '大阪市', slug: 'osaka-city', pref: '大阪府', cities: [
+    ['大阪市北区', 'osaka-kita'], ['大阪市都島区', 'osaka-miyakojima'], ['大阪市福島区', 'osaka-fukushima'], ['大阪市此花区', 'osaka-konohana'],
+    ['大阪市中央区', 'osaka-chuo'], ['大阪市西区', 'osaka-nishi'], ['大阪市港区', 'osaka-minato'], ['大阪市大正区', 'osaka-taisho'],
+    ['大阪市天王寺区', 'osaka-tennoji'], ['大阪市浪速区', 'osaka-naniwa'], ['大阪市西淀川区', 'osaka-nishiyodogawa'], ['大阪市淀川区', 'osaka-yodogawa'],
+    ['大阪市東淀川区', 'osaka-higashiyodogawa'], ['大阪市東成区', 'osaka-higashinari'], ['大阪市生野区', 'osaka-ikuno'], ['大阪市旭区', 'osaka-asahi'],
+    ['大阪市城東区', 'osaka-joto'], ['大阪市鶴見区', 'osaka-tsurumi'], ['大阪市阿倍野区', 'osaka-abeno'], ['大阪市住之江区', 'osaka-suminoe'],
+    ['大阪市住吉区', 'osaka-sumiyoshi'], ['大阪市東住吉区', 'osaka-higashisumiyoshi'], ['大阪市平野区', 'osaka-hirano'], ['大阪市西成区', 'osaka-nishinari'],
+  ] },
+  { name: '北摂', slug: 'hokusetsu', pref: '大阪府', cities: [
+    ['豊中市', 'toyonaka'], ['吹田市', 'suita'], ['茨木市', 'ibaraki'], ['高槻市', 'takatsuki'], ['箕面市', 'minoh'], ['池田市', 'ikeda'], ['摂津市', 'settsu'], ['島本町', 'shimamoto'],
+  ] },
+  { name: '豊能', slug: 'toyono', pref: '大阪府', cities: [['豊能町', 'toyono'], ['能勢町', 'nose']] },
+  { name: '北河内', slug: 'kitakawachi', pref: '大阪府', cities: [
+    ['枚方市', 'hirakata'], ['寝屋川市', 'neyagawa'], ['守口市', 'moriguchi'], ['門真市', 'kadoma'], ['大東市', 'daito'], ['交野市', 'katano'], ['四條畷市', 'shijonawate'],
+  ] },
+  { name: '中河内', slug: 'nakakawachi', pref: '大阪府', cities: [['東大阪市', 'higashiosaka']] },
+  { name: '阪神', slug: 'hanshin', pref: '兵庫県', cities: [
+    ['尼崎市', 'amagasaki'], ['西宮市', 'nishinomiya'], ['芦屋市', 'ashiya'], ['伊丹市', 'itami'], ['宝塚市', 'takarazuka'], ['川西市', 'kawanishi'], ['三田市', 'sanda'],
+  ] },
+  { name: '神戸', slug: 'kobe', pref: '兵庫県', cities: [['神戸市', 'kobe']] },
+]
+/** 市区町村名 → ページの slug */
+export const areaPages = Object.fromEntries(areaRegions.flatMap((r) => r.cities))
 
 export const faqs = [
   {

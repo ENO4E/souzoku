@@ -136,6 +136,11 @@ export function ArticleView({ article, related = [] }) {
               <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="コラム">無料相談を予約する<Arrow /></a>
               <a href="/simulation/" className="btn btn--ghost btn--lg">相続税シミュレーション</a>
             </div>
+            <p className="article-cta__links">
+              <a href="/service/#fee">料金表（基本報酬99,000円〜）</a>
+              <a href="/area/">お住まいの市区町村のページ</a>
+              <a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a>
+            </p>
           </div>
 
           {related.length > 0 && (

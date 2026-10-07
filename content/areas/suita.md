@@ -1,6 +1,7 @@
 ---
 city: 吹田市
 pref: 大阪府
+region: 北摂
 topic: 千里ニュータウンの戸建て・マンションと高地価エリアの対策
 description: 吹田市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。吹田市は千里ニュータウンの戸建てや分譲マンション、江坂・阪急沿線の高い地価により、自宅だけで基礎控除を超える相続が多い地域です。初回相談は無料です。
 columns: [hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, ienakiko-tokurei, tokurei-shokibo-akiya-jikka-tenkyo, nijisouzoku-taisaku]

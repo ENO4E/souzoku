@@ -975,7 +975,7 @@ html { color-scheme: dark; }
 .js .panel--first .line[data-reveal] > span { transition-delay: 0ms; }
 @media (max-width: 899px) {
   .panel__link { padding: calc(var(--header-h) + 28px) 0 96px; }
-  .panel__index { font-size: 38vw; right: -2vw; top: auto; bottom: 6vh; transform: none; }
+  .panel__index { font-size: 38vw; right: 0; top: auto; bottom: 6vh; transform: none; }
   .panel:hover .panel__index { transform: none; }
   .panel__en { font-size: clamp(44px, 16vw, 80px); }
   .panel__title { font-size: clamp(26px, 7.4vw, 36px); }
@@ -1239,6 +1239,31 @@ html { color-scheme: dark; }
 .area-facts dt { color: var(--text-mute); font-size: 12.5px; }
 .area-facts dd { color: var(--text); line-height: 1.7; }
 .area-h2 { margin: 48px 0 16px; font-family: var(--font-serif); font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; line-height: 1.5; }
+.area-h3 { margin: 28px 0 10px; font-family: var(--font-jp); font-size: 15.5px; font-weight: 700; color: var(--text); }
+.area-note--body { font-size: 14px; color: var(--text); }
+.area-fee--types td, .area-fee--examples td { font-size: 13.5px; line-height: 1.7; vertical-align: top; }
+.area-fee--types td:first-child { white-space: nowrap; }
+.area-fee small { font-size: 12px; color: var(--text-sub); }
+.area-checks { display: grid; gap: 8px; padding-left: 1.3em; font-family: var(--font-jp); font-size: 14px; line-height: 1.8; }
+.area-checks li::marker { color: var(--accent); }
+.area-others__more { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-family: var(--font-jp); font-size: 13px; color: var(--accent); }
+.area-hub__jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.area-hub__jump a { display: inline-flex; align-items: baseline; gap: 6px; padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: 999px; font-family: var(--font-jp); font-size: 13.5px; color: var(--text); }
+.area-hub__jump a:hover { border-color: var(--accent); color: var(--accent); }
+.area-hub__jump small { font-family: var(--font-en); font-size: 11px; color: var(--text-mute); }
+.area-hub__region + .area-hub__region { margin-top: 12px; }
+.area-hub__pref { margin-left: 12px; font-family: var(--font-jp); font-size: 13px; font-weight: 500; color: var(--text-mute); }
+.area-hub__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.area-hub__grid li { border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.02); }
+.area-hub__grid a { display: grid; gap: 6px; padding: 16px 18px; height: 100%; }
+.area-hub__city { font-family: var(--font-jp); font-size: 15px; font-weight: 700; color: var(--text); }
+.area-hub__topic { font-family: var(--font-jp); font-size: 12.5px; line-height: 1.6; color: var(--text-sub); }
+.area-hub__grid a:hover .area-hub__city { color: var(--accent); }
+.area-card__region + .area-card__region { margin-top: 16px; }
+.area-card__label a { color: inherit; }
+.article-cta__links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px; font-family: var(--font-jp); font-size: 13px; }
+.article-cta__links a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.footer__areas a small { margin-left: 4px; font-family: var(--font-en); font-size: 11px; color: var(--text-mute); }
 .area-columns .area-h2 { margin-top: 0; }
 .area-columns li a { line-height: 1.6; }
 .area-fee { margin-top: 4px; }
@@ -1273,4 +1298,15 @@ html { color-scheme: dark; }
   .area-facts { grid-template-columns: 1fr; padding: 4px 18px; }
   .area-facts div:nth-last-child(2) { border-bottom: 1px solid var(--line); }
   .area-actions .btn { flex: 1 1 100%; }
+}
+
+/* 市のページ「費用の比べ方」の表：スマホでは行をカード状に積む（4列は幅が足りない） */
+@media (max-width: 640px) {
+  .area-fee--types thead, .area-fee--examples thead { display: none; }
+  .area-fee--types tr, .area-fee--examples tr { display: grid; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .area-fee--types td, .area-fee--examples td { display: block; padding: 0; border: 0; text-align: left; }
+  .area-fee--examples td.amt { text-align: left; }
+  .area-fee--examples td.amt::before { content: "総額（税込）："; font-size: 12px; color: var(--text-sub); }
+  .area-fee--examples td.amt + td.amt::before { content: "一般的な相場："; }
+  .area-fee--types td:first-child { white-space: normal; }
 }
