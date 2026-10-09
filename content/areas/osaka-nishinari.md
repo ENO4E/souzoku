@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 長屋・借地と空き家になった実家の評価・売却
 description: 大阪市西成区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西成区は長屋や借地の上の住宅が多く、借地権・底地の評価や空き家になった実家の売却が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [akiya-tokurei-3000man, fudosan-akiya-kanri-sekinin-kotei-shisanzei, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, fudosan-mitouki-tatemono-sofu-meigi-tochi]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, akiya-tokurei-3000man, fudosan-akiya-kanri-sekinin-kotei-shisanzei, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, fudosan-mitouki-tatemono-sofu-meigi-tochi]
 ---
 大阪市西成区は、天下茶屋・岸里・玉出・花園町・津守・鶴見橋などに、戦前から戦後にかけて建てられた長屋や文化住宅が今も多く残る地域です。南海本線と大阪メトロ四つ橋線・堺筋線が通る便利な場所ですが、相続では借地の上の古い住宅や、空き家になった実家の扱いがよく問題になります。財産の総額が基礎控除（3,000万円＋600万円×法定相続人の数）に届かない場合でも、登記や空き家の売却の手続きは残ります。
 

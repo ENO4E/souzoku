@@ -4,7 +4,7 @@ pref: 大阪府
 region: 豊能
 topic: 田畑と山林が中心の財産、倍率方式の評価、農地の納税猶予と相続土地国庫帰属制度
 description: 能勢町の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。田畑と山林が財産の中心になりやすく、倍率方式の評価や農地の納税猶予、国庫帰属制度の検討が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-sanrin-genya-zasshuchi, jigyo-noka-sozoku-nochi-hyoka-nozei-yuyo-shisetsu, souzoku-tochi-kokko-kizoku, fudosan-sanrin-genya-souzoku-todokede, fudosan-kyoukai-mikakutei-tochi-souzoku]
+columns: [toyono-souzokuzei-zeirishi-yasui, hyoka-sanrin-genya-zasshuchi, jigyo-noka-sozoku-nochi-hyoka-nozei-yuyo-shisetsu, souzoku-tochi-kokko-kizoku, fudosan-sanrin-genya-souzoku-todokede, fudosan-kyoukai-mikakutei-tochi-souzoku]
 ---
 能勢町は大阪府の最北端にあり、町の大部分を山林と田畑が占める地域です。町内に鉄道の駅はなく、集落は谷あいの道路沿いに点在しています。栗の産地としても知られ、相続財産は自宅とその周りの田畑・栗林・山林が中心で、一つの家が数多くの筆の土地を持っていることが珍しくありません。1筆あたりの評価額は高くなりにくいものの筆数が多く、預貯金や生命保険と合わせると基礎控除（3,000万円＋600万円×法定相続人の数）を超えることもあります。
 

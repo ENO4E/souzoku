@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: タワーマンションの区分所有補正率と貸しビル・テナントビルの評価
 description: 大阪市西区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西区は堀江・西長堀のタワーマンションや本町・肥後橋周辺の貸しビルなど、都心の不動産の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [fudosan-tower-mansion-hyouka-2024-kaisei, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, tokurei-shokibo-tokutei-dozoku-kaisha, fudosan-shueki-bukken-shouhizei-invoice]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-tower-mansion-hyouka-2024-kaisei, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, tokurei-shokibo-tokutei-dozoku-kaisha, fudosan-shueki-bukken-shouhizei-invoice]
 ---
 大阪市西区は、御堂筋の西側に広がる都心の区です。四つ橋筋沿いの本町・肥後橋の周辺や、江戸堀・京町堀・靱本町・立売堀といった堀の名が残る地域には中小のオフィスビルが並び、北堀江・南堀江、西長堀、阿波座の周辺にはタワーマンションを含む大規模なマンションが建っています。靱公園のまわりは住まいと職場が混じり合う地域で、親の代から貸しビルや店舗付きのビルを持ち続けている家庭もあります。九条など区の西側には商店街と住宅地が続きます。預貯金や株式に加えて、マンションの一室や収益ビルが財産の中心になりやすいのが西区の相続です。
 

@@ -4,7 +4,7 @@ pref: 大阪府
 region: 北摂
 topic: 高級住宅地と傾斜地の評価、北急延伸後の地価上昇への備え
 description: 箕面市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。箕面市は阪急箕面線沿線の住宅地に加え、北大阪急行の延伸で駅周辺の地価が上昇し、自宅だけで相続税の対象になる家庭が増えています。初回相談は無料です。
-columns: [hyoka-gakechi-dosha-saigai-hosei, chiseki-kibo-ookina-takuchi, hyoka-sanrin-genya-zasshuchi, hyoka-fudosan-kantei-shinkoku, fudosan-rosenka-hyoka]
+columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-gakechi-dosha-saigai-hosei, chiseki-kibo-ookina-takuchi, hyoka-sanrin-genya-zasshuchi, hyoka-fudosan-kantei-shinkoku, fudosan-rosenka-hyoka]
 ---
 箕面市は、阪急箕面線の桜井・牧落・箕面駅周辺に落ち着いた住宅地が広がり、北大阪急行の延伸で箕面萱野・箕面船場阪大前の両駅が開業したことで、駅周辺の地価が上昇している地域です。敷地の広い戸建てが多く、自宅の土地だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続が目立ちます。一方で山麓の住宅地は傾斜やがけ地を含み、評価を下げられる要素を見落としがちです。
 

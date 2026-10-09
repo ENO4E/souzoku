@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 住宅密集地の狭小地と道路後退、商店街の店舗併用住宅の特例
 description: 大阪市旭区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。旭区は千林・森小路の住宅密集地や商店街が広がり、狭小地や道路後退の評価、店舗兼住宅の特例が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [fudosan-setback-shidou-futan-tochi-baikyaku, fuseikei-chi-hosei, tokurei-shokibo-tenpo-heiyo-anbun, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi, kashitsuke-jigyo-takuchi-3nen]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-setback-shidou-futan-tochi-baikyaku, fuseikei-chi-hosei, tokurei-shokibo-tenpo-heiyo-anbun, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi, kashitsuke-jigyo-takuchi-3nen]
 ---
 大阪市旭区は、淀川の南岸に位置する大阪市北東部の区です。京阪本線の森小路・千林、大阪メトロ谷町線の千林大宮・太子橋今市、今里筋線の清水・新森古市といった駅の周辺には、小さな敷地に住宅が建て込んだ地域が広がっています。千林商店街をはじめとする商店街沿いには、1階が店舗で2階以上が住まいという建物が多く、家族で営んできた店をどうするかが相続の大きな関心事になります。淀川沿いの城北公園の周辺など、区内には落ち着いた住宅地もあります。
 

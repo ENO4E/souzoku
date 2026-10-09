@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 臨海部の工場用地と長屋の多い住宅地の評価、相続した土地の売却
 description: 大阪市此花区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。此花区は臨海部の工場用地と長屋の多い住宅地があり、会社に貸す土地の評価や相続後の売却が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-musho-henkan-todokede-soto-chidai, tokurei-shokibo-tokutei-dozoku-kaisha, chiseki-kibo-ookina-takuchi, hyoka-maguchi-kyosho-okuyuki-chodai, souzoku-fudosan-baikyaku-zei]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-musho-henkan-todokede-soto-chidai, tokurei-shokibo-tokutei-dozoku-kaisha, chiseki-kibo-ookina-takuchi, hyoka-maguchi-kyosho-okuyuki-chodai, souzoku-fudosan-baikyaku-zei]
 ---
 大阪市此花区は、JR大阪環状線とJRゆめ咲線（桜島線）が分かれる西九条駅や、阪神なんば線の千鳥橋駅・伝法駅の周辺に古くからの住宅地が広がり、臨海部には工場や物流施設が集まる区です。ユニバーサル・スタジオ・ジャパンは臨海部の工場跡地に開業した施設で、舞洲・夢洲を含め、区の西側は埋立地が大きな面積を占めています。四貫島・梅香・春日出などには長屋が多く残り、家族で工場や関連の事業を営んできた家庭も少なくありません。
 
