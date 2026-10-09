@@ -5,7 +5,7 @@ region: 北河内
 updated: 2026-10-09
 topic: 町工場と住宅が密集する地域の事業用地・自社株、狭い道路に面した宅地、生駒山麓の傾斜地
 description: 大東市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。町工場と住宅が入り組み、工場の敷地や自社株、狭い道路に面した宅地、生駒山麓の傾斜地の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [kitakawachi-souzokuzei-zeirishi-yasui, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, hijojo-kabushiki-hyoka, fudosan-setback-shidou-futan-tochi-baikyaku, hyoka-gakechi-dosha-saigai-hosei]
+columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, hijojo-kabushiki-hyoka, fudosan-setback-shidou-futan-tochi-baikyaku, hyoka-gakechi-dosha-saigai-hosei]
 ---
 大東市は大阪府の東部にあり、JR学研都市線の住道駅・野崎駅・四条畷駅の周辺に市街地が広がり、東側は生駒山地の山すそへと続いています。平野部には金属加工などの町工場と住宅が入り組んで建つ地域が多く、家族で営んできた工場の土地や建物、会社の株式が相続財産の中心になることがあります。野崎観音の周辺のように古くからの集落が残る地域や、山麓の傾斜地に開かれた住宅地もあり、土地ごとに確認する点が異なります。
 

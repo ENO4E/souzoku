@@ -5,7 +5,7 @@ region: 豊能
 updated: 2026-10-09
 topic: 光風台・ときわ台など大規模住宅地の高齢化と空き家になる実家、住宅地の外の山林
 description: 豊能町の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。光風台・ときわ台など大規模住宅地で親世代の相続が続き、空き家になる実家の扱いや山林の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [toyono-souzokuzei-zeirishi-yasui, akiya-tokurei-3000man, fudosan-jikka-daremo-sumanai-sentakushi-hikaku, fudosan-akiya-kanri-sekinin-kotei-shisanzei, rojin-home-shokibo-takuchi, souzoku-tochi-kokko-kizoku]
+columns: [toyono-souzokuzei-zeirishi-yasui, toyono-fudosan-souzoku-taisaku, akiya-tokurei-3000man, fudosan-jikka-daremo-sumanai-sentakushi-hikaku, fudosan-akiya-kanri-sekinin-kotei-shisanzei, rojin-home-shokibo-takuchi, souzoku-tochi-kokko-kizoku]
 ---
 豊能町は大阪府の北部にあり、能勢電鉄の光風台駅・ときわ台駅・妙見口駅の周辺に住宅地が開かれた町です。光風台・新光風台・ときわ台・東ときわ台などの大規模な住宅地は、開発の時期に多くの世帯がそろって入居したため、親世代の相続が続いています。一方で、吉川・余野・高山などの地域には田畑や山林が残り、住宅地とは評価の方法が異なります。
 

@@ -5,7 +5,7 @@ region: 北摂
 updated: 2026-10-09
 topic: 駅前の住宅地と北部の農地・山林で異なる評価と特例
 description: 高槻市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。高槻市はJR・阪急の駅周辺の住宅地で路線価が高く、北部には農地・山林が広がります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-nochi-kubun-takuchi-hijun, tokurei-nochi-nozei-yuyo-keizoku-todokede-uchikiri, hyoka-sanrin-genya-zasshuchi, fudosan-rosenka-hyoka, tokurei-shokibo-fukusu-hitsu-shido-mochibun]
+columns: [hokusetsu-souzokuzei-zeirishi-yasui, hokusetsu-fudosan-souzoku-taisaku, hyoka-nochi-kubun-takuchi-hijun, tokurei-nochi-nozei-yuyo-keizoku-todokede-uchikiri, hyoka-sanrin-genya-zasshuchi, fudosan-rosenka-hyoka, tokurei-shokibo-fukusu-hitsu-shido-mochibun]
 ---
 高槻市は、JR高槻駅と阪急高槻市駅を中心に住宅地が広がり、大阪・京都の両方に通いやすいことから地価の水準が高い地域です。駅周辺は再開発でマンションが増え、戸建てとマンションの両方が相続財産になります。一方、北部の山間部や淀川沿いには農地・山林・市街化調整区域が広がり、同じ市内でも評価の方法がまったく違います。
 

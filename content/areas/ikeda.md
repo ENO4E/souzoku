@@ -5,7 +5,7 @@ region: 北摂
 updated: 2026-10-09
 topic: 五月山山麓の傾斜地・擁壁のある宅地、旧市街の古い家屋と名義の整理、細河の植木畑
 description: 池田市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。五月山山麓の傾斜地や擁壁のある宅地、旧市街の古い家屋、細河地区の植木畑など評価の論点が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-gakechi-dosha-saigai-hosei, hyoka-fuseikeichi-hosei-kagechi, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-nochi-kubun-takuchi-hijun, akiya-tokurei-3000man]
+columns: [hokusetsu-souzokuzei-zeirishi-yasui, hokusetsu-fudosan-souzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-fuseikeichi-hosei-kagechi, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-nochi-kubun-takuchi-hijun, akiya-tokurei-3000man]
 ---
 池田市は、阪急宝塚線の池田駅と石橋阪大前駅を中心に市街地が広がり、すぐ北側に五月山が迫る地域です。駅の北から山麓にかけては坂道沿いに住宅が並び、古い町並みが残る旧市街、北部の細河地区に広がる植木の畑など、ひとつの家が持つ土地の種類もさまざまです。財産の多くが自宅の土地という家庭では、評価の仕方しだいで基礎控除（3,000万円＋600万円×法定相続人の数）を超えるかどうかが分かれることもあります。
 

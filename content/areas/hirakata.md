@@ -5,7 +5,7 @@ region: 北河内
 updated: 2026-10-09
 topic: 樟葉・香里園のニュータウンと北部の農地・生産緑地の相続
 description: 枚方市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。枚方市は樟葉・香里園などのニュータウンや団地、京阪沿線の住宅地と、北部に残る農地・生産緑地が混在する地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [kitakawachi-souzokuzei-zeirishi-yasui, hyoka-seisan-ryokuchi-hyoka, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, ienakiko-tokurei, akiya-tokurei-3000man]
+columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, hyoka-seisan-ryokuchi-hyoka, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, ienakiko-tokurei, akiya-tokurei-3000man]
 ---
 枚方市は京阪本線沿いに樟葉・枚方市駅・香里園といった拠点があり、高度成長期に開発されたニュータウンや大規模団地、駅前のマンションが住宅の中心です。一方で北部・東部の丘陵地には農地や生産緑地、山林が残り、代々の土地を持つ家庭も少なくありません。敷地が広めの戸建てや複数の土地を持つケースでは、自宅・農地・預貯金の合計が基礎控除（3,000万円＋600万円×法定相続人の数）を超えることがあります。宅地と農地が両方ある相続が多いのが枚方市の特徴です。
 

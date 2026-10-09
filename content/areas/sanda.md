@@ -5,7 +5,7 @@ region: 阪神
 updated: 2026-10-09
 topic: 北摂三田ニュータウンの戸建てと、周辺の農村部の田畑・山林を両方相続する場合の評価
 description: 三田市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。北摂三田ニュータウンの戸建てと農村部の田畑・山林とで評価の方法が異なり、両方を相続する際は注意が必要です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hanshin-souzokuzei-zeirishi-yasui, hyoka-nochi-kubun-takuchi-hijun, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, hyoka-sanrin-genya-zasshuchi, hyoka-shigaika-chosei-zasshuchi]
+columns: [hanshin-souzokuzei-zeirishi-yasui, hanshin-fudosan-souzoku-taisaku, hyoka-nochi-kubun-takuchi-hijun, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, hyoka-sanrin-genya-zasshuchi, hyoka-shigaika-chosei-zasshuchi]
 ---
 三田市は兵庫県の南東部、六甲山の北側に位置し、JR宝塚線（福知山線）の三田駅・新三田駅と神戸電鉄の沿線に市街地があります。昭和の終わりから開発が進んだ北摂三田ニュータウン（フラワータウン・ウッディタウン・カルチャータウン）に住宅が建ち並び、その外側には田畑と山林が広がる農村部があります。ニュータウンの自宅と、親から受け継いだ農村部の田畑や山林を両方持っている家庭では、性格のまったく違う土地をまとめて評価することになります。
 

@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 路線価の高い商業地の貸ビル・店舗・タワーマンションと納税資金の準備
 description: 大阪市中央区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。船場・心斎橋・難波は路線価が高く、貸ビルやタワーマンションの相続では納税資金の準備が欠かせません。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, kashiya-tatetsuke-chi, hyoka-yosekiritsu-kotonaru-takuchi, ennou-butsunou, chosa-nozei-shikin-loan-ennou-hikaku, jigyo-chintai-mansion-keieisha-hojinka-tatemono-nomi]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, kashiya-tatetsuke-chi, hyoka-yosekiritsu-kotonaru-takuchi, ennou-butsunou, chosa-nozei-shikin-loan-ennou-hikaku, jigyo-chintai-mansion-keieisha-hojinka-tatemono-nomi]
 ---
 大阪市中央区は、北浜・本町・船場のオフィス街、心斎橋・道頓堀・難波の繁華街、大阪城の周辺と谷町・上町台地の住宅地を含む、大阪の中心にあたる区です。御堂筋や堺筋の沿道をはじめ路線価の高い商業地が広がり、小さな土地でも評価額が大きくなります。代々船場で商売をしてきたご家庭の貸ビルや店舗、同族会社の株式、北浜や谷町などに増えたタワーマンションの住戸など、評価額の大きな財産が重なりやすいのが中央区の特徴です。財産の大半が不動産だと、相続税を納める現金が足りなくなるおそれがあるため、評価と同時に納税の方法を考えておく必要があります。
 

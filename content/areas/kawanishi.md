@@ -5,7 +5,7 @@ region: 阪神
 updated: 2026-10-09
 topic: 多田・大和団地・清和台など丘陵の住宅団地の傾斜地・ひな壇の宅地と空き家になる実家
 description: 川西市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。多田・清和台など丘陵の住宅団地が多く、傾斜地や擁壁のある宅地の評価と空き家になる実家の扱いが論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hanshin-souzokuzei-zeirishi-yasui, hyoka-gakechi-dosha-saigai-hosei, hyoka-fuseikeichi-hosei-kagechi, ienakiko-tokurei, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man]
+columns: [hanshin-souzokuzei-zeirishi-yasui, hanshin-fudosan-souzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-fuseikeichi-hosei-kagechi, ienakiko-tokurei, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man]
 ---
 川西市は兵庫県の南東部で大阪府と接し、阪急宝塚線と能勢電鉄が乗り入れる川西能勢口駅、JR宝塚線の川西池田駅の周辺に中心市街地があります。そこから北へ、能勢電鉄の沿線やバス路線沿いに、多田・平野・大和団地・清和台・けやき坂などの住宅地が丘陵を切り開いて造られました。清和源氏ゆかりの多田神社がある多田地区のように、古くからの集落が残る地域もあります。丘陵の住宅地は入居から長い年月がたち、子ども世代が市外で暮らしている家庭の相続が増えています。
 

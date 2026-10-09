@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 工場と住宅が混在する地域の土地の評価単位と借地
 description: 大阪市西淀川区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西淀川区は工場と住宅が混在し、自宅・工場・貸地を持つ場合の土地の分け方や借地の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-fuseikeichi-hosei-kagechi, hyoka-riyokachi-teika-10percent, shakuchiken-teichi-hyoka, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-kashitsuke-jigyoteki-kibo-3nen]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, hyoka-fuseikeichi-hosei-kagechi, hyoka-riyokachi-teika-10percent, shakuchiken-teichi-hyoka, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-kashitsuke-jigyoteki-kibo-3nen]
 ---
 大阪市西淀川区は、淀川と神崎川にはさまれ、川を隔てて兵庫県尼崎市と接する区です。阪神本線の姫島駅・千船駅、阪神なんば線の出来島駅・福駅、JR東西線の御幣島駅などの周辺に住宅地が広がり、そのすぐ隣に工場や倉庫が並ぶ、住宅と工場が入り組んだ街並みが特徴です。昔からの地主の家庭がある一方で、借地の上に住宅や小さな工場を建てている家庭もあり、相続では土地の権利関係と使われ方を一筆ずつ確かめることが欠かせません。
 
