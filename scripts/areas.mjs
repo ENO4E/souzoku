@@ -46,6 +46,7 @@ export function loadAreas(dir) {
       region: meta.region,
       topic: meta.topic || '',
       description: meta.description,
+      title: meta.title || '', // title / description を独自に指定したい市だけ md に書く（空なら seo.js の既定の形）
       html: renderMarkdown(main.trim()),
       accessHtml: access ? renderMarkdown(access) : '',
       faqs,

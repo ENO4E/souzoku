@@ -168,7 +168,7 @@ export const prefectures = [
 // 「地域から探す」（/area/）・対応エリア・フッター・パンくずで使う。md の city / region と一致させる（ビルドで突き合わせ、ずれていればエラー）
 export const areaRegions = [
   { name: '大阪市', slug: 'osaka-city', pref: '大阪府', cities: [
-    ['大阪市北区', 'osaka-kita'], ['大阪市都島区', 'osaka-miyakojima'], ['大阪市福島区', 'osaka-fukushima'], ['大阪市此花区', 'osaka-konohana'],
+    ['大阪市', 'osaka-city'], ['大阪市北区', 'osaka-kita'], ['大阪市都島区', 'osaka-miyakojima'], ['大阪市福島区', 'osaka-fukushima'], ['大阪市此花区', 'osaka-konohana'],
     ['大阪市中央区', 'osaka-chuo'], ['大阪市西区', 'osaka-nishi'], ['大阪市港区', 'osaka-minato'], ['大阪市大正区', 'osaka-taisho'],
     ['大阪市天王寺区', 'osaka-tennoji'], ['大阪市浪速区', 'osaka-naniwa'], ['大阪市西淀川区', 'osaka-nishiyodogawa'], ['大阪市淀川区', 'osaka-yodogawa'],
     ['大阪市東淀川区', 'osaka-higashiyodogawa'], ['大阪市東成区', 'osaka-higashinari'], ['大阪市生野区', 'osaka-ikuno'], ['大阪市旭区', 'osaka-asahi'],
