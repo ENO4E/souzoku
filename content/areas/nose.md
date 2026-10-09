@@ -2,6 +2,7 @@
 city: 能勢町
 pref: 大阪府
 region: 豊能
+updated: 2026-10-09
 topic: 田畑と山林が中心の財産、倍率方式の評価、農地の納税猶予と相続土地国庫帰属制度
 description: 能勢町の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。田畑と山林が財産の中心になりやすく、倍率方式の評価や農地の納税猶予、国庫帰属制度の検討が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [toyono-souzokuzei-zeirishi-yasui, hyoka-sanrin-genya-zasshuchi, jigyo-noka-sozoku-nochi-hyoka-nozei-yuyo-shisetsu, souzoku-tochi-kokko-kizoku, fudosan-sanrin-genya-souzoku-todokede, fudosan-kyoukai-mikakutei-tochi-souzoku]

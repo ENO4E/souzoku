@@ -2,6 +2,7 @@
 city: 大阪市城東区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 住宅密集地とマンション、町工場の跡地を使った駐車場や貸家の評価
 description: 大阪市城東区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。関目・蒲生四丁目・鴫野の住宅密集地とマンション、町工場の跡地の駐車場や貸家の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-fuseikeichi-hosei-kagechi, tokurei-shokibo-tokutei-jigyoyo-yoken, hyoka-kashi-chushajo-hyoka, fudosan-hyouka-tani-jitaku-kashi-chushajo, hyoka-kubun-shoyu-mansion-2024-keisan]

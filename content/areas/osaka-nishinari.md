@@ -2,6 +2,7 @@
 city: 大阪市西成区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 長屋・借地と空き家になった実家の評価・売却
 description: 大阪市西成区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西成区は長屋や借地の上の住宅が多く、借地権・底地の評価や空き家になった実家の売却が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, akiya-tokurei-3000man, fudosan-akiya-kanri-sekinin-kotei-shisanzei, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, fudosan-mitouki-tatemono-sofu-meigi-tochi]

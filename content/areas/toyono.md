@@ -2,6 +2,7 @@
 city: 豊能町
 pref: 大阪府
 region: 豊能
+updated: 2026-10-09
 topic: 光風台・ときわ台など大規模住宅地の高齢化と空き家になる実家、住宅地の外の山林
 description: 豊能町の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。光風台・ときわ台など大規模住宅地で親世代の相続が続き、空き家になる実家の扱いや山林の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [toyono-souzokuzei-zeirishi-yasui, akiya-tokurei-3000man, fudosan-jikka-daremo-sumanai-sentakushi-hikaku, fudosan-akiya-kanri-sekinin-kotei-shisanzei, rojin-home-shokibo-takuchi, souzoku-tochi-kokko-kizoku]

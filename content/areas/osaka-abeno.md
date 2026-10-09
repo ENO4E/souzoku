@@ -2,6 +2,7 @@
 city: 大阪市阿倍野区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 北畠・帝塚山の邸宅地と昭和町・文の里の長屋、親世代の自宅と二次相続
 description: 大阪市阿倍野区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。北畠・帝塚山の邸宅地や昭和町・文の里の長屋など、親世代の自宅をどう引き継ぐかが中心になる区です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-nihoro-sokuho-kakuchi-kasan, rojin-home-shokibo-takuchi, kashiya-tatetsuke-chi, tatemono-hyoka-kotei-shisan, nijisouzoku-taisaku]

@@ -53,7 +53,7 @@ export default function Footer({ latest = [] }) {
         <p className="footer__areas-label"><a href="/area/">地域から探す（市区町村ごとの相続税申告）</a></p>
         <ul>
           {areaRegions.map((r) => (
-            <li key={r.slug}><a href={`/area/#${r.slug}`}>{r.name}<small>{r.cities.length}</small></a></li>
+            <li key={r.slug}><a href={r.slug === 'osaka-city' ? '/area/osaka-city/' : `/area/#${r.slug}`}>{r.name}<small>{r.cities.length}</small></a></li>
           ))}
         </ul>
       </nav>

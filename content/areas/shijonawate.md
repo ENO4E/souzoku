@@ -2,6 +2,7 @@
 city: 四條畷市
 pref: 大阪府
 region: 北河内
+updated: 2026-10-09
 topic: 市街化調整区域の農地・山林と住宅地が混在する評価の注意点
 description: 四條畷市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。四條畷市は飯盛山麓の傾斜地、市街化調整区域の農地・山林と、JR学研都市線沿線の住宅地が混在し、土地ごとに評価方法が異なります。初回相談は無料です。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, hyoka-shigaika-chosei-zasshuchi, hyoka-nochi-kubun-takuchi-hijun, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, nochi-nozei-yuyo]

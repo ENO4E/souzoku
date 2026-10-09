@@ -2,6 +2,7 @@
 city: 大阪市東成区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 町工場と長屋が並ぶ住工混在地の土地評価と自社株の承継
 description: 大阪市東成区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。東成区は町工場と長屋が混在し、工場併用住宅の土地や家業の自社株の評価が税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-tenpo-heiyo-anbun, hyoka-maguchi-kyosho-okuyuki-chodai]

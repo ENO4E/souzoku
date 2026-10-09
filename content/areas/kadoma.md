@@ -2,6 +2,7 @@
 city: 門真市
 pref: 大阪府
 region: 北河内
+updated: 2026-10-09
 topic: 町工場跡地・密集住宅地・古い借地権の評価と手続き
 description: 門真市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。門真市は京阪沿線の密集住宅地と町工場が混在し、工場跡地の活用や古い借地権、不整形地の評価が相続税の論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, hyoka-fuseikeichi-hosei-kagechi, hyoka-maguchi-kyosho-okuyuki-chodai, shido-hyoka]

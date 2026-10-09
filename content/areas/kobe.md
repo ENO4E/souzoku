@@ -2,6 +2,7 @@
 city: 神戸市
 pref: 兵庫県
 region: 神戸
+updated: 2026-10-09
 topic: 区ごとに違う財産の特徴と管轄税務署の確認ポイント
 description: 神戸市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。神戸市は東灘・灘の住宅地、中央区の商業地、北区・西区の農地やニュータウン、須磨・垂水の丘陵地と区ごとに財産の性格が異なり、管轄の税務署も区で分かれます。初回相談は無料です。
 columns: [kobe-souzokuzei-zeirishi-yasui, fudosan-rosenka-hyoka, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-nochi-kubun-takuchi-hijun, souzoku-otazune-zeimusho]

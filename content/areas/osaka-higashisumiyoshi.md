@@ -2,6 +2,7 @@
 city: 大阪市東住吉区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 長屋・文化住宅・借地と、戸建ての実家の特例と空き家の売却
 description: 大阪市東住吉区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。東住吉区は長屋・文化住宅・借地の家と戸建てが混在し、実家の特例や空き家の売却が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, akiya-tokurei-3000man, rojin-home-shokibo-takuchi, ienakiko-tokurei, hyoka-tokutei-rosenka-shinsei, tatemono-hyoka-kotei-shisan]

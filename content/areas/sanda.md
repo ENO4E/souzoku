@@ -2,6 +2,7 @@
 city: 三田市
 pref: 兵庫県
 region: 阪神
+updated: 2026-10-09
 topic: 北摂三田ニュータウンの戸建てと、周辺の農村部の田畑・山林を両方相続する場合の評価
 description: 三田市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。北摂三田ニュータウンの戸建てと農村部の田畑・山林とで評価の方法が異なり、両方を相続する際は注意が必要です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hanshin-souzokuzei-zeirishi-yasui, hyoka-nochi-kubun-takuchi-hijun, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, hyoka-sanrin-genya-zasshuchi, hyoka-shigaika-chosei-zasshuchi]

@@ -2,6 +2,7 @@
 city: 島本町
 pref: 大阪府
 region: 北摂
+updated: 2026-10-09
 topic: 町域の多くを占める山林、市街化調整区域の農地・雑種地と駅周辺の宅地の評価
 description: 島本町の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。島本町は町域の多くを山林が占め、市街化調整区域の農地・山林と駅周辺の宅地とで評価の方法が大きく異なります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-sanrin-genya-zasshuchi, hyoka-shigaika-chosei-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun]

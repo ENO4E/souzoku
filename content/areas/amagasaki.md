@@ -2,6 +2,7 @@
 city: 尼崎市
 pref: 兵庫県
 region: 阪神
+updated: 2026-10-09
 topic: 工場・貸家・借地が混在する市街地で評価を誤らないために
 description: 尼崎市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。尼崎市は住宅と工場・倉庫が混在し、古い借地権や貸家、間口の狭い土地が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hanshin-souzokuzei-zeirishi-yasui, tokurei-shokibo-tokutei-jigyoyo-yoken, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, tatemono-hyoka-kotei-shisan, hyoka-fuseikeichi-hosei-kagechi]

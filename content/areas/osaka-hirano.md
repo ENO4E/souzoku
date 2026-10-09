@@ -2,6 +2,7 @@
 city: 大阪市平野区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 平野郷の旧家の土地と蔵、町工場の事業用宅地、残る農地・生産緑地
 description: 大阪市平野区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。平野区は平野郷の旧家の土地、自宅に隣接する町工場、わずかに残る生産緑地など評価の論点が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-tatemono-kenchikuchu-mitoki-fuzoku, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, hyoka-seisan-ryokuchi-hyoka]

@@ -2,6 +2,7 @@
 city: 守口市
 pref: 大阪府
 region: 北河内
+updated: 2026-10-09
 topic: 密集住宅地の狭小地・不整形地・私道と借地権の評価
 description: 守口市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。守口市は京阪沿線の密集した住宅地が多く、狭小地や不整形地、私道、古い借地権の評価が相続税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, hyoka-maguchi-kyosho-okuyuki-chodai, hyoka-fuseikeichi-hosei-kagechi, shido-hyoka, fudosan-setback-shidou-futan-tochi-baikyaku, shakuchiken-teichi-hyoka]

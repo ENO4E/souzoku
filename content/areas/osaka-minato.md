@@ -2,6 +2,7 @@
 city: 大阪市港区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 借地に建つ長屋・住宅と港湾部の倉庫用地の評価
 description: 大阪市港区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。港区は借地に建つ長屋や住宅、港湾部の倉庫用地が多く、借地権・貸宅地や倉庫の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-shakuchiken-shurui-futsu-teiki, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, tatemono-hyoka-kotei-shisan, fudosan-chintai-apart-shoukei-tetsuzuki]

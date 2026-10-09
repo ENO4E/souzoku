@@ -2,6 +2,7 @@
 city: 豊中市
 pref: 大阪府
 region: 北摂
+updated: 2026-10-09
 topic: 千里ニュータウンのマンション、緑地公園周辺の広い敷地、大阪空港周辺の騒音と評価
 description: 豊中市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。千里ニュータウンのマンション、緑地公園周辺の広い敷地、空港周辺の騒音など、地域ごとに評価の論点が異なります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-kubun-shoyu-mansion-2024-keisan, chiseki-kibo-ookina-takuchi, hyoka-riyokachi-teika-10percent, nisetai-jutaku-shokibo-takuchi, rojin-home-shokibo-takuchi]

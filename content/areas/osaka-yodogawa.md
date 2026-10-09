@@ -2,6 +2,7 @@
 city: 大阪市淀川区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 十三・塚本周辺の密集住宅地の借地・底地・貸家と新大阪のマンション
 description: 大阪市淀川区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。十三・塚本・加島の密集住宅地に多い借地や底地、文化住宅などの貸家、新大阪のマンションの評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, shakuchiken-teichi-hyoka, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, fudosan-chintai-apart-shoukei-tetsuzuki, hyoka-tokutei-rosenka-shinsei]
