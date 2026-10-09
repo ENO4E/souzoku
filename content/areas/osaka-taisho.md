@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 川に囲まれた区の町工場・長屋と借地の評価、個人事業の承継
 description: 大阪市大正区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。大正区は町工場と長屋が入り交じり、個人で営む工場の承継や借地権の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, tokurei-kojin-ban-jigyo-shokei-zeisei, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, jigyo-kojin-jigyonushi-shibo-tetsuzuki-ichiran, shakuchiken-teichi-hyoka, tokurei-shokibo-tokutei-jigyoyo-yoken]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, tokurei-kojin-ban-jigyo-shokei-zeisei, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, jigyo-kojin-jigyonushi-shibo-tetsuzuki-ichiran, shakuchiken-teichi-hyoka, tokurei-shokibo-tokutei-jigyoyo-yoken]
 ---
 大阪市大正区は、木津川と尻無川などの川に囲まれた区です。鉄道の駅はJR大阪環状線と大阪メトロ長堀鶴見緑地線の大正駅が中心で、区内の移動にはバスのほか、川を渡る大阪市の渡船が今も使われています。泉尾・三軒家・千島・小林・平尾・鶴町などには、鉄工所や機械加工の町工場と長屋・住宅が入り交じり、借地の上に建つ家や工場も多く見られます。法人にせず個人で工場を営んできた家庭では、土地・建物だけでなく機械や在庫まで相続財産に含まれる点に注意が必要です。
 

@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 帝塚山の邸宅と広い宅地、古くからの借地・底地の評価
 description: 大阪市住吉区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。住吉区は帝塚山周辺の邸宅や広い宅地、代々続く借地・底地が多く、土地の評価と分け方で税額が変わります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, chiseki-kibo-ookina-takuchi, ienakiko-tokurei, hyoka-shakuchiken-shurui-futsu-teiki, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, sonota-kotto-bijutsuhin-hyoka-kantei-nozei-yuyo]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, chiseki-kibo-ookina-takuchi, ienakiko-tokurei, hyoka-shakuchiken-shurui-futsu-teiki, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, sonota-kotto-bijutsuhin-hyoka-kantei-nozei-yuyo]
 ---
 大阪市住吉区は、住吉大社を中心に古くから開けた大阪市南部の区です。南海高野線と阪堺電車が通る帝塚山や万代池の周辺には、戦前から続く邸宅街があり、一つの敷地が広い住宅が多く見られます。御堂筋線のあびこ駅やJR阪和線の杉本町駅の周辺には戸建てとマンションが広がり、古くからの集落の地域には、借地の上に建つ住宅や、何か所もの土地を貸している地主の家も残っています。自宅の土地だけで相続税の基礎控除（3,000万円＋600万円×法定相続人の数）を大きく超えることもあり、土地をどう評価し、どう分けるかが税額を左右します。
 

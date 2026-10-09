@@ -5,7 +5,7 @@ region: 北河内
 updated: 2026-10-09
 topic: 市街化調整区域の農地・山林と住宅地が混在する評価の注意点
 description: 四條畷市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。四條畷市は飯盛山麓の傾斜地、市街化調整区域の農地・山林と、JR学研都市線沿線の住宅地が混在し、土地ごとに評価方法が異なります。初回相談は無料です。
-columns: [kitakawachi-souzokuzei-zeirishi-yasui, hyoka-shigaika-chosei-zasshuchi, hyoka-nochi-kubun-takuchi-hijun, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, nochi-nozei-yuyo]
+columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, hyoka-shigaika-chosei-zasshuchi, hyoka-nochi-kubun-takuchi-hijun, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, nochi-nozei-yuyo]
 ---
 四條畷市は、JR学研都市線の忍ヶ丘駅・四条畷駅周辺の住宅地と、飯盛山の山麓に広がる傾斜地、清滝峠を越えた田原地区のニュータウンと農地・山林が同じ市内にある地域です。市域の多くが市街化調整区域で、一つの相続の中に宅地・農地・山林・雑種地が混ざることが珍しくありません。評価方法を取り違えると、税額や特例の判断を誤ります。
 

@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 町工場と長屋が並ぶ住工混在地の土地評価と自社株の承継
 description: 大阪市東成区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。東成区は町工場と長屋が混在し、工場併用住宅の土地や家業の自社株の評価が税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-tenpo-heiyo-anbun, hyoka-maguchi-kyosho-okuyuki-chodai]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-tenpo-heiyo-anbun, hyoka-maguchi-kyosho-okuyuki-chodai]
 ---
 大阪市東成区は、今里・大今里・深江・中本などに、住まいと小さな工場が同じ通りに並ぶ住工混在の街並みが続く地域です。大阪メトロ中央線の緑橋駅・深江橋駅、千日前線と今里筋線が交わる今里駅など、市の中心部へ出やすい駅がそろっています。金属加工や部品製造などの町工場を家族で営んできた家庭では、自宅と工場の土地に加えて会社の株式もまとめて相続財産になるため、基礎控除（3,000万円＋600万円×法定相続人の数）を超えるかどうかを早めに確かめる必要があります。
 

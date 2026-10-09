@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 十三・塚本周辺の密集住宅地の借地・底地・貸家と新大阪のマンション
 description: 大阪市淀川区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。十三・塚本・加島の密集住宅地に多い借地や底地、文化住宅などの貸家、新大阪のマンションの評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, shakuchiken-teichi-hyoka, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, fudosan-chintai-apart-shoukei-tetsuzuki, hyoka-tokutei-rosenka-shinsei]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, shakuchiken-teichi-hyoka, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, fudosan-chintai-apart-shoukei-tetsuzuki, hyoka-tokutei-rosenka-shinsei]
 ---
 大阪市淀川区は、淀川と神崎川にはさまれた区です。阪急の京都線・神戸線・宝塚線が分かれる十三駅、新幹線が発着する新大阪駅、御堂筋線の西中島南方駅、JR神戸線の塚本駅、JR東西線の加島駅、阪急宝塚線の三国駅などがあり、梅田に出やすい住宅地として発展してきました。十三・塚本・加島の周辺には狭い路地に長屋や木造の文化住宅が並ぶ地域があり、借地の上に建つ住宅や、地主として何人もの借地人に土地を貸しているご家庭も見られます。新大阪駅や西中島の周辺にはオフィスやホテル、マンションが集まり、投資用のワンルームマンションを持つ方もいます。淀川区の相続では、貸している不動産が財産に含まれることが多く、評価の区分と賃貸の引き継ぎを同時に進める必要があります。
 

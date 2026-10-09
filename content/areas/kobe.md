@@ -5,7 +5,7 @@ region: 神戸
 updated: 2026-10-09
 topic: 区ごとに違う財産の特徴と管轄税務署の確認ポイント
 description: 神戸市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。神戸市は東灘・灘の住宅地、中央区の商業地、北区・西区の農地やニュータウン、須磨・垂水の丘陵地と区ごとに財産の性格が異なり、管轄の税務署も区で分かれます。初回相談は無料です。
-columns: [kobe-souzokuzei-zeirishi-yasui, fudosan-rosenka-hyoka, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-nochi-kubun-takuchi-hijun, souzoku-otazune-zeimusho]
+columns: [kobe-souzokuzei-zeirishi-yasui, kobe-fudosan-souzoku-taisaku, fudosan-rosenka-hyoka, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-nochi-kubun-takuchi-hijun, souzoku-otazune-zeimusho]
 ---
 神戸市は9つの区からなり、区によって相続財産の中身がまったく違います。東灘区・灘区は地価が高く、自宅だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続が多い地域です。中央区は商業ビルやマンション、北区・西区は農地とニュータウンの住宅、須磨区・垂水区は丘陵地の造成住宅地が中心で、兵庫区・長田区には密集した住宅と貸家が残ります。さらに**管轄する税務署も区ごとに分かれます**。
 

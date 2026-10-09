@@ -5,7 +5,7 @@ region: 大阪市
 updated: 2026-10-09
 topic: 平野郷の旧家の土地と蔵、町工場の事業用宅地、残る農地・生産緑地
 description: 大阪市平野区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。平野区は平野郷の旧家の土地、自宅に隣接する町工場、わずかに残る生産緑地など評価の論点が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-tatemono-kenchikuchu-mitoki-fuzoku, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, hyoka-seisan-ryokuchi-hyoka]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-tatemono-kenchikuchu-mitoki-fuzoku, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, hyoka-seisan-ryokuchi-hyoka]
 ---
 大阪市平野区は、八尾市や松原市に接する大阪市南東端の区です。中世から環濠に囲まれた町として栄えた平野郷には、杭全神社や大念仏寺の周辺に古い町並みが残り、喜連にも環濠集落の面影があります。こうした地域の旧家では、代々受け継いできた広い敷地に母屋・蔵・離れが建ち、祖父母の名義のままの土地が見つかることも少なくありません。区内には自宅と工場が並ぶ町工場が多く、住宅地の中にわずかに農地や生産緑地も残っています。大阪メトロ谷町線の平野・喜連瓜破・出戸・長原、JR大和路線の平野・加美の各駅周辺は住宅地として開発が進み、古い家と新しい住宅が入り混じっています。
 
