@@ -2,6 +2,7 @@
 city: 大阪市大正区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 川に囲まれた区の町工場・長屋と借地の評価、個人事業の承継
 description: 大阪市大正区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。大正区は町工場と長屋が入り交じり、個人で営む工場の承継や借地権の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, tokurei-kojin-ban-jigyo-shokei-zeisei, jigyo-jigyoyo-shisan-hyoka-tanaoroshi-urikake, jigyo-kojin-jigyonushi-shibo-tetsuzuki-ichiran, shakuchiken-teichi-hyoka, tokurei-shokibo-tokutei-jigyoyo-yoken]

@@ -179,7 +179,7 @@ for (const a of areas) {
   const html = render('area', { area: a, region: regionMeta, areas: areaList, columns, latest })
   const { html: _h, accessHtml: _a, columns: _c, regionSlug: _r, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
   writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, region: regionMeta, areas: areaList, columns, latest })
-  sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.8' })
+  sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.8', lastmod: a.updated || undefined })
   // 以前のコラム（/articles/area-<slug>-souzokuzei/）があった最初の16市だけ、新しいページへ即時転送するページを出す（.htaccess を使わずに済む方法。canonical も新しいページ）
   if (!LEGACY_AREA_ARTICLES.has(a.slug)) continue
   const to = `${ORIGIN}${a.path}`

@@ -2,6 +2,7 @@
 city: 大阪市西淀川区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 工場と住宅が混在する地域の土地の評価単位と借地
 description: 大阪市西淀川区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西淀川区は工場と住宅が混在し、自宅・工場・貸地を持つ場合の土地の分け方や借地の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-fuseikeichi-hosei-kagechi, hyoka-riyokachi-teika-10percent, shakuchiken-teichi-hyoka, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu, tokurei-shokibo-kashitsuke-jigyoteki-kibo-3nen]

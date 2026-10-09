@@ -2,6 +2,7 @@
 city: 寝屋川市
 pref: 大阪府
 region: 北河内
+updated: 2026-10-09
 topic: 密集住宅地と駅前再開発、古い借地・貸家の相続の注意点
 description: 寝屋川市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。寝屋川市は京阪沿線の密集した住宅地に古い借地・貸家が残り、駅前の再開発でマンションも増えている地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, shakuchiken-teichi-hyoka, kashiya-tatetsuke-chi, fudosan-sokochi-seiri-baikyaku-koukan, hyoka-maguchi-kyosho-okuyuki-chodai, hyoka-kubun-shoyu-mansion-2024-keisan]

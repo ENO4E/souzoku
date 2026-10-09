@@ -2,6 +2,7 @@
 city: 大阪市生野区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 長屋と町工場の評価、外国籍の方の相続での準拠法と日本の相続税の確認
 description: 大阪市生野区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。生野区は長屋や町工場が多く、外国籍の方の相続では準拠法と日本の相続税の課税範囲を分けて確認します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, tetsuzuki-hisouzokunin-gaikokuseki-junkyoho-souzokuzei, sonota-nihon-zaiju-gaikokujin-shibo-souzoku, sonota-nozei-gimusha-kubun, tetsuzuki-kaigai-kyoju-souzokunin-sign-shomei-nozei-kanrinin, jigyo-kojin-jigyonushi-shibo-tetsuzuki-ichiran]

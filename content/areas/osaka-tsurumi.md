@@ -2,6 +2,7 @@
 city: 大阪市鶴見区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 旧農家の広い土地の評価単位と、戸建て・マンション・貸駐車場の組み合わせ
 description: 大阪市鶴見区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。鶴見区は鶴見緑地周辺の戸建てやマンションのほか、旧農家の広い土地に自宅・アパート・駐車場が並びます。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-hyouka-tani-jitaku-kashi-chushajo, hyoka-kashi-chushajo-hyoka, chiseki-kibo-ookina-takuchi, kashiya-tatetsuke-chi, hyoka-kubun-shoyu-mansion-2024-keisan]

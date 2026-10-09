@@ -2,6 +2,7 @@
 city: 大阪市北区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: タワーマンションと天満・中崎町の長屋や借地、貸ビルの評価
 description: 大阪市北区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。梅田・中之島周辺のタワーマンション、天満や中崎町の長屋と借地、貸ビルなど評価の論点が多い区です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-tower-mansion-hyouka-2024-kaisei, shakuchiken-teichi-hyoka, hyoka-itto-mansion-apart-kushitsu, tokurei-shokibo-tenpo-heiyo-anbun, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi]

@@ -2,6 +2,7 @@
 city: 大阪市天王寺区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 上町台地の住宅地と寺社周辺の広い宅地・坂に面した土地の評価
 description: 大阪市天王寺区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。上町台地の住宅地や寺院の多い街並みには広い宅地や坂に面した土地があり、評価の補正が税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, chiseki-kibo-ookina-takuchi, hyoka-riyokachi-teika-10percent, hyoka-gakechi-dosha-saigai-hosei, fudosan-bunpitsu-genbutsu-bunkatsu, hikazei-zaisan-ohaka-butsudan]

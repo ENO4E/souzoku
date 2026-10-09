@@ -2,6 +2,7 @@
 city: 大阪市浪速区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: なんば周辺の商業地・貸ビルと高層マンションの評価
 description: 大阪市浪速区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。浪速区はなんば周辺の商業地の貸ビル・店舗や、高層マンションの評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-kubun-shoyu-mansion-2024-keisan, fudosan-tower-mansion-hyouka-2024-kaisei, hyoka-itto-mansion-apart-kushitsu, hyoka-yosekiritsu-kotonaru-takuchi, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi]

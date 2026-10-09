@@ -2,6 +2,7 @@
 city: 大阪市住之江区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 湾岸の工場・倉庫用地と住之江公園周辺の住宅地の評価
 description: 大阪市住之江区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。住之江区は湾岸の工場・倉庫用地と住之江公園周辺の住宅地があり、事業用地の評価と特例の選択が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, chiseki-kibo-ookina-takuchi, tokurei-shokibo-tokutei-jigyoyo-yoken, tokurei-shokibo-fukusu-tochi-yuri-sentaku, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-shakuchiken-shurui-futsu-teiki]

@@ -2,6 +2,7 @@
 city: 池田市
 pref: 大阪府
 region: 北摂
+updated: 2026-10-09
 topic: 五月山山麓の傾斜地・擁壁のある宅地、旧市街の古い家屋と名義の整理、細河の植木畑
 description: 池田市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。五月山山麓の傾斜地や擁壁のある宅地、旧市街の古い家屋、細河地区の植木畑など評価の論点が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-gakechi-dosha-saigai-hosei, hyoka-fuseikeichi-hosei-kagechi, fudosan-mitouki-tatemono-sofu-meigi-tochi, hyoka-nochi-kubun-takuchi-hijun, akiya-tokurei-3000man]

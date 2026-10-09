@@ -2,6 +2,7 @@
 city: 西宮市
 pref: 兵庫県
 region: 阪神
+updated: 2026-10-09
 topic: 阪急沿線の高地価住宅地で自宅が基礎控除を超えるときの対策
 description: 西宮市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西宮市は夙川・苦楽園・甲陽園など阪急沿線の住宅地の地価が高く、自宅だけで基礎控除を超える相続が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hanshin-souzokuzei-zeirishi-yasui, ienakiko-tokurei, tokurei-shokibo-niji-souzoku-tsukaikiri, fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, chiseki-kibo-ookina-takuchi, zoyo-seimei-hoken-nozei-shikin-taisaku-sekkei]

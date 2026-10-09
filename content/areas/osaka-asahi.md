@@ -2,6 +2,7 @@
 city: 大阪市旭区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 住宅密集地の狭小地と道路後退、商店街の店舗併用住宅の特例
 description: 大阪市旭区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。旭区は千林・森小路の住宅密集地や商店街が広がり、狭小地や道路後退の評価、店舗兼住宅の特例が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-setback-shidou-futan-tochi-baikyaku, fuseikei-chi-hosei, tokurei-shokibo-tenpo-heiyo-anbun, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi, kashitsuke-jigyo-takuchi-3nen]

@@ -2,6 +2,7 @@
 city: 大阪市都島区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 京橋・桜ノ宮周辺のマンションと都島本通・内代の古い住宅地や借地
 description: 大阪市都島区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。京橋や大川沿いのマンション、都島本通・内代の古い住宅地と借地など、親の住まいの相続が中心の区です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, fudosan-mansion-kanrihi-tainou-shuzen-tsumitatekin, shakuchiken-teichi-hyoka, akiya-tokurei-3000man]

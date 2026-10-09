@@ -2,6 +2,7 @@
 city: 大阪市西区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: タワーマンションの区分所有補正率と貸しビル・テナントビルの評価
 description: 大阪市西区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。西区は堀江・西長堀のタワーマンションや本町・肥後橋周辺の貸しビルなど、都心の不動産の評価が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, fudosan-tower-mansion-hyouka-2024-kaisei, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, tokurei-shokibo-tokutei-dozoku-kaisha, fudosan-shueki-bukken-shouhizei-invoice]

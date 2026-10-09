@@ -2,6 +2,7 @@
 city: 茨木市
 pref: 大阪府
 region: 北摂
+updated: 2026-10-09
 topic: 住宅地と農地が混在する地域の評価ポイントと手続き
 description: 茨木市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。茨木市はJR・阪急沿線の住宅地と北部の農地・山林が混在し、自宅だけで基礎控除を超える例も少なくありません。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hyoka-nochi-kubun-takuchi-hijun, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, fudosan-rosenka-hyoka, tokurei-shokibo-fukusu-hitsu-shido-mochibun]

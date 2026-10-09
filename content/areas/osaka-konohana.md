@@ -2,6 +2,7 @@
 city: 大阪市此花区
 pref: 大阪府
 region: 大阪市
+updated: 2026-10-09
 topic: 臨海部の工場用地と長屋の多い住宅地の評価、相続した土地の売却
 description: 大阪市此花区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。此花区は臨海部の工場用地と長屋の多い住宅地があり、会社に貸す土地の評価や相続後の売却が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-musho-henkan-todokede-soto-chidai, tokurei-shokibo-tokutei-dozoku-kaisha, chiseki-kibo-ookina-takuchi, hyoka-maguchi-kyosho-okuyuki-chodai, souzoku-fudosan-baikyaku-zei]
