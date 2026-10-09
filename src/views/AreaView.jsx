@@ -1,5 +1,5 @@
 import { site } from '../content/site.js'
-import { LOWEST_NOTE, RECORD, areaFaqs, areaLead, feeExamples, feeRows, feeTypes, quoteChecks } from '../content/areaCommon.js'
+import { LOWEST_NOTE, RECORD, areaFaqs, areaLead, feeExamples, feeRows } from '../content/areaCommon.js'
 import { Arrow } from '../components/SectionHead.jsx'
 
 /** 市ごとの相続税申告のページ（/area/<slug>/）。記事ページと同じく通常のページ（SPA の切り替えはしない）
@@ -8,6 +8,7 @@ import { Arrow } from '../components/SectionHead.jsx'
 export default function AreaView({ area, region = null, areas = [], columns = [] }) {
   if (!area) return null
   const faqs = areaFaqs(area)
+  const regionArticle = columns.find((c) => /zeirishi-yasui/.test(c.path)) || null
   const facts = [
     ['対応地域', `${area.city}全域（${area.pref}）`],
     ['基本報酬', '99,000円（税込）〜 最安水準 ※遺産総額4,000万円まで'],
@@ -64,37 +65,11 @@ export default function AreaView({ area, region = null, areas = [], columns = []
             </p>
             <p className="area-note area-note--small">{LOWEST_NOTE}</p>
 
-            <h2 className="area-h2">{area.city}で相続税申告の税理士を選ぶときの費用の比べ方</h2>
+            <h2 className="area-h2">{area.city}で税理士の費用を比べるときに</h2>
             <p className="area-note area-note--body">
-              税理士の相続税申告の報酬は、料金の決め方が事務所ごとに違います。まず料金体系の型を知り、ご自身の財産の内容で<b>税込の総額</b>を見積もってもらって比べてください。
-            </p>
-            <table className="fee-table area-fee area-fee--types">
-              <thead><tr><th>料金体系の型</th><th>決まり方</th><th>確かめること</th></tr></thead>
-              <tbody>
-                {feeTypes.map((t) => <tr key={t.name}><td><b>{t.name}</b></td><td>{t.how}</td><td>{t.check}</td></tr>)}
-              </tbody>
-            </table>
-            <h3 className="area-h3">当センターの料金で計算した総額の例（税込）</h3>
-            <table className="fee-table area-fee area-fee--examples">
-              <thead><tr><th>遺産総額・内容</th><th>内訳（税抜）</th><th>総額（税込）</th><th>一般的な相場</th></tr></thead>
-              <tbody>
-                {feeExamples.map((e) => (
-                  <tr key={e.estate}>
-                    <td><b>{e.estate}</b><br /><small>{e.cond}</small></td>
-                    <td><small>{e.items.map(([k, v]) => `${k} ${v}`).join('、')}</small></td>
-                    <td className="amt"><b>{e.total}</b></td>
-                    <td className="amt"><small>{e.market}</small></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="area-note area-note--small">※一般的な相場は「税理士報酬の目安は遺産総額の0.5〜1%」という広く使われる基準で計算した参考値です。土地評価は1か所100,000円（税抜）として計算しています。7,000万円を超える場合はお見積りします。</p>
-            <h3 className="area-h3">見積もりを比べるときに確かめること</h3>
-            <ul className="area-checks">
-              {quoteChecks.map((c) => <li key={c}>{c}</li>)}
-            </ul>
-            <p className="area-note area-note--body">
-              費用の目安は<a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a>、選び方は<a href="/articles/zeirishi-mendan-shitsumon-10/">初回面談で聞く質問10</a>でも解説しています。このページは{site.company}が作成したもので、当センターの料金で相続税申告をお受けしています。
+              見積もりは、基本報酬に土地・相続人などの加算を足した<b>税込の総額</b>で比べてください。当センターの料金で計算した総額は、自宅と預貯金5,000万円・配偶者と子2人で{feeExamples[1].total}（税込）が目安です。料金体系の型・総額の例・見積もりで確かめることは、
+              {regionArticle ? <><a href={regionArticle.path}>{regionArticle.title}</a>と</> : null}
+              <a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a>にまとめています。
             </p>
 
             {area.topic && <p className="area-topic"><span>{area.city}の相続の特徴</span>{area.topic}</p>}

@@ -121,7 +121,7 @@ assets/
 - **市区町村ごとの相続税申告のページ**（`/area/<slug>/`。データは `content/areas/<slug>.md`（`city / pref / region / topic / description / columns`）、読み込みは `scripts/areas.mjs`、表示は `src/views/AreaView.jsx`、共通の文言は `src/content/areaCommon.js`）
   - 地域と市区町村の一覧は `site.js` の `areaRegions`（大阪市・北摂・豊能・北河内・中河内・阪神・神戸）。大阪市は24区のページに加えて市全体のページ（`/area/osaka-city/`。「大阪市 相続 相談」の検索に当てる）がある。md に `title` を書くとその市だけ title を独自にできる（書かなければ `seo.js` の既定の形）。md の `city`・`region` と突き合わせ、ずれ・片方にしかないものはビルドでエラー。市区町村を増やすときは md と `areaRegions` の両方に足す
   - 「地域から探す」（`/area/`、`src/views/AreaHubView.jsx`）が一覧ページ。フッター・サービスページの対応エリア・パンくず・記事下の案内からリンクする。市のページの脇には同じ地域の市区町村を並べる
-  - 市のページには「費用の比べ方」の節（料金体系の4つの型・当センターの料金での総額の例・見積もりで確かめること。`areaCommon.js` の `feeTypes / feeExamples / quoteChecks`）を置く。他の事務所の名前は出さない
+  - 市のページの共通部分は最小限にする（Search Console で市区町村ページが「クロール済み - 未登録」になった原因が、ページ間で本文の7割が同じだったこと）。費用の比べ方は短い1段落＋地域の「安い税理士」記事へのリンクだけにし、料金体系の型・総額例・確認点の表は地域記事（`*-souzokuzei-zeirishi-yasui`）に置く。共通FAQは1問だけ。各市の md には「〇〇でよくある相続の例と費用の目安」の節（その市固有の例と、料金表の単位で計算した総額）を置く（`scripts/` ではなく md に直接書く。数字は `site.js` の料金表と一致させる）。他の事務所の名前は出さない
   - 検索エンジンと AI 検索（ChatGPT・Gemini・Perplexity など）に「どの地域で・何を・いくらで・どれだけの実績で」受ける事務所かを1ページで伝えるためのページ。見出しと title に市名と「基本報酬99,000円〜」、冒頭に引用されやすい要約文（`areaLead`）、概要・料金表・費用の比べ方・その市の財産の特徴・よくある質問（費用と訪問の2問は全市共通＋市ごと3問）・その市に関係するコラム（md の `columns` に slug を手で5件ほど。存在しない slug はビルドでエラー）・CTA を置く
   - 構造化データは Service（areaServed＝その市、offers＝基本報酬）・FAQPage・BreadcrumbList・WebPage。料金は `baseFees`、実績は「累計200件超」（`areaCommon.js` の `RECORD`）。数字を作らない（市ごとの件数は事実が分かったときだけ書く）
   - 市名だけ差し替えた薄いページにしない（ドアウェイ扱いになる）。各市の本文はその市固有の内容にする
