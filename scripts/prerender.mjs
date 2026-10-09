@@ -53,6 +53,7 @@ function headTags(meta, jsonLds) {
     `<meta name="description" content="${esc(meta.description)}">`,
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">`,
     `<link rel="canonical" href="${url}">`,
+    `<link rel="alternate" type="application/rss+xml" title="${esc(SITE_NAME)} コラム" href="${ORIGIN}/feed.xml">`,
     `<meta property="og:type" content="${meta.ogType || 'website'}">`,
     `<meta property="og:site_name" content="${esc(SITE_NAME)}">`,
     `<meta property="og:locale" content="ja_JP">`,
@@ -113,12 +114,15 @@ for (const route of Object.keys(pages)) {
 for (const a of articles) {
   // 関連記事：同じタグを多く持つ順（同点なら新しい順）に4件
   const score = (x) => x.tags.filter((t) => a.tags.includes(t)).length
-  const related = listMeta
+  const byTag = listMeta
     .filter((x) => x.slug !== a.slug)
     .map((x, i) => ({ x, s: score(x), i }))
     .sort((p, q) => q.s - p.s || p.i - q.i)
     .slice(0, 4)
-    .map(({ x }) => ({ slug: x.slug, path: x.path, title: x.title, date: x.date }))
+    .map(({ x }) => x)
+  // 最新2件も足す（古い記事から新しい記事へリンクが通り、新着が早く巡回される）
+  const newest = listMeta.filter((x) => x.slug !== a.slug && !byTag.includes(x)).slice(0, 2)
+  const related = [...byTag, ...newest].map((x) => ({ slug: x.slug, path: x.path, title: x.title, date: x.date }))
   const full = { article: a, related, latest }
   const html = render('article', full)
   // 本文 HTML はプリレンダリング済みなのでデータには入れない（クライアントは DOM から拾う）
@@ -250,6 +254,33 @@ const sitemap = [
 ].join('\n')
 writeFileSync(resolve(distDir, 'sitemap.xml'), sitemap)
 
+// 4) feed.xml（RSS 2.0・最新50記事）。Google / Bing の新着の発見を早めるため。Search Console の「サイトマップ」にも登録できる
+const rfc822 = (d) => new Date(`${d}T09:00:00+09:00`).toUTCString()
+const feed = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+  '<channel>',
+  `<title>${esc(SITE_NAME)} コラム</title>`,
+  `<link>${ORIGIN}/articles/</link>`,
+  `<description>${esc(articlesPage.description)}</description>`,
+  '<language>ja</language>',
+  `<lastBuildDate>${rfc822(articles[0]?.date || '2026-01-01')}</lastBuildDate>`,
+  `<atom:link href="${ORIGIN}/feed.xml" rel="self" type="application/rss+xml"/>`,
+  ...articles.slice(0, 50).map((a) => [
+    '<item>',
+    `<title>${esc(a.title)}</title>`,
+    `<link>${ORIGIN}${a.path}</link>`,
+    `<guid isPermaLink="true">${ORIGIN}${a.path}</guid>`,
+    `<pubDate>${rfc822(a.date)}</pubDate>`,
+    `<description>${esc(a.description)}</description>`,
+    '</item>',
+  ].join('')),
+  '</channel>',
+  '</rss>',
+  '',
+].join('\n')
+writeFileSync(resolve(distDir, 'feed.xml'), feed)
+
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true })
 
-console.log(`prerender: ${written.join(' / ')} ＋ 記事${articles.length}件 を出力し、sitemap.xml を生成しました（${versions.join(', ')}）`)
+console.log(`prerender: ${written.join(' / ')} ＋ 記事${articles.length}件 を出力し、sitemap.xml と feed.xml を生成しました（${versions.join(', ')}）`)

@@ -106,7 +106,7 @@ assets/
 
 - `backend/` と `.htaccess` 以外（HTML・CSS・JS・エラーページ・`robots.txt`・`sitemap.xml`）はすべてこのリポジトリの責務。`backend/` と `.htaccess` は TaxPlan-org/php の責務（`backend/sites/`）で、こちらからは触らない（`.htaccess` の変更が必要なら php リポジトリに依頼する）。
 - CSS / JS は外部ファイルのまま出力する（`index.html` へのインライン化はしない）。ファイル名は固定で、更新時のキャッシュ対策として `scripts/prerender.mjs` が各 HTML 内の URL に `?v=内容ハッシュ` を付ける。
-- 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。サーバー側にだけ置いている画像（`topfront.jpg` など）もあるため、アップロード時に `assets/` 内の既存ファイルを消さない。
+- 画像は `public/assets/` に置く（ビルドで `assets/` 直下に並ぶ）。今のサイトが使う画像はすべて `public/assets/` にあり dist に含まれる。サーバーにだけ残っている古い画像（`topfront.jpg` など。旧デザインの背景）は未使用で、消えていても表示に影響しない。
 
 ## プロジェクト構成
 
@@ -128,6 +128,7 @@ assets/
   - 以前のコラムの URL（`/articles/area-<slug>-souzokuzei/`）は、ビルドで新しいページへ即時転送するページ（canonical＋meta refresh）を出す。サービスページの「対応エリア」は地域ごとに市区町村を並べ、フッターは地域名（`/area/#<地域slug>`）へリンクする（`site.js` の `areaRegions`。`areaPages` はそこから作る）
 - **AI 検索・Bing 向け**
   - `llms.txt`：事務所の概要・料金・追加料金・市ごとのページ・主要ページを `scripts/prerender.mjs` がビルドのたびに生成する
+  - `feed.xml`：RSS 2.0（最新50記事）を `scripts/prerender.mjs` がビルドのたびに生成し、全ページの head に `rel="alternate"`、`robots.txt` に `Sitemap:` で載せる（新着の発見を早める。Search Console の「サイトマップ」にも登録する）。記事ページの「他の記事」はタグが近い4件＋最新2件（古い記事から新着へリンクを通して巡回を早める）
   - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に、本番に実際に反映されたのを確かめてから（鍵ファイルと変わったページを5分ごとに確認・最大約5時間半。手動アップロードにも対応）変わったページを送る（`scripts/indexnow.mjs`）。送信の仕組みを変えたコミットでは全ページを送る。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
   - 「最安水準」は、運営者が他事務所の公表料金を調べた結果にもとづく表現（根拠の注記は `areaCommon.js` の `LOWEST_NOTE`）。根拠資料は運営者が保管する
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。

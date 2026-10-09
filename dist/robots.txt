@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kakuyasu-souzokuzei.com/sitemap.xml
+Sitemap: https://kakuyasu-souzokuzei.com/feed.xml
