@@ -54,8 +54,29 @@ export function renderMarkdown(body) {
 
 const NOTE = '※この記事は一般的な情報提供を目的としたもので、個別の事案に対する税務判断ではありません。実際の取り扱いは財産の内容や分割の仕方によって変わります。'
 
+/** 今日の日付（日本時間、YYYY-MM-DD）。BUILD_DATE=2026-10-12 のように環境変数で固定できる（予約公開の確認用） */
+export function todayJst() {
+  if (process.env.BUILD_DATE) return process.env.BUILD_DATE
+  return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Tokyo' })
+}
+
+// 予約公開：date が今日（日本時間）より後の記事はビルドに含めない（一覧・sitemap・feed にも出ない）。
+// GitHub Actions（build.yml）が毎日 0:05 JST にビルドして dist/ を更新するので、日付が来れば自動で公開される。
+// ARTICLES_INCLUDE_FUTURE=1 を付けると未来の記事も含める（下書きの確認用）
 export function loadArticles(dir) {
-  const files = readdirSync(dir).filter((f) => extname(f) === '.md' && !f.startsWith('_'))
+  const today = todayJst()
+  const allFiles = readdirSync(dir).filter((f) => extname(f) === '.md' && !f.startsWith('_'))
+  const future = []
+  const files = allFiles.filter((file) => {
+    if (process.env.ARTICLES_INCLUDE_FUTURE) return true
+    const m = readFileSync(resolve(dir, file), 'utf-8').match(/^date:\s*(\d{4}-\d{2}-\d{2})/m)
+    if (m && m[1] > today) {
+      future.push(`${file}（${m[1]}）`)
+      return false
+    }
+    return true
+  })
+  if (future.length) console.log(`記事の予約公開：${today} より後の日付の ${future.length} 本はまだ出しません → ${future.join('、')}`)
   const articles = files.map((file) => {
     const slug = basename(file, '.md')
     if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`記事ファイル名は英小文字・数字・ハイフンのみ: ${file}`)
