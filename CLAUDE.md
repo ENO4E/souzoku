@@ -137,6 +137,7 @@ assets/
   - 転送量を増やさないため、一覧ページ（新着12件のカード＋全記事の索引＋タグ絞り込み）と記事本文は JSON を埋め込まず、描画済みの HTML から `main.jsx` が復元して hydrate する。全ページに埋め込むのはフッターの最新4件だけ
   - 記事のテーマ（tags）は10種に固定（`scripts/articles.mjs` 参照の仕様は `content/articles/` の既存記事に合わせる）。執筆は `title / description（100〜120字）/ date / tags` を付け、本文は 700〜1,100 文字・h2 を2〜4個、末尾の免責はビルドで自動付与（記事内には書かない）
   - `main` に Markdown を追加して push すれば GitHub Actions がビルドして `dist/` を更新する
+  - **予約公開**：`date` が今日（日本時間）より後の記事はビルドに含めない（`scripts/articles.mjs` の `loadArticles`。一覧・sitemap・feed にも出ない）。`build.yml` が毎日 0:05 JST にもビルドし、日付が来た記事があれば `dist/` を main にコミットして本番に反映、IndexNow にも送る。土日祝の分は前日までに `date` を付けて main に入れておけばよい。ローカルで未来の記事を確認するときは `BUILD_DATE=2026-10-12 npm run build`（または `ARTICLES_INCLUDE_FUTURE=1`）。PR に含める `dist/` は通常の `npm run build`（今日の日付）で作る
 - Vite + React のSPA。`npm run build` でビルド（出力は `dist/`）。ビルド時に `scripts/prerender.mjs` がプリレンダリングを行い、`dist/index.html` に全コンテンツのHTMLを焼き込む（SEO対策。クライアントは hydrate）。
 - **`dist/` は git 管理**（`.gitignore` に入れない）。ビルドは決定的（CSS/JS の `?v=` は内容ハッシュ）なので、同じソースからは同じ `dist/` ができる。
   - ソースを変更した PR では `npm run build` を実行し、`dist/` の変更も同じ PR に含める。

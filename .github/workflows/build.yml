@@ -1,6 +1,8 @@
 # main にソースが push されたらリモートでビルドし、公開ファイル一式（dist/）を main にコミットする。
 # これにより git pull した dist/ がそのまま本番サーバーにアップロードする内容（ZIPと同一）になる。
 # ビルドは決定的（?v= は内容ハッシュ）なので、PR で dist/ を最新にしてあればここでは差分が出ない。
+# 記事の予約公開：date が未来の記事はビルドに含めない（scripts/articles.mjs）。毎日 0:05 JST（15:05 UTC）にもビルドし、
+# 日付が来た記事があれば dist/ が変わるので main にコミットされ、Webhook で本番に反映される。
 name: build-dist
 
 on:
@@ -8,6 +10,8 @@ on:
     branches: [main]
     paths-ignore:
       - 'dist/**'
+  schedule:
+    - cron: '5 15 * * *'
   workflow_dispatch:
 
 permissions:
@@ -20,8 +24,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -40,5 +47,14 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BEFORE=$(git rev-parse HEAD)
           git commit -m "chore(build): dist/ を再ビルド [skip ci]"
           git push
+          echo "before=$BEFORE" >> "$GITHUB_OUTPUT"
+          echo "after=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        id: commit
+
+      # [skip ci] のコミットでは indexnow.yml が起動しないので、ここから送る（本番に反映されたのを確かめてから）
+      - name: 変わったページを IndexNow に送る
+        if: steps.commit.outputs.after != ''
+        run: node scripts/indexnow.mjs "${{ steps.commit.outputs.before }}" "${{ steps.commit.outputs.after }}" --wait=330
