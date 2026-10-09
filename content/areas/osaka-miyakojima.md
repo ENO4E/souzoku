@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 京橋・桜ノ宮周辺のマンションと都島本通・内代の古い住宅地や借地
 description: 大阪市都島区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。京橋や大川沿いのマンション、都島本通・内代の古い住宅地と借地など、親の住まいの相続が中心の区です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, fudosan-mansion-kanrihi-tainou-shuzen-tsumitatekin, shakuchiken-teichi-hyoka, akiya-tokurei-3000man]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, fudosan-mansion-kanrihi-tainou-shuzen-tsumitatekin, shakuchiken-teichi-hyoka, akiya-tokurei-3000man]
 ---
 大阪市都島区は、淀川と大川（旧淀川）に面し、南端にJR・京阪・大阪メトロが集まる京橋駅を抱える区です。大川沿いの桜ノ宮は桜並木で知られ、川沿いや京橋の周辺、かつての工場用地などには大規模なマンションが建ち並んでいます。一方で、都島本通・内代・高倉などには昔からの戸建てや長屋が残り、借地の上に建つ住宅もあります。都島区の相続では、マンションの住戸か、古い戸建てとその敷地（または借地権）が財産の中心になることが多く、親が一人で住んでいた住まいを誰が引き継ぐか、売るかが大きなテーマになります。
 

@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 住宅密集地とマンション、町工場の跡地を使った駐車場や貸家の評価
 description: 大阪市城東区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。関目・蒲生四丁目・鴫野の住宅密集地とマンション、町工場の跡地の駐車場や貸家の評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-fuseikeichi-hosei-kagechi, tokurei-shokibo-tokutei-jigyoyo-yoken, hyoka-kashi-chushajo-hyoka, fudosan-hyouka-tani-jitaku-kashi-chushajo, hyoka-kubun-shoyu-mansion-2024-keisan]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-fuseikeichi-hosei-kagechi, tokurei-shokibo-tokutei-jigyoyo-yoken, hyoka-kashi-chushajo-hyoka, fudosan-hyouka-tani-jitaku-kashi-chushajo, hyoka-kubun-shoyu-mansion-2024-keisan]
 ---
 大阪市城東区は、京阪本線の野江駅・関目駅、大阪メトロの蒲生四丁目駅、JRおおさか東線・学研都市線の鴫野駅などが通る、住宅の多い区です。区内には住宅が密集し、狭い道路沿いに小さな戸建てや長屋が並ぶ地域が広くあります。寝屋川や第二寝屋川の周辺にはかつて町工場が多く、その跡地がマンションや月極駐車場、貸家に変わってきました。城東区の相続では、密集地の小さな自宅、工場をたたんだあとの土地、駅に近いマンションと、性格の違う不動産が一つの家庭に重なることがよくあります。土地ごとに使い方を確かめ、それに合った評価と特例を選ぶことが税額を左右します。
 

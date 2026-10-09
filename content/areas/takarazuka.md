@@ -4,7 +4,7 @@ pref: 兵庫県
 region: 阪神
 topic: 丘陵地の住宅・駅前マンション・山林の評価と使える特例
 description: 宝塚市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。宝塚市は丘陵地に住宅地が広がり、高低差や擁壁のある土地、駅周辺のマンション、山林など評価に工夫が要る財産が多い地域です。初回相談は無料です。
-columns: [hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, tokurei-sanrin-nozei-yuyo-shinrin-keiei-keikaku]
+columns: [hanshin-souzokuzei-zeirishi-yasui, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, tokurei-sanrin-nozei-yuyo-shinrin-keiei-keikaku]
 ---
 宝塚市は阪急宝塚線・今津線とJR宝塚線沿いに住宅地が発達し、市域の多くが丘陵地です。宝塚駅や逆瀬川・仁川周辺のマンション、山手に造成された戸建て住宅地、北部の山林や農地と、財産の種類が幅広いのが特徴です。地価は阪神間の中心部ほど高くないものの、広めの敷地を持つ家庭が多く、自宅と預貯金を合わせると基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続は少なくありません。
 

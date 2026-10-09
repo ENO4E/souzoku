@@ -4,7 +4,7 @@ pref: 兵庫県
 region: 阪神
 topic: 工場・貸家・借地が混在する市街地で評価を誤らないために
 description: 尼崎市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。尼崎市は住宅と工場・倉庫が混在し、古い借地権や貸家、間口の狭い土地が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [tokurei-shokibo-tokutei-jigyoyo-yoken, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, tatemono-hyoka-kotei-shisan, hyoka-fuseikeichi-hosei-kagechi]
+columns: [hanshin-souzokuzei-zeirishi-yasui, tokurei-shokibo-tokutei-jigyoyo-yoken, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, tatemono-hyoka-kotei-shisan, hyoka-fuseikeichi-hosei-kagechi]
 ---
 尼崎市は阪神・JR・阪急の3路線が東西に走り、大阪市内へ通いやすい住宅地と、臨海部から内陸にかけての工場・倉庫が同じ市内に並ぶまちです。戸建てが密集する地区では一区画が小さくても地価は底堅く、自宅と預貯金だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続は珍しくありません。さらに古い借地・貸家や事業用地が絡むと評価が複雑になります。
 

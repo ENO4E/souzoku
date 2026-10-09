@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 梅田に近く地価の水準が高い住宅地で、長屋・借地・底地を相続するときの評価
 description: 大阪市福島区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。梅田に近い福島・野田・海老江は地価の水準が高く、古い長屋や借地・底地の評価が税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-maguchi-kyosho-okuyuki-chodai, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, fudosan-ichibutsu-yonka-hyoukagaku-jissei-kakaku, kyoyu-fudosan-chui]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, hyoka-maguchi-kyosho-okuyuki-chodai, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, fudosan-ichibutsu-yonka-hyoukagaku-jissei-kakaku, kyoyu-fudosan-chui]
 ---
 大阪市福島区は梅田の西隣にあり、JR大阪環状線の福島駅・野田駅、JR東西線の新福島駅・海老江駅、阪神本線、大阪メトロ千日前線の野田阪神駅・玉川駅と、鉄道が密に通る区です。堂島川沿いのほたるまちなどで再開発が進み、駅の近くには新しいマンションが次々に建ちました。その一方で、鷺洲・海老江・玉川・吉野などには路地に面した長屋や小さな戸建てが多く残り、借地の上に建つ住宅や、地主として何人かに土地を貸しているご家庭もあります。野田には大阪市中央卸売市場の本場があり、市場に関わる商売を続けてきたご家庭も少なくありません。古い長屋でも土地の評価額は小さくないため、「建物が古いから相続税はかからない」とは言い切れない地域です。
 

@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 長屋と借地・底地、大学周辺の学生向け賃貸物件の評価
 description: 大阪市東淀川区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。東淀川区は長屋や古い借地・底地が多く、大学周辺の学生向けアパートも相続財産になりやすい地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, kashiya-tatetsuke-chi, hyoka-itto-mansion-apart-kushitsu, fudosan-chintai-apart-shoukei-tetsuzuki]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, kashiya-tatetsuke-chi, hyoka-itto-mansion-apart-kushitsu, fudosan-chintai-apart-shoukei-tetsuzuki]
 ---
 大阪市東淀川区は、淀川と神崎川に挟まれた大阪市北東部の区です。阪急京都線と千里線が交わる淡路や上新庄、大阪メトロ今里筋線のだいどう豊里・井高野といった駅の周辺には、長屋や木造の貸家、細い路地に面した住宅が今も残っています。土地を借りて家を建てる借地も古くからあり、借りている側には借地権、貸している地主の側には底地が相続財産として残ります。大阪経済大学などの大学に近い地域では、学生向けのワンルームマンションやアパートを所有している家庭もあります。
 

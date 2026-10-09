@@ -4,7 +4,7 @@ pref: 兵庫県
 region: 阪神
 topic: 大阪空港周辺の騒音のある宅地、旧市街の借地・貸家、工場や倉庫の事業用地
 description: 伊丹市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。空港周辺の騒音のある住宅地、旧市街の借地や貸家、工場・倉庫の敷地など、評価の論点が地域で異なります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [hyoka-riyokachi-teika-10percent, shakuchiken-teichi-hyoka, kashiya-tatetsuke-chi, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu]
+columns: [hanshin-souzokuzei-zeirishi-yasui, hyoka-riyokachi-teika-10percent, shakuchiken-teichi-hyoka, kashiya-tatetsuke-chi, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-kaisha-tochi-tatemono-shacho-kojin-shoyu]
 ---
 伊丹市は兵庫県の南東部にあり、JR宝塚線（福知山線）の伊丹駅と阪急伊丹線の伊丹駅を中心に市街地が広がる地域です。市の東側には大阪国際空港（伊丹空港）があり、空港周辺の住宅地、清酒づくりの歴史を伝える旧市街、工場や倉庫が並ぶ地域が一つの市の中に隣り合っています。大阪・神戸の双方に出やすく、自宅の土地の評価額が基礎控除（3,000万円＋600万円×法定相続人の数）を超えるかどうかの分かれ目になる相続が多くみられます。
 

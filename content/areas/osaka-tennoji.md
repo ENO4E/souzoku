@@ -4,7 +4,7 @@ pref: 大阪府
 region: 大阪市
 topic: 上町台地の住宅地と寺社周辺の広い宅地・坂に面した土地の評価
 description: 大阪市天王寺区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。上町台地の住宅地や寺院の多い街並みには広い宅地や坂に面した土地があり、評価の補正が税額を左右します。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
-columns: [chiseki-kibo-ookina-takuchi, hyoka-riyokachi-teika-10percent, hyoka-gakechi-dosha-saigai-hosei, fudosan-bunpitsu-genbutsu-bunkatsu, hikazei-zaisan-ohaka-butsudan]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, chiseki-kibo-ookina-takuchi, hyoka-riyokachi-teika-10percent, hyoka-gakechi-dosha-saigai-hosei, fudosan-bunpitsu-genbutsu-bunkatsu, hikazei-zaisan-ohaka-butsudan]
 ---
 大阪市天王寺区は上町台地の上に広がる区で、四天王寺や生國魂神社をはじめ、松屋町筋や谷町筋の周辺には寺院が軒を連ねる寺町の街並みが続きます。真田山・夕陽丘・上本町などの住宅地は古くからの落ち着いた地域で、学校も多く、昔ながらの広い屋敷が残っています。台地の西側には天王寺七坂と呼ばれる坂道があり、道路との高低差がある土地も見られます。JR・大阪メトロの天王寺駅や近鉄の大阪上本町駅の周辺は商業地です。天王寺区の相続では、評価額の高い住宅地にある広めの自宅をどう評価し、どう分けるかが中心になりやすく、寺院の近くの土地や坂に面した土地では、形や立地による補正の検討が欠かせません。
 
