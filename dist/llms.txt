@@ -106,7 +106,7 @@
 - [サービス・料金](https://kakuyasu-souzokuzei.com/service/)：料金表、相場との比較、選ばれる理由、ご相談の流れ、お客様の声、よくある質問
 - [相続税シミュレーション](https://kakuyasu-souzokuzei.com/simulation/)：遺産総額と相続人から相続税額の目安と基本報酬をその場で試算
 - [無料相談・お問い合わせ](https://kakuyasu-souzokuzei.com/contact/)：フォームは24時間受付・1営業日以内に連絡
-- [相続税の基礎知識コラム](https://kakuyasu-souzokuzei.com/articles/)：相続税・贈与税・財産評価・特例・遺産分割などの解説（545記事）
+- [相続税の基礎知識コラム](https://kakuyasu-souzokuzei.com/articles/)：相続税・贈与税・財産評価・特例・遺産分割などの解説（548記事）
 
 ## Optional
 
