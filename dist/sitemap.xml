@@ -3397,6 +3397,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://kakuyasu-souzokuzei.com/area/osaka-city/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://kakuyasu-souzokuzei.com/area/osaka-kita/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
