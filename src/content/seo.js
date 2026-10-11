@@ -4,6 +4,7 @@
  */
 import { baseFees, faqs, prefectures, site } from './site.js'
 import { areaFaqs, areaLead } from './areaCommon.js'
+import { SIM_FAQS } from './simulationGuide.js'
 
 export const ORIGIN = 'https://kakuyasu-souzokuzei.com'
 export const OG_IMAGE = `${ORIGIN}/assets/ogp-image.jpg`
@@ -27,9 +28,9 @@ export const pages = {
   },
   simulation: {
     path: '/simulation/',
-    title: '相続税シミュレーション（無料）｜遺産総額と相続人で相続税額をその場で試算',
-    description: '遺産総額と配偶者・相続人の状況を入力するだけで、基礎控除・課税遺産総額・相続税額の目安をその場で試算できる無料の相続税シミュレーション。配偶者の税額軽減にも対応。あわせて当センターの基本報酬（99,000円〜）も表示します。大阪・京都・兵庫の相続専門税理士法人。',
-    ogDescription: '遺産総額と相続人の状況を入れるだけで相続税額の目安をその場で試算。配偶者の税額軽減にも対応した無料シミュレーション。',
+    title: '相続税シミュレーション（無料・登録不要）｜遺産総額と相続人を入れるだけで税額を即試算。早見表・計算方法つき',
+    description: '遺産総額と配偶者・相続人の状況を入力するだけで、基礎控除・課税遺産総額・相続税額の目安をその場で試算できる無料の相続税シミュレーション。配偶者の税額軽減・2割加算に対応。計算の5ステップ・速算表・相続人別の早見表・よくある質問も1ページに。あわせて税理士費用の目安（基本報酬99,000円〜）も表示します。',
+    ogDescription: '遺産総額と相続人の状況を入れるだけで相続税額の目安をその場で試算。無料・登録不要。早見表・計算方法・税理士費用の目安つき。',
     breadcrumb: [{ name: '相続税シミュレーション', path: '/simulation/' }],
   },
   contact: {
@@ -141,11 +142,39 @@ export function breadcrumbLd(route) {
   }
 }
 
+/** 相続税シミュレーション：計算機（WebApplication）とよくある質問（FAQPage） */
+export const simulationAppLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${ORIGIN}/simulation/#app`,
+  name: '相続税シミュレーション',
+  url: `${ORIGIN}/simulation/`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  browserRequirements: 'JavaScript',
+  inLanguage: 'ja',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'JPY' },
+  description: '遺産総額と相続人の状況から、基礎控除・課税遺産総額・相続税額の目安（配偶者の税額軽減・2割加算を反映）をその場で計算する無料ツール。',
+  provider: { '@id': `${ORIGIN}/#organization` },
+}
+
+export const simulationFaqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: SIM_FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+
 /** ページごとの構造化データ一覧 */
 export function jsonLdFor(route) {
   const list = [organizationLd]
   if (route === 'home') list.push(websiteLd, serviceLd)
   if (route === 'service') list.push(serviceLd, faqLd)
+  if (route === 'simulation') list.push(simulationAppLd, simulationFaqLd)
   if (route !== 'home') list.push(breadcrumbLd(route))
   return list
 }
