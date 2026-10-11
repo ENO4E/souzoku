@@ -11,7 +11,9 @@ on:
     paths-ignore:
       - 'dist/**'
   schedule:
-    - cron: '5 15 * * *'
+    # GitHub の定期実行は混雑時に数時間遅れる（0:05 JST 指定で実際は 4〜5 時 JST に動いた）ため、
+    # 0:17 / 2:17 / 4:17 JST の3回に分ける。最初に動いた回で公開され、以降の回は差分なしで終わる
+    - cron: '17 15,17,19 * * *'
   workflow_dispatch:
 
 permissions:
