@@ -3,6 +3,7 @@ import { PageHead, NextNav } from './PageParts.jsx'
 import ReportSection from '../components/ReportSection.jsx'
 import { Arrow } from '../components/SectionHead.jsx'
 import { calcInheritanceTax, MAX_MAN_EN } from '../lib/inheritanceTax.js'
+import SimulationGuide from '../components/SimulationGuide.jsx'
 
 // 金額の表示（万円・小数1桁まで）。num は数字だけ、man は「万円」まで付けた文字列（0より大きく1,000円未満は「0.1万円未満」）
 const num = (yen) => (Math.floor(yen / 1000) / 10).toLocaleString('ja-JP', { maximumFractionDigits: 1 })
@@ -71,7 +72,7 @@ export default function SimulationView() {
         en="Simulation"
         scene={3}
         title={<>相続税額を、<br />その場で<em className="gradient-text">試算</em>。</>}
-        lead="遺産総額と相続人の状況を入力すると、相続税額の目安と当センターの基本報酬がその場で表示されます。計算は国税庁の方法（法定相続分で按分して相続税の総額を出し、実際の取得割合で各人に配分）にもとづく簡易試算です。"
+        lead="無料・登録不要。遺産総額と相続人の状況を入力すると、相続税額の目安と当センターの基本報酬がその場で表示されます。計算は国税庁の方法（法定相続分で按分して相続税の総額を出し、実際の取得割合で各人に配分）にもとづき、配偶者の税額軽減と兄弟姉妹の2割加算にも対応しています。計算の仕組み・速算表・早見表は計算機の下にまとめました。"
       />
 
       <section id="calc" className="section calc" data-scene={3}>
@@ -236,6 +237,8 @@ export default function SimulationView() {
           </aside>
         </div>
       </section>
+
+      <SimulationGuide />
 
       <ReportSection />
 

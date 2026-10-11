@@ -118,6 +118,7 @@ assets/
   - 相続人は民法の順位どおりに聞く（配偶者 → 子 →（子がいなければ）父母 →（父母もいなければ）兄弟姉妹）。人数は別々の state で持ち、後順位の入力は計算で無視する。配偶者の取得割合は「配偶者あり かつ 他の相続人あり」のときだけ聞く
   - 計算は相続税法の手順どおり（各人の課税価格は千円未満切り捨て、総額は百円未満切り捨て、按分は各人の課税価格÷合計、兄弟姉妹は2割加算、配偶者の税額軽減）。割合は分数・金額は整数（BigInt）で計算し、浮動小数点の誤差を出さない
   - 変更したら、条文どおりに独立して書いた別実装（Python など）と全パターン（相続人の組み合わせ288通り×遺産総額）で突き合わせてから出す
+  - 計算機の下の解説（計算の5ステップ・速算表・早見表・入力の集め方・含まれないもの・FAQ）は `src/components/SimulationGuide.jsx`、文言は `src/content/simulationGuide.js`。早見表は `inheritanceTax.js` で計算するので計算機と必ず一致する。FAQ は `seo.js` の `simulationFaqLd`（FAQPage）にもなり、計算機は `WebApplication` の構造化データを出す。「相続税 シミュレーション／計算／見積もり」の検索と AI 検索に1ページで答えるためのもの
 - **市区町村ごとの相続税申告のページ**（`/area/<slug>/`。データは `content/areas/<slug>.md`（`city / pref / region / topic / description / columns`）、読み込みは `scripts/areas.mjs`、表示は `src/views/AreaView.jsx`、共通の文言は `src/content/areaCommon.js`）
   - 地域と市区町村の一覧は `site.js` の `areaRegions`（大阪市・北摂・豊能・北河内・中河内・阪神・神戸）。大阪市は24区のページに加えて市全体のページ（`/area/osaka-city/`。「大阪市 相続 相談」の検索に当てる）がある。md に `title` を書くとその市だけ title を独自にできる（書かなければ `seo.js` の既定の形）。md の `updated`（YYYY-MM-DD）は sitemap の lastmod になるので、本文を直したら更新する。md の `city`・`region` と突き合わせ、ずれ・片方にしかないものはビルドでエラー。市区町村を増やすときは md と `areaRegions` の両方に足す
   - 「地域から探す」（`/area/`、`src/views/AreaHubView.jsx`）が一覧ページ。フッター・サービスページの対応エリア・パンくず・記事下の案内からリンクする。市のページの脇には同じ地域の市区町村を並べる

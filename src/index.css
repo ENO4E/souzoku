@@ -1325,3 +1325,30 @@ html { color-scheme: dark; }
   .area-fee--examples td.amt + td.amt::before { content: "一般的な相場："; }
   .area-fee--types td:first-child { white-space: normal; }
 }
+
+/* ---------- 相続税シミュレーションの解説（/simulation/ の計算機の下） ---------- */
+.sim-guide { padding-top: 0; }
+.sim-guide__h2 { margin: 72px 0 14px; font-family: var(--font-serif); font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; line-height: 1.5; }
+.sim-guide__h2:first-child { margin-top: 0; }
+.sim-guide__h3 { margin: 40px 0 12px; font-family: var(--font-serif); font-size: clamp(17px, 1.8vw, 20px); font-weight: 700; line-height: 1.5; }
+.sim-guide__lead, .sim-guide__note { font-family: var(--font-jp); font-size: 15px; line-height: 2; color: var(--text-sub); }
+.sim-guide__note { margin-top: 14px; font-size: 13.5px; color: var(--text-mute); }
+.sim-guide a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.sim-steps, .sim-tips { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.sim-steps li, .sim-tips li { padding: 18px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(9, 12, 20, 0.7); font-family: var(--font-jp); }
+.sim-steps li b, .sim-tips li b { display: block; margin-bottom: 6px; font-size: 16px; font-weight: 600; color: var(--text); }
+.sim-steps li span, .sim-tips li span { display: block; font-size: 14.5px; line-height: 1.9; color: var(--text-sub); }
+.sim-table { margin-top: 20px; }
+.sim-table td.amt b { font-size: 17px; }
+.sim-table-wrap { margin-top: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.sim-table--quick { min-width: 640px; }
+.sim-table--quick th, .sim-table--quick td { padding: 12px 8px; text-align: right; }
+.sim-table--quick th:first-child, .sim-table--quick td:first-child { text-align: left; }
+.sim-table--quick td.amt b { font-size: 15px; }
+.sim-zero { color: var(--text-mute); }
+.sim-guide__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+.sim-guide .faq-list { margin-top: 24px; }
+@media (max-width: 640px) {
+  .sim-guide__h2 { margin-top: 56px; }
+  .sim-steps li, .sim-tips li { padding: 16px 18px; }
+}
