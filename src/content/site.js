@@ -161,7 +161,7 @@ export const testimonials = [
 export const prefectures = [
   { name: '大阪府', en: 'Osaka', note: '府内全域に対応', focus: ['大阪市', '吹田市', '茨木市', '高槻市', '箕面市', '摂津市', '守口市', '門真市', '四條畷市', '枚方市', '寝屋川市', '東大阪市', '松原市'] },
   { name: '兵庫県', en: 'Hyogo', note: '県内全域に対応', focus: ['尼崎市', '西宮市', '宝塚市', '芦屋市', '神戸市'] },
-  { name: '京都府', en: 'Kyoto', note: '府内全域に対応', focus: [] },
+  { name: '京都府', en: 'Kyoto', note: '府内全域に対応', focus: ['京都市', '宇治市', '長岡京市'] },
 ]
 
 // 市区町村ごとの相続税申告のページ（/area/<slug>/。content/areas/<slug>.md）を地域ごとにまとめたもの。
@@ -190,6 +190,13 @@ export const areaRegions = [
     ['尼崎市', 'amagasaki'], ['西宮市', 'nishinomiya'], ['芦屋市', 'ashiya'], ['伊丹市', 'itami'], ['宝塚市', 'takarazuka'], ['川西市', 'kawanishi'], ['三田市', 'sanda'],
   ] },
   { name: '神戸', slug: 'kobe', pref: '兵庫県', cities: [['神戸市', 'kobe'], ['神戸市東灘区', 'kobe-higashinada'], ['神戸市灘区', 'kobe-nada'], ['神戸市中央区', 'kobe-chuo'], ['神戸市兵庫区', 'kobe-hyogo'], ['神戸市長田区', 'kobe-nagata'], ['神戸市須磨区', 'kobe-suma'], ['神戸市垂水区', 'kobe-tarumi'], ['神戸市北区', 'kobe-kita'], ['神戸市西区', 'kobe-nishi']] },
+  { name: '京都市', slug: 'kyoto-city', pref: '京都府', cities: [
+    ['京都市', 'kyoto-city'], ['京都市北区', 'kyoto-kita'], ['京都市上京区', 'kyoto-kamigyo'], ['京都市左京区', 'kyoto-sakyo'], ['京都市中京区', 'kyoto-nakagyo'], ['京都市東山区', 'kyoto-higashiyama'],
+    ['京都市山科区', 'kyoto-yamashina'], ['京都市下京区', 'kyoto-shimogyo'], ['京都市南区', 'kyoto-minami'], ['京都市右京区', 'kyoto-ukyo'], ['京都市西京区', 'kyoto-nishikyo'], ['京都市伏見区', 'kyoto-fushimi'],
+  ] },
+  { name: '京都南部', slug: 'kyoto-south', pref: '京都府', cities: [
+    ['宇治市', 'uji'], ['城陽市', 'joyo'], ['八幡市', 'yawata'], ['京田辺市', 'kyotanabe'], ['木津川市', 'kizugawa'], ['向日市', 'muko'], ['長岡京市', 'nagaokakyo'], ['亀岡市', 'kameoka'],
+  ] },
 ]
 /** 市区町村名 → ページの slug */
 export const areaPages = Object.fromEntries(areaRegions.flatMap((r) => r.cities))

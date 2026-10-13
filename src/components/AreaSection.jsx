@@ -24,7 +24,7 @@ export default function AreaSection() {
                   <div key={r.slug} className="area-card__region">
                     <p className="area-card__label"><a href={r.slug === 'osaka-city' ? '/area/osaka-city/' : `/area/#${r.slug}`}>{r.name}</a></p>
                     <ul className="area-card__chips">
-                      {r.cities.map(([c, slug]) => <li key={slug}><a href={`/area/${slug}/`}>{c.replace(/^(大阪市|神戸市|堺市)(?=.)/, '')}</a></li>)}
+                      {r.cities.map(([c, slug]) => <li key={slug}><a href={`/area/${slug}/`}>{c.replace(/^(大阪市|神戸市|堺市|京都市)(?=.)/, '')}</a></li>)}
                     </ul>
                   </div>
                 ))

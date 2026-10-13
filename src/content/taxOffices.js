@@ -50,14 +50,15 @@ export const taxOffices = [
   { slug: 'amagasaki', name: '尼崎税務署', pref: '兵庫県', postal: '660-8544', address: '尼崎市西難波町1丁目8番1号', tel: '06-6416-1381', areas: ['尼崎市'], extra: [], note: '' },
   { slug: 'itami', name: '伊丹税務署', pref: '兵庫県', postal: '664-8505', address: '伊丹市千僧1丁目47番地3', tel: '072-779-6121', areas: ['伊丹市', '川西市'], extra: ['猪名川町'], note: '' },
   // ---- 京都府 ----
-  { slug: 'kamigyo', name: '上京税務署', pref: '京都府', postal: '602-8555', address: '京都市上京区一条通西洞院東入元真如堂町358', tel: '075-441-9171', areas: [], extra: ['京都市北区', '京都市上京区'], note: '' },
-  { slug: 'sakyo', name: '左京税務署', pref: '京都府', postal: '606-8555', address: '京都市左京区聖護院円頓美町18', tel: '075-761-5371', areas: [], extra: ['京都市左京区'], note: '' },
-  { slug: 'nakagyo', name: '中京税務署', pref: '京都府', postal: '604-8501', address: '京都市中京区柳馬場通二条下ル等持寺町15', tel: '075-241-2181', areas: [], extra: ['京都市中京区'], note: '' },
-  { slug: 'higashiyama', name: '東山税務署', pref: '京都府', postal: '605-0914', address: '京都市東山区渋谷通大和大路東入下新シ町339-5', tel: '075-561-1131', areas: [], extra: ['京都市東山区', '京都市山科区'], note: '' },
-  { slug: 'shimogyo', name: '下京税務署', pref: '京都府', postal: '600-8181', address: '京都市下京区間之町五条下ル大津町8', tel: '075-351-9161', areas: [], extra: ['京都市下京区', '京都市南区'], note: '' },
-  { slug: 'ukyo', name: '右京税務署', pref: '京都府', postal: '615-0007', address: '京都市右京区西院上花田町10の1', tel: '075-311-6366', areas: [], extra: ['京都市右京区', '京都市西京区', '向日市', '長岡京市', '乙訓郡'], note: '' },
-  { slug: 'fushimi', name: '伏見税務署', pref: '京都府', postal: '612-0084', address: '京都市伏見区鑓屋町', tel: '075-641-5111', areas: [], extra: ['京都市伏見区'], note: '' },
-  { slug: 'uji', name: '宇治税務署', pref: '京都府', postal: '611-0033', address: '宇治市大久保町井の尻60-3', tel: '0774-44-4141', areas: [], extra: ['宇治市', '城陽市', '八幡市', '京田辺市', '久世郡', '綴喜郡', '相楽郡'], note: '' },
+  { slug: 'kamigyo', name: '上京税務署', pref: '京都府', postal: '602-8555', address: '京都市上京区一条通西洞院東入元真如堂町358', tel: '075-441-9171', areas: ['京都市北区', '京都市上京区'], extra: [], note: '' },
+  { slug: 'sakyo', name: '左京税務署', pref: '京都府', postal: '606-8555', address: '京都市左京区聖護院円頓美町18', tel: '075-761-5371', areas: ['京都市左京区'], extra: [], note: '' },
+  { slug: 'nakagyo', name: '中京税務署', pref: '京都府', postal: '604-8501', address: '京都市中京区柳馬場通二条下ル等持寺町15', tel: '075-241-2181', areas: ['京都市中京区'], extra: [], note: '' },
+  { slug: 'higashiyama', name: '東山税務署', pref: '京都府', postal: '605-0914', address: '京都市東山区渋谷通大和大路東入下新シ町339-5', tel: '075-561-1131', areas: ['京都市東山区', '京都市山科区'], extra: [], note: '' },
+  { slug: 'shimogyo', name: '下京税務署', pref: '京都府', postal: '600-8181', address: '京都市下京区間之町五条下ル大津町8', tel: '075-351-9161', areas: ['京都市下京区', '京都市南区'], extra: [], note: '' },
+  { slug: 'ukyo', name: '右京税務署', pref: '京都府', postal: '615-0007', address: '京都市右京区西院上花田町10の1', tel: '075-311-6366', areas: ['京都市右京区', '京都市西京区', '向日市', '長岡京市'], extra: ['乙訓郡（大山崎町）'], note: '' },
+  { slug: 'fushimi', name: '伏見税務署', pref: '京都府', postal: '612-0084', address: '京都市伏見区鑓屋町', tel: '075-641-5111', areas: ['京都市伏見区'], extra: [], note: '' },
+  { slug: 'uji', name: '宇治税務署', pref: '京都府', postal: '611-0033', address: '宇治市大久保町井の尻60-3', tel: '0774-44-4141', areas: ['宇治市', '城陽市', '八幡市', '京田辺市', '木津川市'], extra: ['久世郡（久御山町）', '綴喜郡（井手町・宇治田原町）', '相楽郡（笠置町・和束町・精華町・南山城村）'], note: '' },
+  { slug: 'sonobe', name: '園部税務署', pref: '京都府', postal: '622-8501', address: '南丹市園部町小山東町平成台1号11', tel: '0771-62-0340', areas: ['亀岡市'], extra: ['南丹市', '船井郡（京丹波町）'], note: '' },
 ]
 
 export const TAX_OFFICE_NOTE = '所在地・電話番号・受付時間は変わることがあります。来署の前に国税庁サイトの「税務署の所在地・案内」で最新の情報をご確認ください。'
