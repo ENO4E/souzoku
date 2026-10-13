@@ -303,8 +303,98 @@ export function articleLd(a) {
 /* ---------- 地域から探す（/area/） ---------- */
 export const areaHubPage = {
   path: '/area/',
-  title: `地域から探す相続税申告｜大阪市・北摂・豊能・北河内・阪神・神戸の市区町村別｜基本報酬99,000円〜｜${site.name}`,
-  description: '大阪市の各区、北摂・豊能・北河内・中河内・阪神・神戸の市区町村ごとに、相続税申告の料金・その地域の財産の特徴・よくある質問をまとめたページの一覧です。基本報酬は99,000円（税込・遺産総額4,000万円まで）から。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。',
+  title: `地域から探す相続税申告｜大阪市・堺市・北摂・北河内・南河内・泉州・阪神・神戸の市区町村別｜基本報酬99,000円〜｜${site.name}`,
+  description: '大阪市24区・堺市7区・北摂・豊能・北河内・中河内・南河内・泉州・阪神・神戸の市区町村ごとに、相続税申告の料金・その地域の財産の特徴・管轄税務署・よくある質問をまとめたページの一覧です。基本報酬は99,000円（税込・遺産総額4,000万円まで）から。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。',
+}
+
+/* ---------- 税務署ごとのページ（/zeimusho/<slug>/） ---------- */
+export const taxOfficeHubPage = {
+  path: '/zeimusho/',
+  title: `税務署から探す相続税申告｜大阪・兵庫・京都の税務署の管轄区域と申告書の出し方｜${site.name}`,
+  description: '相続税の申告書は、亡くなった方の最後の住所地を管轄する税務署に提出します。大阪市・大阪府・兵庫県・京都府の税務署ごとに、管轄区域・所在地・電話・申告書の出し方と、管内の市区町村の相続の特徴をまとめました。電子申告で提出するため来署は不要です。',
+}
+
+export function taxOfficePage(office) {
+  const areas = [...office.areas, ...office.extra]
+  return {
+    path: `/zeimusho/${office.slug}/`,
+    title: `${office.name}で相続税申告｜管轄区域（${areas.slice(0, 4).join('・')}${areas.length > 4 ? ' ほか' : ''}）・所在地・申告書の出し方｜${site.name}`,
+    description: `${office.name}（${office.address}）は${areas.join('・')}にお住まいだった方の相続税申告書の提出先です。管轄の決まり方、窓口・郵送・電子申告での出し方、添付書類、納税の方法と、管内の市区町村の相続の特徴をまとめました。当センターは電子申告で提出するため来署は不要、基本報酬99,000円（税込）から。`,
+  }
+}
+
+/** faqs … TaxOfficeViews.jsx の taxOfficeFaqs(office) */
+export function taxOfficeLd(office, faqs) {
+  const meta = taxOfficePage(office)
+  const url = `${ORIGIN}${meta.path}`
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: '税務署から探す', item: `${ORIGIN}/zeimusho/` },
+        { '@type': 'ListItem', position: 3, name: office.name, item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'GovernmentOffice',
+      '@id': `${url}#office`,
+      name: office.name,
+      telephone: office.tel,
+      address: { '@type': 'PostalAddress', postalCode: office.postal, addressRegion: office.pref, streetAddress: office.address, addressCountry: 'JP' },
+      areaServed: [...office.areas, ...office.extra].map((n) => ({ '@type': 'AdministrativeArea', name: n })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: meta.title,
+      description: meta.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+      about: { '@id': `${url}#office` },
+    },
+  ]
+}
+
+export function taxOfficeHubLd(offices) {
+  const url = `${ORIGIN}${taxOfficeHubPage.path}`
+  return [
+    organizationLd,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
+        { '@type': 'ListItem', position: 2, name: '税務署から探す', item: url },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: taxOfficeHubPage.title,
+      itemListElement: offices.map((o, i) => ({ '@type': 'ListItem', position: i + 1, name: o.name, url: `${ORIGIN}${o.path}` })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: taxOfficeHubPage.title,
+      description: taxOfficeHubPage.description,
+      inLanguage: 'ja',
+      isPartOf: { '@id': `${ORIGIN}/#website` },
+    },
+  ]
 }
 
 /** regions … [{ name, slug, pref, cities: [{ city, path, topic }] }] */

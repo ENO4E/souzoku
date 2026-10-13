@@ -3,6 +3,7 @@ city: 堺市西区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 浜寺の広い宅地と松林の邸宅地、鳳駅前の商業地、臨海工業地帯の貸地。評価単位と貸地の整理
 description: 堺市西区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。浜寺公園周辺の広い宅地、鳳駅前の商業地とマンション、臨海工業地帯の貸地や倉庫など、西区は地積規模の大きな宅地の減額と貸地の評価が論点になる地域です。初回相談は無料です。
 columns: [chiseki-kibo-ookina-takuchi, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, hyoka-kashi-chushajo-hyoka, hyoka-kubun-shoyu-mansion-2024-keisan]

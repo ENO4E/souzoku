@@ -3,6 +3,7 @@ city: 堺市東区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 初芝・北野田・白鷺の南海高野線沿線の住宅地と団地。古い戸建ての実家と二次相続
 description: 堺市東区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。初芝・北野田・白鷺など南海高野線沿線の住宅地と団地が中心で、古い戸建ての実家を誰が相続するか、配偶者が相続した後の二次相続までを見た分け方が論点になります。初回相談は無料です。
 columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, nijisouzoku-taisaku, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man, kyoyu-fudosan-chui]

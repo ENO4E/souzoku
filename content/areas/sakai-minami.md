@@ -3,6 +3,7 @@ city: 堺市南区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 泉北ニュータウン（泉ヶ丘・栂・光明池）の団地と戸建て。高齢化で誰も住まなくなる実家の相続と売却
 description: 堺市南区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。泉北ニュータウンの泉ヶ丘・栂・光明池周辺は1970年代に入居した世代の相続が増え、誰も住まない団地や戸建ての実家をどうするかが相続の中心です。特例・売却・管理の選択肢をまとめました。初回相談は無料です。
 columns: [fudosan-jikka-daremo-sumanai-sentakushi-hikaku, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man, fudosan-akiya-kanri-sekinin-kotei-shisanzei, hyoka-kubun-shoyu-mansion-2024-keisan]

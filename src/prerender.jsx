@@ -2,7 +2,9 @@
 import { renderToString } from 'react-dom/server'
 import App from './App.jsx'
 
-export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, ORIGIN, OG_IMAGE } from './content/seo.js'
+export { pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, taxOfficePage, taxOfficeLd, taxOfficeHubPage, taxOfficeHubLd, ORIGIN, OG_IMAGE } from './content/seo.js'
+export { taxOffices, taxOfficeForCity } from './content/taxOffices.js'
+export { taxOfficeFaqs } from './views/TaxOfficeViews.jsx'
 import { site, baseFees, extraFees, areaRegions } from './content/site.js'
 export { site, baseFees, extraFees, areaRegions }
 export { LOWEST_NOTE, RECORD } from './content/areaCommon.js'

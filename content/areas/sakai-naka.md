@@ -3,6 +3,7 @@ city: 堺市中区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 深井・泉北高速沿線の住宅地と、旧村に残る農地・広い敷地。宅地と農地が混ざる相続
 description: 堺市中区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。深井駅周辺や泉北高速沿線の住宅地と、旧村に残る農地・広い敷地が混ざる中区は、宅地の評価と農地の区分、生産緑地の扱いが論点になります。初回相談は無料です。
 columns: [hyoka-seisan-ryokuchi-hyoka, nochi-nozei-yuyo, chiseki-kibo-ookina-takuchi, hyoka-nochi-kubun-takuchi-hijun, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
