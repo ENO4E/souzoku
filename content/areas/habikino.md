@@ -3,6 +3,7 @@ city: 羽曳野市
 pref: 大阪府
 region: 南河内
 updated: 2026-10-13
+taxOffice: 富田林税務署
 topic: 古市古墳群周辺の住宅地、駒ヶ谷のぶどう・いちじくの農地、旧村の広い敷地。農地と宅地が混ざる相続
 description: 羽曳野市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。古市古墳群周辺の住宅地、駒ヶ谷・飛鳥のぶどうやいちじくの農地、旧村の広い敷地と、羽曳野市は農地と宅地を一緒に相続する家が多い地域です。農地の区分と納税猶予、史跡周辺の土地の扱いをまとめました。初回相談は無料です。
 columns: [nochi-nozei-yuyo, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]

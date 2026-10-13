@@ -3,6 +3,7 @@ city: 堺市堺区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 環濠の旧市街の町家と借地・底地、堺東・堺駅前の商業地とマンション、刃物・線香など家業の承継
 description: 堺市堺区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。旧市街の町家と借地・底地、堺東・堺駅前の商業地やマンション、刃物・線香・自転車といった家業の事業用資産など、堺区は狭小地と借地権の評価が中心になる地域です。初回相談は無料です。
 columns: [shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, hyoka-kubun-shoyu-mansion-2024-keisan]

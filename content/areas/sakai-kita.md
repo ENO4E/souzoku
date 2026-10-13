@@ -3,6 +3,7 @@ city: 堺市北区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 堺税務署
 topic: 中百舌鳥・新金岡の団地とマンション、百舌鳥古墳群周辺の住宅地、金岡の旧村。マンション評価と古墳隣接地
 description: 堺市北区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。中百舌鳥・新金岡の団地やマンション、百舌鳥古墳群周辺の住宅地、金岡・長曽根の旧村の敷地など、北区は2024年からのマンション評価の見直しと、古墳に隣接する土地の扱いが論点になります。初回相談は無料です。
 columns: [hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-kubun-shoyu-mansion-shikichiken, chiseki-kibo-ookina-takuchi, fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, nijisouzoku-taisaku]

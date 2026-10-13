@@ -3,6 +3,7 @@ city: 堺市美原区
 pref: 大阪府
 region: 堺
 updated: 2026-10-13
+taxOffice: 富田林税務署
 topic: 旧美原町の田園と旧村の広い敷地、市街化調整区域の農地、金属加工の町工場。農地の区分と納税猶予
 description: 堺市美原区の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。旧美原町の田園地帯と旧村の広い敷地、市街化調整区域の農地、金属加工などの町工場が混在する美原区は、農地の区分による評価の違いと納税猶予、農家住宅の敷地の評価が論点になります。初回相談は無料です。
 columns: [nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, hyoka-seisan-ryokuchi-hyoka, chiseki-kibo-ookina-takuchi, hijojo-kabushiki-hyoka]

@@ -17,7 +17,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = resolve(root, 'dist')
 
 const ssr = await import(resolve(root, 'dist-ssr/prerender.js'))
-const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, areaRegions, ORIGIN, OG_IMAGE, SITE_NAME, site, baseFees, extraFees, LOWEST_NOTE, RECORD } = ssr
+const { render, pages, jsonLdFor, webPageLd, articlesPage, articlePage, articlesLd, articleLd, privacyPage, privacyLd, areaPage, areaLd, areaHubPage, areaHubLd, taxOfficePage, taxOfficeLd, taxOfficeHubPage, taxOfficeHubLd, taxOffices, taxOfficeFaqs, areaRegions, ORIGIN, OG_IMAGE, SITE_NAME, site, baseFees, extraFees, LOWEST_NOTE, RECORD } = ssr
 
 const template = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
 const marker = '<div id="root"></div>'
@@ -176,6 +176,9 @@ for (const a of areas) {
     return { path: x.path, title: x.title }
   })
   const regionMeta = { name: region.name, slug: region.slug }
+  // 管轄税務署のページへのリンク（md の taxOffice が taxOffices.js の署名と一致するときだけ。「東税務署または南税務署」のような併記はリンクしない）
+  const office = a.taxOffice ? taxOffices.find((o) => o.name === a.taxOffice) : null
+  a.taxOfficePath = office ? `/zeimusho/${office.slug}/` : ''
   const html = render('area', { area: a, region: regionMeta, areas: areaList, columns, latest })
   const { html: _h, accessHtml: _a, columns: _c, regionSlug: _r, ...areaMeta } = a // 本文はプリレンダリング済みなのでデータに入れない（main.jsx が DOM から拾う）
   writePage(a.path, 'area', html, headTags(areaPage(a), areaLd(a)), { area: areaMeta, region: regionMeta, areas: areaList, columns, latest })
@@ -189,6 +192,26 @@ for (const a of areas) {
   writeFileSync(resolve(dir, 'index.html'), stub)
 }
 written.push(`/area/<slug>/（${areas.length}市区町村）`)
+
+// 税務署ごとのページ（/zeimusho/<slug>/）と一覧（/zeimusho/）。データは src/content/taxOffices.js。管轄区域の市区町村ページへリンクする
+{
+  const offices = taxOffices.map((o) => ({ ...o, path: `/zeimusho/${o.slug}/` }))
+  const hubData = { offices: offices.map(({ slug, name, pref, path, areas: ar, extra }) => ({ slug, name, pref, path, areas: ar, extra })), latest }
+  const hubHtml = render('zeimushohub', hubData)
+  writePage(taxOfficeHubPage.path, 'zeimushohub', hubHtml, headTags(taxOfficeHubPage, taxOfficeHubLd(offices)), hubData)
+  sitemapEntries.push({ loc: taxOfficeHubPage.path, changefreq: 'monthly', priority: '0.6' })
+  for (const o of offices) {
+    const areaLinks = o.areas.map((city) => {
+      const a = areas.find((x) => x.city === city)
+      if (!a) throw new Error(`taxOffices.js の ${o.name} の管轄 ${city} に市区町村ページ（content/areas）がありません`)
+      return { city, path: a.path, topic: a.topic }
+    })
+    const data = { office: o, areaLinks, latest }
+    writePage(o.path, 'zeimusho', render('zeimusho', data), headTags(taxOfficePage(o), taxOfficeLd(o, taxOfficeFaqs(o))), data)
+    sitemapEntries.push({ loc: o.path, changefreq: 'yearly', priority: '0.5' })
+  }
+  written.push(`/zeimusho/<slug>/（${offices.length}税務署）`)
+}
 
 // llms.txt（AI 向けの案内。https://llmstxt.org/ の形式。サイトのデータから毎回作るので、料金や市のページを変えれば自動で揃う）
 {

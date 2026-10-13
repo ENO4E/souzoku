@@ -9,11 +9,13 @@
  *   /privacy/         … プライバシーポリシー（通常のページ遷移）
  *   /area/            … 地域から探す（市区町村ごとのページの一覧。通常のページ遷移）
  *   /area/<slug>/     … 市区町村ごとの相続税申告のページ（通常のページ遷移）
+ *   /zeimusho/        … 税務署から探す（税務署ごとのページの一覧。通常のページ遷移）
+ *   /zeimusho/<slug>/ … 税務署ごとの相続税申告のページ（管轄区域・所在地・出し方。通常のページ遷移）
  * 旧URL（#/service など）は読み込み時に新URLへ置き換える
  */
 export const MAIN_ROUTES = ['home', 'service', 'simulation', 'contact']
-export const ROUTES = [...MAIN_ROUTES, 'articles', 'article', 'privacy', 'areahub', 'area']
-export const PATHS = { home: '/', service: '/service/', simulation: '/simulation/', contact: '/contact/', articles: '/articles/', privacy: '/privacy/', areahub: '/area/' }
+export const ROUTES = [...MAIN_ROUTES, 'articles', 'article', 'privacy', 'areahub', 'area', 'zeimushohub', 'zeimusho']
+export const PATHS = { home: '/', service: '/service/', simulation: '/simulation/', contact: '/contact/', articles: '/articles/', privacy: '/privacy/', areahub: '/area/', zeimushohub: '/zeimusho/' }
 
 export function parsePath(pathname) {
   const segs = (pathname || '/').replace(/index\.html$/, '').split('/').filter(Boolean)
@@ -21,6 +23,7 @@ export function parsePath(pathname) {
   if (seg === 'articles') return segs[1] ? 'article' : 'articles'
   if (seg === 'privacy') return 'privacy'
   if (seg === 'area') return segs[1] ? 'area' : 'areahub'
+  if (seg === 'zeimusho') return segs[1] ? 'zeimusho' : 'zeimushohub'
   return seg && MAIN_ROUTES.includes(seg) ? seg : 'home'
 }
 

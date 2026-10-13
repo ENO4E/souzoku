@@ -50,7 +50,7 @@ export default function Footer({ latest = [] }) {
         </div>
       </div>
       <nav className="container footer__areas" aria-label="地域から探す">
-        <p className="footer__areas-label"><a href="/area/">地域から探す（市区町村ごとの相続税申告）</a></p>
+        <p className="footer__areas-label"><a href="/area/">地域から探す（市区町村ごとの相続税申告）</a>　<a href="/zeimusho/">税務署から探す</a></p>
         <ul>
           {areaRegions.map((r) => (
             <li key={r.slug}><a href={r.slug === 'osaka-city' ? '/area/osaka-city/' : `/area/#${r.slug}`}>{r.name}<small>{r.cities.length}</small></a></li>

@@ -3,6 +3,7 @@ city: 松原市
 pref: 大阪府
 region: 南河内
 updated: 2026-10-13
+taxOffice: 八尾税務署
 topic: 密集住宅地の戸建てと貸家、町工場、河内松原駅前のマンション。狭小地の補正と貸家の空室
 description: 松原市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。密集した住宅地の戸建てと貸家、町工場、河内松原駅前のマンションが中心の松原市は、間口の狭い土地の補正と貸家の空室が評価を左右します。初回相談は無料です。
 columns: [kashiya-tatetsuke-chi, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, hyoka-kubun-shoyu-mansion-2024-keisan, fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji]

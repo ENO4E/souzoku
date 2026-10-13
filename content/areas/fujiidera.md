@@ -3,6 +3,7 @@ city: 藤井寺市
 pref: 大阪府
 region: 南河内
 updated: 2026-10-13
+taxOffice: 富田林税務署
 topic: 藤井寺・土師ノ里駅周辺の密集住宅地とマンション、古墳に囲まれた小さな市の相続。相続人が多い家の分け方
 description: 藤井寺市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。藤井寺・土師ノ里駅周辺の密集住宅地とマンションが中心で、古墳に囲まれた土地の制限、相続人が多い家の分け方と相続人加算の費用、二次相続までの設計をまとめました。初回相談は無料です。
 columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, nijisouzoku-taisaku, kyoyu-fudosan-chui, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-akiya-jikka-tenkyo]
