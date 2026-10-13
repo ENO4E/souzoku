@@ -186,7 +186,7 @@ export const areaRegions = [
   { name: '阪神', slug: 'hanshin', pref: '兵庫県', cities: [
     ['尼崎市', 'amagasaki'], ['西宮市', 'nishinomiya'], ['芦屋市', 'ashiya'], ['伊丹市', 'itami'], ['宝塚市', 'takarazuka'], ['川西市', 'kawanishi'], ['三田市', 'sanda'],
   ] },
-  { name: '神戸', slug: 'kobe', pref: '兵庫県', cities: [['神戸市', 'kobe']] },
+  { name: '神戸', slug: 'kobe', pref: '兵庫県', cities: [['神戸市', 'kobe'], ['神戸市東灘区', 'kobe-higashinada'], ['神戸市灘区', 'kobe-nada'], ['神戸市中央区', 'kobe-chuo'], ['神戸市兵庫区', 'kobe-hyogo'], ['神戸市長田区', 'kobe-nagata'], ['神戸市須磨区', 'kobe-suma'], ['神戸市垂水区', 'kobe-tarumi'], ['神戸市北区', 'kobe-kita'], ['神戸市西区', 'kobe-nishi']] },
 ]
 /** 市区町村名 → ページの slug */
 export const areaPages = Object.fromEntries(areaRegions.flatMap((r) => r.cities))
