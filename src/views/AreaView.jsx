@@ -35,8 +35,8 @@ export default function AreaView({ area, region = null, areas = [], columns = []
             <span data-scramble>Area</span>
           </p>
           <h1 className="page-head__title page-head__title--area" data-reveal style={{ '--d': '90ms' }}>
-            {area.city}の相続税申告<br />
-            <span className="gradient-text">最安水準・基本報酬99,000円〜</span>
+            {area.city}の相続税申告・相続の相談<br />
+            <span className="gradient-text">相続専門の税理士法人｜最安水準・基本報酬99,000円〜</span>
           </h1>
           <p className="page-head__lead area-lead" data-reveal style={{ '--d': '180ms' }}>{areaLead(area)}</p>
           <div className="area-actions" data-reveal style={{ '--d': '240ms' }}>
