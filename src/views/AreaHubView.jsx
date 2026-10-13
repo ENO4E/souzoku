@@ -50,7 +50,7 @@ export default function AreaHubView({ regions = [] }) {
             </div>
           ))}
           <p className="area-note">
-            一覧にない市区町村（京都府を含む）も、大阪府・兵庫県・京都府の全域でお受けしています。オンライン面談・ご自宅への訪問に対応していますので、<a href="/contact/">お問い合わせ</a>ください。
+            一覧にない市区町村も、大阪府・兵庫県・京都府の全域でお受けしています。オンライン面談・ご自宅への訪問に対応していますので、<a href="/contact/">お問い合わせ</a>ください。
           </p>
           <div className="article-cta">
             <p className="article-cta__title">料金は全地域共通。基本報酬99,000円（税込・遺産総額4,000万円まで）から。</p>
