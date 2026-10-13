@@ -182,7 +182,10 @@ export const areaRegions = [
   { name: '北河内', slug: 'kitakawachi', pref: '大阪府', cities: [
     ['枚方市', 'hirakata'], ['寝屋川市', 'neyagawa'], ['守口市', 'moriguchi'], ['門真市', 'kadoma'], ['大東市', 'daito'], ['交野市', 'katano'], ['四條畷市', 'shijonawate'],
   ] },
-  { name: '中河内', slug: 'nakakawachi', pref: '大阪府', cities: [['東大阪市', 'higashiosaka']] },
+  { name: '中河内', slug: 'nakakawachi', pref: '大阪府', cities: [['東大阪市', 'higashiosaka'], ['八尾市', 'yao'], ['柏原市', 'kashiwara']] },
+  { name: '南河内', slug: 'minamikawachi', pref: '大阪府', cities: [['松原市', 'matsubara'], ['羽曳野市', 'habikino'], ['藤井寺市', 'fujiidera'], ['富田林市', 'tondabayashi'], ['河内長野市', 'kawachinagano'], ['大阪狭山市', 'osakasayama']] },
+  { name: '堺', slug: 'sakai', pref: '大阪府', cities: [['堺市', 'sakai'], ['堺市堺区', 'sakai-sakai'], ['堺市中区', 'sakai-naka'], ['堺市東区', 'sakai-higashi'], ['堺市西区', 'sakai-nishi'], ['堺市南区', 'sakai-minami'], ['堺市北区', 'sakai-kita'], ['堺市美原区', 'sakai-mihara']] },
+  { name: '泉州', slug: 'senshu', pref: '大阪府', cities: [['岸和田市', 'kishiwada'], ['和泉市', 'izumi'], ['泉大津市', 'izumiotsu'], ['高石市', 'takaishi'], ['貝塚市', 'kaizuka'], ['泉佐野市', 'izumisano']] },
   { name: '阪神', slug: 'hanshin', pref: '兵庫県', cities: [
     ['尼崎市', 'amagasaki'], ['西宮市', 'nishinomiya'], ['芦屋市', 'ashiya'], ['伊丹市', 'itami'], ['宝塚市', 'takarazuka'], ['川西市', 'kawanishi'], ['三田市', 'sanda'],
   ] },
