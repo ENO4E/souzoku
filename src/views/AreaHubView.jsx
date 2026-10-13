@@ -41,7 +41,7 @@ export default function AreaHubView({ regions = [] }) {
                 {r.cities.map((c) => (
                   <li key={c.path} className="spotlight">
                     <a href={c.path}>
-                      <span className="area-hub__city">{c.city}の相続税申告</span>
+                      <span className="area-hub__city">{c.city}の相続税申告・税理士費用</span>
                       {c.topic && <span className="area-hub__topic">{c.topic}</span>}
                     </a>
                   </li>

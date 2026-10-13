@@ -11,7 +11,7 @@ export default function AreaView({ area, region = null, areas = [], columns = []
   const regionArticle = columns.find((c) => /zeirishi-yasui/.test(c.path)) || null
   const facts = [
     ['対応地域', `${area.city}全域（${area.pref}）`],
-    ['基本報酬', '99,000円（税込）〜 最安水準 ※遺産総額4,000万円まで'],
+    ['税理士費用（基本報酬）', '99,000円（税込）〜 最安水準 ※遺産総額4,000万円まで'],
     ['申告実績', `${RECORD}（相続税申告に特化）`],
     ...(area.taxOffice ? [['管轄税務署', area.taxOfficePath
       ? <><a href={area.taxOfficePath}>{area.taxOffice}</a>（亡くなった方の最後の住所地が{area.city}の場合）</>
@@ -39,7 +39,7 @@ export default function AreaView({ area, region = null, areas = [], columns = []
           </p>
           <h1 className="page-head__title page-head__title--area" data-reveal style={{ '--d': '90ms' }}>
             {area.city}の相続税申告・相続の相談<br />
-            <span className="gradient-text">相続専門の税理士法人｜最安水準・基本報酬99,000円〜</span>
+            <span className="gradient-text">相続専門の税理士法人｜税理士費用は最安水準・基本報酬99,000円〜</span>
           </h1>
           <p className="page-head__lead area-lead" data-reveal style={{ '--d': '180ms' }}>{areaLead(area)}</p>
           <div className="area-actions" data-reveal style={{ '--d': '240ms' }}>
@@ -56,7 +56,7 @@ export default function AreaView({ area, region = null, areas = [], columns = []
               {facts.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
             </dl>
 
-            <h2 className="area-h2">{area.city}の相続税申告の料金</h2>
+            <h2 className="area-h2">{area.city}の相続税申告の税理士費用（料金表）</h2>
             <table className="fee-table area-fee">
               <thead><tr><th>遺産総額</th><th>基本報酬（税込）</th></tr></thead>
               <tbody>
@@ -68,9 +68,9 @@ export default function AreaView({ area, region = null, areas = [], columns = []
             </p>
             <p className="area-note area-note--small">{LOWEST_NOTE}</p>
 
-            <h2 className="area-h2">{area.city}で税理士の費用を比べるときに</h2>
+            <h2 className="area-h2">{area.city}で相続税申告の税理士費用を比べるときに</h2>
             <p className="area-note area-note--body">
-              見積もりは、基本報酬に土地・相続人などの加算を足した<b>税込の総額</b>で比べてください。当センターの料金で計算した総額は、自宅と預貯金5,000万円・配偶者と子2人で{feeExamples[1].total}（税込）が目安です。料金体系の型・総額の例・見積もりで確かめることは、
+              相続税の税理士費用は事務所ごとに決め方が違うので、基本報酬だけでなく、土地・相続人などの加算を足した<b>税込の総額</b>で比べてください。当センターの料金で計算した総額は、自宅と預貯金5,000万円・配偶者と子2人で{feeExamples[1].total}（税込）が目安です。料金体系の型・総額の例・見積もりで確かめることは、
               {regionArticle ? <><a href={regionArticle.path}>{regionArticle.title}</a>と</> : null}
               <a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a>にまとめています。
             </p>
@@ -106,8 +106,8 @@ export default function AreaView({ area, region = null, areas = [], columns = []
             )}
 
             <div className="article-cta">
-              <p className="article-cta__title">{area.city}の相続税申告、まずは無料相談で費用と進め方を。</p>
-              <p className="article-cta__text">ご契約まで費用はかかりません。財産の内容をうかがい、基本報酬と追加料金の見込みをその場でお伝えします。</p>
+              <p className="article-cta__title">{area.city}の相続税申告、まずは無料相談で税理士費用と進め方を。</p>
+              <p className="article-cta__text">ご契約まで費用はかかりません。財産の内容をうかがい、税理士費用（基本報酬と追加料金）の見込みをその場でお伝えします。</p>
               <div className="article-cta__actions">
                 <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label={`エリア下部:${area.city}`}>無料相談を予約する<Arrow /></a>
                 <a href="/simulation/" className="btn btn--ghost btn--lg">相続税シミュレーション</a>
