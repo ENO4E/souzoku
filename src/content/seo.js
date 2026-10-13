@@ -434,7 +434,7 @@ export function areaHubLd(regions) {
 export function areaPage(area) {
   return {
     path: area.path,
-    title: area.title ? `${area.title}｜${site.name}` : `${area.city}の相続税申告・相続の相談｜相続専門の税理士法人・基本報酬99,000円〜（税込）｜${site.name}`,
+    title: area.title ? `${area.title}｜${site.name}` : `${area.city}の相続税申告・相続の相談｜税理士費用は基本報酬99,000円〜（税込）｜相続専門の税理士法人 ${site.name}`,
     description: area.description,
     ogDescription: area.description,
   }
@@ -458,7 +458,7 @@ export function areaLd(area) {
       '@context': 'https://schema.org',
       '@type': 'Service',
       '@id': `${url}#service`,
-      name: `${area.city}の相続税申告`,
+      name: `${area.city}の相続税申告（税理士費用は基本報酬99,000円〜）`,
       serviceType: '相続税申告',
       description: areaLead(area),
       url,
