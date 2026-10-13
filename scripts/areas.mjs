@@ -9,6 +9,7 @@
 //   description: 東大阪市の相続税申告を基本報酬99,000円（税込）からお受けします。…（100〜125字）
 //   columns: [hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, …]   … その市の財産の特徴に関係するコラムの slug（5件ほど。手で選ぶ）
 //   updated: 2026-10-09                                          … 本文を直した日（sitemap の lastmod になる。直したら更新する）
+//   taxOffice: 豊能税務署                                        … 管轄税務署（確かな市区町村だけ書く。書かなければ表示しない）
 //   ---
 //   導入の段落
 //   ## 〇〇市の相続でよくある財産と評価のポイント … 本文（h2 は2〜4個）
@@ -51,6 +52,7 @@ export function loadAreas(dir) {
       description: meta.description,
       title: meta.title || '', // title / description を独自に指定したい市だけ md に書く（空なら seo.js の既定の形）
       updated, // 本文を直した日（sitemap の lastmod。検索エンジンに読み直す優先度を伝える）
+      taxOffice: meta.taxOffice || '', // 管轄税務署（分かっている市区町村だけ。概要の表と FAQ に出す）
       html: renderMarkdown(main.trim()),
       accessHtml: access ? renderMarkdown(access) : '',
       faqs,

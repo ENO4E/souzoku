@@ -13,6 +13,7 @@ export default function AreaView({ area, region = null, areas = [], columns = []
     ['対応地域', `${area.city}全域（${area.pref}）`],
     ['基本報酬', '99,000円（税込）〜 最安水準 ※遺産総額4,000万円まで'],
     ['申告実績', `${RECORD}（相続税申告に特化）`],
+    ...(area.taxOffice ? [['管轄税務署', `${area.taxOffice}（亡くなった方の最後の住所地が${area.city}の場合）`]] : []),
     ['ご相談方法', '事務所での面談・オンライン面談・ご自宅への訪問'],
     ['初回相談', '無料（ご契約まで費用はかかりません）'],
     ['事務所', `${site.address.replace(/^〒\d{3}-\d{4}\s*/, '')}（${site.company}）`],

@@ -2,7 +2,8 @@
 city: 芦屋市
 pref: 兵庫県
 region: 阪神
-updated: 2026-10-09
+updated: 2026-10-13
+taxOffice: 芦屋税務署
 topic: 全国有数の高地価住宅地で広い宅地を相続するときの評価と納税
 description: 芦屋市の相続税申告を最安水準の基本報酬99,000円（税込）からお受けします。芦屋市は全国有数の地価水準で、自宅だけで相続税がかかる世帯が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
 columns: [hanshin-souzokuzei-zeirishi-yasui, hanshin-fudosan-souzoku-taisaku, chiseki-kibo-ookina-takuchi, ennou-butsunou, chosa-nozei-shikin-loan-ennou-hikaku, nijisouzoku-taisaku, zoyo-seimei-hoken-nozei-shikin-taisaku-sekkei]
