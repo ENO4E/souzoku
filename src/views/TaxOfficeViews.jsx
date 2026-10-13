@@ -93,7 +93,7 @@ export function TaxOfficeView({ office, areaLinks = [] }) {
 
           <h2 className="area-h2">{office.name}管内の相続税申告のご相談</h2>
           <p className="sim-guide__lead">
-            {site.name}（運営：{site.company}）は、相続税申告に特化した税理士法人です。{office.name}管内のご自宅への訪問とオンライン面談に対応し、来所は多くて2回程度、資料は郵送で進められます。申告の基本報酬は99,000円（税込・遺産総額4,000万円まで）からで、<a href="/service/#fee">料金表</a>に加算の単位を公開しています。相続税がかかるかどうかは<a href="/simulation/">相続税シミュレーション</a>で確かめられます。
+            {site.name}（運営：{site.company}）は、相続税申告に特化した税理士法人です。{office.name}管内のご自宅への訪問とオンライン面談に対応し、資料は郵送で進められます。申告の基本報酬は99,000円（税込・遺産総額4,000万円まで）からで、<a href="/service/#fee">料金表</a>に加算の単位を公開しています。相続税がかかるかどうかは<a href="/simulation/">相続税シミュレーション</a>で確かめられます。
           </p>
           <div className="sim-guide__cta">
             <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label={`税務署下部:${office.name}`}>無料相談を予約する<Arrow /></a>
