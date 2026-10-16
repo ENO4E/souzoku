@@ -2,10 +2,11 @@
 city: 宝塚市
 pref: 兵庫県
 region: 阪神
-updated: 2026-10-13
+updated: 2026-10-16
 taxOffice: 西宮税務署
 topic: 丘陵地の住宅・駅前マンション・山林の評価と使える特例
-description: 宝塚市の相続税申告と相続の相談を、相続専門の税理士法人が税理士費用（基本報酬）99,000円（税込）からの最安水準でお受けします。宝塚市は丘陵地に住宅地が広がり、高低差や擁壁のある土地、駅周辺のマンション、山林など評価に工夫が要る財産が多い地域です。初回相談は無料です。
+focus: 丘陵地の住宅・駅前マンション・山林
+description: 宝塚市は丘陵地に住宅地が広がり、高低差や擁壁のある土地、駅周辺のマンション、山林など評価に工夫が要る財産が多い地域です。宝塚市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
 columns: [hanshin-souzokuzei-zeirishi-yasui, hanshin-fudosan-souzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, tokurei-sanrin-nozei-yuyo-shinrin-keiei-keikaku]
 ---
 宝塚市は阪急宝塚線・今津線とJR宝塚線沿いに住宅地が発達し、市域の多くが丘陵地です。宝塚駅や逆瀬川・仁川周辺のマンション、山手に造成された戸建て住宅地、北部の山林や農地と、財産の種類が幅広いのが特徴です。地価は阪神間の中心部ほど高くないものの、広めの敷地を持つ家庭が多く、自宅と預貯金を合わせると基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続は少なくありません。

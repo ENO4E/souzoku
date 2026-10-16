@@ -2,10 +2,11 @@
 city: 交野市
 pref: 大阪府
 region: 北河内
-updated: 2026-10-13
+updated: 2026-10-16
 taxOffice: 枚方税務署
 topic: 市街化調整区域の農地・山林・雑種地と、市街化区域の農地・生産緑地の評価
-description: 交野市の相続税申告と相続の相談を、相続専門の税理士法人が税理士費用（基本報酬）99,000円（税込）からの最安水準でお受けします。市街化調整区域に農地や山林が広がり、農地・山林・雑種地や生産緑地の評価、納税猶予が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
+focus: 調整区域の農地・山林と生産緑地
+description: 市街化調整区域に農地や山林が広がり、農地・山林・雑種地や生産緑地の評価、納税猶予が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。交野市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, hyoka-shigaika-chosei-zasshuchi, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, fudosan-nouchi-souzoku-todokede-tenyou, fudosan-kyoukai-mikakutei-tochi-souzoku]
 ---
 交野市は大阪府の北東部にあり、京阪交野線（交野市駅・河内森駅・私市駅など）とJR学研都市線（河内磐船駅・星田駅）の沿線に住宅地が広がる地域です。市の東側は交野山などの山地で、磐船神社のある渓谷へと続きます。駅の周りの住宅地を少し離れると田畑が多く残り、星田や私市の山すそには山林もあります。親の代から農業を営んできた家庭では、自宅のほかに市街化調整区域の農地・山林・雑種地をまとめて相続することになり、宅地とは違う評価の考え方が必要です。

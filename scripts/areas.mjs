@@ -6,6 +6,7 @@
 //   pref: 大阪府
 //   region: 北摂                                                … 地域（site.js の areaRegions の name と一致させる）
 //   topic: 町工場の自社株・工場用地・役員借入金と事業承継の対策   … 見出しの下に出す、その市の相続の特徴
+//   focus: 町工場の自社株と工場用地                                … title に入れる短い語（12〜20字）。title を市ごとに違う内容にするためのもの
 //   description: 東大阪市の相続税申告を基本報酬99,000円（税込）からお受けします。…（100〜125字）
 //   columns: [hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, …]   … その市の財産の特徴に関係するコラムの slug（5件ほど。手で選ぶ）
 //   updated: 2026-10-09                                          … 本文を直した日（sitemap の lastmod になる。直したら更新する）
@@ -49,6 +50,7 @@ export function loadAreas(dir) {
       pref: meta.pref || '大阪府',
       region: meta.region,
       topic: meta.topic || '',
+      focus: meta.focus || '', // title に入れるその市固有の短い語（12〜20字。102ページの title が市名違いだけにならないようにする）
       description: meta.description,
       title: meta.title || '', // title / description を独自に指定したい市だけ md に書く（空なら seo.js の既定の形）
       updated, // 本文を直した日（sitemap の lastmod。検索エンジンに読み直す優先度を伝える）

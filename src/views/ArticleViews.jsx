@@ -96,7 +96,7 @@ export function ArticlesView({ list = [] }) {
 }
 
 /** 記事本文（/articles/<slug>/） */
-export function ArticleView({ article, related = [] }) {
+export function ArticleView({ article, related = [], areaLinks = [] }) {
   if (!article) return null
   return (
     <>
@@ -144,6 +144,17 @@ export function ArticleView({ article, related = [] }) {
               <a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a>
             </p>
           </div>
+
+          {areaLinks.length > 0 && (
+            <div className="article-related article-areas">
+              <p className="article-related__label">この記事に関係する地域</p>
+              <ul>
+                {areaLinks.map((a) => (
+                  <li key={a.path}><a href={a.path}><span>{a.city}の相続税申告・税理士費用（基本報酬99,000円〜）</span></a></li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {related.length > 0 && (
             <div className="article-related">

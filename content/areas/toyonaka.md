@@ -2,10 +2,11 @@
 city: 豊中市
 pref: 大阪府
 region: 北摂
-updated: 2026-10-13
+updated: 2026-10-16
 taxOffice: 豊能税務署
 topic: 千里ニュータウンのマンション、緑地公園周辺の広い敷地、大阪空港周辺の騒音と評価
-description: 豊中市の相続税申告と相続の相談を、相続専門の税理士法人が税理士費用（基本報酬）99,000円（税込）からの最安水準でお受けします。千里ニュータウンのマンション、緑地公園周辺の広い敷地、空港周辺の騒音など、地域ごとに評価の論点が異なります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。
+focus: 千里のマンションと緑地公園周辺の広い敷地
+description: 千里ニュータウンのマンション、緑地公園周辺の広い敷地、空港周辺の騒音など、地域ごとに評価の論点が異なります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。豊中市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
 columns: [toyonaka-souzokuzei-zeirishi-yasui, hokusetsu-souzokuzei-zeirishi-yasui, hokusetsu-fudosan-souzoku-taisaku, hyoka-kubun-shoyu-mansion-2024-keisan, chiseki-kibo-ookina-takuchi, hyoka-riyokachi-teika-10percent, nisetai-jutaku-shokibo-takuchi, rojin-home-shokibo-takuchi]
 ---
 豊中市は、阪急宝塚線の各駅、北大阪急行の緑地公園駅と千里中央駅、大阪モノレールの沿線に住宅地が広がる地域です。北東部は千里ニュータウンの一部、西部は大阪国際空港（伊丹空港）に接する住宅地で、同じ市内でも土地の性格が大きく異なります。大阪市に近く地価の水準が高いため、自宅と預貯金だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続も少なくありません。
