@@ -171,7 +171,7 @@ export default function App({ initialRoute = 'home', pageData = null }) {
         ) : (
           <div className={`view view--${route}`}>
             {route === 'articles' && <ArticlesView list={pageData?.list || []} />}
-            {route === 'article' && <ArticleView article={pageData?.article} related={pageData?.related || []} />}
+            {route === 'article' && <ArticleView article={pageData?.article} related={pageData?.related || []} areaLinks={pageData?.areaLinks || []} />}
             {route === 'privacy' && <PrivacyView />}
             {route === 'areahub' && <AreaHubView regions={pageData?.regions || []} />}
             {route === 'area' && <AreaView area={pageData?.area} region={pageData?.region} areas={pageData?.areas || []} columns={pageData?.columns || []} />}

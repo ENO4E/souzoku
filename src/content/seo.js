@@ -434,7 +434,11 @@ export function areaHubLd(regions) {
 export function areaPage(area) {
   return {
     path: area.path,
-    title: area.title ? `${area.title}｜${site.name}` : `${area.city}の相続税申告・相続の相談｜税理士費用は基本報酬99,000円〜（税込）｜相続専門の税理士法人 ${site.name}`,
+    title: area.title
+      ? `${area.title}｜${site.name}`
+      : area.focus
+        ? `${area.city}の相続税申告・税理士費用｜${area.focus}｜基本報酬99,000円〜（税込）相続専門の税理士法人 ${site.name}`
+        : `${area.city}の相続税申告・相続の相談｜税理士費用は基本報酬99,000円〜（税込）｜相続専門の税理士法人 ${site.name}`,
     description: area.description,
     ogDescription: area.description,
   }

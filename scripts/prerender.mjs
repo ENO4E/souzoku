@@ -111,7 +111,60 @@ for (const route of Object.keys(pages)) {
   written.push(`${articlesPage.path}（${articles.length}記事・${Math.round(html.length / 1024)}KB）`)
   sitemapEntries.push({ loc: articlesPage.path, changefreq: 'weekly', priority: '0.7', lastmod: articles[0]?.date })
 }
+// 記事の本文に出てくる市区町村名 → その市のページ（/area/<slug>/）へのリンク。市のページへ記事から内部リンクを通す（最大4件・多く出てくる順）
+// 「神戸市東灘区」のような区名は「東灘区」だけでも拾う（ほかの市に同名の区が無いときだけ。「北区」は大阪市・京都市・神戸市・堺市にあるので拾わない）
+const areaPages = Object.fromEntries(areaRegions.flatMap((r) => r.cities))
+const cityNames = Object.keys(areaPages)
+const shortNames = new Map()
+for (const c of cityNames) {
+  const m = c.match(/^(大阪市|京都市|神戸市|堺市)(.+区)$/)
+  if (!m) continue
+  const short = m[2]
+  const dup = cityNames.filter((x) => x.endsWith(short) && x !== short).length > 1
+  if (!dup) shortNames.set(short, c)
+}
+// 市のページ（content/areas）は記事より先に読み、「その市に関係するコラム」（md の columns）の逆引き（記事 → それを載せている市）も作る
+// 本文に市名が出てこない記事には、その記事を columns に載せている市のページを、市ごとの被リンク数が偏らないように（少ない市から）最大4件まで足す
+const areaFiles = loadAreas(resolve(root, 'content/areas'))
+const columnAreas = new Map() // 記事 slug → [{ city, path }]
+for (const a of areaFiles) for (const slug of a.columns) columnAreas.set(slug, [...(columnAreas.get(slug) || []), { city: a.city, path: a.path }])
+const inbound = new Map() // 市のページの path → 記事からのリンク数
+function areaLinksFor(text, slug) {
+  const links = areaLinksByText(text)
+  for (const l of links) inbound.set(l.path, (inbound.get(l.path) || 0) + 1)
+  if (links.length < 4 && columnAreas.has(slug)) {
+    const rest = columnAreas.get(slug).filter((c) => !links.some((l) => l.path === c.path))
+    rest.sort((p, q) => (inbound.get(p.path) || 0) - (inbound.get(q.path) || 0))
+    for (const c of rest.slice(0, 4 - links.length)) {
+      links.push(c)
+      inbound.set(c.path, (inbound.get(c.path) || 0) + 1)
+    }
+  }
+  return links
+}
+function areaLinksByText(text) {
+  // 事務所の所在地（大阪市北区・南森町）の表記は市名として数えない
+  const plain = text.replace(/<[^>]+>/g, '').replace(/大阪市北区(・南森町|東天満|・天満|の事務所)/g, '')
+  const counts = new Map()
+  for (const c of cityNames) {
+    const n = plain.split(c).length - 1
+    if (n > 0) counts.set(c, (counts.get(c) || 0) + n)
+  }
+  for (const [short, full] of shortNames) {
+    const n = plain.split(short).length - 1 - (plain.split(full).length - 1)
+    if (n > 0) counts.set(full, (counts.get(full) || 0) + n)
+  }
+  // 「大阪市」は区名が出ていれば区のページを優先（市全体のページは区が1つも無いときだけ）
+  const wards = [...counts.keys()].filter((c) => /^(大阪市|京都市|神戸市|堺市).+区$/.test(c))
+  for (const city of ['大阪市', '京都市', '神戸市', '堺市']) if (wards.some((w) => w.startsWith(city))) counts.delete(city)
+  return [...counts.entries()]
+    .sort((p, q) => q[1] - p[1] || cityNames.indexOf(p[0]) - cityNames.indexOf(q[0]))
+    .slice(0, 4)
+    .map(([city]) => ({ city, path: `/area/${areaPages[city]}/` }))
+}
+
 for (const a of articles) {
+  const areaLinks = areaLinksFor(a.html, a.slug)
   // 関連記事：同じタグを多く持つ順（同点なら新しい順）に4件
   const score = (x) => x.tags.filter((t) => a.tags.includes(t)).length
   const byTag = listMeta
@@ -123,11 +176,11 @@ for (const a of articles) {
   // 最新2件も足す（古い記事から新しい記事へリンクが通り、新着が早く巡回される）
   const newest = listMeta.filter((x) => x.slug !== a.slug && !byTag.includes(x)).slice(0, 2)
   const related = [...byTag, ...newest].map((x) => ({ slug: x.slug, path: x.path, title: x.title, date: x.date }))
-  const full = { article: a, related, latest }
+  const full = { article: a, related, areaLinks, latest }
   const html = render('article', full)
   // 本文 HTML はプリレンダリング済みなのでデータには入れない（クライアントは DOM から拾う）
   const { html: _omit, ...articleMeta } = a
-  writePage(a.path, 'article', html, headTags(articlePage(a), articleLd(a)), { article: articleMeta, related, latest })
+  writePage(a.path, 'article', html, headTags(articlePage(a), articleLd(a)), { article: articleMeta, related, areaLinks, latest })
   sitemapEntries.push({ loc: a.path, changefreq: 'monthly', priority: '0.6', lastmod: a.date })
 }
 
@@ -143,7 +196,6 @@ for (const a of articles) {
 // 市区町村ごとの相続税申告ページ（/area/<slug>/）と、以前のコラムの URL からの転送
 // 地域の並びは site.js の areaRegions。md（content/areas）と突き合わせ、片方にしかないものや市名・地域名のずれはエラーにする
 const LEGACY_AREA_ARTICLES = new Set(['amagasaki', 'ashiya', 'higashiosaka', 'hirakata', 'ibaraki', 'kadoma', 'kobe', 'minoh', 'moriguchi', 'neyagawa', 'nishinomiya', 'settsu', 'shijonawate', 'suita', 'takarazuka', 'takatsuki'])
-const areaFiles = loadAreas(resolve(root, 'content/areas'))
 const regions = areaRegions.map((r) => ({
   name: r.name,
   slug: r.slug,
