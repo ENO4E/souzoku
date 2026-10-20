@@ -2,11 +2,11 @@
 city: 四條畷市
 pref: 大阪府
 region: 北河内
-updated: 2026-10-16
+updated: 2026-10-20
 taxOffice: 門真税務署
 topic: 市街化調整区域の農地・山林と住宅地が混在する評価の注意点
 focus: 調整区域の農地・山林と住宅地
-description: 四條畷市は飯盛山麓の傾斜地、市街化調整区域の農地・山林と、JR学研都市線沿線の住宅地が混在し、土地ごとに評価方法が異なります。四條畷市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
+description: 四條畷市は飯盛山麓の傾斜地、市街化調整区域の農地・山林と、JR学研都市線沿線の住宅地が混在し、土地ごとに評価方法が異なります。四條畷市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, hyoka-shigaika-chosei-zasshuchi, hyoka-nochi-kubun-takuchi-hijun, hyoka-sanrin-genya-zasshuchi, fudosan-sanrin-genya-souzoku-todokede, nochi-nozei-yuyo]
 ---
 四條畷市は、JR学研都市線の忍ヶ丘駅・四条畷駅周辺の住宅地と、飯盛山の山麓に広がる傾斜地、清滝峠を越えた田原地区のニュータウンと農地・山林が同じ市内にある地域です。市域の多くが市街化調整区域で、一つの相続の中に宅地・農地・山林・雑種地が混ざることが珍しくありません。評価方法を取り違えると、税額や特例の判断を誤ります。

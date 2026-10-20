@@ -2,11 +2,11 @@
 city: 大阪市浪速区
 pref: 大阪府
 region: 大阪市
-updated: 2026-10-16
+updated: 2026-10-20
 taxOffice: 浪速税務署
 topic: なんば周辺の商業地・貸ビルと高層マンションの評価
 focus: なんばの貸ビルと高層マンション
-description: 浪速区はなんば周辺の商業地の貸ビル・店舗や、高層マンションの評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。大阪市浪速区の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
+description: 浪速区はなんば周辺の商業地の貸ビル・店舗や、高層マンションの評価が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。大阪市浪速区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, hyoka-kubun-shoyu-mansion-2024-keisan, fudosan-tower-mansion-hyouka-2024-kaisei, hyoka-itto-mansion-apart-kushitsu, hyoka-yosekiritsu-kotonaru-takuchi, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi]
 ---
 大阪市浪速区は、なんばパークスのある難波中、JR難波駅のある湊町、電気街として知られる日本橋、通天閣のある新世界まで、ミナミの南西側に広がる区です。商業ビルや店舗が建ち並ぶ一方、大国町・桜川・元町などでは高層マンションが増えました。地価の高い商業地では小さな土地でも評価額が大きくなりやすく、マンション1戸と預貯金だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超えることも珍しくありません。
