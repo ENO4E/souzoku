@@ -2,11 +2,11 @@
 city: 尼崎市
 pref: 兵庫県
 region: 阪神
-updated: 2026-10-16
+updated: 2026-10-20
 taxOffice: 尼崎税務署
 topic: 工場・貸家・借地が混在する市街地で評価を誤らないために
 focus: 工場・貸家・借地が混在する市街地
-description: 尼崎市は住宅と工場・倉庫が混在し、古い借地権や貸家、間口の狭い土地が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。尼崎市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
+description: 尼崎市は住宅と工場・倉庫が混在し、古い借地権や貸家、間口の狭い土地が多い地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。尼崎市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [hanshin-souzokuzei-zeirishi-yasui, hanshin-fudosan-souzoku-taisaku, tokurei-shokibo-tokutei-jigyoyo-yoken, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, tatemono-hyoka-kotei-shisan, hyoka-fuseikeichi-hosei-kagechi]
 ---
 尼崎市は阪神・JR・阪急の3路線が東西に走り、大阪市内へ通いやすい住宅地と、臨海部から内陸にかけての工場・倉庫が同じ市内に並ぶまちです。戸建てが密集する地区では一区画が小さくても地価は底堅く、自宅と預貯金だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超える相続は珍しくありません。さらに古い借地・貸家や事業用地が絡むと評価が複雑になります。

@@ -2,11 +2,11 @@
 city: 大阪市住之江区
 pref: 大阪府
 region: 大阪市
-updated: 2026-10-16
+updated: 2026-10-20
 taxOffice: 住吉税務署
 topic: 湾岸の工場・倉庫用地と住之江公園周辺の住宅地の評価
 focus: 湾岸の工場・倉庫用地と住宅地
-description: 住之江区は湾岸の工場・倉庫用地と住之江公園周辺の住宅地があり、事業用地の評価と特例の選択が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。大阪市住之江区の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
+description: 住之江区は湾岸の工場・倉庫用地と住之江公園周辺の住宅地があり、事業用地の評価と特例の選択が論点です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。大阪市住之江区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, chiseki-kibo-ookina-takuchi, tokurei-shokibo-tokutei-jigyoyo-yoken, tokurei-shokibo-fukusu-tochi-yuri-sentaku, hyoka-kubun-shoyu-mansion-2024-keisan, hyoka-shakuchiken-shurui-futsu-teiki]
 ---
 大阪市住之江区は、大阪メトロ四つ橋線の住之江公園駅・北加賀屋駅、南海本線の住ノ江駅の周辺に広がる住宅地と、南港（咲洲）や平林・柴谷などの湾岸部に並ぶ工場・倉庫・物流施設の用地とで、性格が大きく分かれる区です。南港にはニュートラム沿線のポートタウンなど大規模な集合住宅もあります。自宅だけを持つ家庭と、湾岸部に事業用の土地を持つ家庭とでは、相続税の論点がまったく違ってきます。

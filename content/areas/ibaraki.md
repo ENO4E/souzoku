@@ -2,11 +2,11 @@
 city: 茨木市
 pref: 大阪府
 region: 北摂
-updated: 2026-10-16
+updated: 2026-10-20
 taxOffice: 茨木税務署
 topic: 住宅地と農地が混在する地域の評価ポイントと手続き
 focus: 住宅地と農地が混在する土地の評価
-description: 茨木市はJR・阪急沿線の住宅地と北部の農地・山林が混在し、自宅だけで基礎控除を超える例も少なくありません。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。茨木市の相続税申告と相続の相談は相続専門の税理士法人へ。税理士費用は基本報酬99,000円（税込）からの最安水準、初回相談は無料です。
+description: 茨木市はJR・阪急沿線の住宅地と北部の農地・山林が混在し、自宅だけで基礎控除を超える例も少なくありません。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。茨木市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hokusetsu-fudosan-souzoku-taisaku, hyoka-nochi-kubun-takuchi-hijun, nochi-nozei-yuyo, fudosan-nouchi-souzoku-todokede-tenyou, fudosan-rosenka-hyoka, tokurei-shokibo-fukusu-hitsu-shido-mochibun]
 ---
 茨木市は、JR茨木駅・阪急茨木市駅周辺の住宅地と、北部の農地・山林・市街化調整区域が同じ市内にある地域です。駅周辺は路線価が高く、自宅の土地と預貯金だけで基礎控除（3,000万円＋600万円×法定相続人の数）を超えることがあります。一方、北部の農地や雑種地は宅地と評価方法が異なり、取り違えると税額が大きく変わります。

@@ -135,6 +135,7 @@ assets/
   - `feed.xml`：RSS 2.0（最新50記事）を `scripts/prerender.mjs` がビルドのたびに生成し、全ページの head に `rel="alternate"`、`robots.txt` に `Sitemap:` で載せる（新着の発見を早める。Search Console の「サイトマップ」にも登録する）。記事ページの「他の記事」はタグが近い4件＋最新2件（古い記事から新着へリンクを通して巡回を早める）
   - IndexNow：`.github/workflows/indexnow.yml` が main の `dist/` 変更時に、本番に実際に反映されたのを確かめてから（鍵ファイルと変わったページを5分ごとに確認・最大約5時間半。手動アップロードにも対応）変わったページを送る（`scripts/indexnow.mjs`）。送信の仕組みを変えたコミットでは全ページを送る。手動実行（mode=all）で全ページを送れる。Bing Webmaster Tools 登録済み
   - 「最安水準」は、運営者が他事務所の公表料金を調べた結果にもとづく表現（根拠の注記は `areaCommon.js` の `LOWEST_NOTE`）。根拠資料は運営者が保管する
+  - **description の決まり文句**（運営者の指定。検索結果の説明文に出す）：「業界最安クラスの料金で対応」「初回面談0円」「基本報酬99,000円（税込）」「書面添付制度で税務署に指摘されにくい相続税申告」。主要ページ（`seo.js`）、市区町村ページの description の定型部分、安い税理士記事の description、`areaLead` に入れている。「税務署に指摘されない」と断定せず「指摘されにくい（書面添付制度）」と書く（税理士会の広告規則）。「業界最安クラス」は「最安水準」と同じく `LOWEST_NOTE` の根拠注記の対象
 - **コラム（記事）**：`content/articles/<slug>.md` を置いて `npm run build` すると `/articles/` と `/articles/<slug>/` が生成される（`scripts/articles.mjs` が Markdown を HTML に変換、`src/views/ArticleViews.jsx` が表示）。
   - ファイル名（slug）は英小文字・数字・ハイフン。先頭に `title / description / date / tags` の見出し情報（`---` で囲む）を書く。`_` 始まりのファイルは無視（下書き用）
   - 記事ページは SPA の幕アニメーションを使わない通常のページ。構造化データ（BlogPosting・BreadcrumbList）と sitemap（lastmod＝date）は自動生成
