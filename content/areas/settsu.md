@@ -6,7 +6,7 @@ updated: 2026-10-20
 taxOffice: 吹田税務署
 topic: 工場・倉庫用地と貸宅地が多い地域の評価と特例
 focus: 工場・倉庫用地と貸宅地
-description: 摂津市は淀川と安威川に挟まれた平坦な市域に工場・倉庫と住宅地が混在し、貸宅地や貸家、事業用地の評価が相続税の鍵になります。摂津市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
+description: 摂津市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。摂津市は淀川と安威川に挟まれた平坦な市域に工場・倉庫と住宅地が混在し、貸宅地や貸家、事業用地の評価が相続税の鍵になります。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
 columns: [hokusetsu-souzokuzei-zeirishi-yasui, hokusetsu-fudosan-souzoku-taisaku, tokurei-shokibo-tokutei-jigyoyo-yoken, jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, hyoka-musho-henkan-todokede-soto-chidai, kashiya-tatetsuke-chi, tokurei-kojin-ban-jigyo-shokei-zeisei]
 ---
 摂津市は、淀川と安威川に挟まれた平坦な土地に、阪急京都線・JR・大阪モノレール沿線の住宅地と、鳥飼・千里丘周辺の工場・倉庫が混在する地域です。市域がコンパクトで農地が少ない一方、製造業や運送業の事業用地、土地を貸している貸宅地、アパートなどの貸家が相続財産になる例が目立ちます。こうした財産は自宅と評価の考え方が異なり、特例の使い方で税額が大きく変わります。
