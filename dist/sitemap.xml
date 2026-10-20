@@ -22,9 +22,27 @@
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/seido-shoyu-fudosan-kiroku-shomei-2026-2-souzoku/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/jiji-koseki-furigana-kisai-souzoku-tetsuzuki-2026/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/hanrei-saikosai-r1-8-9-saiten-souzoku-jukuryo-kikan/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/zoyo-nennai-ni-yaru-seizen-zoyo-checklist-2026/</loc>
