@@ -62,6 +62,15 @@ dev-claude → main にマージ（dist/ を含む）
 - 反映の確認：数分後に本番のページを開く（ブラウザのキャッシュに注意）。失敗したときは GitHub の Webhook の Recent Deliveries で応答を見る（仕組み・手順は TaxPlan-org/php の `docs/deploy.md`）
 - `dist/` を更新せずにマージしても Actions がビルドして反映されるが、PR では `npm run build` した `dist/` を含める（上の「プロジェクト構成」）
 
+## 社内ノウハウ（/knowhow/。社員専用）
+
+- 社員向けの育成ロードマップ・スキルマップなどを載せる、合言葉で開くページ。`public/knowhow/index.html`（ビルドで `dist/knowhow/index.html`）
+- **このリポジトリは公開なので、原稿（平文）と合言葉はコミットしない。** ページに入っているのは暗号文だけで、合言葉を入れるとブラウザの中で復号して表示する（PBKDF2-SHA256 60万回 → AES-256-GCM）。合言葉は運営者が管理している（作業のたびに運営者から受け取る。コードや PR・コミットメッセージに書かない）
+- 作り方・直し方は `scripts/knowhow.mjs`（`KNOWHOW_PASSWORD=... node scripts/knowhow.mjs decrypt 原稿.html` で今のページから原稿を取り出す → 直す → `encrypt 原稿.html` で作り直す → 取り出した原稿はリポジトリの外で消す）。合言葉を変えるときは旧合言葉で decrypt → 新合言葉で encrypt
+- 外枠（ログイン画面・スタイル）は `scripts/knowhow.mjs` の `shell()`。本文の中身はここに書かない（公開されるため）
+- 検索に出さない：`noindex`、sitemap・llms.txt・feed に載せない、IndexNow でも送らない（`scripts/indexnow.mjs` の `toUrl` で除外）。robots.txt には書かない（場所を知らせることになるため）
+- 「本文の表示は JS に依存させない」の決まりの例外（復号に JS が要るため）。お問い合わせ先のメールアドレス・tax-plan.net を載せない決まりはこのページにも適用する
+
 ## アクセス解析（beacon）
 
 - Google アナリティクス（`index.html` の gtag）に加え、自サイトの `/web/beacon/` へ閲覧・離脱・操作の記録を送る（受け口は TaxPlan-org/php。仕様は php リポジトリの `docs/beacon.md`。集計はイントラの `/api/beacon/stats/?host=k`）
