@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja" data-route="article">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) : Google アナリティクス 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PL4JW5HF28"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PL4JW5HF28');
+</script>
+<!-- JS が動く環境でだけ表示アニメーション用の初期状態にする（JS 無効時は常に表示）。
+     ローダーが外せなかった場合に備え、一定時間で強制的に解除する -->
+<script>var d=document.documentElement;d.classList.add('js');if(location.pathname==='/'||location.pathname==='/index.html'){d.classList.add('is-loading');setTimeout(function(){d.classList.remove('is-loading')},8000)}</script>
+<title>アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）｜相続税申告相談センター</title>
+<meta name="description" content="相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://kakuyasu-souzokuzei.com/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/">
+<link rel="alternate" type="application/rss+xml" title="相続税申告相談センター（タックス・プラン税理士法人 運営） コラム" href="https://kakuyasu-souzokuzei.com/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="相続税申告相談センター（タックス・プラン税理士法人 運営）">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://kakuyasu-souzokuzei.com/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/">
+<meta property="og:title" content="アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）｜相続税申告相談センター">
+<meta property="og:description" content="相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。">
+<meta property="og:image" content="https://kakuyasu-souzokuzei.com/assets/ogp-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）｜相続税申告相談センター">
+<meta name="twitter:description" content="相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。">
+<meta name="twitter:image" content="https://kakuyasu-souzokuzei.com/assets/ogp-image.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "AccountingService",
+ "@id": "https://kakuyasu-souzokuzei.com/#organization",
+ "name": "相続税申告相談センター",
+ "alternateName": "格安相続税申告（大阪・京都・兵庫）",
+ "url": "https://kakuyasu-souzokuzei.com",
+ "image": "https://kakuyasu-souzokuzei.com/assets/ogp-image.jpg",
+ "logo": "https://kakuyasu-souzokuzei.com/assets/apple-touch-icon.png",
+ "parentOrganization": {
+  "@type": "Organization",
+  "name": "タックス・プラン税理士法人"
+ },
+ "description": "大阪・京都・兵庫（京阪神）の相続税申告なら、基本報酬99,000円〜の最安水準。相続専門の税理士法人が初回無料相談から申告完了まで一気通貫で対応。累計200件超の実績、追加料金は事前説明の明朗会計です。",
+ "telephone": "+81-6-6354-8220",
+ "priceRange": "¥99,000〜",
+ "currenciesAccepted": "JPY",
+ "openingHoursSpecification": {
+  "@type": "OpeningHoursSpecification",
+  "dayOfWeek": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday"
+  ],
+  "opens": "09:00",
+  "closes": "18:00"
+ },
+ "address": {
+  "@type": "PostalAddress",
+  "postalCode": "530-0044",
+  "addressRegion": "大阪府",
+  "addressLocality": "大阪市北区",
+  "streetAddress": "東天満2丁目9番4号 5階",
+  "addressCountry": "JP"
+ },
+ "areaServed": [
+  {
+   "@type": "State",
+   "name": "大阪府"
+  },
+  {
+   "@type": "State",
+   "name": "兵庫県"
+  },
+  {
+   "@type": "State",
+   "name": "京都府"
+  },
+  {
+   "@type": "City",
+   "name": "大阪市"
+  },
+  {
+   "@type": "City",
+   "name": "吹田市"
+  },
+  {
+   "@type": "City",
+   "name": "茨木市"
+  },
+  {
+   "@type": "City",
+   "name": "高槻市"
+  },
+  {
+   "@type": "City",
+   "name": "箕面市"
+  },
+  {
+   "@type": "City",
+   "name": "摂津市"
+  },
+  {
+   "@type": "City",
+   "name": "守口市"
+  },
+  {
+   "@type": "City",
+   "name": "門真市"
+  },
+  {
+   "@type": "City",
+   "name": "四條畷市"
+  },
+  {
+   "@type": "City",
+   "name": "枚方市"
+  },
+  {
+   "@type": "City",
+   "name": "寝屋川市"
+  },
+  {
+   "@type": "City",
+   "name": "東大阪市"
+  },
+  {
+   "@type": "City",
+   "name": "松原市"
+  },
+  {
+   "@type": "City",
+   "name": "尼崎市"
+  },
+  {
+   "@type": "City",
+   "name": "西宮市"
+  },
+  {
+   "@type": "City",
+   "name": "宝塚市"
+  },
+  {
+   "@type": "City",
+   "name": "芦屋市"
+  },
+  {
+   "@type": "City",
+   "name": "神戸市"
+  },
+  {
+   "@type": "City",
+   "name": "京都市"
+  },
+  {
+   "@type": "City",
+   "name": "宇治市"
+  },
+  {
+   "@type": "City",
+   "name": "長岡京市"
+  },
+  {
+   "@type": "City",
+   "name": "京都市"
+  }
+ ],
+ "knowsAbout": [
+  "相続税申告",
+  "相続税の計算",
+  "土地の相続税評価（路線価）",
+  "非上場株式の評価",
+  "書面添付制度",
+  "配偶者の税額軽減"
+ ],
+ "hasOfferCatalog": {
+  "@type": "OfferCatalog",
+  "name": "相続税申告 基本報酬",
+  "itemListElement": [
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "相続税申告（遺産総額〜4,000万円）"
+    },
+    "price": "99000",
+    "priceCurrency": "JPY",
+    "description": "基本報酬（税込）。土地評価などの追加料金は別途"
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "相続税申告（遺産総額〜5,000万円）"
+    },
+    "price": "170500",
+    "priceCurrency": "JPY",
+    "description": "基本報酬（税込）。土地評価などの追加料金は別途"
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "相続税申告（遺産総額〜6,000万円）"
+    },
+    "price": "242000",
+    "priceCurrency": "JPY",
+    "description": "基本報酬（税込）。土地評価などの追加料金は別途"
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "相続税申告（遺産総額〜7,000万円）"
+    },
+    "price": "308000",
+    "priceCurrency": "JPY",
+    "description": "基本報酬（税込）。土地評価などの追加料金は別途"
+   }
+  ]
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "ホーム",
+   "item": "https://kakuyasu-souzokuzei.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "コラム",
+   "item": "https://kakuyasu-souzokuzei.com/articles/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）",
+   "item": "https://kakuyasu-souzokuzei.com/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "@id": "https://kakuyasu-souzokuzei.com/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/#article",
+ "mainEntityOfPage": "https://kakuyasu-souzokuzei.com/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/",
+ "headline": "アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）",
+ "description": "相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。",
+ "datePublished": "2026-10-22",
+ "dateModified": "2026-10-22",
+ "inLanguage": "ja",
+ "keywords": "不動産, 財産評価",
+ "image": "https://kakuyasu-souzokuzei.com/assets/ogp-image.jpg",
+ "author": {
+  "@type": "Organization",
+  "name": "タックス・プラン税理士法人"
+ },
+ "publisher": {
+  "@id": "https://kakuyasu-souzokuzei.com/#organization"
+ },
+ "isPartOf": {
+  "@id": "https://kakuyasu-souzokuzei.com/#website"
+ }
+}
+</script>
+<meta name="google-site-verification" content="Arx6A1FnaoUNbOGsduhGlLRaChiYIvFigz9rGEBf7hY" />
+    <meta name="application-name" content="相続税申告相談センター（タックス・プラン税理士法人 運営）">
+    <meta name="theme-color" content="#070a12">
+<meta name="geo.region" content="JP-27">
+<meta name="geo.placename" content="大阪市北区">
+<meta name="format-detection" content="telephone=no">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700;800&display=swap"></noscript>
+
+
+  <script>window.__PAGE_DATA__={"article":{"slug":"owner-chintai-wariai-kushitsu-ichiji-hyoka","path":"/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/","title":"アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）","description":"相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。","date":"2026-10-22","tags":["不動産","財産評価"],"readingMin":2,"headings":[{"id":"h-1","text":"賃貸割合の計算"},{"id":"h-2","text":"「一時的な空室」として賃貸中に含められる目安"},{"id":"h-3","text":"長期空室が多い物件で、相続前にできること"}]},"related":[{"slug":"owner-sublease-ikkatsu-kariage-hyoka-souzoku","path":"/articles/owner-sublease-ikkatsu-kariage-hyoka-souzoku/","title":"サブリース（一括借上げ）のアパートの相続｜評価は貸家になる？賃貸割合は100%？契約はどう引き継ぐか","date":"2026-10-22"},{"slug":"nochi-chosei-kuiki-jun-nochi-chukan-nochi-bairitsu-hyoka","path":"/articles/nochi-chosei-kuiki-jun-nochi-chukan-nochi-bairitsu-hyoka/","title":"市街化調整区域の農地の相続税評価｜純農地・中間農地の倍率方式の計算と、調整区域でも宅地並みになるケース","date":"2026-10-21"},{"slug":"mansion-wanroom-toshi-souzoku-zentai-hyoka-loan-baikyaku","path":"/articles/mansion-wanroom-toshi-souzoku-zentai-hyoka-loan-baikyaku/","title":"ワンルームマンション投資の相続の全体像｜1室ごとの評価、ローンと団信、サブリースの引継ぎ、持つか売るか、複数室の分け方","date":"2026-10-21"},{"slug":"mansion-tatekae-ketsugi-chu-rokyu-mansion-souzoku","path":"/articles/mansion-tatekae-ketsugi-chu-rokyu-mansion-souzoku/","title":"建替え決議や大規模修繕を控えた老朽マンションの相続｜評価は変わらない、決議への参加、仮住まい・権利変換中の相続税、売渡請求と譲渡所得","date":"2026-10-21"},{"slug":"owner-apart-loan-saimu-kojo-soneki-bunki","path":"/articles/owner-apart-loan-saimu-kojo-soneki-bunki/","title":"アパートローンは相続税から引ける？｜債務控除の仕組みと、借入で建てる相続対策の損益分岐（団信付きローンの落とし穴）","date":"2026-10-22"},{"slug":"seido-isan-bunkatsu-10nen-tokubetsu-jueki-kiyobun-2028-3","path":"/articles/seido-isan-bunkatsu-10nen-tokubetsu-jueki-kiyobun-2028-3/","title":"相続開始から10年で特別受益・寄与分が主張できなくなる｜2023年4月施行の期間制限と、古い相続は2028年3月31日が期限（民法904条の3）","date":"2026-10-21"}],"areaLinks":[],"latest":[{"title":"サブリース（一括借上げ）のアパートの相続｜評価は貸家になる？賃貸割合は100%？契約はどう引き継ぐか","path":"/articles/owner-sublease-ikkatsu-kariage-hyoka-souzoku/","date":"2026-10-22"},{"title":"アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）","path":"/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/","date":"2026-10-22"},{"title":"アパートローンは相続税から引ける？｜債務控除の仕組みと、借入で建てる相続対策の損益分岐（団信付きローンの落とし穴）","path":"/articles/owner-apart-loan-saimu-kojo-soneki-bunki/","date":"2026-10-22"},{"title":"相続開始から10年で特別受益・寄与分が主張できなくなる｜2023年4月施行の期間制限と、古い相続は2028年3月31日が期限（民法904条の3）","path":"/articles/seido-isan-bunkatsu-10nen-tokubetsu-jueki-kiyobun-2028-3/","date":"2026-10-21"}]}</script>
+<script type="module" crossorigin src="/assets/js/index.js?v=ddc58479"></script>
+  <link rel="stylesheet" crossorigin href="/assets/css/index.css?v=997bbdc7">
+</head>
+<body>
+<div id="root"><a href="#main" class="skip-link">本文へスキップ</a><div class="progress-bar" aria-hidden="true"></div><div class="scene" data-state="loading" aria-hidden="true"><canvas class="scene__canvas"></canvas><div class="scene__fallback"></div><div class="scene__vignette"></div></div><header class="header"><div class="header__inner"><a href="/" class="header__logo" aria-label="相続税申告相談センター トップへ"><span class="logo"><span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="14.5" fill="none" stroke="url(#logo-g)" stroke-width="1.2"></circle><path d="M9 21.5 16 9l7 12.5" fill="none" stroke="url(#logo-g)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.3 17.5h7.4" stroke="url(#logo-g)" stroke-width="1.4" stroke-linecap="round"></path><defs><linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6c47a"></stop><stop offset="1" stop-color="#8fb3ff"></stop></linearGradient></defs></svg></span><span class="logo__type"><span class="logo__company">運営：<!-- -->タックス・プラン税理士法人</span><b class="logo__service">相続税申告相談センター</b></span></span></a><nav class="header__nav" aria-label="メインメニュー"><ul><li><a href="/service/"><span class="header__nav-no">01</span>サービス・料金</a></li><li><a href="/simulation/"><span class="header__nav-no">02</span>相続税シミュレーション</a></li><li><a href="/contact/"><span class="header__nav-no">03</span>お問い合わせ</a></li></ul></nav><a href="tel:0663548220" class="header__tel"><span class="header__tel-label">受付（<!-- -->平日9:00〜18:00<!-- -->）</span><b>06-6354-8220</b></a><a href="/contact/" class="btn btn--primary btn--sm header__cta" data-beacon="cta_click" data-beacon-label="ヘッダー">無料相談</a><button type="button" class="header__toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く"><span></span><span></span></button></div><div id="mobile-menu" class="mobile-menu" hidden=""><div><ul><li style="--i:0"><a href="/service/"><span class="mobile-menu__no">01</span>サービス・料金</a></li><li style="--i:1"><a href="/simulation/"><span class="mobile-menu__no">02</span>相続税シミュレーション</a></li><li style="--i:2"><a href="/contact/"><span class="mobile-menu__no">03</span>お問い合わせ</a></li></ul><ul class="mobile-menu__sub"><li style="--i:3"><a href="/service/#pain">お悩み</a></li><li style="--i:4"><a href="/service/#reasons">選ばれる理由</a></li><li style="--i:5"><a href="/service/#fee">料金</a></li><li style="--i:6"><a href="/service/#flow">ご相談の流れ</a></li><li style="--i:7"><a href="/service/#greeting">代表挨拶</a></li><li style="--i:8"><a href="/service/#voice">お客様の声</a></li><li style="--i:9"><a href="/service/#area">対応エリア</a></li><li style="--i:10"><a href="/service/#faq">よくある質問</a></li></ul></div><div class="mobile-menu__actions"><a href="tel:0663548220" class="btn btn--ghost btn--lg">電話で相談する　<!-- -->06-6354-8220</a><a href="/contact/" class="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="メニュー">無料相談を予約する</a></div></div></header><div class="wipe" aria-hidden="true"><div class="wipe__a"></div><div class="wipe__b"></div></div><main id="main" data-route="article"><div class="view view--article"><section class="page-head page-head--article" data-scene="2"><div class="container container--narrow"><nav class="breadcrumb" aria-label="パンくず"><ol><li><a href="/">Home</a></li><li><a href="/articles/">Articles</a></li><li aria-current="page">アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）</li></ol></nav><div class="article-meta" data-reveal="true"><time dateTime="2026-10-22">2026.10.22</time><span>読了目安 約<!-- -->2<!-- -->分</span><span class="article-meta__tag">不動産</span><span class="article-meta__tag">財産評価</span></div><h1 class="page-head__title page-head__title--article" data-reveal="true" style="--d:90ms">アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）</h1><p class="page-head__lead" data-reveal="true" style="--d:180ms">相続時に空室があるアパートは、賃貸割合（賃貸中の床面積÷全体の床面積）の分だけ貸家・貸家建付地の減額が小さくなります。退去直後で募集中など一時的な空室は賃貸中として扱える場合がありますが、条件は厳格です。計算例、一時的空室と認められる目安、長期空室が多い物件で相続前にできることをまとめます。</p></div></section><section class="section article" data-scene="2"><div class="container container--narrow"><nav class="article-toc glass" aria-label="目次" data-reveal="true"><p class="article-toc__label">目次</p><ol><li><a href="#h-1">賃貸割合の計算</a></li><li><a href="#h-2">「一時的な空室」として賃貸中に含められる目安</a></li><li><a href="#h-3">長期空室が多い物件で、相続前にできること</a></li></ol></nav><article class="prose"><p>アパートの相続税評価は「貸している」ことを前提に減額されます。では、相続のときに空室があったらどうなるか。結論から書くと、<strong>空室の分は減額されません</strong>。減額の割合は「賃貸割合」で決まり、空室が多いほど評価は自用地・自用家屋に近づきます。ただし、<strong>退去直後で募集中のような一時的な空室は、賃貸中として扱える場合があります</strong>。</p>
+<h2 id="h-1">賃貸割合の計算</h2>
+<ul>
+<li>建物（貸家）：固定資産税評価額 × （1 − 借家権割合30% × 賃貸割合）</li>
+<li>敷地（<a href="/articles/kashiya-tatetsuke-chi/">貸家建付地</a>）：自用地評価額 × （1 − 借地権割合 × 30% × 賃貸割合）</li>
+<li>賃貸割合 ＝ 相続開始時に賃貸している各室の床面積の合計 ÷ 建物全体の各室の床面積の合計</li>
+</ul>
+<p>例：10室（各30㎡）のアパートで2室が空室なら、賃貸割合は80%。建物の固定資産税評価額が4,000万円なら、4,000万円×（1−0.3×0.8）＝3,040万円。満室なら2,800万円なので、空室2室で240万円評価が上がります。敷地も同様に、借地権割合60%の地域なら減額が18%から14.4%に縮みます。</p>
+<h2 id="h-2">「一時的な空室」として賃貸中に含められる目安</h2>
+<p>国税庁の取扱いでは、次のような事情がそろう空室は、賃貸中として賃貸割合に含めてよいとされています。</p>
+<ol>
+<li>その部屋が相続開始前に継続して賃貸されてきた</li>
+<li>退去後、速やかに新しい入居者の募集を始めている</li>
+<li>空室の間、他の用途（物置など）に使っていない</li>
+<li>相続開始後、速やかに新しい賃借人が入居するなど、空室の期間が課税時期の前後1か月程度である</li>
+</ol>
+<p>ポイントは「募集していれば何か月でもよい」わけではないことです。裁決・判決では、募集中でも空室が1年前後に及ぶ部屋は賃貸中と認められない例が多く、1か月程度という目安は厳格に見られます。募集の記録（管理会社の募集開始日・広告・内見の記録）を残しておくことが、申告での説明に直結します。</p>
+<h2 id="h-3">長期空室が多い物件で、相続前にできること</h2>
+<ul>
+<li>賃料を下げてでも埋める：賃貸割合が上がれば評価は下がる。家賃収入も入る</li>
+<li>用途を変える：空室の多い老朽物件を建て替える・取り壊す、あるいは売却して納税資金に充てる</li>
+<li>小規模宅地等の特例の確認：<a href="/articles/kashitsuke-jigyo-takuchi-3nen/">貸付事業用宅地</a>の50%減額は、相続開始直前に貸付事業の用に供されていた部分が対象。空室部分の敷地は対象外になり得ます</li>
+</ul>
+<p>空室の扱いは、申告での評価額に直接響くうえ、税務調査でも確認されやすい項目です。当センターでは、相続開始時点の入居状況（賃貸借契約書・入金記録・募集記録）を整理したうえで、各室の扱いを決めて評価します。</p>
+<p class="prose__note">※この記事は一般的な情報提供を目的としたもので、個別の事案に対する税務判断ではありません。実際の取り扱いは財産の内容や分割の仕方によって変わります。</p>
+</article><div class="article-cta"><p class="article-cta__title">ご自身のケースではどうなるか、無料相談で確認できます。</p><p class="article-cta__text">初回相談は無料。ご契約まで費用はかかりません。相続税額の目安はシミュレーションでもその場で確認できます。</p><div class="article-cta__actions"><a href="/contact/" class="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="コラム">無料相談を予約する<svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/simulation/" class="btn btn--ghost btn--lg">相続税シミュレーション</a></div><p class="article-cta__links"><a href="/service/#fee">料金表（基本報酬99,000円〜）</a><a href="/area/">お住まいの市区町村のページ</a><a href="/articles/zeirishi-hiyo-souzokuzei-sogaku-rei/">税理士費用の総額例</a></p></div><div class="article-related"><p class="article-related__label">他の記事</p><ul><li><a href="/articles/owner-sublease-ikkatsu-kariage-hyoka-souzoku/"><time dateTime="2026-10-22">2026.10.22</time><span>サブリース（一括借上げ）のアパートの相続｜評価は貸家になる？賃貸割合は100%？契約はどう引き継ぐか</span></a></li><li><a href="/articles/nochi-chosei-kuiki-jun-nochi-chukan-nochi-bairitsu-hyoka/"><time dateTime="2026-10-21">2026.10.21</time><span>市街化調整区域の農地の相続税評価｜純農地・中間農地の倍率方式の計算と、調整区域でも宅地並みになるケース</span></a></li><li><a href="/articles/mansion-wanroom-toshi-souzoku-zentai-hyoka-loan-baikyaku/"><time dateTime="2026-10-21">2026.10.21</time><span>ワンルームマンション投資の相続の全体像｜1室ごとの評価、ローンと団信、サブリースの引継ぎ、持つか売るか、複数室の分け方</span></a></li><li><a href="/articles/mansion-tatekae-ketsugi-chu-rokyu-mansion-souzoku/"><time dateTime="2026-10-21">2026.10.21</time><span>建替え決議や大規模修繕を控えた老朽マンションの相続｜評価は変わらない、決議への参加、仮住まい・権利変換中の相続税、売渡請求と譲渡所得</span></a></li><li><a href="/articles/owner-apart-loan-saimu-kojo-soneki-bunki/"><time dateTime="2026-10-22">2026.10.22</time><span>アパートローンは相続税から引ける？｜債務控除の仕組みと、借入で建てる相続対策の損益分岐（団信付きローンの落とし穴）</span></a></li><li><a href="/articles/seido-isan-bunkatsu-10nen-tokubetsu-jueki-kiyobun-2028-3/"><time dateTime="2026-10-21">2026.10.21</time><span>相続開始から10年で特別受益・寄与分が主張できなくなる｜2023年4月施行の期間制限と、古い相続は2028年3月31日が期限（民法904条の3）</span></a></li></ul></div><p class="article-back"><a href="/articles/">← 記事一覧へ</a></p></div></section></div></main><footer class="footer"><div class="container footer__inner"><div class="footer__brand"><p class="footer__name">相続税申告相談センター</p><p class="footer__operator">運営：<!-- -->タックス・プラン税理士法人</p><p>相続のご不安に、専門家として誠実に向き合います。</p><dl class="footer__org"><div><dt>所在地</dt><dd>〒530-0044　大阪府大阪市北区東天満2丁目9番4号 5階</dd></div><div><dt>電話</dt><dd><a href="tel:0663548220">06-6354-8220</a>（受付：<!-- -->平日9:00〜18:00<!-- -->）</dd></div><div><dt>登録</dt><dd>税理士登録番号：5469</dd></div></dl><a href="/contact/" class="footer__cta" data-beacon="cta_click" data-beacon-label="フッター">無料相談を予約する<svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><nav class="footer__nav" aria-label="フッターメニュー"><ul class="footer__nav-main"><li><a href="/service/"><span>01</span>サービス・料金</a></li><li><a href="/simulation/"><span>02</span>相続税シミュレーション</a></li><li><a href="/contact/"><span>03</span>お問い合わせ</a></li></ul><ul><li><a href="/service/#pain">お悩み</a></li><li><a href="/service/#reasons">選ばれる理由</a></li><li><a href="/service/#fee">料金</a></li><li><a href="/service/#flow">ご相談の流れ</a></li><li><a href="/service/#greeting">代表挨拶</a></li><li><a href="/service/#voice">お客様の声</a></li><li><a href="/service/#area">対応エリア</a></li><li><a href="/service/#faq">よくある質問</a></li><li><a href="/simulation/#report">詳細シミュレーション報告書</a></li><li><a href="/contact/#office">事務所概要</a></li><li><a href="https://www.nta.go.jp/" target="_blank" rel="noopener noreferrer">国税庁 ↗</a></li><li><a href="https://www.kinzei.or.jp/" target="_blank" rel="noopener noreferrer">近畿税理士会 ↗</a></li><li><a href="/privacy/">プライバシーポリシー</a></li></ul></nav><div class="footer__articles"><p class="footer__articles-label"><a href="/articles/">相続税の基礎知識コラム</a></p><ul><li><a href="/articles/owner-sublease-ikkatsu-kariage-hyoka-souzoku/"><time dateTime="2026-10-22">2026.10.22</time><span>サブリース（一括借上げ）のアパートの相続｜評価は貸家になる？賃貸割合は100%？契約はどう引き継ぐか</span></a></li><li><a href="/articles/owner-chintai-wariai-kushitsu-ichiji-hyoka/"><time dateTime="2026-10-22">2026.10.22</time><span>アパートの空室は相続税評価にどう響く？｜賃貸割合の計算と「一時的な空室」として扱える条件（貸家建付地・貸家の評価）</span></a></li><li><a href="/articles/owner-apart-loan-saimu-kojo-soneki-bunki/"><time dateTime="2026-10-22">2026.10.22</time><span>アパートローンは相続税から引ける？｜債務控除の仕組みと、借入で建てる相続対策の損益分岐（団信付きローンの落とし穴）</span></a></li><li><a href="/articles/seido-isan-bunkatsu-10nen-tokubetsu-jueki-kiyobun-2028-3/"><time dateTime="2026-10-21">2026.10.21</time><span>相続開始から10年で特別受益・寄与分が主張できなくなる｜2023年4月施行の期間制限と、古い相続は2028年3月31日が期限（民法904条の3）</span></a></li></ul><a href="/articles/" class="footer__articles-more">コラム一覧へ <svg class="btn__arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div></div><nav class="container footer__areas" aria-label="地域から探す"><p class="footer__areas-label"><a href="/area/">地域から探す（市区町村ごとの相続税申告）</a>　<a href="/zeimusho/">税務署から探す</a></p><ul><li><a href="/area/osaka-city/">大阪市<small>25</small></a></li><li><a href="/area/#hokusetsu">北摂<small>8</small></a></li><li><a href="/area/#toyono">豊能<small>2</small></a></li><li><a href="/area/#kitakawachi">北河内<small>7</small></a></li><li><a href="/area/#nakakawachi">中河内<small>3</small></a></li><li><a href="/area/#minamikawachi">南河内<small>6</small></a></li><li><a href="/area/#sakai">堺<small>8</small></a></li><li><a href="/area/#senshu">泉州<small>6</small></a></li><li><a href="/area/#hanshin">阪神<small>7</small></a></li><li><a href="/area/#kobe">神戸<small>10</small></a></li><li><a href="/area/#kyoto-city">京都市<small>12</small></a></li><li><a href="/area/#kyoto-south">京都南部<small>8</small></a></li></ul></nav><p class="footer__mark" aria-hidden="true">Inheritance Tax</p><div class="container footer__analytics"><p><b>アクセス解析について</b>当サイトでは、利用状況を把握してサイトを改善するために、Google アナリティクス（Google LLC）と当法人独自の計測を利用しています。独自の計測は外部に送信せず、入力内容は記録しません。お問い合わせいただいた場合は、どのページを経てお問い合わせいただいたかを把握するために、閲覧の記録をお問い合わせと結び付けることがあります。ブラウザの「トラッキング拒否（Do Not Track）」または「グローバル・プライバシー・コントロール（GPC）」を有効にすると、独自の計測は行われません。詳しくは<a href="/privacy/#analytics">プライバシーポリシー</a>をご覧ください。</p></div><div class="container footer__bottom"><p>© 2026 <!-- -->相続税申告相談センター<!-- -->　All Rights Reserved.</p><a href="/" class="footer__top">Home ↑</a></div></footer><div class="cta-bottom" aria-label="お問い合わせ"><a href="tel:0663548220" class="cta-bottom__call"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>電話で相談</a><a href="/contact/" class="cta-bottom__form" data-beacon="cta_click" data-beacon-label="画面下部"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>無料相談を予約</a></div></div>
+</body>
+</html>
