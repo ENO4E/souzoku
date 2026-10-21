@@ -64,10 +64,11 @@ dev-claude → main にマージ（dist/ を含む）
 
 ## 社内ノウハウ（/knowhow/。社員専用）
 
-- 社員向けの育成ロードマップ・スキルマップなどを載せる、合言葉で開くページ。`public/knowhow/index.html`（ビルドで `dist/knowhow/index.html`）
-- **このリポジトリは公開なので、原稿（平文）と合言葉はコミットしない。** ページに入っているのは暗号文だけで、合言葉を入れるとブラウザの中で復号して表示する（PBKDF2-SHA256 60万回 → AES-256-GCM）。合言葉は運営者が管理している（作業のたびに運営者から受け取る。コードや PR・コミットメッセージに書かない）
-- 作り方・直し方は `scripts/knowhow.mjs`（`KNOWHOW_PASSWORD=... node scripts/knowhow.mjs decrypt 原稿.html` で今のページから原稿を取り出す → 直す → `encrypt 原稿.html` で作り直す → 取り出した原稿はリポジトリの外で消す）。合言葉を変えるときは旧合言葉で decrypt → 新合言葉で encrypt
-- 外枠（ログイン画面・スタイル）は `scripts/knowhow.mjs` の `shell()`。本文の中身はここに書かない（公開されるため）
+- 社員向けの教材（共通基礎・法人・個人事業・資産系の各スキルの解説。図解・Q&A・確認問題つき）と育成ロードマップ・スキルマップを載せる、合言葉で開くページ。画面はトップ（教材一覧・絞り込み・検索）／スキルマップ（スキルごとの教材）／ロードマップ／教材ページ（`#/l/<ID>`）
+- **このリポジトリは公開なので、原稿（平文）と合言葉はコミットしない。** コミットするのは暗号文だけ：`public/knowhow/index.html`（外枠＋一覧などの暗号文）・`public/knowhow/l/<ID>.json`（教材1本ずつの暗号文。開いたときに読む）・`content/knowhow.enc`（原稿一式の暗号文。編集用で公開しない）。合言葉を入れるとブラウザの中で復号する（PBKDF2-SHA256 60万回 → AES-256-GCM）。合言葉は運営者が管理している（作業のたびに運営者から受け取る。コードや PR・コミットメッセージに書かない）
+- 作り方・直し方は `scripts/knowhow.mjs`（使い方は先頭のコメント）：`extract` で原稿をリポジトリの外に取り出す → 直す → `check`（書式の確認）→ `preview`（暗号化しない確認用ページをリポジトリの外に作る）→ `build` → 取り出した原稿は消す。IV は原稿から決まるので、変えていない教材の暗号文は変わらない（差分が出ない）。合言葉を変えるときは旧合言葉で extract → `KNOWHOW_NEW=1` を付けて新合言葉で build
+- 原稿は `lessons/<スキルID>-<連番>.md`（例 `C-05-01.md`）。先頭に `id / skill / title / level / minutes / summary / tags / updated / sources`。図解などのブロックは ```` ```point ```` `warn` `note` `flow` `decision` `timeline` `cards` `formula` `qa` `check`（書き方は `knowhow.mjs` の `BLOCKS`）。税制の数字・期限・改正は一次情報（国税庁など）を開いて確かめ、`sources` に載せる
+- 外枠（ログイン画面・画面の切り替え・スタイル）は `scripts/knowhow-shell.mjs`。教材の文言はここに書かない（公開されるため）
 - 検索に出さない：`noindex`、sitemap・llms.txt・feed に載せない、IndexNow でも送らない（`scripts/indexnow.mjs` の `toUrl` で除外）。robots.txt には書かない（場所を知らせることになるため）
 - 「本文の表示は JS に依存させない」の決まりの例外（復号に JS が要るため）。お問い合わせ先のメールアドレス・tax-plan.net を載せない決まりはこのページにも適用する
 
