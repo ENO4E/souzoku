@@ -99,5 +99,19 @@ export function loadArticles(dir) {
       html,
     }
   })
+  // 記事内のリンク先の確認：存在しない記事へのリンクはビルドエラー。予約公開でまだ出ていない記事へのリンクは、
+  // 公開日まで 404 にならないよう文字だけにする（日付が来て再ビルドされれば自動でリンクに戻る）
+  const published = new Set(articles.map((a) => a.slug))
+  const existing = new Set(allFiles.map((f) => basename(f, '.md')))
+  let unlinked = 0
+  for (const a of articles) {
+    a.html = a.html.replace(/<a href="\/articles\/([a-z0-9-]+)\/"[^>]*>([\s\S]*?)<\/a>/g, (m, slug, text) => {
+      if (published.has(slug)) return m
+      if (!existing.has(slug)) throw new Error(`記事 ${a.slug} が存在しない記事 ${slug} にリンクしています`)
+      unlinked += 1
+      return text
+    })
+  }
+  if (unlinked) console.log(`記事内のリンク：予約公開でまだ出ていない記事へのリンク ${unlinked} 件を公開日まで文字だけにしました`)
   return articles.sort((a, b) => (a.date < b.date ? 1 : -1))
 }
