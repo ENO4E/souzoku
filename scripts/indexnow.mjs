@@ -31,6 +31,7 @@ const key = readFileSync(resolve(root, 'public', keyFile), 'utf-8').trim()
 function toUrl(file) {
   const m = file.match(/^dist\/(.*?)(?:index\.html)$/)
   if (!m) return null
+  if (m[1].startsWith('knowhow/')) return null // 社内ノウハウ（社員専用・noindex）は検索エンジンに知らせない
   return `${ORIGIN}/${m[1]}`
 }
 
