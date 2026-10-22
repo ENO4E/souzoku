@@ -158,7 +158,7 @@ const BLOCKS = {
   // 手順の流れ：```flow  各行「見出し | 説明」
   flow: (t) => {
     const items = lines(t).map(cells)
-    return `<ol class="kb-flow">${items
+    return `<ol class="kb-flow${items.length > 4 ? ' is-long' : ''}">${items
       .map(([h, d], i) => `<li><span class="kb-flow-n">${i + 1}</span><strong>${inline(h)}</strong>${d ? `<span>${inline(d)}</span>` : ''}</li>`)
       .join('')}</ol>`
   },
