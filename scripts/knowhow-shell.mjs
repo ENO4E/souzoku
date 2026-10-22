@@ -126,6 +126,7 @@ main.k-wrap{padding-bottom:48px;outline:none;min-height:60vh}
 .k-tbl tr.is-adv td{color:var(--mute)}
 .k-tbl tbody tr:hover td{background:rgba(255,255,255,.02)}
 .k-skilltbl td{vertical-align:middle}
+.k-skilltbl{min-width:760px}
 .k-lessons a{display:block;font-size:13px;line-height:1.5;padding:2px 0}
 .k-domainblock{scroll-margin-top:130px}
 

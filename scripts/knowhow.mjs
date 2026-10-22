@@ -358,7 +358,7 @@ const domainCards = `<div class="k-domains">${domains
 const homeHtml = pages.home.replace('</section>', `${domainCards}</section>`) + catalog
 
 const skillsHtml = `<section class="k-hero k-hero-sm"><p class="k-eyebrow">SKILL MAP</p><h1>スキルマップと教材</h1><p class="k-lead">一人前の条件は、各領域の「必須」項目が一人前目標に届いていること。「発展」は一人前以降に伸ばす項目です。各項目の教材から学べます。</p></section>
-<nav class="k-seg k-seg-sticky">${domains.map((d) => `<a href="#/skills/${d.id}" data-jump="d-${d.id}">${esc(d.name)}<span>${master.skills.filter((s) => s.domain === d.id).length}</span></a>`).join('')}</nav>
+<nav class="k-seg k-seg-sticky">${domains.map((d) => `<a href="#/skills/${d.id}" data-jump="d-${d.id}">${esc(d.short)}<span>${master.skills.filter((s) => s.domain === d.id).length}</span></a>`).join('')}</nav>
 ${domains
   .map(
     (d) => `<section class="k-sec k-domainblock" id="d-${d.id}"><h2 class="k-h2"><span class="k-code">${d.id}</span>${esc(d.name)}<span class="k-sub">一人前時の領域目標 ${lv(
