@@ -22,9 +22,27 @@
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/owner-kashiya-kodate-tachinoki-hyoka/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/owner-chintai-heiyo-jutaku-hyoka-shokibo/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/owner-apart-kenchiku-souzokuzei-koka-simulation/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/toyono-souzoku-muryo-soudan-madoguchi/</loc>
