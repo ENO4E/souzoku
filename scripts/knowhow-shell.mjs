@@ -195,7 +195,7 @@ main.k-wrap{padding-bottom:48px;outline:none;min-height:60vh}
 .kb-dz-outs{display:flex;flex-direction:column;gap:6px}
 .kb-dz-out{position:relative;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(var(--blue-rgb),.08);border:1px dashed rgba(var(--blue-rgb),.45);font-size:13.5px}
 .kb-dz-out::before{content:"";position:absolute;left:-14px;top:50%;width:14px;border-top:1px dashed rgba(var(--blue-rgb),.55)}
-.kb-dz-cond{flex:none;font-size:11.5px;font-weight:700;color:var(--accent-2);border:1px solid rgba(var(--blue-rgb),.5);border-radius:999px;padding:0 8px}
+.kb-dz-cond{flex:none;max-width:48%;font-size:11.5px;font-weight:700;color:var(--accent-2);border:1px solid rgba(var(--blue-rgb),.5);border-radius:999px;padding:0 8px}
 .kb-dz-res{font-weight:700}
 .kb-dz-next{position:relative;height:40px;margin-left:36px;border-left:2px solid var(--accent)}
 .kb-dz-next::after{content:"";position:absolute;left:-7px;bottom:0;border:6px solid transparent;border-top:8px solid var(--accent);border-bottom:0}
