@@ -292,7 +292,7 @@ const lessons = readdirSync(lessonDir)
     for (const k of ['title', 'summary', 'level', 'minutes']) if (!meta[k]) errors.push(`${f}: ${k} がありません`)
     if (meta.level && !/^L[0-4]$/.test(meta.level)) errors.push(`${f}: level は L1〜L4 で書きます`)
     const { html, toc } = renderBody(body, f)
-    if (!/class="kb-(flow|decision|timeline|cards|formula)"|<svg/.test(html)) warn.push(`${f}: 図解（flow・decision・timeline・cards・formula・svg）がありません`)
+    if (!/class="kb-(flow|decision|timeline|cards|formula)[ "]|<svg/.test(html)) warn.push(`${f}: 図解（flow・decision・timeline・cards・formula・svg）がありません`)
     if (!html.includes('class="kb-qa"')) warn.push(`${f}: Q&A がありません`)
     if (/tax-plan\.net|info@/i.test(text)) errors.push(`${f}: tax-plan.net・メールアドレスは載せません（コンテンツ方針）`)
     return {
