@@ -35,6 +35,6 @@ tags: [不動産, 特例・控除]
 1. 高齢のオーナーの建て替えは、工事期間（立退き〜完成〜満室）が2〜3年に及ぶことを前提に、その間に相続が起きた場合の相続税も試算しておく
 2. 取り壊しから着工までの期間を空けない。請負契約を先に結ぶ
 3. 建て替えではなく[売却](/articles/souzoku-fudosan-baikyaku-zei/)や[借家人付きでの売却](/articles/owner-kashiya-kodate-tachinoki-hyoka/)も並べて比べる
-4. 令和8年度改正で、2027年以後に取得した貸付用建物は[5年以内の相続で時価の8割](/articles/jiji-r8-kaisei-kashitsuke-fudosan-5nen-jika-8wari/)。建て替え後の建物も対象になります
+4. 令和8年度改正で、2027年以後の相続では[取得から5年以内の貸付用建物は時価の8割](/articles/jiji-r8-kaisei-kashitsuke-fudosan-5nen-jika-8wari/)。建て替え後の建物も対象になります
 
 当センターでは、建て替え計画の各段階で相続が起きた場合の相続税を一覧にした試算を、建設会社やオーナーの方からの依頼でお作りしています。
