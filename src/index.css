@@ -1352,3 +1352,40 @@ html { color-scheme: dark; }
   .sim-guide__h2 { margin-top: 56px; }
   .sim-steps li, .sim-tips li { padding: 16px 18px; }
 }
+
+/* 記事に埋め込む計算ツール（src/tools/。main.jsx が .prose [data-tool] に描画する） */
+.prose .tool { margin: 1.6em 0; padding: clamp(16px, 2.4vw, 26px); border: 1px solid var(--line); border-radius: var(--radius); background: rgba(3, 5, 10, 0.45); font-size: 14px; line-height: 1.7; }
+.prose .tool-fallback { margin: 1.6em 0; padding: 16px 20px; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); font-size: 14px; color: var(--text-sub); }
+.tool__block + .tool__block { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.tool__head { margin: 0 0 12px; font-family: var(--font-jp); font-size: 14px; font-weight: 700; color: var(--accent); }
+.tool__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+.tool__field { display: grid; gap: 6px; min-width: 0; }
+.tool__field > span { font-size: 12.5px; color: var(--text-sub); }
+.tool .calc__select { padding: 9px 12px; font-size: 14px; }
+.tool .calc__amount input { width: 100%; max-width: 180px; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: rgba(3, 5, 10, 0.55); font-family: var(--font-en), var(--font-jp); font-size: 15px; color: var(--text); }
+.tool__list { margin-top: 14px; }
+.tool__list-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12.5px; color: var(--text-sub); }
+.tool__add, .tool__remove { padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(var(--accent-rgb), 0.6); background: transparent; font-family: var(--font-jp); font-size: 12px; color: var(--accent); cursor: pointer; }
+.tool__remove { padding: 4px 9px; border-color: var(--line-strong); color: var(--text-mute); }
+.tool__row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px 12px; align-items: center; margin-top: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 13px; }
+.tool__row > span small { display: block; font-size: 11px; color: var(--text-mute); }
+.tool__row .calc__select { width: auto; min-width: 120px; }
+.tool__warn { font-size: 11.5px; color: #e8b86a; }
+.tool__base { margin: 0 0 10px; font-size: 13.5px; color: var(--text-sub); }
+.tool__base b { font-family: var(--font-en), var(--font-jp); font-size: 20px; font-weight: 500; color: var(--text); }
+.tool__base small { display: block; margin-top: 2px; font-size: 11.5px; color: var(--text-mute); }
+.tool__table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.prose .tool__table { margin: 0; min-width: 640px; font-size: 13px; }
+.prose .tool__table th, .prose .tool__table td { padding: 9px 10px; white-space: nowrap; }
+.prose .tool__table td small { display: block; font-size: 10.5px; color: #e8b86a; white-space: nowrap; }
+.prose .tool__table td b { font-family: var(--font-en), var(--font-jp); font-size: 15px; font-weight: 500; color: var(--text); }
+.prose .tool__table td b.is-short { color: #ffd77a; }
+.prose .tool__table input { width: 96px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line-strong); background: rgba(3, 5, 10, 0.55); font-family: var(--font-en), var(--font-jp); font-size: 13px; color: var(--text); }
+.prose .tool__notes { margin: 12px 0 0; padding-left: 1.2em; font-size: 12px; line-height: 1.8; color: var(--text-mute); }
+.prose .tool__notes li { margin-top: 4px; }
+.tool__empty { margin: 0; font-size: 13px; color: var(--text-mute); }
+@media (max-width: 640px) {
+  .tool__grid { grid-template-columns: minmax(0, 1fr); }
+  .tool__row { grid-template-columns: minmax(0, 1fr) auto; }
+  .tool__row .calc__select { grid-column: 1 / -1; width: 100%; }
+}

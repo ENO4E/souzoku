@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { parsePath } from './router.js'
 import { leave, pageview, start } from './beacon.js'
+import IryubunTool from './tools/IryubunTool.jsx'
 import './index.css'
 
 // アクセス解析（src/beacon.js）。最初の表示と、SPA の切り替え（App.jsx の route:change）のたびに送る
@@ -46,4 +47,23 @@ if (container.hasChildNodes()) {
       <App initialRoute={initialRoute} pageData={pageData} />
     </React.StrictMode>,
   )
+}
+
+// 記事に埋め込む計算ツール：本文（Markdown の生 HTML）の <div data-tool="〜"> に部品を描画する。
+// 本文は JS なしでも読めるようにしてあり、ツールだけ JS が動いたときに置き換わる。
+// 遅延読み込み（import()）にはしない：チャンクが index.js を "./index.js" として読み込み直し（ページは ?v= 付きで読んでいる）、
+// React と main.jsx が二重に実行されて壊れるため。ツールは小さいので index.js に同梱する
+const TOOLS = { iryubun: IryubunTool }
+const mountTools = () => {
+  for (const el of document.querySelectorAll('.prose [data-tool]')) {
+    const Tool = TOOLS[el.dataset.tool]
+    if (!Tool || el.dataset.mounted) continue
+    el.dataset.mounted = '1'
+    el.innerHTML = ''
+    createRoot(el).render(<Tool />)
+  }
+}
+if (document.querySelector('.prose [data-tool]')) {
+  // hydrate が終わってから差し替える（本文の DOM は dangerouslySetInnerHTML でそのまま残るので、その後に別ルートとして描く）
+  ;(window.requestIdleCallback || ((f) => setTimeout(f, 50)))(mountTools)
 }

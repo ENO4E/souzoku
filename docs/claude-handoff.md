@@ -33,6 +33,8 @@
 - 2026-10-21 に不動産シリーズ116本を追加。うち78本は予約公開（owner-* 10/22〜10/30、hyoka-* 10/31〜11/6、評価の基礎 11/7〜11/10、jinushi-* 11/11〜11/13、kanpu-*/fudosan-* 11/14〜11/17）。毎日の定期ビルドで順に出る
 - 要確認：`fudosan-meigi-fudosan-oya-futan-ko-meigi-zoyo-nintei`（11/16）の住宅取得等資金の非課税額「省エネ等1,000万円・その他500万円、2026年末まで」、`mansion-tatekae-ketsugi-chu-rokyu-mansion-souzoku` の改正区分所有法（2026年4月施行・4分の3への緩和）
 - 2026-10-26 に **京阪神の地名入りコラム78本**を追加（11/6・11/17 の欠け3本＋11/18〜12/12 の毎日3本。これで 12/12 まで毎日3本）。運営者の指示は「なるべく具体的な京阪神の地名を入れた内容を毎日3つ」。slug は地域名始まり（osaka-kita-…、toyonaka-…、kobe-higashinada-…、kyoto-…、keihanshin-…）。書き方の共通ルールは Agent に渡した `column-rules.md`（本文1,100〜1,400字・h2 3〜4・地名5つ以上・路線価は「仮に」表記・税務署は `taxOffices.js` だけ・「最安」はコラムで使わない）。次は 12/13 以降を同じ方針で足す（残りの市区町村：京都市の区の続き、堺・泉州の市、南河内、阪神の市ごと）
+- **記事に計算ツールを埋め込む仕組み**（2026-10-27）：Markdown に `<div class="tool-fallback" data-tool="iryubun"><p>JS なしのときの案内</p></div>` を書くと、`src/main.jsx` の `mountTools` が hydrate 後に `src/tools/IryubunTool.jsx` を描画する（`TOOLS` に名前と部品を登録）。計算は `src/lib/iryubun.js`（分数で計算。養子・代襲・二重資格・相続税の養子の数制限・2割加算）。**ツールは `import()` で遅延読み込みしない**：チャンクが `./index.js` を再読み込みし（ページは `?v=` 付きで読む）、React と main.jsx が二重に実行されて壊れる（React error #321）。CSS は `index.css` 末尾の `.tool`。確認はヘッドレス Chromium で `--virtual-time-budget` を付けて DOM を dump し `.tool__table` があるか見る（`--timeout` では描画前に dump される。別 URL にコピーして試すとルーターが別ページを描くので、必ず実際のパスで試す）
+- **貸付用不動産の5年ルール**：2026-09-18 に国税庁が通達案を公表（意見募集 10/18 締切、確定版は 10/27 時点で未公表）。適用は **2027-01-01 以後の相続・贈与**（取得日ではない）。以前のコラム約25本にあった「2027年以後の取得分から」は 10/27 に一括で訂正済み。確定版が出たら `jiji-r8-kashitsuke-fudosan-5nen-tsutatsu-an-2027-souzoku-kara` を更新する
 - 次の候補シリーズ：相続した実家（空き家）の出口、海外不動産・非居住者、不動産の贈与（精算課税・住宅資金）
 
 ## SEO の状況
