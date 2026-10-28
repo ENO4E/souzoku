@@ -2,12 +2,12 @@
 city: 堺市東区
 pref: 大阪府
 region: 堺
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 堺税務署
 topic: 初芝・北野田・白鷺の南海高野線沿線の住宅地と団地。古い戸建ての実家と二次相続
 focus: 南海高野線沿線の住宅地と団地
 description: 堺市東区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。初芝・北野田・白鷺など南海高野線沿線の住宅地と団地が中心で、古い戸建ての実家を誰が相続するか、配偶者が相続した後の二次相続までを見た分け方が論点になります。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, nijisouzoku-taisaku, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man, kyoyu-fudosan-chui]
+columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, sakai-souzoku-muryo-soudan-madoguchi, nijisouzoku-taisaku, tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man, kyoyu-fudosan-chui]
 ---
 東区は、南海高野線の初芝・萩原天神・北野田の各駅を中心に住宅地が広がり、白鷺周辺には大規模な団地があります。財産は「自宅と預貯金」が中心で、相続税がかかるかどうかは自宅の土地の評価と預貯金の額で決まります。1970〜80年代に建てた戸建ての実家をどうするか、配偶者が相続した後の二次相続まで見て分け方を決めることが、この区の相続の要です。
 

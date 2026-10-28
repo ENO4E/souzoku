@@ -2,12 +2,12 @@
 city: 堺市美原区
 pref: 大阪府
 region: 堺
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 富田林税務署
 topic: 旧美原町の田園と旧村の広い敷地、市街化調整区域の農地、金属加工の町工場。農地の区分と納税猶予
 focus: 田園の旧村と調整区域の農地・町工場
 description: 堺市美原区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。旧美原町の田園地帯と旧村の広い敷地、市街化調整区域の農地、金属加工などの町工場が混在する美原区は、農地の区分による評価の違いと納税猶予、農家住宅の敷地の評価が論点になります。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, hyoka-seisan-ryokuchi-hyoka, chiseki-kibo-ookina-takuchi, hijojo-kabushiki-hyoka]
+columns: [nochi-nozei-yuyo, sakai-souzoku-muryo-soudan-madoguchi, hyoka-nochi-kubun-takuchi-hijun, hyoka-seisan-ryokuchi-hyoka, chiseki-kibo-ookina-takuchi, hijojo-kabushiki-hyoka]
 ---
 美原区は2006年に堺市と合併した旧美原町で、堺市の中で最も農地が多く、旧村の集落に広い敷地の農家住宅が残ります。市街化調整区域の田畑は倍率方式で評価が低い一方、市街化区域内の農地は宅地並みで高くなります。金属加工や自動車関連の町工場も多く、工場の土地と自社株を一緒に相続する家もあります。
 

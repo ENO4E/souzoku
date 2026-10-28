@@ -2,12 +2,12 @@
 city: 神戸市西区
 pref: 兵庫県
 region: 神戸
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 明石税務署
 topic: 西神ニュータウン・学園都市の戸建てと、神出・岩岡・平野・押部谷の農地。生産緑地と農家住宅の評価
 focus: 西神ニュータウンと神出・岩岡の農地
 description: 神戸市西区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。西神中央・学園都市のニュータウンの戸建てと、神出・岩岡・平野・押部谷の農地・農家住宅を一緒に相続する家が多く、生産緑地や市街化調整区域の農地の評価、納税猶予の可否が論点になります。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [kobe-souzokuzei-zeirishi-yasui, kobe-fudosan-souzoku-taisaku, nochi-nozei-yuyo, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi]
+columns: [kobe-souzokuzei-zeirishi-yasui, kobe-souzoku-muryo-soudan-madoguchi, kobe-fudosan-souzoku-taisaku, nochi-nozei-yuyo, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi]
 ---
 西区は、西神ニュータウン（西神中央・西神南）や学園都市の計画的な住宅地と、神出・岩岡・平野・押部谷・玉津の農村部からなり、神戸市の農地の多くがこの区にあります。ニュータウンの戸建てと、親が農業をしていた農地・農家住宅を一緒に相続する家が多く、農地の区分（市街化区域か調整区域か、生産緑地か）で評価と特例が変わります。西神インダストリアルパークなどの工業団地に事業用の土地を持つ会社もあります。
 

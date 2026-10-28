@@ -2,12 +2,12 @@
 city: 神戸市北区
 pref: 兵庫県
 region: 神戸
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 兵庫税務署
 topic: 鈴蘭台・北神ニュータウンの戸建て、有馬温泉の旅館、淡河・八多・大沢の農地と山林。市街化調整区域の評価
 focus: 鈴蘭台の戸建てと有馬・北神の農地
 description: 神戸市北区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。鈴蘭台・藤原台・鹿の子台などのニュータウンの戸建て、有馬温泉の旅館や事業用地、淡河・八多・大沢の農地と山林など、北区は市街化区域と調整区域の両方の財産を一緒に相続する地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [kobe-souzokuzei-zeirishi-yasui, kobe-fudosan-souzoku-taisaku, nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
+columns: [kobe-souzokuzei-zeirishi-yasui, kobe-souzoku-muryo-soudan-madoguchi, kobe-fudosan-souzoku-taisaku, nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
 ---
 北区は神戸市で最も面積が広く、鈴蘭台や北神ニュータウン（藤原台・鹿の子台・ひよどり台）の住宅地、有馬温泉の旅館・観光業、淡河・八多・大沢・山田の農村部と、財産の型が大きく分かれます。農地と山林は市街化調整区域に多く、倍率方式や宅地比準で評価方法が変わります。ニュータウンでは高齢化が進み、誰も住まない実家の相談が増えています。
 

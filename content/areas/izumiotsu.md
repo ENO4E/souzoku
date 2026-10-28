@@ -2,12 +2,12 @@
 city: 泉大津市
 pref: 大阪府
 region: 泉州
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 泉大津税務署
 topic: 毛布・繊維の工場と自宅兼工場、密集した住宅地、臨海の埋立地。事業用資産と狭小地の評価
 focus: 自宅兼工場と密集住宅地の狭小地
 description: 泉大津市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。毛布・繊維の工場や貸工場、自宅兼工場、密集した住宅地、臨海の埋立地と、泉大津市は事業用資産と狭小地の評価が中心になる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, jigyo-shokei-zeisei]
+columns: [tokurei-shokibo-tenpo-heiyo-anbun, senshu-souzoku-muryo-soudan-madoguchi, hijojo-kabushiki-hyoka, kashiya-tatetsuke-chi, shakuchiken-teichi-hyoka, jigyo-shokei-zeisei]
 ---
 泉大津市は毛布をはじめとする繊維産業の町で、南海本線の泉大津駅周辺に工場・貸工場と住宅が密集しています。自宅と工場が同じ敷地にある家、工場を人に貸している家、法人化して自社株を持つ家が多く、個人と会社が混ざった財産の整理が相続の中心です。臨海部の埋立地には物流・工業の施設があり、個人が土地を貸している例もあります。
 

@@ -2,12 +2,12 @@
 city: 京都市西京区
 pref: 京都府
 region: 京都市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 右京税務署
 topic: 洛西ニュータウンの団地と戸建て、桂・桂川のマンション、大原野・松尾の竹林と農地。誰も住まない実家と竹林の相続
 focus: 洛西ニュータウンの実家と大原野の竹林
 description: 京都市西京区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。洛西ニュータウンの団地と戸建て、桂・桂川のマンション、大原野・松尾・嵐山の竹林と農地と、西京区は高齢化した住宅地の実家と、筆数の多い竹林や農地を一緒に相続する家が多い地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [tokurei-shokibo-akiya-jikka-tenkyo, akiya-tokurei-3000man, fudosan-jikka-daremo-sumanai-sentakushi-hikaku, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku]
+columns: [tokurei-shokibo-akiya-jikka-tenkyo, kyoto-shi-souzoku-muryo-soudan-madoguchi, akiya-tokurei-3000man, fudosan-jikka-daremo-sumanai-sentakushi-hikaku, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku]
 ---
 西京区は、1970年代に開発された洛西ニュータウンの団地と戸建て、阪急桂駅・JR桂川駅周辺のマンション、大原野・松尾・嵐山の竹林と農地が特徴の区です。洛西ニュータウンは住民の高齢化が進み、親が亡くなって誰も住まない実家の相続が増えています。西山のふもとには京たけのこの竹林が広がり、筆数の多い竹林や農地と市街地の実家を一緒に相続する家が多く、評価の単位と使わない土地の整理が相続の要です。
 

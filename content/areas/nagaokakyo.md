@@ -2,12 +2,12 @@
 city: 長岡京市
 pref: 京都府
 region: 京都南部
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 右京税務署
 topic: 阪急長岡天神・JR長岡京駅周辺のマンションと住宅地、西山の竹林と農地、大企業の工場と社宅跡地、広い敷地の旧家
 focus: 駅前マンションと西山の竹林・旧家
 description: 長岡京市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。阪急長岡天神・JR長岡京駅周辺のマンションと住宅地、西山のふもとの京たけのこの竹林と農地、大企業の工場の周辺の住宅地、広い敷地の旧家と、長岡京市は地価の高い宅地と筆数の多い竹林を一緒に相続する家が多い地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [chiseki-kibo-ookina-takuchi, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku, hyoka-kubun-shoyu-mansion-2024-keisan, fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji]
+columns: [chiseki-kibo-ookina-takuchi, kyoto-nanbu-souzoku-muryo-soudan-madoguchi, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku, hyoka-kubun-shoyu-mansion-2024-keisan, fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji]
 ---
 長岡京市は、阪急長岡天神駅・JR長岡京駅周辺のマンションと住宅地、西山のふもとに広がる京たけのこの竹林と農地、大企業の工場とその周辺の住宅地が特徴の市です。大阪・京都の両方に通勤できるため地価が高く、駅周辺のマンションや戸建てだけで基礎控除を超える家が多い一方、西山周辺の旧家は広い敷地と筆数の多い竹林を持ち、評価の単位と使わない土地の整理が相続の要です。
 

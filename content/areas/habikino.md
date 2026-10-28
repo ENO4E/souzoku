@@ -2,12 +2,12 @@
 city: 羽曳野市
 pref: 大阪府
 region: 南河内
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 富田林税務署
 topic: 古市古墳群周辺の住宅地、駒ヶ谷のぶどう・いちじくの農地、旧村の広い敷地。農地と宅地が混ざる相続
 focus: 古市の住宅地とぶどう・いちじくの農地
 description: 羽曳野市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。古市古墳群周辺の住宅地、駒ヶ谷・飛鳥のぶどうやいちじくの農地、旧村の広い敷地と、羽曳野市は農地と宅地を一緒に相続する家が多い地域です。農地の区分と納税猶予、史跡周辺の土地の扱いをまとめました。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [nochi-nozei-yuyo, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
+columns: [nochi-nozei-yuyo, minamikawachi-souzoku-muryo-soudan-madoguchi, hyoka-seisan-ryokuchi-hyoka, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
 ---
 羽曳野市は、世界遺産の古市古墳群を抱える住宅都市であると同時に、駒ヶ谷・飛鳥のぶどうやいちじくなど果樹の産地です。近鉄の古市・恵我ノ荘・高鷲駅周辺の住宅地と、東部の農地・旧村の広い敷地を一緒に相続する家が多く、農地の区分（市街化区域か調整区域か、生産緑地か）で評価と特例が変わります。史跡の周辺は建築や掘削の制限があり、売却価格に影響します。
 
