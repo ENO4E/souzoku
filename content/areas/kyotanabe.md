@@ -2,12 +2,12 @@
 city: 京田辺市
 pref: 京都府
 region: 京都南部
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 宇治税務署
 topic: 松井山手の新しい戸建て、同志社大学周辺の学生アパート、玉露の茶園、田辺・三山木の旧集落と農地
 focus: 松井山手の戸建てと学生アパート・茶園
 description: 京田辺市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。松井山手の新しい戸建て、同志社大学周辺の学生アパート、玉露の茶園、田辺・三山木の旧集落と農地と、京田辺市は学生向けの賃貸物件と農地・宅地を一緒に相続する家が多く、貸家建付地の評価と農地の扱いが税額を左右する地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [hyoka-itto-mansion-apart-kushitsu, kashiya-tatetsuke-chi, tokurei-shokibo-kashitsuke-jigyoteki-kibo-3nen, nochi-nozei-yuyo, chiseki-kibo-ookina-takuchi]
+columns: [hyoka-itto-mansion-apart-kushitsu, kyoto-nanbu-souzoku-muryo-soudan-madoguchi, kashiya-tatetsuke-chi, tokurei-shokibo-kashitsuke-jigyoteki-kibo-3nen, nochi-nozei-yuyo, chiseki-kibo-ookina-takuchi]
 ---
 京田辺市は、JR松井山手駅周辺の新しい戸建ての住宅地、同志社大学の京田辺キャンパス周辺の学生アパート、日本一の玉露の産地として知られる茶園、近鉄・JR沿線の田辺・三山木の旧集落と農地が特徴の市です。農家が学生向けのアパートを建てて貸している家、茶園と宅地を一緒に持つ家が多く、貸家建付地の評価、空室の扱い、農地の評価方法が相続税の要です。北陸新幹線の駅の構想で地価が動く地域もあります。
 

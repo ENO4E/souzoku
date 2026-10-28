@@ -2,12 +2,12 @@
 city: 泉佐野市
 pref: 大阪府
 region: 泉州
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 泉佐野税務署
 topic: りんくうタウンと関西空港関連の貸地・事業用地、さの町場の町家、日根野の農地、タオルの家業
 focus: りんくうの貸地と日根野の農地
 description: 泉佐野市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。りんくうタウンや関西空港に関連する貸地・事業用地、さの町場の古い町家、日根野・上之郷の農地、泉州タオルの家業と、泉佐野市は貸地と農地、事業用資産の評価が中心になる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, kashiya-tatetsuke-chi, nochi-nozei-yuyo, hijojo-kabushiki-hyoka, shakuchiken-teichi-hyoka]
+columns: [jigyo-jinushi-sozoku-hyoka-tani-kashitakuchi-butsuno, senshu-souzoku-muryo-soudan-madoguchi, kashiya-tatetsuke-chi, nochi-nozei-yuyo, hijojo-kabushiki-hyoka, shakuchiken-teichi-hyoka]
 ---
 泉佐野市は関西国際空港の対岸の町で、りんくうタウンや空港関連の物流・宿泊施設に土地を貸している地主、泉州タオルの製造を家業とする家、南海泉佐野駅周辺のさの町場（旧市街）の町家、日根野・上之郷の農地と、財産の型が多様です。貸地は貸し方（地代の有無、建物の所有者、契約の種類）で評価が大きく変わり、農地は市街化区域か調整区域かで評価方法が分かれます。
 

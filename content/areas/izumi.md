@@ -2,12 +2,12 @@
 city: 和泉市
 pref: 大阪府
 region: 泉州
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 泉大津税務署
 topic: トリヴェール和泉・和泉中央のニュータウン、南部の農地と山林、繊維・人造真珠などの家業。宅地と農地の相続
 focus: 和泉中央のニュータウンと南部の農地
 description: 和泉市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。トリヴェール和泉・和泉中央のニュータウンの戸建て、南部の農地と山林、繊維・人造真珠などの家業の事業用資産と、和泉市は宅地と農地・事業を一緒に相続する家が多い地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, hijojo-kabushiki-hyoka, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
+columns: [nochi-nozei-yuyo, senshu-souzoku-muryo-soudan-madoguchi, hyoka-nochi-kubun-takuchi-hijun, chiseki-kibo-ookina-takuchi, hijojo-kabushiki-hyoka, fudosan-jikka-daremo-sumanai-sentakushi-hikaku]
 ---
 和泉市は、泉北高速鉄道の和泉中央駅周辺のトリヴェール和泉をはじめとするニュータウンと、JR阪和線沿いの古くからの住宅地、南部の農地・山林からなります。繊維や人造真珠など家業として続く事業の資産を持つ家もあります。ニュータウンの戸建ては評価が素直に出る一方、南部の農地・山林は市街化区域か調整区域かで評価方法が変わります。
 

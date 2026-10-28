@@ -2,12 +2,12 @@
 city: 寝屋川市
 pref: 大阪府
 region: 北河内
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 枚方税務署
 topic: 密集住宅地と駅前再開発、古い借地・貸家の相続の注意点
 focus: 密集住宅地の古い借地・貸家
 description: 寝屋川市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。寝屋川市は京阪沿線の密集した住宅地に古い借地・貸家が残り、駅前の再開発でマンションも増えている地域です。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-fudosan-souzoku-taisaku, shakuchiken-teichi-hyoka, kashiya-tatetsuke-chi, fudosan-sokochi-seiri-baikyaku-koukan, hyoka-maguchi-kyosho-okuyuki-chodai, hyoka-kubun-shoyu-mansion-2024-keisan]
+columns: [kitakawachi-souzokuzei-zeirishi-yasui, kitakawachi-souzoku-muryo-soudan-madoguchi, kitakawachi-fudosan-souzoku-taisaku, shakuchiken-teichi-hyoka, kashiya-tatetsuke-chi, fudosan-sokochi-seiri-baikyaku-koukan, hyoka-maguchi-kyosho-okuyuki-chodai, hyoka-kubun-shoyu-mansion-2024-keisan]
 ---
 寝屋川市は京阪本線の寝屋川市駅・香里園駅を中心に、高度成長期に急速に住宅化した密集市街地が広がるまちです。文化住宅や古くからの借地・貸家が多く残る一方、寝屋川市駅周辺の再開発でマンションが増え、農地も一部に残っています。一区画は小さく地価も大阪市内より抑えめですが、貸家を複数持つ、借地権を持っている、農地と宅地があるといった「数が多い」財産構成で基礎控除（3,000万円＋600万円×法定相続人の数）を超えるのが、寝屋川市の相続の典型です。
 

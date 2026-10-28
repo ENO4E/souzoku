@@ -2,12 +2,12 @@
 city: 京都市東山区
 pref: 京都府
 region: 京都市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 東山税務署
 topic: 祇園・清水の観光地の店舗と宿泊施設、寺社が地主の借地、伝統的建造物群保存地区の建築制限。時価と路線価の乖離
 focus: 祇園の店舗と寺社の借地
 description: 京都市東山区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。祇園・清水・東山の観光地の店舗や宿泊施設、寺社が地主の借地、祇園新橋・産寧坂の伝統的建造物群保存地区の建築制限と、東山区は時価と路線価の差が大きく、借地権と事業用資産の評価が中心になる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [shakuchiken-teichi-hyoka, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi, tokurei-shokibo-tenpo-heiyo-anbun, kashiya-tatetsuke-chi, hyoka-kubun-shoyu-mansion-2024-keisan]
+columns: [shakuchiken-teichi-hyoka, kyoto-shi-souzoku-muryo-soudan-madoguchi, jigyo-inshokuten-tenpo-sozoku-zosaku-eigyoken-shakuchi, tokurei-shokibo-tenpo-heiyo-anbun, kashiya-tatetsuke-chi, hyoka-kubun-shoyu-mansion-2024-keisan]
 ---
 東山区は祇園・清水・八坂・東福寺といった観光地を抱え、京都市で最も面積の小さい区です。観光需要で店舗や宿泊施設の取引価格が路線価と大きく離れている一方、寺社が地主の借地、祇園新橋や産寧坂の伝統的建造物群保存地区の建築制限、間口の狭い町家と、評価を下げる要素も多い地域です。飲食店や土産物店を家業とする家では、店の造作や営業権、借地権の引き継ぎが分け方に影響します。
 

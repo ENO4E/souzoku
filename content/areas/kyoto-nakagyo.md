@@ -2,12 +2,12 @@
 city: 京都市中京区
 pref: 京都府
 region: 京都市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 中京税務署
 topic: 烏丸御池・二条の商業地と貸ビル、室町の問屋の店舗兼住宅、錦市場周辺の店舗、高さ制限のあるマンション
 focus: 烏丸御池の貸ビルと室町の店舗兼住宅
 description: 京都市中京区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。烏丸御池・二条のオフィスと貸ビル、室町の呉服問屋の店舗兼住宅、錦市場周辺の店舗、景観条例の高さ制限の中で建つマンションと、中京区は収益物件と事業用資産の評価が中心になる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [hyoka-itto-mansion-apart-kushitsu, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, hyoka-kubun-shoyu-mansion-2024-keisan]
+columns: [hyoka-itto-mansion-apart-kushitsu, kyoto-shi-souzoku-muryo-soudan-madoguchi, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, jigyo-shokei-zeisei, hyoka-kubun-shoyu-mansion-2024-keisan]
 ---
 中京区は京都の商業・業務の中心で、烏丸御池・二条・四条烏丸のオフィスと貸ビル、室町の呉服問屋をはじめとする店舗兼住宅、錦市場や寺町の店舗、御池通沿いのマンションが集まります。景観条例で建物の高さが制限されているため超高層のマンションは無く、その分、土地の単価が高い区です。相続財産は収益物件、店舗兼住宅、老舗の自社株が中心で、「評価が下がる要素」と「収益が出ているか」の両方を見る必要があります。
 

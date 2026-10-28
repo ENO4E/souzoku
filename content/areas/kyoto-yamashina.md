@@ -2,12 +2,12 @@
 city: 京都市山科区
 pref: 京都府
 region: 京都市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 東山税務署
 topic: 山科駅周辺のマンション、旧東海道沿いの密集住宅、東部・北部の傾斜地の住宅地、残る農地。自宅と預貯金が中心の相続
 focus: 山科駅前のマンションと傾斜地の住宅
 description: 京都市山科区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。山科駅周辺のマンション、旧東海道沿いの密集した住宅地、東部・北部の傾斜地の住宅、わずかに残る農地と、山科区は自宅と預貯金が中心の相続が多く、特例の使い方と二次相続の設計で税額が変わる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, nijisouzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-akiya-jikka-tenkyo]
+columns: [fudosan-jitaku-haigusha-ka-ko-ka-shoukibo-niji, kyoto-shi-souzoku-muryo-soudan-madoguchi, nijisouzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-kubun-shoyu-mansion-2024-keisan, tokurei-shokibo-akiya-jikka-tenkyo]
 ---
 山科区は、京都市街と東山で隔てられた盆地で、JR・地下鉄・京阪の山科駅周辺にマンションと商業施設、旧東海道（三条通）沿いに密集した住宅地、東部の醍醐山麓や北部の毘沙門堂周辺に傾斜地の住宅地が広がります。地価は京都市中心部より低めですが、自宅と預貯金・退職金を足すと基礎控除を超える家が多く、誰が自宅を相続するかと二次相続の設計が相続の要です。
 

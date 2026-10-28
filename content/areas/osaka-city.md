@@ -2,11 +2,11 @@
 city: 大阪市
 pref: 大阪府
 region: 大阪市
-updated: 2026-10-20
+updated: 2026-10-28
 title: 大阪市の相続税申告・相続の無料相談｜税理士費用は基本報酬99,000円〜（税込）・24区対応
 topic: 24区で違う財産の中身（タワーマンション・長屋と借地・旧家の広い土地・町工場）と、南森町の事務所での無料相談
 description: 大阪市の相続税申告と相続の無料相談なら、南森町の相続専門の税理士法人・相続税申告相談センターへ。業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）、累計200件超。24区それぞれの財産の特徴と、相談でできること・流れ・費用をまとめました。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, osaka-souzokuzei-zeirishi-yasui-kotae, zeirishi-sodan-itsu-kara-timing, osaka-mansion-souzoku-zeirishi-hiyo, souzokuzei-shinkoku-zeirishi-ni-nani-wo-watasu, souzoku-tetsuzuki-nani-kara-junban]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-souzoku-muryo-soudan-madoguchi, osaka-shi-fudosan-souzoku-taisaku, osaka-souzokuzei-zeirishi-yasui-kotae, zeirishi-sodan-itsu-kara-timing, osaka-mansion-souzoku-zeirishi-hiyo, souzokuzei-shinkoku-zeirishi-ni-nani-wo-watasu, souzoku-tetsuzuki-nani-kara-junban]
 ---
 大阪市で相続の相談先をお探しの方へ。当センターは大阪市北区・南森町にある相続税申告に特化した事務所で、**大阪市24区すべての相続税申告と相続のご相談を、初回無料でお受けしています。** 「相続税がかかるのか分からない」「何から手を付ければいいか分からない」という段階でのご相談が最も多く、その場で申告の要否と費用の目安をお伝えします。
 

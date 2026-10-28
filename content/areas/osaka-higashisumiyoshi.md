@@ -2,12 +2,12 @@
 city: 大阪市東住吉区
 pref: 大阪府
 region: 大阪市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 東住吉税務署
 topic: 長屋・文化住宅・借地と、戸建ての実家の特例と空き家の売却
 focus: 長屋・文化住宅・借地と実家の空き家
 description: 大阪市東住吉区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。東住吉区は長屋・文化住宅・借地の家と戸建てが混在し、実家の特例や空き家の売却が論点になります。初回相談は無料で、来所・オンライン・ご自宅への訪問に対応します。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-fudosan-souzoku-taisaku, akiya-tokurei-3000man, rojin-home-shokibo-takuchi, ienakiko-tokurei, hyoka-tokutei-rosenka-shinsei, tatemono-hyoka-kotei-shisan]
+columns: [osaka-shi-souzokuzei-zeirishi-yasui, osaka-shi-souzoku-muryo-soudan-madoguchi, osaka-shi-fudosan-souzoku-taisaku, akiya-tokurei-3000man, rojin-home-shokibo-takuchi, ienakiko-tokurei, hyoka-tokutei-rosenka-shinsei, tatemono-hyoka-kotei-shisan]
 ---
 大阪市東住吉区は、長居公園や駒川商店街で知られる大阪市南東部の住宅地です。大阪メトロ谷町線の田辺・駒川中野、近鉄南大阪線の針中野・矢田・今川といった駅の周辺に住宅が広がり、昔ながらの長屋や文化住宅（木造の賃貸アパート）、借地の上の家と、建売住宅や注文住宅の戸建てが同じ町内に並んでいます。親が建てた戸建てに住み続けてきた方の相続では、子どもがすでに独立していて、実家を誰が引き継ぐか、売るか貸すかが大きな論点になります。
 

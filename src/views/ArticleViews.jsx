@@ -132,8 +132,8 @@ export function ArticleView({ article, related = [], areaLinks = [] }) {
           <article className="prose" dangerouslySetInnerHTML={{ __html: article.html }} />
 
           <div className="article-cta">
-            <p className="article-cta__title">ご自身のケースではどうなるか、無料相談で確認できます。</p>
-            <p className="article-cta__text">初回相談は無料。ご契約まで費用はかかりません。相続税額の目安はシミュレーションでもその場で確認できます。</p>
+            <p className="article-cta__title">相続税だけでなく、遺産分割・登記・不動産の売却まで、無料相談ひとつで段取りできます。</p>
+            <p className="article-cta__text">初回面談は0円。相続税がかかるかの判定と税額の目安、分け方の比較、相続登記や名義変更（提携の司法書士）、揉めている場合（提携の弁護士）、不動産の評価と売却の税金まで、窓口は当センターひとつです。ご契約まで費用はかかりません。</p>
             <div className="article-cta__actions">
               <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label="コラム">無料相談を予約する<Arrow /></a>
               <a href="/simulation/" className="btn btn--ghost btn--lg">相続税シミュレーション</a>

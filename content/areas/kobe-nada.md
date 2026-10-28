@@ -2,12 +2,12 @@
 city: 神戸市灘区
 pref: 兵庫県
 region: 神戸
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 灘税務署
 topic: 六甲山麓の斜面地の戸建て、学生向けアパート、水道筋周辺の古い住宅。高低差と空室が評価を左右する
 focus: 六甲山麓の斜面地と学生アパート
 description: 神戸市灘区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。六甲・篠原の斜面地の戸建て、神戸大学周辺の学生向けアパート、水道筋・王子公園周辺の古い住宅やマンションなど、灘区は高低差と賃貸の空室が評価を左右する地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [kobe-souzokuzei-zeirishi-yasui, kobe-fudosan-souzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-itto-mansion-apart-kushitsu, kashiya-tatetsuke-chi, kobe-hanshin-kara-osaka-zeirishi-irai]
+columns: [kobe-souzokuzei-zeirishi-yasui, kobe-souzoku-muryo-soudan-madoguchi, kobe-fudosan-souzoku-taisaku, hyoka-gakechi-dosha-saigai-hosei, hyoka-itto-mansion-apart-kushitsu, kashiya-tatetsuke-chi, kobe-hanshin-kara-osaka-zeirishi-irai]
 ---
 灘区は、阪急六甲・王子公園、JR六甲道・摩耶の周辺に住宅地が広がり、六甲山麓に向かって坂が続く地域です。篠原・六甲台などの斜面地の戸建ては道路との高低差が大きく、評価では高低差やがけ地の補正が論点になります。神戸大学や周辺の学校が多いため、学生向けのアパートや貸家を持つ家も多く、賃貸の空室状況で評価が変わります。水道筋商店街の周辺には古い住宅や店舗兼住宅、王子公園・六甲道の駅前には分譲マンションがあります。
 

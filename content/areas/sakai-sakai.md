@@ -2,12 +2,12 @@
 city: 堺市堺区
 pref: 大阪府
 region: 堺
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 堺税務署
 topic: 環濠の旧市街の町家と借地・底地、堺東・堺駅前の商業地とマンション、刃物・線香など家業の承継
 focus: 環濠の町家と借地・堺東の商業地
 description: 堺市堺区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。旧市街の町家と借地・底地、堺東・堺駅前の商業地やマンション、刃物・線香・自転車といった家業の事業用資産など、堺区は狭小地と借地権の評価が中心になる地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [shakuchiken-teichi-hyoka, fudosan-sokochi-seiri-baikyaku-koukan, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, hyoka-kubun-shoyu-mansion-2024-keisan]
+columns: [shakuchiken-teichi-hyoka, sakai-souzoku-muryo-soudan-madoguchi, fudosan-sokochi-seiri-baikyaku-koukan, tokurei-shokibo-tenpo-heiyo-anbun, hijojo-kabushiki-hyoka, hyoka-kubun-shoyu-mansion-2024-keisan]
 ---
 堺区は、環濠に囲まれた旧市街の町割りがそのまま残り、間口が狭く奥行きの長い町家、借地と底地が入り組んだ土地が多い地域です。堺東と堺駅の周辺には商業地と分譲マンションがあり、刃物・線香・自転車部品など、家業として続く製造業や小売業の事業用資産を持つ家もあります。路線価×面積のままでは実態より高い評価になりやすく、補正と権利関係の整理が相続の要です。
 

@@ -2,12 +2,12 @@
 city: 富田林市
 pref: 大阪府
 region: 南河内
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 富田林税務署
 topic: 寺内町の伝統的な町家、金剛ニュータウンの戸建てと空き家、東部の農地・山林。古い建物と農地の評価
 focus: 寺内町の町家と金剛ニュータウンの空き家
 description: 富田林市の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。寺内町の伝統的な町家、金剛ニュータウンの戸建てと高齢化で増える空き家、東部の農地・山林と、富田林市は古い建物・ニュータウン・農地の3つの型が揃う地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [fudosan-jikka-daremo-sumanai-sentakushi-hikaku, akiya-tokurei-3000man, nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku]
+columns: [fudosan-jikka-daremo-sumanai-sentakushi-hikaku, minamikawachi-souzoku-muryo-soudan-madoguchi, akiya-tokurei-3000man, nochi-nozei-yuyo, hyoka-nochi-kubun-takuchi-hijun, souzoku-tochi-kokko-kizoku]
 ---
 富田林市には、重要伝統的建造物群保存地区に選ばれた寺内町の町家、1960年代から開発された金剛ニュータウン（金剛・藤沢台・久野喜台）の戸建て、東部の農地と山林と、性格の違う3つの財産があります。寺内町では保存地区の規制で建て替えや改修に制限があり、ニュータウンでは誰も住まない実家の相談が増え、東部では農業を継ぐ人がいない農地の扱いが課題です。
 

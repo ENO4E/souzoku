@@ -2,12 +2,12 @@
 city: 京都市左京区
 pref: 京都府
 region: 京都市
-updated: 2026-10-20
+updated: 2026-10-28
 taxOffice: 左京税務署
 topic: 下鴨・北白川の広い敷地の住宅地、京大周辺の学生アパート、大原・八瀬・鞍馬の農地と山林、修学院・岩倉の住宅
 focus: 下鴨の広い宅地と大原の農地・山林
 description: 京都市左京区の相続税申告は業界最安クラスの料金で対応、初回面談0円・基本報酬99,000円（税込）。下鴨・北白川・岡崎の広い敷地の住宅地、京都大学周辺の学生アパート、大原・八瀬・鞍馬の農地と山林、修学院・岩倉の住宅地と、左京区は地価の高い宅地と山間部の財産を一緒に相続する家が多い地域です。書面添付制度で税務署に指摘されにくい申告を、相続専門の税理士法人が行います。
-columns: [chiseki-kibo-ookina-takuchi, hyoka-itto-mansion-apart-kushitsu, kashiya-tatetsuke-chi, nochi-nozei-yuyo, souzoku-tochi-kokko-kizoku]
+columns: [chiseki-kibo-ookina-takuchi, kyoto-shi-souzoku-muryo-soudan-madoguchi, hyoka-itto-mansion-apart-kushitsu, kashiya-tatetsuke-chi, nochi-nozei-yuyo, souzoku-tochi-kokko-kizoku]
 ---
 左京区は、下鴨・北白川・岡崎・吉田の地価の高い住宅地から、修学院・岩倉・松ケ崎の住宅地、大原・八瀬・鞍馬・花脊の農村部と山林まで、京都市で最も財産の型が幅広い区です。下鴨や北白川には敷地の広い戸建てが残り、京都大学や京都芸術大学の周辺には学生向けのアパートが多く、大原では農地と民宿・漬物などの家業を持つ家もあります。評価の高い宅地と評価の低い山林を分けて整理することが相続の要です。
 
