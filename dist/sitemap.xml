@@ -22,9 +22,27 @@
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/hyoka-senro-kansen-doro-soon-shindo/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/hyoka-rinchi-koteisa-tochi-genka/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/hyoka-chika-maisetsu-butsu-sanpai/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/hyoka-yoto-chiiki-matagaru-tochi/</loc>
