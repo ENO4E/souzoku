@@ -42,7 +42,7 @@ tags: [生前対策, 不動産]
 
 ## 相談の進め方と費用
 
-初回相談は無料で、阪神間各市のご自宅への訪問とオンライン面談に対応しています。兵庫県の案件も大阪と同じ料金表で、遠方の加算項目はありません。固定資産税の納税通知書、預貯金のメモ、保険証券、家族構成が分かれば、その場で税額の概算と二次相続までの比較をお見せします。[西宮市](/area/nishinomiya/)・[芦屋市](/area/ashiya/)・[尼崎市](/area/amagasaki/)などのページと、[阪神間で相続税申告が安い税理士](/articles/hanshin-souzokuzei-zeirishi-yasui/)、[阪神間の高額な自宅の税理士費用](/articles/hanshin-kogaku-jitaku-souzoku-hiyo/)もご覧ください。
+初回相談は無料で、来所（南森町）・オンライン面談・お電話でご相談いただけます。兵庫県の案件も大阪と同じ料金表で、遠方の加算項目はありません。固定資産税の納税通知書、預貯金のメモ、保険証券、家族構成が分かれば、その場で税額の概算と二次相続までの比較をお見せします。[西宮市](/area/nishinomiya/)・[芦屋市](/area/ashiya/)・[尼崎市](/area/amagasaki/)などのページと、[阪神間で相続税申告が安い税理士](/articles/hanshin-souzokuzei-zeirishi-yasui/)、[阪神間の高額な自宅の税理士費用](/articles/hanshin-kogaku-jitaku-souzoku-hiyo/)もご覧ください。
 
 ## まとめ
 
