@@ -54,7 +54,7 @@ export function TaxOfficeView({ office, areaLinks = [] }) {
             <div><dt>管轄区域</dt><dd>{allAreas.join('、')}{office.note ? `（${office.note}）` : ''}</dd></div>
             <div><dt>提出方法</dt><dd>窓口・郵送・時間外収受箱・電子申告（e-Tax）</dd></div>
             <div><dt>申告期限</dt><dd>相続の開始を知った日の翌日から10か月以内（土日祝なら翌平日）</dd></div>
-            <div><dt>当センターの対応</dt><dd>基本報酬99,000円（税込）〜。電子申告で提出。訪問・オンライン対応</dd></div>
+            <div><dt>当センターの対応</dt><dd>基本報酬99,000円（税込）〜。電子申告で提出。来所・オンライン・電話に対応</dd></div>
           </dl>
           <p className="sim-guide__note">{TAX_OFFICE_NOTE}</p>
 
@@ -93,7 +93,7 @@ export function TaxOfficeView({ office, areaLinks = [] }) {
 
           <h2 className="area-h2">{office.name}管内の相続税申告のご相談</h2>
           <p className="sim-guide__lead">
-            {site.name}（運営：{site.company}）は、相続税申告に特化した税理士法人です。{office.name}管内のご自宅への訪問とオンライン面談に対応し、資料は郵送で進められます。申告の基本報酬は99,000円（税込・遺産総額4,000万円まで）からで、<a href="/service/#fee">料金表</a>に加算の単位を公開しています。相続税がかかるかどうかは<a href="/simulation/">相続税シミュレーション</a>で確かめられます。
+            {site.name}（運営：{site.company}）は、相続税申告に特化した税理士法人です。{office.name}管内からも、オンライン面談とお電話でご相談いただけ、資料は郵送で進められます。申告の基本報酬は99,000円（税込・遺産総額4,000万円まで）からで、<a href="/service/#fee">料金表</a>に加算の単位を公開しています。相続税がかかるかどうかは<a href="/simulation/">相続税シミュレーション</a>で確かめられます。
           </p>
           <div className="sim-guide__cta">
             <a href="/contact/" className="btn btn--primary btn--lg" data-beacon="cta_click" data-beacon-label={`税務署下部:${office.name}`}>無料相談を予約する<Arrow /></a>

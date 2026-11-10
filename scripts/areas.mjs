@@ -15,7 +15,7 @@
 //   導入の段落
 //   ## 〇〇市の相続でよくある財産と評価のポイント … 本文（h2 は2〜4個）
 //   ## よくある質問                                … **Q. 〜** / A. 〜 の形。構造化データ（FAQPage）にもなる
-//   最後の段落（来所・オンライン・訪問の案内）     … 「アクセス」欄に出す
+//   最後の段落（来所・オンライン・電話の案内）     … 「アクセス」欄に出す
 import { readdirSync, readFileSync } from 'node:fs'
 import { basename, extname, resolve } from 'node:path'
 import { parseFrontmatter, renderMarkdown } from './articles.mjs'

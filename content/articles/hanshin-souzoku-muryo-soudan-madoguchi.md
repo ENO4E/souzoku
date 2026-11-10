@@ -61,4 +61,4 @@ tags: [申告手続き, 相続税の基礎]
 
 ## 阪神から当センターへのご相談
 
-当センターは大阪市北区の南森町にあり、JR神戸線・宝塚線の方は尼崎からJR東西線で「大阪天満宮」駅へ、阪急・阪神の方は大阪梅田から谷町線で1駅です（[神戸・阪神から大阪の税理士に頼むとき](/articles/kobe-hanshin-kara-osaka-zeirishi-irai/)）。西宮市・芦屋市はご自宅への訪問も承ります。市ごとのページは[西宮市](/area/nishinomiya/)・[芦屋市](/area/ashiya/)・[尼崎市](/area/amagasaki/)・[宝塚市](/area/takarazuka/)・[伊丹市](/area/itami/)・[川西市](/area/kawanishi/)・[三田市](/area/sanda/)からご覧ください。[相続税シミュレーション](/simulation/)で税額の目安を確かめ、[無料相談のお申込み](/contact/)からご連絡ください。
+当センターは大阪市北区の南森町にあり、JR神戸線・宝塚線の方は尼崎からJR東西線で「大阪天満宮」駅へ、阪急・阪神の方は大阪梅田から谷町線で1駅です（[神戸・阪神から大阪の税理士に頼むとき](/articles/kobe-hanshin-kara-osaka-zeirishi-irai/)）。来所が難しい方は、オンライン面談やお電話でもご相談いただけます。市ごとのページは[西宮市](/area/nishinomiya/)・[芦屋市](/area/ashiya/)・[尼崎市](/area/amagasaki/)・[宝塚市](/area/takarazuka/)・[伊丹市](/area/itami/)・[川西市](/area/kawanishi/)・[三田市](/area/sanda/)からご覧ください。[相続税シミュレーション](/simulation/)で税額の目安を確かめ、[無料相談のお申込み](/contact/)からご連絡ください。

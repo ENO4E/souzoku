@@ -135,7 +135,7 @@ export default function ContactSection() {
           <ul className="contact__points" data-reveal>
             <li>初回のご相談は無料です</li>
             <li>フォームは24時間受付・1営業日以内にご連絡します</li>
-            <li>オンライン相談・出張相談に対応しています</li>
+            <li>来所・オンライン・お電話でご相談いただけます</li>
             <li>土日の面談は事前予約で承ります</li>
           </ul>
           <a href={site.telHref} className="contact__tel" data-reveal>
@@ -188,7 +188,7 @@ export default function ContactSection() {
               </fieldset>
               <fieldset className="field slots">
                 <legend className="field__label">面談のご希望日時<span className="field__opt">任意・3つまで</span></legend>
-                <p className="slots__note">平日9:00〜18:00。土日のご面談も事前予約で承ります。来所・オンライン・ご自宅への訪問のご希望はご相談内容にお書きください。</p>
+                <p className="slots__note">平日9:00〜18:00。土日のご面談も事前予約で承ります。来所・オンラインのご希望はご相談内容にお書きください。</p>
                 {slots.map((x, i) => (
                   <div className="slots__row" key={i}>
                     <span className="slots__no">第{i + 1}希望</span>

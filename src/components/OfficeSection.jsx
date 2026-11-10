@@ -9,7 +9,7 @@ export default function OfficeSection() {
           no=""
           en="Office"
           title={<>大阪・南森町の<br className="sp-only" />相続専門税理士法人です。</>}
-          lead="ご来所のほか、オンライン相談・出張相談にも対応しています。土日の面談も事前予約で承りますので、お仕事帰りや遠方の方もお気軽にご相談ください。"
+          lead="ご来所のほか、オンライン相談・お電話でのご相談にも対応しています。土日の面談も事前予約で承りますので、お仕事帰りや遠方の方もお気軽にご相談ください。"
         />
         <div className="office-grid">
           <dl className="office-table" data-reveal>
