@@ -14,6 +14,18 @@ window.addEventListener('route:change', () => {
   pageview()
 })
 
+// 金額の入力欄（type="number"）は、入力中にマウスのホイールを回すと値が増減してしまう。
+// ホイールが来たら入力欄からフォーカスを外し、値は変えずにページのスクロールだけにする。
+// シミュレーション・遺留分ツールなど、後から描画される入力欄にも効くよう document で受ける
+document.addEventListener(
+  'wheel',
+  (e) => {
+    const t = e.target
+    if (t instanceof HTMLInputElement && t.type === 'number' && t === document.activeElement) t.blur()
+  },
+  { passive: true },
+)
+
 const container = document.getElementById('root')
 // プリレンダリング済みの HTML と同じページを初期表示にする（/service/ なら service、/articles/xxx/ なら article）
 const initialRoute = parsePath(window.location.pathname)
