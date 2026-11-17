@@ -119,6 +119,15 @@ button, input, textarea, select { font: inherit; color: inherit; }
     linear-gradient(180deg, rgba(7, 10, 18, 0) 70%, rgba(7, 10, 18, 0.5) 100%);
 }
 main, .footer { position: relative; z-index: 1; }
+/* 背景の粒子が明るいところでも文字が読めるように、見出しと説明文に背景色の暗いふちを付ける
+   （カードの外に直接乗る文字だけ。グラデーション文字は .gradient-text で影を消している） */
+:where(.hero__inner, .panel__inner, .section-head, .page-head) :where(h1, h2, h3, p, li) {
+  text-shadow: 0 1px 2px rgba(7, 10, 18, 0.9), 0 0 12px rgba(7, 10, 18, 0.9);
+}
+@media (max-width: 899px) {
+  /* スマホは見出しの真後ろに粒子の球が来るので、背景全体も少し落とす */
+  .scene[data-state="ready"] .scene__canvas { opacity: 0.6; }
+}
 
 .progress-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 60;
