@@ -288,6 +288,12 @@ export const finalPass = {
       float vig = smoothstep(1.1, 0.25, r2 * 1.6);
       col *= mix(0.55, 1.0, vig);
 
+      // 粒子が重なって白く飛んだところの明るさに上限をかける（上に乗る文字が読めなくならないように）。
+      // 0.42 を超えた分は 2 割だけ残して、光の形と色味は保つ
+      float lum = dot(col, vec3(0.2126, 0.7152, 0.0722));
+      float capped = lum > 0.42 ? 0.42 + (lum - 0.42) * 0.2 : lum;
+      col *= capped / max(lum, 1e-4);
+
       gl_FragColor = vec4(col, 1.0);
     }
   `,

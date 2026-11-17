@@ -98,7 +98,7 @@ export class ParticleField {
       this.composer = new EffectComposer(this.renderer, target)
       this.composer.addPass(new RenderPass(this.scene, this.camera))
       // 明るい粒子だけがにじむ控えめなブルーム（しきい値を高くして全体がもやがからないようにする）
-      this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.55, 0.65, 0.78)
+      this.bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.4, 0.6, 0.8)
       this.composer.addPass(this.bloom)
       this.composer.addPass(new OutputPass())
       this.final = new ShaderPass(finalPass)
@@ -399,8 +399,9 @@ export class ParticleField {
     const world = this.camera.position.clone().add(dir.multiplyScalar(dist))
     u.uMouse.value.copy(world)
     u.uMouseStrength.value = this.pointerActive * (this.isMobileLayout ? 0 : 1)
-    u.uBrightness.value = this.isMobileLayout ? 0.65 : 1
-    u.uSize.value = this.isMobileLayout ? 2.7 : 5.2
+    // 文字の後ろで白く光りすぎないように抑える（スマホは文字と粒子が重なりやすいので、さらに暗く）
+    u.uBrightness.value = this.isMobileLayout ? 0.45 : 0.8
+    u.uSize.value = this.isMobileLayout ? 2.4 : 5.2
     u.uCore.value = this.isMobileLayout ? 0.44 : 0.22
     u.uHalo.value = this.isMobileLayout ? 0 : 0.28
 
