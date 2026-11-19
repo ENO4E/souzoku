@@ -22,9 +22,27 @@
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/osaka-nishi-horie-mansion-kashiya-hyoka/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/ibaraki-saito-minami-ibaraki-takuchi-hyoka-shirabekata/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/amagasaki-apart-owner-souzoku-saimu-kojo/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/takatsuki-jikka-akiya-tokurei-baikyaku/</loc>
