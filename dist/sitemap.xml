@@ -22,9 +22,27 @@
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/osaka-fukushima-konohana-kojo-ato-jigyo-yochi/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/neyagawa-kadoma-apart-kashiya-tatetsuke-chi/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kakuyasu-souzokuzei.com/articles/kobe-kita-arima-okaba-sanrin-nochi-bairitsu/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kakuyasu-souzokuzei.com/articles/osaka-hirano-nochi-shigaika-kuiki-nozei-yuyo/</loc>
